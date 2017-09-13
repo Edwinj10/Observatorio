@@ -1,0 +1,56 @@
+@extends ('layouts.principal')
+@section ('content')
+  @if(Session::has('message'))
+<div class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  {{Session::get('message')}}
+</div>
+@endif
+  
+    <link rel="stylesheet" href="{{asset('css/contacto.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:700|Patua+One|Roboto+Condensed:700" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+  <section id="contact" class="content-section text-center">
+        <div class="contact-section">
+            <div class="container">
+              <h2>Póngase en contacto con Nosotros</h2>
+              <!-- <p>Feel free to shout us by feeling the contact form or visiting our social network sites like Fackebook,Whatsapp,Twitter.</p> -->
+              <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                {!! Form::open(['route' => 'mail.store' , 'method' =>'POST']) !!}
+                  <div class="form-horizontal">
+                    <div class="form-group">
+                      <label for="exampleInputName2">Nombre:</label>
+                      <input type="text" class="form-control" name="name" id="exampleInputName2" placeholder="Juan">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail2">Correo:</label>
+                      <input type="email" class="form-control" name="email" id="exampleInputEmail2" placeholder="juan@example.com">
+                    </div>
+                    <div class="form-group ">
+                      <label for="exampleInputText">Mensaje:</label>
+                     <textarea  class="form-control" placeholder="Description" name="descripcion"></textarea> 
+                    </div>
+                    <button type="submit" class="btn btn-default">Enviar Mensaje</button>
+                  </div>
+                  {!!Form::close()!!}
+
+                  <hr>
+                    <h3>Our Social Sites</h3>
+                  <ul class="list-inline banner-social-buttons">
+                    <li><a href="#" class="btn btn-default btn-lg"><i class="fa fa-twitter"> <span class="network-name">Twitter</span></i></a></li>
+                    <li><a href="#" class="btn btn-default btn-lg"><i class="fa fa-facebook"> <span class="network-name">Facebook</span></i></a></li>
+                    <li><a href="#" class="btn btn-default btn-lg"><i class="fa fa-youtube-play"> <span class="network-name">Youtube</span></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+        </div>
+      </section>
+    
+</body>
+</html>
+@stop
+
