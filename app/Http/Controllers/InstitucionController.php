@@ -80,15 +80,19 @@ class InstitucionController extends Controller
     {
         // $inst = Institucion::find($id);
         $inst=DB::table('institucions as in')
-        ->select('in.nombres', 'in.mision', 'in.vision', 'in.logo', 'in.direccion')
-        ->where('in.id','=',$id)
-        ->first();
-
+            ->select('in.nombres', 'in.mision', 'in.vision', 'in.logo', 'in.direccion')
+            ->where('in.id','=',$id)
+            ->first();
+        $ind = DB::table('institucions as i')
+            ->join('indicadors as ind', 'ind.institucion_id', '=', 'i.id')
+            ->join('tipo__indicadors as t', 'ind.indicador_id', '=', 't.id')
+            ->select(DB::raw('i.nombres','t.id', 'ind.nombre','i.id'),DB::raw('i.id'),DB::raw('t.tipo'),DB::raw('count(t.tipo) as count'),DB::raw('ind.institucion_id'), DB::raw('ind.indicador_id'))
+            ->where('i.id','=', $id)
+            ->groupBy('i.nombres', 'i.id', 't.tipo','ind.institucion_id', 'ind.indicador_id')
+            ->get();
+        $total = DB::table('indicadors')->where('institucion_id', '=', $id)->count();
         $indicadores=DB::select('CALL todosindicadoreXinstitucion('.$id.');');
-
-       
-        return view('institucion.show',['inst'=>$inst, 'indicadores'=>$indicadores]);
-        
+        return view('institucion.show',['inst'=>$inst, 'indicadores'=>$indicadores, 'ind'=>$ind, 'total'=>$total]);
     }
 
     /**

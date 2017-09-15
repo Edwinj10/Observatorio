@@ -221,9 +221,10 @@ aside .content-footer>img {
     transition: 0.5s;
 }
 
-.recent-post a {text-decoration: none;color:#34495E;transition: 0.5s;}
-.post-img, .recent-post a:hover{color:#F39C12;}
-.post-img img:hover{border: 5px solid #F39C12;}
+.recent-post a {text-decoration: none;color:#105f89;transition: 0.5s;}
+.post-img, .recent-post a:hover{color:black;}
+.post-img img:hover{border: 5px solid #289dcc;}
+F39C12
 
 
 
@@ -776,9 +777,9 @@ div.cuadro_intro_hover {
 
 /*estilo de noticias*/
 /*h3 titulo*/
-h3#titulo {
+h5#titulo {
     font-family: 'Raleway', sans-serif;
-    font-size: 20px;
+    font-size: 16px;
     text-transform: none;
     height: 70px;
     text-align: justify;

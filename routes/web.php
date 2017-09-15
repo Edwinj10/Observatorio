@@ -34,6 +34,7 @@ Route::get('listartesis', 'BackController@index');
 Route::get('instituciones/{id1}/{id2}', 'FrontController@detalles_indicadores');
 // llamar todos los indicadores
 Route::get('indicadores/{id1}', 'FrontController@indicadores');
+Route::get('instituciones', 'FrontController@instituciones');
 // exporatr indicadores a excxel
 Route::get('exportar/{id}/excel', 'ExportarController@indicadores');
 Route::get('exportarindicadores/{id}/excel', 'ExportarController@indicadores_precios');

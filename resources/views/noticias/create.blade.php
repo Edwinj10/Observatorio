@@ -111,7 +111,7 @@
  -->
 <script type="text/javascript">
 	function cuentatitulo(){
-		var longi=40;
+		var longi=50;
 		var resta="";
 		var titulo = document.getElementById("titulo").value.length;
 		resta=longi-titulo;
@@ -119,7 +119,7 @@
 			alert("Estas llegando al limite de caracteres");
 		}
 		document.getElementById("mostar_titulo").value=resta;
-		if (titulo==40) {
+		if (resta==0) {
 			alert("Ha llegando al tamaño maximo de caracteres permitidos");
 		}
 	}

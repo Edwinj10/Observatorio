@@ -32,22 +32,26 @@
           {!!$noticia->descripcion!!}
       </p>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-4 hidden-xs">   
-        <h3 class="widget-title"><span id="noticia">Recientes</span></h3> 
-        <ul class="thumbnails">
-            @foreach ($ultimas as $u)
-            <li class="span4">
-              <div class="thumbnail">
-                <img src="/imagenes/noticias/{{$u->foto}}" alt="{{$u->titulo}}">
-                <div class="caption">
-                  <h4>{{$u->titulo}}</h4>
-                  <p align="center"><a href="{{ route('noticias.show', $u->id ) }}" class="btn btn-primary btn-block">Ver</a></p>
-                </div>
-              </div>
-            </li>
-            @endforeach
-        </ul>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">           
+      <div class="widget-sidebar">
+          <h3 class="widget-title"><span id="noticia">Publicaciones Recientes</span></h3>
+            <div class="content-widget-sidebar">
+              <ul>
+                @foreach ($ultimas as $u)
+                <li class="recent-post">
+                  <div class="post-img">
+                    <img src="/imagenes/noticias/{{$u->foto}}" class="img-responsive" alt="{{$u->titulo}}">
+                  </div>
+                  <a href="{{ route('noticias.show', $u->id ) }}"><h5 id="titulo">{{$u->titulo}}</h5></a>
+                    <p id="fecha" align="center"><small><i class="fa fa-calendar" data-original-title="" title=""></i> {{$u->created_at->diffForHumans()}}</small></p>
+                </li>
+                <hr>
+                @endforeach
+                
+              </ul>
+            </div>
       </div>
+    </div>
   </div>
   <div class="row">
     <div class="col-md-8">
@@ -73,7 +77,7 @@
       <h3 class="widget-title"><span id="noticia">Noticias Relacionadas</span></h3>
         <div class="row">
           @foreach ($sugerencias as $s)
-          <div class="col-md-4 col-xs-12">
+          <div class="col-md-4  col-lg-4 col-xs-12">
             <div class="column"> 
           <!-- Post-->
               <div class="post-module"> 

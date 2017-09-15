@@ -1,4 +1,5 @@
 @extends ('layouts.principal')
+<link rel="stylesheet" href="{{asset('/css/listar.css')}}">
 @section ('content')
   @if(Session::has('message'))
 
@@ -14,6 +15,7 @@
 <body>
 
 <div class="row">
+  <h3 class="widget-title"><span id="noticia">Perfil</span></h3>
   <div class="col-md-3">
       <img src="/imagenes/instituciones/{{$inst->logo}}" height="250px" width="250px" alt="">
   
@@ -35,12 +37,41 @@
 
 </div>     
 <div class="row">
-  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-    <h4>Indicadores de {{$inst->nombres}} </h4>
-            
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <h4>Total de Indicadores: {{$total}}</h4>    
+  </div>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <h4>Tipos de Indicadores de  {{$inst->nombres}} </h4>
   </div>
 </div>
-<div class="container-fluid">
+<div class="row">
+    <section class="new-deal">
+     <div class="container">
+      @foreach ($ind as $i)
+      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 deal deal-block">
+        <div class="item-slide">
+            <div class="box-img-active">
+            <img src="/imagenes/noticias/Gasolinera.jpg" alt=""/>
+              <div class="text-wrap">
+              <h4>{{$i->tipo}}</h4>
+                <div class="desc">                  
+                  <span>Total Indicadores</span>
+                  <h3>{{$i->count}}</h3>
+                </div>
+                <div class="book-now-c">                
+                <a href="/instituciones/{{$i->institucion_id}}/{{$i->indicador_id}}">Ver</a>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      @endforeach
+      </div>
+     </div>
+     </section>
+          
+</div>
+<!-- <div class="container-fluid">
     <div class="row">
         <div class="panel panel-primary filterable">
           <div class="panel-heading">
@@ -78,7 +109,7 @@
 
         
     </div>
-</div>
+</div> -->
     
 {!!Html::script('js/tabla.js')!!}
 <script type="text/javascript">

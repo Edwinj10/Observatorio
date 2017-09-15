@@ -28,6 +28,7 @@ class NoticiasController extends Controller
        
         $this->middleware('auth', ['only' => ['create', 'destroy', 'edit']]);
         $this->middleware('admin',['only' => ['create', 'destroy', 'edit']]);
+        Carbon::setLocale('es');
     }
 
     public function index(Request $request)
@@ -176,9 +177,10 @@ class NoticiasController extends Controller
             $noticia->foto=$filename;
             $noticia->update(); 
 
-        }
+        
             Session::flash('message',' Actualizada Correctamente');
             return Redirect::to('/noticias');
+        }
     }
 
     /**
@@ -190,8 +192,18 @@ class NoticiasController extends Controller
     public function destroy($id)
     {
         $noticia=Noticia::findOrFail($id);
-        $noticia->Estado='Inactivo';
-        $noticia->update();
+        if ($noticia->Estado='Inactivo') 
+        {
+            $noticia->Estado='Activo';
+            $noticia->update();
+        }
+        else 
+        {
+            $noticia->Estado='Inactivo';
+            $noticia->update();
+        }
+        
+        Session::flash('message',' Estado Actualizado, ya no aparecera en inicio');
         return Redirect::to('/noticias');
     }
 }

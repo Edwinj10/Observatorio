@@ -52,40 +52,6 @@
         </div>
       </div>
       @endforeach
-      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 deal deal-block">
-        <div class="item-slide">
-            <div class="box-img">
-            <img src="/imagenes/instituciones/gobierno-de-Nicaragua-DGI-750x500.jpg" alt="{{$s->nombres}}"/>
-              <div class="text-wrap">
-              <h4>Camara</h4>
-                <div class="desc">                  
-                  <span>Total Indicadores</span>
-                  <h3>2</h3>
-                </div>
-                <div class="book-now-c">                
-                <a href="">Ver</a>
-                </div>
-              </div>
-            </div>
-            <div class="slide-hover">
-            <div class="text-wrap">
-            <p>Direccion: </p>
-            
-                <div class="desc">                  
-                  <span>Total Indicadores</span>
-                  <h3>sd</h3>
-                </div>
-                <div class="book-now-c">
-                  <a href="/imagenes/instituciones/gobierno-de-Nicaragua-DGI-750x500.jp">Ver</a>
-                  
-                </div>
-              </div>
-            </div>
-        </div>
-      </div>
-
-      
-    
       </div>
      </div>
      </section>

@@ -31,8 +31,8 @@ class FrontController extends Controller
     public function index () 
     {
 
-        $noticia=Noticia::orderBy('id', 'desc')->where('estado', '=','Activo')->paginate(3);;;
-        $noticias=Noticia::orderBy('id', 'desc')->paginate(6);;;
+        $noticias=Noticia::orderBy('id', 'desc')->where('estado', '=','Activo')->paginate(6);;;
+      
         $boletines=Boletin::orderBy('id', 'desc')->paginate(1);;
 
         $max= DB::table('boletins')->max('id');
@@ -48,7 +48,7 @@ class FrontController extends Controller
         $inst = Institucion::paginate(6);
         $menu=Tipo_Indicador::all();
 
-    	return view('/index', ["noticias"=>$noticias, 'noticia'=>$noticia, 'boletines'=>$boletines ,'maximo' =>$maximo, 'inst'=>$inst, 'ind'=>$ind, 'menu' =>$menu]);
+    	return view('/index', ["noticias"=>$noticias,  'boletines'=>$boletines ,'maximo' =>$maximo, 'inst'=>$inst, 'ind'=>$ind, 'menu' =>$menu]);
     }
 
 
@@ -108,6 +108,11 @@ class FrontController extends Controller
             $institucion=Institucion::orderBy('id', 'desc')->where('id', '=',$id)->paginate(1);;;
             return view('institucion.listar', ["detalle"=>$detalle, "institucion"=>$institucion, "searchText"=>$query]);
         }
+    }
+    public function instituciones(Request $request)
+    {
+        $instituciones=Institucion::orderBy('id', 'desc')->paginate(20);;;;
+        return view ('institucion.todas', ['instituciones'=>$instituciones]);
     }
 
 }
