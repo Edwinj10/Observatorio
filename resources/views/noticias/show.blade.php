@@ -26,7 +26,7 @@
     <div class="col-lg-8 col-md-8 col-sm-8">
       <h4 id="titulo" align="center">{{$noticia->titulo}}</h4>
       <a href="/imagenes/noticias/{{$noticia->foto}}" data-lightbox="publicaciones" data-title="{{$noticia->titulo}}">
-          <img class="img-thumbnail" src="/imagenes/noticias/{{$noticia->foto}}"   alt=""/>
+          <img class="img-thumbnail" src="/imagenes/noticias/{{$noticia->foto}}"  width="500px" height="auto" align="center" alt=""/>
       </a>
       <p>
           {!!$noticia->descripcion!!}

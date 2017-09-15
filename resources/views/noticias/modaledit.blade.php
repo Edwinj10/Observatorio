@@ -48,16 +48,17 @@
 						
 					</div>
 					<div class="col-lg-6 col-sm-6 col-m-6 col-xs-12">
-						<div class="form-group">
-							<label>Categoria</label>
-							<select name="origen" class="form-control selectpicker" data-live-search="true">
-									<option value="{{$n->origen}}">{{$n->origen}}</option>
-									<option value="Local">Local</option>
-									<option value="Nacional">Internacional</option>
-							</select>
+					<div class="form-group">
+						<label>Categoria</label>
+						<select name="origen" class="form-control">
+								<option value="{{$n->origen}}">{{$n->origen}}</option>
+								<option value="Local">Local</option>
+								<option value="Nacional">Nacional</option>
+						</select>
 
-						</div>
 					</div>
+			
+		</div>
 				</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

@@ -12,7 +12,7 @@
 .text-wrap .desc h3{margin:0px;font: 400 32px/36px "Roboto";}
 .new-deal .item-slide:hover .text-wrap{background:none}
 .book-now-c {float:right;padding:10px;}
-.book-now-c a {background: #029a8b;color: #fff;padding: 5px;border-radius: 5px;margin-top:0px;float: left;min-width: 101px;text-align: center;font-size: 16px;}
+.book-now-c a {background: #3186bf;color: #fff;padding: 5px;border-radius: 5px;margin-top:0px;float: left;min-width: 101px;text-align: center;font-size: 16px;}
 .new-deal .item-slide:hover .box-img .text-wrap{bottom:-100%;}
 
 

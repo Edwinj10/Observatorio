@@ -1040,6 +1040,12 @@ tr:hover {
   padding-top: 40px;
   display: block;
 }
+.center-block {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 260px;
+}
 #slider-text .col-md-6{
   overflow: hidden;
 }

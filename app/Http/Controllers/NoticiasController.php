@@ -13,6 +13,7 @@ use Session;
 use DB;
 use Auth;
 use Cache;
+use Image;
 
 
 class NoticiasController extends Controller
@@ -25,8 +26,8 @@ class NoticiasController extends Controller
     public function __construct(){
         // para los midelware
        
-        $this->middleware('auth');
-        $this->middleware('admin', ['only' => ['create', 'destroy', 'edit', 'index']]);
+        $this->middleware('auth', ['only' => ['create', 'destroy', 'edit']]);
+        $this->middleware('admin',['only' => ['create', 'destroy', 'edit']]);
     }
 
     public function index(Request $request)
@@ -75,32 +76,29 @@ class NoticiasController extends Controller
      */
     public function store(NoticiaResquest $request)
     {
-        $noticia= new Noticia;
-        $noticia->titulo=$request->get('titulo');
-        $noticia->descripcion=$request->get('descripcion');
-        $noticia->origen=$request->get('origen');
-        $noticia->resumen=$request->get('resumen');
-        $noticia->total_visitas='0';
-        $noticia->estado='Activo';
-        // para capturar el id del usuario que esta logeado
-        $noticia['user_id']=Auth::user()->id;
-        $noticia->indicador_id=$request->get('nombre');
-        $fecha = Carbon::now();
-        $fecha = $fecha->format('d-m-Y');
-        $noticia->fecha=$fecha;
-        
-        if (Input::hasFile('foto')) 
+        if($request->hasFile('foto'))
         {
-            $file=Input::file('foto');
-            $file->move(public_path().'/imagenes/noticias/', $file->getClientOriginalName());
-            $noticia->foto=$file->getClientOriginalName();
-
-        }
-           
-        $noticia->save();
-           
-
-        return redirect('/noticias')->with('message' , 'Noticia Creada Correctamente');
+            $noticia= new Noticia;
+            $noticia->titulo=$request->get('titulo');
+            $noticia->descripcion=$request->get('descripcion');
+            $noticia->origen=$request->get('origen');
+            $noticia->resumen=$request->get('resumen');
+            $noticia->total_visitas='0';
+            $noticia->estado='Activo';
+            // para capturar el id del usuario que esta logeado
+            $noticia['user_id']=Auth::user()->id;
+            $noticia->indicador_id=$request->get('nombre');
+            $fecha = Carbon::now();
+            $fecha = $fecha->format('d-m-Y');
+            $noticia->fecha=$fecha;
+            $foto= $request->file('foto');
+            $filename= time(). '.'. $foto->getClientOriginalExtension();
+            Image::make($foto)->resize(750,500)->save(public_path('/imagenes/noticias/'.$filename));
+            $noticia->foto=$filename;
+               
+            $noticia->save();
+        }   
+            return redirect('/noticias')->with('message' , 'Noticia Creada Correctamente');
     }
 
     /**
@@ -164,25 +162,23 @@ class NoticiasController extends Controller
      */
     public function update(NoticiaResquest $request, $id)
     {
-        $noticia= Noticia::findOrFail($id);
         
-        $noticia->titulo=$request->get('titulo');
-        $noticia->descripcion=$request->get('descripcion');
-        $noticia->origen=$request->get('origen');
-        $noticia->resumen=$request->get('resumen');
-    
-        
-        if (Input::hasFile('foto')) {
-            $file=Input::file('foto');
-            $file->move(public_path().'/imagenes/publicaciones/', $file->getClientOriginalName());
-            $noticia->foto=$file->getClientOriginalName();
+        if($request->hasFile('foto'))
+        {
+            $noticia= Noticia::findOrFail($id);
+            $noticia->titulo=$request->get('titulo');
+            $noticia->descripcion=$request->get('descripcion');
+            $noticia->origen=$request->get('origen');
+            $noticia->resumen=$request->get('resumen');
+            $foto= $request->file('foto');
+            $filename= time(). '.'. $foto->getClientOriginalExtension();
+            Image::make($foto)->resize(750,500)->save(public_path('/imagenes/noticias/'.$filename));
+            $noticia->foto=$filename;
+            $noticia->update(); 
 
         }
-        $noticia->update(); 
-        
-        Session::flash('message',' Actualizada Correctamente');
-        return Redirect::to('/noticias');
-
+            Session::flash('message',' Actualizada Correctamente');
+            return Redirect::to('/noticias');
     }
 
     /**
