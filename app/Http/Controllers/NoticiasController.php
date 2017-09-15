@@ -192,7 +192,7 @@ class NoticiasController extends Controller
     public function destroy($id)
     {
         $noticia=Noticia::findOrFail($id);
-        if ($noticia->Estado='Inactivo') 
+        if ($noticia->Estado=='Inactivo') 
         {
             $noticia->Estado='Activo';
             $noticia->update();
@@ -202,6 +202,7 @@ class NoticiasController extends Controller
             $noticia->Estado='Inactivo';
             $noticia->update();
         }
+        return $noticia;
         
         Session::flash('message',' Estado Actualizado, ya no aparecera en inicio');
         return Redirect::to('/noticias');
