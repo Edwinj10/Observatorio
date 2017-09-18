@@ -65,7 +65,7 @@ class USController extends Controller
         $usuarios->name=$request->get('name');
         $usuarios->email=$request->get('email');
 
-        $usuarios->password=$request->get('password');
+        $usuarios->password=bcrypt($request["password"]);
         $usuarios->tipo=$request->get('tipo');
         $usuarios->facebook=$request->get('facebook');
         $usuarios->twiter=$request->get('twiter');
