@@ -31,7 +31,7 @@
 		<div class="col-lg-6 col-sm-6 col-m-6 col-xs-12">
 				<div class="form-group">
 					<label for="resumen">Resumen</label>
-					<input type="text"  id="resumen" maxlength="70"  name="resumen" required value="{{old('resumen')}}" class="form-control" placeholder="Ingrese el breve resumen">
+					<input type="text"  id="resumen" maxlength="90"  name="resumen" required value="{{old('resumen')}}" class="form-control" placeholder="Ingrese el breve resumen">
 				</div>
 		</div>
 		<div class="col-lg-12 col-sm-12 col-m-12 col-xs-12">

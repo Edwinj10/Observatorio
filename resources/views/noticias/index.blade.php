@@ -35,6 +35,7 @@
                           <th>Titulo</th>
                           <th>Resumen</th>
                           <th>Creador</th>
+                          <th>Estado</th>
                           <th>Indicador</th>
                           <th>Fecha</th>
                           <th>Imagen</th>
@@ -51,6 +52,7 @@
                               <td>{{ $n->titulo}}</td>
                               <td>{!! $n->resumen!!}</td>
                               <td>{{ $n->name}}</td>
+                              <td>{{ $n->estado}}</td>
                               <td>{{ $n->nombre}}</td>
                               <td>{{ $n->fecha}}</td>
                               <td>

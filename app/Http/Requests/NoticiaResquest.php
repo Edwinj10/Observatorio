@@ -25,7 +25,7 @@ class NoticiaResquest extends FormRequest
     {
         return [
             'titulo' => 'required|max:50',
-            'resumen' => 'required|max:70',
+            'resumen' => 'required|max:90',
             'descripcion' => 'required|max:15000',
             'foto'=> 'mimes:jpeg,bmp,png',
         ];

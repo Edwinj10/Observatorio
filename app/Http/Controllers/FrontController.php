@@ -31,10 +31,16 @@ class FrontController extends Controller
     public function index () 
     {
 
-        $noticias=Noticia::orderBy('id', 'desc')->where('estado', '=','Activo')->paginate(6);;;
-      
+        // $noticias=Noticia::orderBy('id', 'desc')->where('estado', '=','Activo')->where('table')->paginate(6);;;
+        $noticias=DB::table('noticias as n')
+        ->join('indicadors as i', 'i.id', '=', 'n.indicador_id')
+        ->join('tipo__indicadors  as t', 't.id', '=', 'i.indicador_id')
+        ->select('n.*', 't.tipo', 'i.nombre')
+        ->where('n.estado', '=', 'Activo')
+        ->orderBy('n.id', 'desc')
+        ->paginate(6);
         $boletines=Boletin::orderBy('id', 'desc')->paginate(1);;
-
+        // cargar boletines
         $max= DB::table('boletins')->max('id');
         $m=$max-1;
 
@@ -42,9 +48,9 @@ class FrontController extends Controller
             ->select('b.*')
             ->where('b.id','=', $m)
             ->paginate(1);
-
+        // procedimiento de la tabla de index
         $ind=DB::select("call ultimosPrecios");
-        
+        // cargar las imagenes de las instituciones en el carrusel
         $inst = Institucion::paginate(6);
         $menu=Tipo_Indicador::all();
 

@@ -360,10 +360,10 @@
               <img src="imagenes/noticias/{{ $n->foto }}" class="img-responsive" alt=""> </div>
             <!-- Post Content-->
             <div class="post-content">
-              <div class="category">Economicas</div>
+              <div class="category">{{$n->tipo}}</div>
               <h2 class=" title"><a href="{{ route('noticias.show', $n->id ) }}">{{$n->titulo}}</a></h2>
               <p class="description">{{ $n->resumen }}</p>
-              <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">o</i> {{ $n->created_at->diffForHumans() }}</span><span class="comments"><i class="fa fa-comments"></i><a href="#"> 0 comments</a></span></div>
+              <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">o</i> {{ $n->fecha }}</span><span class="comments"><i class="fa fa-comments"></i><a href="#"> 0 comments</a></span></div>
             </div>
           </div>
         </div>

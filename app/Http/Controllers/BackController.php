@@ -73,7 +73,7 @@ class BackController extends Controller
             ->orderBy('f.id', 'desc')
             ->where('i.id','=',$id)
             // ->where('i.id', '=', $id)
-            ->get();
+            ->paginate(10);
 
             $nombre=DB::table('indicadors as i')
             ->select('i.id','i.nombre')
