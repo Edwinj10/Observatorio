@@ -77,29 +77,29 @@ class NoticiasController extends Controller
      */
     public function store(NoticiaResquest $request)
     {
+        $noticia= new Noticia;
+        $noticia->titulo=$request->get('titulo');
+        $noticia->descripcion=$request->get('descripcion');
+        $noticia->origen=$request->get('origen');
+        $noticia->resumen=$request->get('resumen');
+        $noticia->total_visitas='0';
+        $noticia->estado='Activo';
+        // para capturar el id del usuario que esta logeado
+        $noticia['user_id']=Auth::user()->id;
+        $noticia->indicador_id=$request->get('nombre');
+        $fecha = Carbon::now();
+        $fecha = $fecha->format('d-m-Y');
+        $noticia->fecha=$fecha;
         if($request->hasFile('foto'))
         {
-            $noticia= new Noticia;
-            $noticia->titulo=$request->get('titulo');
-            $noticia->descripcion=$request->get('descripcion');
-            $noticia->origen=$request->get('origen');
-            $noticia->resumen=$request->get('resumen');
-            $noticia->total_visitas='0';
-            $noticia->estado='Activo';
-            // para capturar el id del usuario que esta logeado
-            $noticia['user_id']=Auth::user()->id;
-            $noticia->indicador_id=$request->get('nombre');
-            $fecha = Carbon::now();
-            $fecha = $fecha->format('d-m-Y');
-            $noticia->fecha=$fecha;
             $foto= $request->file('foto');
             $filename= time(). '.'. $foto->getClientOriginalExtension();
             Image::make($foto)->resize(750,500)->save(public_path('/imagenes/noticias/'.$filename));
             $noticia->foto=$filename;
-               
-            $noticia->save();
-        }   
-            return redirect('/noticias')->with('message' , 'Noticia Creada Correctamente');
+        }     
+        $noticia->save();
+           
+        return redirect('/noticias')->with('message' , 'Noticia Creada Correctamente');
     }
 
     /**
@@ -163,24 +163,23 @@ class NoticiasController extends Controller
      */
     public function update(NoticiaResquest $request, $id)
     {
-        
+        $noticia= Noticia::findOrFail($id);
+        $noticia->titulo=$request->get('titulo');
+        $noticia->descripcion=$request->get('descripcion');
+        $noticia->origen=$request->get('origen');
+        $noticia->resumen=$request->get('resumen');
+
         if($request->hasFile('foto'))
         {
-            $noticia= Noticia::findOrFail($id);
-            $noticia->titulo=$request->get('titulo');
-            $noticia->descripcion=$request->get('descripcion');
-            $noticia->origen=$request->get('origen');
-            $noticia->resumen=$request->get('resumen');
             $foto= $request->file('foto');
             $filename= time(). '.'. $foto->getClientOriginalExtension();
             Image::make($foto)->resize(750,500)->save(public_path('/imagenes/noticias/'.$filename));
             $noticia->foto=$filename;
+        }
             $noticia->update(); 
-
-        
             Session::flash('message',' Actualizada Correctamente');
             return Redirect::to('/noticias');
-        }
+         
     }
 
     /**
@@ -192,19 +191,19 @@ class NoticiasController extends Controller
     public function destroy($id)
     {
         $noticia=Noticia::findOrFail($id);
-        if ($noticia->Estado=='Inactivo') 
+        if ($noticia->estado=='Inactivo') 
         {
-            $noticia->Estado='Activo';
+            $noticia->estado='Activo';
             $noticia->update();
+            Session::flash('message',' Estado Modificado a Activo');
+            return Redirect::to('/noticias');
         }
         else 
         {
-            $noticia->Estado='Inactivo';
+            $noticia->estado='Inactivo';
             $noticia->update();
+            Session::flash('message',' Estado Modificado a Inactivo');
+            return Redirect::to('/noticias');
         }
-        return $noticia;
-        
-        Session::flash('message',' Estado Actualizado, ya no aparecera en inicio');
-        return Redirect::to('/noticias');
     }
 }
