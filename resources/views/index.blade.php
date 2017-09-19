@@ -83,7 +83,6 @@
                     </button>
                     <img class="img-responsive" id="logo" src="img/CIIEMP-2 negativo-1.png" alt="">
                   </div>
-                
                   <div class="collapse navbar-collapse js-navbar-collapse">
                     <ul class="nav navbar-nav">
                       <li class="dropdown mega-dropdown">
