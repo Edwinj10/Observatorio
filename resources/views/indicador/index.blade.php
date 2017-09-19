@@ -26,6 +26,9 @@
                     <a href="/informe/create">
                       <button type="button" class="btn btn-sm btn-primary btn-create">Agregar Precio</button>
                     </a>
+                    <a href="/informe">
+                      <button type="button" class="btn btn-sm btn-primary btn-create">Ver Precios</button>
+                    </a>
                   </div>
                 </div>
               </div>

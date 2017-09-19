@@ -81,7 +81,7 @@
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/" id="padres">Inicio</a>
+                    <img class="img-responsive" id="logo" src="img/CIIEMP-2 negativo-1.png" alt="">
                   </div>
                 
                   <div class="collapse navbar-collapse js-navbar-collapse">
@@ -92,11 +92,12 @@
                          
                           <li class="col-sm-6">
                             <ul>
-                              <li class="dropdown-header" id="sociales">Indicadores Sociales</li>
+                              <!-- <li class="dropdown-header" id="sociales">Indicadores Sociales</li> -->
                               <li id="hijos"><a href="/institucion/4">MINSA</a></li>
                                             <li><a href="/institucion/3">MINED</a></li>
                                             <li><a href="/institucion/7">Alcaldia de Estelí</a></li>
                                             <li><a href="#">INSS</a></li>
+                                            <li><a href="#">Todas</a></li>
                               
                               
                             </ul>
@@ -104,7 +105,7 @@
                         
                           <li class="col-sm-6">
                             <ul>
-                              <li class="dropdown-header" id="economicos">Indicadores Económicos</li>
+                              <!-- <li class="dropdown-header" id="economicos">Indicadores Económicos</li> -->
                               <li id="hijos"><a href="/institucion/5">Ministerio del Trabajo</a></li>
                               <li id="hijos"><a href="/institucion/2">Camara de Comercio</a></li>
                               <li id="hijos"><a href="/institucion/6">Banco Central</a></li>                            
@@ -179,7 +180,7 @@
                       
                     </ul>
                     <ul class="nav navbar-nav">
-                      <li><a href="/contacto" id="padres">Contactenos</a></li>
+                      <li><a href="/mail/create" id="padres">Contactenos</a></li>
                     </ul>
                     {!!Form::open(array('url'=>'busqueda', 'method'=> 'GET', 'autocomplete' => 'off', 'class'=>'pull-xs-right', 'role' => 'search')) !!}
                           <div class="search">
@@ -266,24 +267,24 @@
                     </ol>
                     <div class="carousel-inner" role="listbox">
                       <div class="item active">
-                        <img id="carruse" src="https://2.bp.blogspot.com/-lzZkvXmCGFw/VzTtcxGkY-I/AAAAAAAAHdQ/uJPv3eXvhdk9g4bdDUO30_Vx9spAQlArQCLcB/s1600/faremEsteli.jpg"  class="img-responsive" width="100%">
+                        <img id="carruse" src="/img/web_esteli_tabaco.jpg"  class="img-responsive" width="100%">
                             <div class="carousel-caption">
-                              <h3 class="option animated pulse">Entrada Principal</h3>
+                              <h3 class="option animated pulse">Economia en Estelí</h3>
                               <a href="index.html"><button class="btn btn-primary">Leer Mas</button>      
                               </a>
                             </div>
                       </div>
                       <div class="item ">
-                        <img id="carruse" src="http://endimages.s3.amazonaws.com/legacy/1349057136_HOSPITAL%20SAN%20JUAN%20DE%20DIOS.jpg" class="img-responsive"  width="100%">
+                        <img id="carruse" src="/img/esteli2.jpg" class="img-responsive"  width="100%">
                           <div class="carousel-caption">
-                            <h3 class="option animated pulse">Hospital San Juan de Dios</h3>
+                            <h3 class="option animated pulse">Economia en Estelí</h3>
                             <a href="index.html"><button class="btn btn-primary">Leer Mas</button></a>
                           </div>
                       </div>
                       <div class="item ">
-                        <img id="carruse" src="http://www.farem.unan.edu.ni/wp-content/uploads/2016/09/DSC08497-1024x682.jpg" class="img-responsive"  width="100%">
+                        <img id="carruse" src="/img/esteli3.png" class="img-responsive"  width="100%">
                             <div class="carousel-caption">
-                            <h3 class="option animated pulse">Farem-Esteli</h3>
+                            <h3 class="option animated pulse">Indicadores Socioeconomicos</h3>
                             <a href="index.html"><button class="btn btn-primary">Leer Mas</button></a>
                             </div>
                       </div>

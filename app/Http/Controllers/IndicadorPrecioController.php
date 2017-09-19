@@ -40,7 +40,7 @@ class IndicadorPrecioController extends Controller
              $informe=DB::table('indicadors as i')
             ->join('precios as p', 'p.indicador_id', '=', 'i.id')
             ->join('fechas as f', 'p.id_fecha', '=', 'f.id')
-            // la calse db raw es para que multiplique por cada detalle de ingreso la cantidad por el precio de compra y lo guadara en ul total para mostralo despues
+            
             ->select(DB::raw('i.nombre'),DB::raw('i.id'), DB::raw('max(p.precio) as precio'), DB::raw('max(f.dia) as dia'),DB::raw('max(f.mes) as mes'),DB::raw('max(f.anio) as anio'))
             //->where('p.id_fecha', '=',max(f.id))
             // agrupamos las dos tabas
@@ -49,8 +49,6 @@ class IndicadorPrecioController extends Controller
             ->paginate(10);
             
             // return $informe;
-
-
             return view('informe.index', ["informe"=>$informe, "searchText"=>$query]);
         }
     }
@@ -100,14 +98,8 @@ class IndicadorPrecioController extends Controller
         $precio->precio=$request->get('precio');
         $precio->indicador_id=$request->get('indicador_id');
         $precio->id_fecha=$id_fecha; 
-
         $precio->save();
        
-
-    
-
-        
-
         return redirect('/informe')->with('message' , 'Creado Correctamente');
     }
 

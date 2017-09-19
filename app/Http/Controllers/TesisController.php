@@ -13,6 +13,8 @@ use Session;
 use DB;
 use Auth;
 use Cache;
+use Image;
+
 class TesisController extends Controller
 {
     /**
