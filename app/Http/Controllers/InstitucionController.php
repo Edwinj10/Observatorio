@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\InstitucionesRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use App\Institucion;
@@ -30,7 +31,7 @@ class InstitucionController extends Controller
 
             $query=trim($request->get('searchText'));
 
-            $instituciones = Institucion::paginate(10);
+            $instituciones=Institucion::orderBy('id', 'desc')->paginate(10);;;
         }
 
            return view('institucion.index', ["instituciones"=>$instituciones, "searchText"=>$query]);
@@ -52,21 +53,23 @@ class InstitucionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(InstitucionesRequest $request)
     {
-        if($request->hasFile('logo'))
-        {
+        
             $inst = new Institucion();
-            $logo= $request->file('logo');
-            $filename= time(). '.'. $logo->getClientOriginalExtension();
-            Image::make($logo)->resize(750,500)->save(public_path('/imagenes/instituciones/'.$filename));
             $inst->nombres=$request->get('nombres');
             $inst->direccion=$request->get('direccion');
             $inst->mision=$request->get('mision');
             $inst->vision=$request->get('vision');
-            $inst->logo=$filename;
+            if($request->hasFile('logo'))
+                {
+                    $logo= $request->file('logo');
+                    $filename= time(). '.'. $logo->getClientOriginalExtension();
+                    Image::make($logo)->resize(750,500)->save(public_path('/imagenes/instituciones/'.$filename));
+                    $inst->logo=$filename;
+                }  
             $inst->save();
-        }
+        
             return redirect('/institucion')->with('message' , 'Creada Correctamente');
     }
 
@@ -113,24 +116,26 @@ class InstitucionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(InstitucionesRequest $request, $id)
     {
+    
+        $inst= Institucion::findOrFail($id);
+        $inst->nombres=$request->get('nombres');
+        $inst->direccion=$request->get('direccion');
+        $inst->mision=$request->get('mision');
+        $inst->vision=$request->get('vision');
         if($request->hasFile('logo'))
-        {
-            $inst= Institucion::findOrFail($id);
-            $logo= $request->file('logo');
-            $filename= time(). '.'. $logo->getClientOriginalExtension();
-            Image::make($logo)->resize(750,500)->save(public_path('/imagenes/instituciones/'.$filename));
-            $inst->nombres=$request->get('nombres');
-            $inst->direccion=$request->get('direccion');
-            $inst->mision=$request->get('mision');
-            $inst->vision=$request->get('vision');
-            $inst->logo=$filename;
+            {
+                $logo= $request->file('logo');
+                $filename= time(). '.'. $logo->getClientOriginalExtension();
+                Image::make($logo)->resize(750,500)->save(public_path('/imagenes/instituciones/'.$filename));
+                $inst->logo=$filename;
+            }  
 
-            $inst->update();
-            Session::flash('message',' Actualizada Correctamente');
-            return Redirect::to('/institucion');
-        }
+        $inst->update();
+        Session::flash('message',' Actualizada Correctamente');
+        return Redirect::to('/institucion');
+        
     }
 
     /**

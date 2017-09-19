@@ -8,14 +8,14 @@
 @endif
   
     <link rel="stylesheet" href="{{asset('css/contacto.css')}}">
-    <link href="https://fonts.googleapis.com/css?family=Oswald:700|Patua+One|Roboto+Condensed:700" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Oswald:700|Patua+One|Roboto+Condensed:700" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
 </head>
 <body>
   <section id="contact" class="content-section text-center">
         <div class="contact-section">
             <div class="container">
-              <h2>Póngase en contacto con Nosotros</h2>
+              <h3>Póngase en contacto con Nosotros</h3>
               <!-- <p>Feel free to shout us by feeling the contact form or visiting our social network sites like Fackebook,Whatsapp,Twitter.</p> -->
               <div class="row">
                 <div class="col-md-8 col-md-offset-2">
@@ -33,16 +33,28 @@
                       <label for="exampleInputText">Mensaje:</label>
                      <textarea  class="form-control" placeholder="Description" name="descripcion"></textarea> 
                     </div>
-                    <button type="submit" class="btn btn-default">Enviar Mensaje</button>
+                    <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
                   </div>
                   {!!Form::close()!!}
 
                   <hr>
-                    <h3>Our Social Sites</h3>
+                    <h3>Siguenos en Nuestras Redes Sociales</h3>
                   <ul class="list-inline banner-social-buttons">
-                    <li><a href="#" class="btn btn-default btn-lg"><i class="fa fa-twitter"> <span class="network-name">Twitter</span></i></a></li>
-                    <li><a href="#" class="btn btn-default btn-lg"><i class="fa fa-facebook"> <span class="network-name">Facebook</span></i></a></li>
-                    <li><a href="#" class="btn btn-default btn-lg"><i class="fa fa-youtube-play"> <span class="network-name">Youtube</span></i></a></li>
+                    <li>
+                        <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-youtube-play fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-instagram fa-2x"></i></a>
+                    </li>
+                    <li>
+                      <a href="#"><i class="fa fa-twitter fa-2x"></i></a> 
+                    </li>
+                    <li>
+                      <a href="#"><i class="fa fa-youtube-play fa-2x"></i></a>
+                    </li>
                   </ul>
                 </div>
               </div>

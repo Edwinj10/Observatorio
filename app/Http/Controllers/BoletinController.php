@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\BoletinRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
@@ -11,7 +12,7 @@ use Session;
 use DB;
 use Auth;
 use Cache;
-
+use Image;
 class BoletinController extends Controller
 {
     /**
@@ -41,14 +42,36 @@ class BoletinController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BoletinRequest $request)
     {
         $boletin= new Boletin;
         $boletin->url=$request->get('url');
-        $boletin->save();
-           
+        $boletin['user_id']=Auth::user()->id;
+        $dia = Carbon::now();
+        $dia = $dia->format('d');
+        $boletin->dia=$dia;
+        $mes = Carbon::now();
+        $mes = $mes->format('m');
+        $boletin->mes=$mes;
+        $anio = Carbon::now();
+        $anio = $anio->format('Y');
+        $boletin->anio=$anio;
+        if (Input::hasFile('archivo')) 
+        {
+            $file=Input::file('archivo');
+            $file->move(public_path().'/archivos/boletines/', $file->getClientOriginalName());
+            $boletin->archivo=$file->getClientOriginalName();
 
-        return redirect('/boletines')->with('message' , 'Creado Correctamente');
+        }
+        if($request->hasFile('portada'))
+        {
+            $portada= $request->file('portada');
+            $filename= time(). '.'. $portada->getClientOriginalExtension();
+            Image::make($portada)->resize(750,500)->save(public_path('/imagenes/boletines/'.$filename));
+            $boletin->portada=$filename;
+        } 
+        $boletin->save();
+        return redirect('/boletin')->with('message' , 'Creado Correctamente');
     }
 
     /**

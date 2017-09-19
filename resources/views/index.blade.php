@@ -81,7 +81,7 @@
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/" id="padres">Inicio</a>
+                    <img class="img-responsive" id="logo" src="img/CIIEMP-2 negativo-1.png" alt="">
                   </div>
                 
                   <div class="collapse navbar-collapse js-navbar-collapse">
@@ -180,7 +180,7 @@
                       
                     </ul>
                     <ul class="nav navbar-nav">
-                      <li><a href="/contacto" id="padres">Contactenos</a></li>
+                      <li><a href="/mail/create" id="padres">Contactenos</a></li>
                     </ul>
                     {!!Form::open(array('url'=>'busqueda', 'method'=> 'GET', 'autocomplete' => 'off', 'class'=>'pull-xs-right', 'role' => 'search')) !!}
                           <div class="search">
@@ -267,24 +267,24 @@
                     </ol>
                     <div class="carousel-inner" role="listbox">
                       <div class="item active">
-                        <img id="carruse" src="img/Plataforma-Tesis.jpg"  class="img-responsive" width="100%">
+                        <img id="carruse" src="/img/web_esteli_tabaco.jpg"  class="img-responsive" width="100%">
                             <div class="carousel-caption">
-                              <h3 class="option animated pulse">Entrada Principal</h3>
+                              <h3 class="option animated pulse">Economia en Estelí</h3>
                               <a href="index.html"><button class="btn btn-primary">Leer Mas</button>      
                               </a>
                             </div>
                       </div>
                       <div class="item ">
-                        <img id="carruse" src="img/20170406_105313.jpg" class="img-responsive"  width="100%">
+                        <img id="carruse" src="/img/esteli2.jpg" class="img-responsive"  width="100%">
                           <div class="carousel-caption">
-                            <h3 class="option animated pulse">Hospital San Juan de Dios</h3>
+                            <h3 class="option animated pulse">Economia en Estelí</h3>
                             <a href="index.html"><button class="btn btn-primary">Leer Mas</button></a>
                           </div>
                       </div>
                       <div class="item ">
-                        <img id="carruse" src="http://www.farem.unan.edu.ni/wp-content/uploads/2016/09/DSC08497-1024x682.jpg" class="img-responsive"  width="100%">
+                        <img id="carruse" src="/img/esteli3.png" class="img-responsive"  width="100%">
                             <div class="carousel-caption">
-                            <h3 class="option animated pulse">Farem-Esteli</h3>
+                            <h3 class="option animated pulse">Indicadores Socioeconomicos</h3>
                             <a href="index.html"><button class="btn btn-primary">Leer Mas</button></a>
                             </div>
                       </div>

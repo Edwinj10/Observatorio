@@ -9,6 +9,10 @@ body {
     
     background-color: #eaeaea;
 }
+/*logo ciiemp*/
+img#logo.img-responsive {
+  width: 100px;
+}
 
 /*blog*/
 
@@ -666,15 +670,16 @@ footer .menu li a:hover{
     color:#7dabdb;
 }
 
-.fa.fa-facebook , .fa.fa-dropbox, .fa.fa-flickr , .fa.fa-github , .fa.fa-linkedin ,.fa,fa-tumblr ,.fa.fa-google-plus , .fa.fa-tumblr {
+.fa.fa-facebook , .fa.fa-instagram, .fa.fa-twitter,.fa.fa-youtube-play, .fa.fa-dropbox, .fa.fa-flickr , .fa.fa-github , .fa.fa-linkedin ,.fa,fa-tumblr ,.fa.fa-google-plus , .fa.fa-tumblr {
     color:#b1aca1;
     font-size: 28px;
     
 }
 
-.fa.fa-facebook:hover , .fa.fa-dropbox:hover , .fa.fa-flickr:hover  , .fa.fa-github:hover  , .fa.fa-linkedin:hover  ,.fa,fa-tumblr:hover  ,.fa.fa-google-plus:hover  , .fa.fa-tumblr:hover  {
-    color:#105f89;
+.fa.fa-facebook:hover , .fa.fa-instagram:hover, .fa.fa-twitter:hover,.fa.fa-youtube-play:hover, .fa.fa-dropbox:hover , .fa.fa-flickr:hover  , .fa.fa-github:hover  , .fa.fa-linkedin:hover  ,.fa,fa-tumblr:hover  ,.fa.fa-google-plus:hover  , .fa.fa-tumblr:hover  {
+    color:#003457;
 }
+
 
 
 
