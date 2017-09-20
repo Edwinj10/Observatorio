@@ -36,7 +36,6 @@ class USController extends Controller
 
             $usuarios=DB::table('users as u')
             ->select('u.*')
-           
             ->orderBy('u.id', 'desc')
             ->paginate(10);
 
