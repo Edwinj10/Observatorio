@@ -14,7 +14,7 @@
     <!-- Styles -->
     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ asset('css/login.css') }}" rel="stylesheet"> 
+    <link href="css/login.css" rel="stylesheet"> 
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-show-password/1.0.3/bootstrap-show-password.min.js"></script>
@@ -82,7 +82,7 @@
 
     <!-- Scripts -->
 
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="js/app.js"></script>
 @stack('scripts')
 </body>
 </html>
