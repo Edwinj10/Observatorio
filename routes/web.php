@@ -25,12 +25,12 @@ Route::resource('tesis', 'TesisController');
 Route::resource('carreras', 'carrerasController');
 Route::resource('mail', 'MailController');
 Route::resource('institucion', 'InstitucionController');
-Route::resource('institucion', 'InstitucionController');
 // BackController
 Route::get('tesisporcarreras/{id}', 'BackController@tesis');
 Route::get('indicadoresid/{id}','BackController@mostrar');
 Route::get('mostrar/{id1}/{id2}', 'BackController@show');
 Route::get('listartesis', 'BackController@index');
+Route::get('listado/{id}', 'BackController@indicadores_detalles');
 // FrontController
 Route::get('administracion', 'FrontController@administracion');
 Route::get('instituciones/{id1}/{id2}', 'FrontController@detalles_indicadores');
@@ -40,6 +40,7 @@ Route::get('instituciones', 'FrontController@instituciones');
 // exporatr indicadores a excxel
 Route::get('exportar/{id}/excel', 'ExportarController@indicadores');
 Route::get('exportarindicadores/{id}/excel', 'ExportarController@indicadores_precios');
+Route::get('descargar/{id}/excel', 'ExportarController@indicadores_fechas');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

@@ -29,7 +29,8 @@ class TesisController extends Controller
             $query=trim($request->get('searchText'));
             $tesis=DB::table('teses as t')
             ->join('indicadors as i', 't.id_indicador', '=', 'i.id')
-            ->select('t.*','i.nombre')
+            ->join('carreras as c', 'c.id', '=', 't.id_carrera')
+            ->select('t.*','i.nombre', 'c.carrera')
             ->where('t.tema','LIKE', '%'.$query.'%')
             ->orderBy('t.id', 'desc')
             ->paginate(10);
@@ -73,13 +74,14 @@ class TesisController extends Controller
         $tesis->tema=$request->get('tema');
         $tesis->introduccion=$request->get('introduccion');
         $tesis->autor=$request->get('autor');
-        if (Input::hasFile('imagen')) 
+        
+         if($request->hasFile('imagen'))
         {
-            $file=Input::file('imagen');
-             $file->move(public_path().'/imagenes/tesis/', $file->getClientOriginalName());
-            $tesis->imagen=$file->getClientOriginalName();
-
-        }
+            $imagen= $request->file('imagen');
+            $filename= time(). '.'. $imagen->getClientOriginalExtension();
+            Image::make($imagen)->resize(750,500)->save(public_path('/imagenes/tesis/'.$filename));
+            $tesis->imagen=$filename;
+        } 
 
          if (Input::hasFile('archivo')) 
         {
@@ -136,13 +138,13 @@ class TesisController extends Controller
         $tesis->tema=$request->get('tema');
         $tesis->introduccion=$request->get('introduccion');
         $tesis->autor=$request->get('autor');
-        if (Input::hasFile('imagen')) 
+        if($request->hasFile('imagen'))
         {
-            $file=Input::file('imagen');
-             $file->move(public_path().'/imagenes/tesis/', $file->getClientOriginalName());
-            $tesis->imagen=$file->getClientOriginalName();
-
-        }
+            $imagen= $request->file('imagen');
+            $filename= time(). '.'. $imagen->getClientOriginalExtension();
+            Image::make($imagen)->resize(750,500)->save(public_path('/imagenes/tesis/'.$filename));
+            $tesis->imagen=$filename;
+        } 
 
          if (Input::hasFile('archivo')) 
         {

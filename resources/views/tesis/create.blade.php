@@ -49,7 +49,7 @@
 		<div class="col-lg-6 col-sm-6 col-m-6 col-xs-12">
 				<div class="form-group">
 					<label for="tema">Tema</label>
-					<input type="text"  id="titulo" maxlength="50" onkeyup="cuentatitulo();" name="tema" required value="{{old('tema')}}" 
+					<input type="text"  id="titulo" maxlength="100" onkeyup="cuentatitulo();" name="tema" required value="{{old('tema')}}" 
 					class="form-control" placeholder="Ingrese el Tema">
 				</div>
 				<input type="text" id="mostar_tema" name="mostar_tema" style="border:0px;color:#ff0000;background-color:transparent;font-size:15px;" size="1">
@@ -121,7 +121,7 @@
  -->
 <script type="text/javascript">
 	function cuentatitulo(){
-		var longi=40;
+		var longi=100;
 		var resta="";
 		var titulo = document.getElementById("titulo").value.length;
 		resta=longi-titulo;
@@ -129,7 +129,7 @@
 			alert("Estas llegando al limite de caracteres");
 		}
 		document.getElementById("mostar_titulo").value=resta;
-		if (titulo==40) {
+		if (titulo==100) {
 			alert("Ha llegando al tamaño maximo de caracteres permitidos");
 		}
 	}

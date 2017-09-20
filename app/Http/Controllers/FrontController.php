@@ -117,6 +117,14 @@ class FrontController extends Controller
     }
     public function instituciones(Request $request)
     {
+        // $instituciones = DB::table('indicadors as i')
+        //             ->join('institucions as in', 'i.institucion_id', '=', 'in.id')
+        //             ->select(DB::raw('in.nombres', 'in.id'), DB::raw('i.nombre',  'i.id', 'i.indicador_id'))
+        //             ->groupBy('in.nombres', 'i.nombre')
+        //             ->orderBy('in.id', 'desc')
+        //             ->get();
+        //             return $instituciones;
+
         $instituciones=Institucion::orderBy('id', 'desc')->paginate(20);;;;
         return view ('institucion.todas', ['instituciones'=>$instituciones]);
     }

@@ -9,11 +9,8 @@
 </div>
 @endif
   
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    
 </head>
-<body>
-
 <div class="row">
   <h3 class="widget-title"><span id="noticia">Perfil</span></h3>
   <div class="col-md-3">
@@ -111,18 +108,5 @@
     </div>
 </div> -->
     
-{!!Html::script('js/tabla.js')!!}
-<script type="text/javascript">
-
-</script>
-</body>
-</html>
-
-
-
-
-
-
-
 @stop
 

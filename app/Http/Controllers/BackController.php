@@ -108,6 +108,34 @@ class BackController extends Controller
         $correo->save();
         return back()->with('message' , 'Correo Enviado Correctamente');
     }
+    public function indicadores_detalles(Request $request, $id)
+    {
+        if ($request) 
+        {
+            $query=trim($request->get('searchText'));
+            $detalle = DB::table('indicadors as i')
+                ->join('institucions as in', 'i.institucion_id', '=', 'in.id')
+                ->join('precios as p', 'p.indicador_id', '=', 'i.id')
+                ->join('fechas as f', 'f.id', '=', 'p.id_fecha')
+                ->join('tipo__indicadors as t', 'i.indicador_id', '=', 't.id')
+                ->select('i.nombre','i.id as indicador_id','i.descripcion','t.tipo', 'in.nombres', 'f.id as fecha', 'p.precio', 'f.dia', 'f.mes', 'f.anio')
+                ->where('i.id','=', $id)
+                ->orderBy('f.id', 'desc')
+                ->get();
+            // return $detalle;
+            $indicador=DB::table('indicadors as i')
+            ->join('institucions as ind', 'i.institucion_id', '=', 'ind.id')
+            ->select('i.nombre', 'i.id', 'ind.id as ind', 'ind.nombres')
+            ->where('i.id', '=', $id)
+            ->get();
+
+            $indicador2=DB::table('indicadors as i')
+            ->select('i.id','i.nombre')
+            ->get();
+            
+            return view('institucion.tabla', ["detalle"=>$detalle, 'indicador' =>$indicador, 'indicador2' =>$indicador2, "searchText"=>$query]);
+        }
+    }
 
     
     // public function show($id)

@@ -14,7 +14,7 @@
 </head>
   <div class="row">
     <section class="new-deal">
-      <h3 class="widget-title"><span id="noticia">Indicadores Economicos</span></h3>
+      <h3 class="widget-title"><span id="noticia">Instutuciones Afiliadas</span></h3>
      <div class="container">
       @foreach ($instituciones as $s)
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 deal deal-block">
@@ -31,7 +31,7 @@
                 <div class="desc">                  
                 </div>
                 <div class="book-now-c">
-                  <a href="/instituciones/{{$s->institucion_id}}/{{$s->indicador_id}}">Ver</a>
+                  <a href="/institucion/{{$s->id}}">Ver</a>
                     
                 </div>
             </div>

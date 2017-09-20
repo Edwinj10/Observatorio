@@ -12,6 +12,9 @@ body {
 /*logo ciiemp*/
 img#logo.img-responsive {
   width: 100px;
+  padding: 0px;
+  margin: 0px;
+  margin-top: 10px;
 }
 
 /*blog*/
@@ -709,13 +712,13 @@ div.cuadro_intro_hover {
   font-size: 24px;
   text-transform: uppercase;
 }
-.btn-default {
+/*.btn-default {
   background: transparent none repeat scroll 0 0;
   border: 2px solid #fff;
   border-radius: 50px;
   text-shadow: 0 1px 0 #fff;
   font-family: 'Raleway', sans-serif;
-}
+}*/
 /*.glyphicon {
   color: white;
 }*/
@@ -724,10 +727,10 @@ div.cuadro_intro_hover {
   text-align: center;
   width: 91%;
 }
-.btn-default:focus, .btn-default:hover {
+/*.btn-default:focus, .btn-default:hover {
   background-color: red;
   background-position: 0 -15px;
-}
+}*/
   
   .cuadro_intro_hover{
     padding: 0px;

@@ -17,7 +17,7 @@
 <div class="row">
   <div class="col-lg-12">
     @foreach ($institucion as $i)
-      <h4 align="center">{{$i->nombres}} </h4>
+      <a href="{{ route('institucion.show', $i->id ) }}"><h4 align="center"><b>{{$i->nombres}}</b> </h4></a>
     @endforeach
     <br>
   </div>
@@ -34,7 +34,9 @@
           <div class='col-lg-12'>
             <p class="text-muted">{{$d->descripcion}}</p>
           </div>
-          <a href="{{ route('informe.show', $d->id ) }}"><button type="button" class="btn btn-primary btn-xs btn-update btn-add-card">Ver Grafica</button>
+          <a href="{{ route('informe.show', $d->id ) }}"><button type="button" class="btn btn-primary">Ver Grafica</button>
+          </a>
+          <a href="/listado/{{$d->id}}"><button type="button" class="btn btn-primary">Ver Datos en Tablas</button>
           </a>
           <span class='glyphicon glyphicon-exclamation-sign text-danger pull-right icon-style'></span>
       </div>

@@ -34,14 +34,14 @@
 					<input type="text"  id="resumen" maxlength="90"  name="resumen" required value="{{old('resumen')}}" class="form-control" placeholder="Ingrese el breve resumen">
 				</div>
 		</div>
-		<div class="col-lg-12 col-sm-12 col-m-12 col-xs-12">
+		<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 			<div class="form-group">
 				<label for="descripcion">Descripcion</label>
 				<textarea rows="5" id="bodyField" name="descripcion"  class="form-control" placeholder="Ingrese la Descripcion"></textarea>
 				
 				
 
-				@ckeditor('bodyField', ['height' => 400, 'width'=>1000])
+				@ckeditor('bodyField', ['height' => 400, 'width'=>800])
 				
 				<!-- <input type="text" name="descripcion" required value="{{old('descripcion')}}" class="form-control" placeholder="Ingrese la Descripcion"> -->
 			</div>

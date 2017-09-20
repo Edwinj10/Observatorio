@@ -49,7 +49,7 @@
                                   <img src="{{asset('imagenes/boletines/'.$b->portada)}}" alt="{{ $b->titulo}}" height="100px" width="100px" class="img-thumbail">
                               </td>
                               <td>
-                                  <embed src="{{asset('archivos/boletines/'.$b->archivo)}}" type="application/pdf" width="100%" height="600"></embed>
+                                  <embed src="{{asset('archivos/boletines/'.$b->archivo)}}" type="application/pdf" width="50%" height="200"></embed>
                               </td>
                             </tr>
                             @endforeach

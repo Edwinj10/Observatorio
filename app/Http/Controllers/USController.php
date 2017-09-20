@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use DB;
 use App\User;
 use Illuminate\Support\Facades\Input;
@@ -59,13 +60,12 @@ class USController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $usuarios = new User;
         $usuarios->name=$request->get('name');
         $usuarios->email=$request->get('email');
-
-        $usuarios->password=$request->get('password');
+        $usuarios->password=bcrypt($request["password"]);
         $usuarios->tipo=$request->get('tipo');
         $usuarios->facebook=$request->get('facebook');
         $usuarios->twiter=$request->get('twiter');
@@ -125,8 +125,8 @@ class USController extends Controller
 
         $usuarios->tipo=$request->get('tipo');
         $usuarios->facebook=$request->get('facebook');
-            $usuarios->twiter=$request->get('twiter');
-              $usuarios->googleplus=$request->get('googleplus');
+        $usuarios->twiter=$request->get('twiter');
+        $usuarios->googleplus=$request->get('googleplus');
 
         if (Input::hasFile('foto')) 
         {
