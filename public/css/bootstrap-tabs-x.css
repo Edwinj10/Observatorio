@@ -150,14 +150,11 @@
 }
 
 .tabs-right > .nav-tabs > li > a:hover {
-    border-color: #ddd #ddd #ddd #eee!important;
+    color: white;
+    background-color: #289dcc;
+    font: normal 18px/18px Open San;
 }
 
-.tabs-right > .nav-tabs > .active > a,
-.tabs-right > .nav-tabs > li.active > a:hover,
-.tabs-right > .nav-tabs > li.active > a:focus {
-    border-color: #ddd #ddd #ddd transparent!important;
-}
 
 .tab-content {
     padding: 10px;
@@ -327,4 +324,9 @@
 
 .tabs-krajee.tabs-right.tab-sideways .tab-content {
     margin-right: 41px;
+}
+.tabs-right > .nav-tabs > li > a {
+    background-color: white;
+    color: black;
+    font: normal 18px/18px Open San;
 }

@@ -7,6 +7,10 @@
 @extends('layouts.principal')
 @section('content')
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
 
@@ -41,14 +45,42 @@
     
       <div class="row">
         <div class="col-lg-12 xs-6">
+          <h3 class="widget-title"><span id="noticia">Ultimos Valores de: <u>{{$i->nombre}}</u></span></h3>
+            <div class="form-group">
+              @forelse($fechas as $f)  
+              @empty
+              <div class="alert alert-dismissable alert-warning">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <h4>Mensaje del sistema!</h4>
+                <p>No se encuentran registros para este indicador</p>
+              </div>
+            @endforelse
+            </div>
+            <div class="form-group">
+              <h4 class="widget-title">Buscar Por Meses</h4> 
+              <input type="text" id="datepicker" placeholder="Ingrese la fecha aqui" name="datepicker">
 
-          <h4>Ultimos Valores de: {{$i->nombre}}</h4>
+            <button class="btn btn-primary" onclick="redireccion();">Buscar</button>
+            </div>
+          
+            
           <div id="chart_div" style="width: 100%; height: 500px;"></div>
         </div>
         
       </div>
     
-      
-
-
+@push ('scripts')
+<script type="text/javascript">
+function redireccion()
+  {
+    // var id=$('#capturar').val();
+    var id= $('#datepicker').val();
+    console.log(id);
+    // var id=$('#capturar').val();
+  //   var id=  '/indicadoresid/'+$('#capturar').val();
+  //   window.location.href=id;
+    
+  }
+</script>  
+@endpush  
 @endsection

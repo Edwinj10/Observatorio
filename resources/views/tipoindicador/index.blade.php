@@ -8,7 +8,7 @@
 @endif
   <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-          <h3>Listado de Indicadores <a href="/tipo/create"><button class="btn btn-success">Nuevo</button></a></h3>
+          <h3>Listado de Indicadores <a href="/tipo/create"><button class="btn btn-primary">Nuevo</button></a></h3>
               
               <p>
                 pagina {{$tipo->currentPage()}}
@@ -27,6 +27,8 @@
           
           <th>Id</th>
           <th>Tipo</th>
+          <th>Imagen</th>
+          <th>Editar</th>
           
         </thead>
         @foreach ($tipo as $t)
@@ -34,6 +36,9 @@
           
           <td>{{ $t->id}}</td>
           <td>{!! $t->tipo!!}</td>
+          <td>
+            <img src="{{asset('imagenes/tipos_indicadores/'.$t->imagen)}}" alt="{{ $t->tipo}}" height="100px" width="100px" class="img-thumbail">
+          </td>
           <td>
 
             <a href="" data-target="#modal-edit-{{$t->id}}" data-toggle="modal"><button class="btn btn-info">Editar</button></a>
@@ -44,6 +49,7 @@
 
         
         @endforeach
+        
       </table>
     </div>
     {{$tipo->render()}}

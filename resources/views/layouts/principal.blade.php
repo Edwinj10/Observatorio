@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
     <title>Observatorio SocioEconomico</title>
-    <link rel="icon" href="img/CIIEMP.png" type="image/x-icon">
+   <link rel="icon" href="/img/CIIEMP.png" type="image/x-icon">
 
     {!!Html::style('http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css')!!}
     {!!Html::style('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')!!}
@@ -12,11 +12,10 @@
     {!!Html::style('/css/estilo.css')!!}
     {!!Html::style('/css/comentario.css')!!}
     <!-- {!!Html::style('css/boostrap.min.css')!!} -->
+    <link rel="stylesheet" href="{{asset('/css/bootstrap-select.min.css')}}">
     {!!Html::style('css/bootstrap.css')!!}
     {!!Html::script('https://use.fontawesome.com/07b0ce5d10.js')!!} 
 
-    
-    <link rel="shortcut icon" type="img/CIIEMP.png" href="/favicon.ico">
 </head>
 
 
@@ -248,7 +247,6 @@
    
 <!-- empieza footer -->
 <div class="container" id="menu">
-       
   <footer>
     <div class="container">
       <div class="row text-center">
@@ -257,59 +255,52 @@
             <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
           </li>
           <li>
-            <a href="#"><i class="fa fa-dropbox fa-2x"></i></a>
+              <a href="#"><i class="fa fa-youtube-play fa-2x"></i></a>
           </li>
           <li>
-            <a href="#"><i class="fa fa-flickr fa-2x"></i></a> 
+              <a href="#"><i class="fa fa-instagram fa-2x"></i></a> 
           </li>
           <li>
-            <a href="#"><i class="fa fa-github fa-2x"></i></a>
-          </li> 
-          <li>
-            <a href="#"><i class="fa fa-linkedin fa-2x"></i></a>
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-tumblr fa-2x"></i></a>
-          </li>
+              <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
+          </li>               
         </ul>
-      </div> 
+      </div>
       <div class="row text-center">   
         <ul class="menu list-inline">
           <li>
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="#">About</a>
-          </li>      
-          <li>
-            <a href="#">Blog</a>
+              <a href="http://www.farem.unan.edu.ni" id="enlaces">Farem Estelí</a>
           </li>     
           <li>
-            <a href="#">Gallery</a>
+              <a href="http://www.bcn.gob.ni" id="enlaces">Banco Central de Nicaragua</a>
           </li>
           <li>
-            <a href="#">Contact</a>
+              <a href="#" id="enlaces">CIIEMP</a>
+          </li>      
+          <!-- <li>
+              <a href="#" id="enlaces"></a>
           </li>
+          <li>
+              <a href="#" id="enlaces">Contact</a>
+          </li> -->
         </ul>
-      </div>  
+      </div>   
     </div> 
   </footer>
   <div class="copyright">
-    <div class="container">
-      <div class="row text-center">
-        <p>Copyright © 2017 All rights reserved</p>
-      </div> 
-    </div>
-  </div>    
-</div>
- 
+      <div class="container">
+        <div class="row text-center">
+          <p>Copyright © 2017 All rights reserved</p>
+         </div>
+      </div>
+  </div>
+</div> 
      
     <!-- End -->
 	
-	 {!!Html::script('http://code.jquery.com/jquery-1.11.1.min.js')!!}
-
+	 
     {!!Html::script('http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js')!!}
-    <script src="{{asset('js/bootstrap-select.min.js')}}"></script>
+    <script src="{{asset('/js/bootstrap-select.min.js')}}"></script>
+    <script src="{{asset('/js/fechas.js')}}"></script>
    @stack('scripts')
 	 <script>
       $(document).ready(function(){

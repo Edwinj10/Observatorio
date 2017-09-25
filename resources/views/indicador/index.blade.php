@@ -16,10 +16,10 @@
             <div class="panel panel-default panel-table">
               <div class="panel-heading">
                 <div class="row">
-                  <div class="col col-xs-6">
+                  <div class="col-lg-4 col-xs-12">
                     <h3 class="panel-title">Listado de Indicadores</h3>
                   </div>
-                  <div class="col col-xs-6 text-right">
+                  <div class="col-lg-8 col-xs-12 text-right">
                     <a href="/indicador/create">
                       <button type="button" class="btn btn-sm btn-primary btn-create">Crear Nuevo</button>
                     </a>
@@ -29,6 +29,13 @@
                     <a href="/informe">
                       <button type="button" class="btn btn-sm btn-primary btn-create">Ver Precios</button>
                     </a>
+                    <a href="/tipo/create">
+                      <button type="button" class="btn btn-sm btn-primary btn-create">Agregar Nuevo Tipo Indicador</button>
+                    </a>
+                    <a href="/tipo/">
+                      <button type="button" class="btn btn-sm btn-primary btn-create">Listar Tipos Indicadores</button>
+                    </a>
+                    
                   </div>
                 </div>
               </div>

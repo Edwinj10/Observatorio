@@ -483,7 +483,7 @@ body {
   list-style: none;
   color: white;
   background: transparent;
-  font: normal 20px/18px Open San
+  font: normal 22px/18px Open San
 
 }
 .mega-dropdown-menu > li > ul > li > a {
@@ -492,7 +492,7 @@ body {
   color: white;
   background: transparent;
   padding: 3px 5px;
-  font: normal 18px/18px Open San
+  font: normal 20px/18px Open San
 
 }.mega-dropdown-menu > li > ul > li > a:hover {
   display: block;
@@ -587,7 +587,7 @@ background-color: rgba(0,0,0,0.7);
 }
 #hijo2 {
   
-  width: 450%;
+  width: 200%;
 
 }
 #hijo3 {
@@ -602,7 +602,7 @@ background-color: rgba(0,0,0,0.7);
 }
 #hijo6 {
 
-  width: 150%;
+  width: 200%;
 
 }
 /*fin menu*/
@@ -644,7 +644,7 @@ background-color: rgba(0,0,0,0.7);
 }
 
 .copyright{
-    background: #171515;
+    background: black;
 }
 
 .copyright p{
@@ -656,9 +656,13 @@ background-color: rgba(0,0,0,0.7);
 footer{
   
     padding:80px 0 50px 0;
-    background-color: #222222;
+    background-color: black;
    
     padding: 20px 0px 0;
+}
+a#enlaces {
+  font: normal 20px/18px Open San;
+  color: white;
 }
 
 footer .menu li a{
@@ -673,15 +677,70 @@ footer .menu li a:hover{
     color:#7dabdb;
 }
 
-.fa.fa-facebook , .fa.fa-instagram, .fa.fa-twitter,.fa.fa-youtube-play, .fa.fa-dropbox, .fa.fa-flickr , .fa.fa-github , .fa.fa-linkedin ,.fa,fa-tumblr ,.fa.fa-google-plus , .fa.fa-tumblr {
+.fa.fa-dropbox, .fa.fa-flickr , .fa.fa-github , .fa.fa-linkedin ,.fa,fa-tumblr ,.fa.fa-google-plus , .fa.fa-tumblr {
     color:#b1aca1;
     font-size: 28px;
+    color: #517fa4;
     
 }
 
-.fa.fa-facebook:hover , .fa.fa-instagram:hover, .fa.fa-twitter:hover,.fa.fa-youtube-play:hover, .fa.fa-dropbox:hover , .fa.fa-flickr:hover  , .fa.fa-github:hover  , .fa.fa-linkedin:hover  ,.fa,fa-tumblr:hover  ,.fa.fa-google-plus:hover  , .fa.fa-tumblr:hover  {
+.fa.fa-dropbox:hover ,.fa.fa-flickr:hover  , .fa.fa-github:hover  , .fa.fa-linkedin:hover  ,.fa,fa-tumblr:hover  ,.fa.fa-google-plus:hover  , .fa.fa-tumblr:hover  {
     color:#003457;
 }
+/*facebook*/
+.fa.fa-facebook{
+  
+  background: #3b5998;
+  border-radius: 10%;
+  padding: 1em;
+  color: white;
+  margin: 1em;
+  transition: all ease 0.5s;
+  font-size: 20px;
+}
+.fa.fa-facebook:hover {
+  background: #003457;
+}
+.fa.fa-instagram{
+  
+  background: #517fa4;
+  border-radius: 10%;
+  padding: 1em;
+  color: white;
+  margin: 1em;
+  transition: all ease 0.5s;
+  font-size: 20px;
+}
+.fa.fa-instagram:hover {
+  background: #003457;
+}
+.fa.fa-twitter{
+  
+  background: #55acee;
+  border-radius: 10%;
+  padding: 1em;
+  color: white;
+  margin: 1em;
+  transition: all ease 0.5s;
+  font-size: 20px;
+}
+.fa.fa-twitter:hover {
+  background: #003457;
+}
+.fa.fa-youtube-play:hover {
+  background: #003457;
+}
+.fa.fa-youtube-play{
+  
+  background: #e52d27;
+  border-radius: 10%;
+  padding: 1em;
+  color: white;
+  margin: 1em;
+  transition: all ease 0.5s;
+  font-size: 20px;
+}
+
 
 
 
@@ -1053,7 +1112,7 @@ tr:hover {
     display: block;
     margin-right: auto;
     margin-left: auto;
-    width: 260px;
+    width: 300px;
 }
 #slider-text .col-md-6{
   overflow: hidden;

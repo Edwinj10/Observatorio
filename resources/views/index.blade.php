@@ -47,7 +47,7 @@
         <div class="carousel-inner" role="listbox">
             <!-- Item 1 -->
             <div class="item active slide1">
-                <img src="img/obser1.jpg" data-animation="animated zoomInLeft" alt="">
+                <img src="img/obser21 - copia.jpg" data-animation="animated zoomInLeft" alt="">
              </div> 
             <!-- Item 2 -->
             <div class="item slide2">
@@ -117,24 +117,14 @@
                       </li>
                       <li class="dropdown mega-dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Noticias<span class="caret"></span></a>        
-                        <ul class="dropdown-menu mega-dropdown-menu" id="hijo2">
-                          <li class="col-sm-6">
+                        <ul class="dropdown-menu mega-dropdown-menu" id="hijo6">
+                          <li class="col-sm-12">
                               <ul>
                               <li class="dropdown-header">Economicas</li>
                               <li><a href="#">Locales</a></li>
-                                            <li><a href="#">Nacionales</a></li>
-                                            <li><a href="#">Internacionales</a></li>
+							  <li><a href="#">Nacionales</a></li>
                              </ul>
-                          </li>
-                          <li class="col-sm-6">
-                            <ul>
-                              <li class="dropdown-header">Sociales</li>
-                              <li><a href="#">Locales</a></li>
-                              <li><a href="#">Nacionales</a></li>
-                              <li><a href="#">Internacionales</a></li>                                         
-                            </ul>
-                          </li>
-                                  
+                          </li>           
                         </ul>       
                       </li>
                       <li class="dropdown mega-dropdown">
@@ -312,7 +302,6 @@
                         <th>Indicador</th>
                         <th>Fecha</th>
                         <th class="numeric">Precio</th>
-                        <th class="numeric">Icono</th>
                         <th>Ver</th>
                         
                       </tr>
@@ -325,7 +314,7 @@
                         <td>{{ $i->precio}}</td>
                         <td><a href="{{ route('informe.show', $i->id ) }}"><i class="fa fa-eye"></i></a></td>
                         
-                        <td><i class="fa fa-line-chart"></i></td>
+                        <!-- <td><i class="fa fa-line-chart"></i></td> -->
                       </tr>
                     </tbody>
                       @endforeach
@@ -464,20 +453,13 @@
         <div class="tabs-x tabs-right">
             <ul id="myTab-kv-14" class="nav nav-tabs" role="tablist">
                 <li class="active"><a href="#home-kv-14" role="tab" data-toggle="tab"><i
-                        class="glyphicon glyphicon-home"></i> Primero</a>
+                        class="glyphicon glyphicon-home"></i> Ultimo Publicado</a>
                 </li>
-                <li><a href="#profile-kv-14" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-user"></i>
+                <li><a href="#profile-kv-14" role="tab" data-toggle="tab"><i class=" fa fa-newspaper-o"></i>
                     Segundo</a>
                 </li>
-                <li class="dropdown">
-                    <a href="#" id="myTabDrop-kv-14" class="dropdown-toggle" data-toggle="dropdown"><i
-                            class="glyphicon glyphicon-list-alt"></i> Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop-1">
-                        <li><a href="#dropdown-kv-14-1" tabindex="-1" role="tab" data-toggle="tab"><i
-                                class="glyphicon glyphicon-chevron-right"></i> Option 1</a></li>
-                        <li><a href="#dropdown-kv-14-2" tabindex="-1" role="tab" data-toggle="tab"><i
-                                class="glyphicon glyphicon-chevron-right"></i> Option 2</a></li>
-                    </ul>
+                <li><a href="#profile-kv-14" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-user"></i>
+                    Ver Todos</a>
                 </li>
             </ul>
             <div id="myTabContent-kv-14" class="tab-content">
@@ -496,23 +478,6 @@
                       <iframe id="boletin" style="width:525px; height:340px;" src="{{ $mas->url }}" frameborder="0" allowfullscreen></iframe>
                       @endforeach
                     </div>
-                </div>
-                <div class="tab-pane fade" id="dropdown-kv-14-1">
-                    <p><h4>Dropdown &raquo; Option 1</h4>Etsy mixtape wayfarers, ethical wes anderson tofu before they
-                    sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag
-                    gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie
-                    helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg
-                    banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog.
-                    Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork
-                    sustainable tofu synth chambray yr.</p>
-                </div>
-                <div class="tab-pane fade" id="dropdown-kv-14-2">
-                    <p><h4>Dropdown &raquo; Option 2</h4>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy
-                    art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater.
-                    Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred
-                    vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby
-                    sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf
-                    salvia freegan, sartorial keffiyeh echo park vegan.</p>
                 </div>
             </div>
         </div>
@@ -558,38 +523,32 @@
             <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
           </li>
           <li>
-              <a href="#"><i class="fa fa-dropbox fa-2x"></i></a>
+              <a href="#"><i class="fa fa-youtube-play fa-2x"></i></a>
           </li>
           <li>
-              <a href="#"><i class="fa fa-flickr fa-2x"></i></a> 
+              <a href="#"><i class="fa fa-instagram fa-2x"></i></a> 
           </li>
           <li>
-              <a href="#"><i class="fa fa-github fa-2x"></i></a>
-          </li>
-          <li>
-              <a href="#"><i class="fa fa-linkedin fa-2x"></i></a>
-          </li>  
-          <li>
-              <a href="#"><i class="fa fa-tumblr fa-2x"></i></a>
+              <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
           </li>               
         </ul>
       </div>
       <div class="row text-center">   
         <ul class="menu list-inline">
           <li>
-              <a href="#">Home</a>
+              <a href="http://www.farem.unan.edu.ni" id="enlaces">Farem Estelí</a>
           </li>     
           <li>
-              <a href="#">About</a>
+              <a href="http://www.bcn.gob.ni" id="enlaces">Banco Central de Nicaragua</a>
           </li>
           <li>
-              <a href="#">Blog</a>
+              <a href="#" id="enlaces"></a>
           </li>      
           <li>
-              <a href="#">Gallery</a>
+              <a href="#" id="enlaces">Gallery</a>
           </li>
           <li>
-              <a href="#">Contact</a>
+              <a href="#" id="enlaces">Contact</a>
           </li>
         </ul>
       </div>   

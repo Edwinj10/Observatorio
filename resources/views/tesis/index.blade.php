@@ -1,4 +1,4 @@
-@extends ('layouts.admin')
+@extends ('layouts.principal')
 @section ('content')
   @if(Session::has('message'))
 <div class="alert alert-success alert-dismissible" role="alert">
@@ -7,82 +7,101 @@
 </div>
 @endif
 
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="{{asset('css/tesis.css')}}">
+</head>
+<body>
 
-<div class="container">
     <div class="row">
-        <div class="col-md-12">
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+          <h3>Listado de tesis </h3>
+            
+      </div>
+  </div>
 
-            <div class="panel panel-default panel-table">
-              <div class="panel-heading">
-                <div class="row">
-                  <div class="col col-xs-6">
-                    <h3 class="panel-title">Listado de Tesis</h3>
-                  </div>
-                  <div class="col col-xs-6 text-right">
-                    <a href="/tesis/create">
-                      <button type="button" class="btn btn-sm btn-primary btn-create">Crear Nuevo</button>
-                    </a>
-                  </div>
+
+  <div class="container-fluid">
+
+      <div class="row">
+<div class="panel panel-primary filterable">
+            <div class="panel-heading">
+                <h3 class="panel-title">Tesis</h3>
+                <div class="pull-right">
+                    <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span>Buscar</button>
                 </div>
-              </div>
-              <div class="panel-body">
-                <div class="table-responsive">
-                  <table class="table table-striped table-bordered table-list table-hover">
-                    <thead>
-                      <tr>
-                          <th><em class="fa fa-cog"></em></th>
-                          <!-- <th class="hidden-xs">ID</th> -->
-                          <th>Tema</th>
-                          <th>Introduccion</th>
-                          <th>Autor</th>
-                          <th>Carrera</th>
-                          <th>Indicador</th>
-                          <th>Imagen de Portada</th>
-                          <th>PDF</th>
-                      </tr> 
-                    </thead>
-                    <tbody>
-                            <tr>
-                              @foreach ($tesis as $t)
-                              <td align="center">
-                              <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                              <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
+            </div>        
+
+            <div class="table-responsive">
+                        <table class="table">
+                <thead id="encabesado_tabla">
+                    <tr class="filters">
+                        <th>Imagen</th>
+                        <th><input type="text" class="form-control" placeholder="Tema" ></th>
+                        <th><input type="text" class="form-control" placeholder="Introduccion" ></th>
+                        <th><input type="text" class="form-control" placeholder="Autor" ></th>
+                        <th><input type="text" class="form-control" placeholder="Indicador" ></th>
+                        <th><input type="text" class="form-control" placeholder="Carrera" ></th>
+                        <th>PDF</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                @forelse ($tesis as $t)
+                    <tr>
+                          <td>
+                          
+
+                                <img src="{{asset('/imagenes/tesis/'.$t->imagen)}}"  height="50px" width="50px" class="img-thumbail">
                               </td>
-                              
+
                               <td>{!! $t->tema!!}</td>
                               <td>{!! $t->introduccion!!}</td>
                               <td>{{ $t->autor}}</td>
-                              <td>{{$t->carrera}}</td>
-                              <td>{{$t->nombre}}</td>
-                              <td><img src="{{asset('/imagenes/tesis/'.$t->imagen)}}"  height="50px" width="50px" class="img-thumbail"></td>
-                              <td>
-                                <a href="/tesis/{{$t->id}}" ><img src="/archivos/iconopdf.png" alt="" height="30px" width="30px"></a>
-                              </td>
-                            </tr>
-                            @endforeach
-                          </tbody>
-                  </table>
-                </div>
-            
-              </div>
-              <div class="panel-footer">
-                <div class="row">
-                  <div class="col col-xs-4">
-                    Pagina {{$tesis->currentPage()}} de {{$tesis->lastPage()}}
-                  </div>
-                  <div class="col col-xs-8">
-                    <ul class="pagination hidden-xs pull-right">
-                      {{$tesis->render()}}
-                    </ul>
-                    <ul class="pagination visible-xs pull-right">
-                        <li><a href="#">«</a></li>
-                        <li><a href="#">»</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+                              <td>{{ $t->nombre}}</td>
+                              <td>{{ $t->carrera}}</td>
 
-</div></div></div>
+                              <td>
+                               <a href="/tesis/{{$t->id}}" ><img src="/archivos/iconopdf.png" alt="" height="30px" width="30px"></a>
+ 
+                              </td>
+                     
+                             </div>
+                       </tr>
+                  @empty 
+                  <div class="alert alert-dismissable alert-warning">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <h4>Mensaje del sistema!</h4>
+                        <p>Actualmento no se encuentran registros para este tipo</p>
+                  </div>
+                  @endforelse
+                  
+                  
+                  
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+        </div>
+
+        
+    </div>
+    </div>
+    
+{!!Html::script('/js/tabla.js')!!}
+<script type="text/javascript">
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
 @stop
+

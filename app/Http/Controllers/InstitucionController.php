@@ -89,9 +89,9 @@ class InstitucionController extends Controller
         $ind = DB::table('institucions as i')
             ->join('indicadors as ind', 'ind.institucion_id', '=', 'i.id')
             ->join('tipo__indicadors as t', 'ind.indicador_id', '=', 't.id')
-            ->select(DB::raw('i.nombres','t.id', 'ind.nombre','i.id'),DB::raw('i.id'),DB::raw('t.tipo'),DB::raw('count(t.tipo) as count'),DB::raw('ind.institucion_id'), DB::raw('ind.indicador_id'))
+            ->select(DB::raw('i.nombres','t.id', 'ind.nombre','i.id'),DB::raw('i.id'),DB::raw('t.tipo'),DB::raw('count(t.tipo) as count'),DB::raw('ind.institucion_id'), DB::raw('ind.indicador_id'), DB::raw('t.imagen'))
             ->where('i.id','=', $id)
-            ->groupBy('i.nombres', 'i.id', 't.tipo','ind.institucion_id', 'ind.indicador_id')
+            ->groupBy('i.nombres', 'i.id', 't.tipo','ind.institucion_id', 'ind.indicador_id', 't.imagen')
             ->get();
         $total = DB::table('indicadors')->where('institucion_id', '=', $id)->count();
         $indicadores=DB::select('CALL todosindicadoreXinstitucion('.$id.');');

@@ -39,6 +39,15 @@
 				
 		</div>
 		<div class="col-lg-6 col-sm-6 col-m-6 col-xs-12">
+				<div class="form-group">
+					<label for="titulo">Descricion</label>
+					<input type="text"  name="descripcion" required value="{{old('descripcion')}}" 
+					class="form-control" placeholder="Ingrese la Descricion">
+				</div>
+
+				
+		</div>
+		<div class="col-lg-6 col-sm-6 col-m-6 col-xs-12">
 			<div class="form-group">
 			<!-- este toke nos ayudara a trabajr con las trasaciones -->
 				<input name="_token" value="{{ csrf_token() }}" type="hidden"></input>
@@ -81,7 +90,7 @@
     }
         
     // Patron de entrada, en este caso solo acepta numeros
-    patron =/[0-9]/;
+    patron =/[0-9.]/;
     tecla_final = String.fromCharCode(tecla);
     return patron.test(tecla_final);
 }

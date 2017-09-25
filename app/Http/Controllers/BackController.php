@@ -19,8 +19,8 @@ class BackController extends Controller
     public function __construct(){
         // para los midelware
        
-        $this->middleware('auth');
-        $this->middleware('admin', ['only' => ['create', 'destroy', 'edit']]);
+        // $this->middleware('auth');
+        // $this->middleware('admin', ['only' => ['create', 'destroy', 'edit']]);
     }
     public function index(Request $request)
     {
@@ -58,6 +58,7 @@ class BackController extends Controller
 
         return view('institucion.institucionesid', ["informe"=>$informe,'inst'=>$inst,'nombre'=>$nombre]);
     }
+    // logein
     public function mostrar(Request $request, $id)
     {
         // $inputs=Input::all();
@@ -91,8 +92,13 @@ class BackController extends Controller
     }
     public function tesis($id)
     {
-            
-            $tesis=DB::select('CALL tesisPorCarrera('.$id.');');
+            // $tesis=DB::select('CALL tesisPorCarrera('.$id.');');
+            $tesis=DB::table('teses as t')
+            ->join('carreras as c', 'c.id', 't.id_carrera', 'c.id')
+            ->join('indicadors as i', 'i.id', '=', 't.id_indicador')
+            ->select('i.*', 't.*', 'c.*')
+            ->where('t.id_carrera','=', $id )
+            ->paginate(30);
             return view('tesis.index', ["tesis"=>$tesis]);
     }
     public function contacto(Request $request)

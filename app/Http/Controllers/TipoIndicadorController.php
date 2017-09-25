@@ -9,6 +9,7 @@ use App\Tipo_Indicador;
 use Session;
 use DB;
 use Auth;
+use Image;
 
 
 class TipoIndicadorController extends Controller
@@ -63,6 +64,13 @@ class TipoIndicadorController extends Controller
     {
         $tipo= new Tipo_Indicador;
         $tipo->tipo=$request->get('tipo');
+        if($request->hasFile('imagen'))
+        {
+            $imagen= $request->file('imagen');
+            $filename= time(). '.'. $imagen->getClientOriginalExtension();
+            Image::make($imagen)->resize(679,457)->save(public_path('/imagenes/tipos_indicadores/'.$filename));
+            $tipo->imagen=$filename;
+        } 
 
         $tipo->save();
 
@@ -103,12 +111,19 @@ class TipoIndicadorController extends Controller
     public function update(Request $request, $id)
     {
         $tipo= Tipo_Indicador::findOrFail($id);
-
         $tipo->tipo=$request->get('tipo');
+        if($request->hasFile('imagen'))
+        {
+            $imagen= $request->file('imagen');
+            $filename= time(). '.'. $imagen->getClientOriginalExtension();
+            Image::make($imagen)->resize(679,457)->save(public_path('/imagenes/tipos_indicadores/'.$filename));
+            $tipo->imagen=$filename;
+        }  
 
-        $tipo->save();
-
-        return redirect('/tipo')->with('message' , 'Actualizado Correctamente');
+        $tipo->update();
+        Session::flash('message',' Actualizado Correctamente');
+        return Redirect::to('/tipo');
+        
     }
 
     /**

@@ -11,8 +11,9 @@
   
     
 </head>
+<h3 class="widget-title"><span id="noticia">Perfil</span></h3>
 <div class="row">
-  <h3 class="widget-title"><span id="noticia">Perfil</span></h3>
+  
   <div class="col-md-3">
       <img src="/imagenes/instituciones/{{$inst->logo}}" height="250px" width="250px" alt="">
   
@@ -37,10 +38,8 @@
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <h4>Total de Indicadores: {{$total}}</h4>    
   </div>
-  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <h4>Tipos de Indicadores de  {{$inst->nombres}} </h4>
-  </div>
 </div>
+<h3 class="widget-title"><span id="noticia">Tipo de Indicadores de:  {{$inst->nombres}} </span></h3>
 <div class="row">
     <section class="new-deal">
      <div class="container">
@@ -48,7 +47,7 @@
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 deal deal-block">
         <div class="item-slide">
             <div class="box-img-active">
-            <img src="/imagenes/noticias/Gasolinera.jpg" alt=""/>
+            <img src="{{asset('imagenes/tipos_indicadores/'.$i->imagen)}}" alt="" alt=""/>
               <div class="text-wrap">
               <h4>{{$i->tipo}}</h4>
                 <div class="desc">                  
