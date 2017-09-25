@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
     <title>Observatorio SocioEconomico</title>
    <link rel="icon" href="/img/CIIEMP.png" type="image/x-icon">
@@ -11,7 +13,7 @@
     {!!Html::style('http://cdn.bootcss.com/animate.css/3.5.1/animate.min.css')!!}
     {!!Html::style('/css/estilo.css')!!}
     {!!Html::style('/css/comentario.css')!!}
-    <!-- {!!Html::style('css/boostrap.min.css')!!} -->
+     {!!Html::style('css/boostrap.min.css')!!} 
     <link rel="stylesheet" href="{{asset('/css/bootstrap-select.min.css')}}">
     {!!Html::style('css/bootstrap.css')!!}
     {!!Html::script('https://use.fontawesome.com/07b0ce5d10.js')!!} 

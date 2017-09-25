@@ -44,7 +44,7 @@
     <!--Div that will hold the pie chart-->
     
       <div class="row">
-        <div class="col-lg-12 xs-6">
+        <div class="col-lg-12 xs-12">
           <h3 class="widget-title"><span id="noticia">Ultimos Valores de: <u>{{$i->nombre}}</u></span></h3>
             <div class="form-group">
               @forelse($fechas as $f)  
@@ -64,7 +64,7 @@
             </div>
           
             
-          <div id="chart_div" style="width: 100%; height: 500px;"></div>
+          <div id="chart_div" style="width: 100%"></div>
         </div>
         
       </div>

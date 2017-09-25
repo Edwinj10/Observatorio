@@ -20,7 +20,7 @@
               <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                 {!! Form::open(['route' => 'mail.store' , 'method' =>'POST']) !!}
-                  <div class="form-horizontal">
+                  <div class="form-group">
                     <div class="form-group">
                       <label for="exampleInputName2">Nombre:</label>
                       <input type="text" class="form-control" name="name" id="exampleInputName2" placeholder="Juan">
