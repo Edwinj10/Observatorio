@@ -5,10 +5,15 @@
 </div>
 @endif
 @extends('layouts.principal')
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.10&appId=1515275818535109";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 @section('content')
-
-        
-
   <div class="row"> 
     <div class="col-md-12"> 
       @foreach ($users as $u)
@@ -31,6 +36,7 @@
       <p>
           {!!$noticia->descripcion!!}
       </p>
+      <div class="fb-share-button"  data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fobservatorio-edwinjaltamirano.c9users.io%2F&amp;src=sdkpreparse">Compartir</a></div>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">           
       <div class="widget-sidebar">
@@ -101,4 +107,19 @@
         </div>
     </div>
   </div>
+@push ('scripts')
+
+<script type="text/javascript">
+function redireccion()
+  {
+    
+   var URLactual = window.location.href;
+    
+    
+  }
+   
+
+    </script>
+@endpush
+
 @endsection

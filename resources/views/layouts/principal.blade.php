@@ -20,6 +20,7 @@
     {!!Html::script('http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js')!!}
     {!!Html::style('css/bootstrap.css')!!}
     {!!Html::script('https://use.fontawesome.com/07b0ce5d10.js')!!}  
+    <link rel="shortcut icon" type="/img/CIIEMP.png" href="/favicon.ico">
 
 </head>
 
