@@ -61,18 +61,26 @@
   </div>
   <div class="row">
     <div class="col-md-8">
-      <h3 class="widget-title"><span id="noticia">Comentar</span></h3>
-      <div class="widget-area no-padding blank">
-          <div class="status-upload">
-            
-              <textarea  name="comentario" class="form-control" placeholder="Cual es tu comentario?"  ></textarea>
-                <input type="hidden" name="noticia_id" value="">
-                  <ul>
-                      <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Imagen"><i class="fa fa-picture-o"></i></a></li>
-                  </ul>
-                  <button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Comentar</button>
-          </div>
-      </div>
+      <div class="col-md-8">
+                  <div class="widget-area no-padding blank">
+                    <div class="status-upload">
+                      <input type="hidden" name="_token" value="{{ csrf_token()}}" id="token">
+                      <input type="hidden" id="id">
+                            {!!Form::open(['id'=>'form'])!!}
+                              <textarea  name="comentario" class="form-control" placeholder="Cual es tu comentario?" id="comentario" ></textarea>
+                              <input type="hidden" name="noticia_id" value="{{$noticia->id}}">
+                              <ul>
+                                <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a></li>
+                                <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class="fa fa-video-camera"></i></a></li>
+                                <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><i class="fa fa-microphone"></i></a></li>
+                                <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
+                              </ul>
+                              {!!link_to('#',$title ='Guardar',$attributes= ['id'=>'guardarComentario','class'=>'btn btn-info btn-sm'],$secure = null)!!}
+                            {!!Form::close()!!}
+                            
+                    </div>
+                  </div>
+              </div>
     </div>
   </div>
 
@@ -119,7 +127,8 @@ function redireccion()
   }
    
 
-    </script>
+</script>
+<script type="text/javascript" src="{{asset('/js/comentarios.js')}}"></script>
 @endpush
 
 @endsection

@@ -25,6 +25,7 @@ Route::resource('tesis', 'TesisController');
 Route::resource('carreras', 'carrerasController');
 Route::resource('mail', 'MailController');
 Route::resource('institucion', 'InstitucionController');
+Route::resource('comentarios', 'ComentarioController');
 // BackController
 Route::get('tesisporcarreras/{id}', 'BackController@tesis');
 Route::get('indicadoresid/{id}','BackController@mostrar');
