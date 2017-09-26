@@ -182,7 +182,7 @@ class FrontController extends Controller
             ->join('institucions as in', 'i.institucion_id', '=', 'in.id')
             ->select('i.*', 't.tipo', 'in.nombres')
             ->where('i.nombre','LIKE', '%'.$query.'%')
-            ->where('i.descripcion','LIKE', '%'.$query.'%')
+            ->orwhere('i.descripcion','LIKE', '%'.$query.'%')
             ->orderBy('i.id', 'desc')
             ->paginate(20);   
         }
