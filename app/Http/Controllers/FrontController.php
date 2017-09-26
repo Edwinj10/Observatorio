@@ -28,33 +28,37 @@ class FrontController extends Controller
         
     }
     
-    public function index () 
+    public function index (Request $request) 
     {
 
         // $noticias=Noticia::orderBy('id', 'desc')->where('estado', '=','Activo')->where('table')->paginate(6);;;
-        $noticias=DB::table('noticias as n')
-        ->join('indicadors as i', 'i.id', '=', 'n.indicador_id')
-        ->join('tipo__indicadors  as t', 't.id', '=', 'i.indicador_id')
-        ->select('n.*', 't.tipo', 'i.nombre')
-        ->where('n.estado', '=', 'Activo')
-        ->orderBy('n.id', 'desc')
-        ->paginate(6);
-        $boletines=Boletin::orderBy('id', 'desc')->paginate(1);;
-        // cargar boletines
-        $max= DB::table('boletins')->max('id');
-        $m=$max-1;
+        if ($request) 
+        {
 
-        $maximo=DB::table('boletins as b')
-            ->select('b.*')
-            ->where('b.id','=', $m)
-            ->paginate(1);
-        // procedimiento de la tabla de index
-        $ind=DB::select("call ultimosPrecios");
-        // cargar las imagenes de las instituciones en el carrusel
-        $inst = Institucion::paginate(6);
-        $menu=Tipo_Indicador::all();
+            $query=trim($request->get('searchText'));
+            $noticias=DB::table('noticias as n')
+            ->join('indicadors as i', 'i.id', '=', 'n.indicador_id')
+            ->join('tipo__indicadors  as t', 't.id', '=', 'i.indicador_id')
+            ->select('n.*', 't.tipo', 'i.nombre')
+            ->where('n.estado', '=', 'Activo')
+            ->orderBy('n.id', 'desc')
+            ->paginate(6);
+            $boletines=Boletin::orderBy('id', 'desc')->paginate(1);;
+            // cargar boletines
+            $max= DB::table('boletins')->max('id');
+            $m=$max-1;
 
-    	return view('/index', ["noticias"=>$noticias,  'boletines'=>$boletines ,'maximo' =>$maximo, 'inst'=>$inst, 'ind'=>$ind, 'menu' =>$menu]);
+            $maximo=DB::table('boletins as b')
+                ->select('b.*')
+                ->where('b.id','=', $m)
+                ->paginate(1);
+            // procedimiento de la tabla de index
+            $ind=DB::select("call ultimosPrecios");
+            // cargar las imagenes de las instituciones en el carrusel
+            $inst = Institucion::paginate(6);
+            $menu=Tipo_Indicador::all();
+        }
+    	return view('/index', ["noticias"=>$noticias,  'boletines'=>$boletines ,'maximo' =>$maximo, 'inst'=>$inst, 'ind'=>$ind, 'menu' =>$menu,  "searchText"=>$query]);
     }
 
 
@@ -128,5 +132,63 @@ class FrontController extends Controller
         $instituciones=Institucion::orderBy('id', 'desc')->paginate(20);;;;
         return view ('institucion.todas', ['instituciones'=>$instituciones]);
     }
+    public function noticia(Request $request)
+    {
+        $noticias=Noticia::orderBy('id', 'desc')->where('estado', '=','Activo')->paginate(12);;;
+        return view('noticias.todas', ['noticias'=>$noticias]);
+    }
+    public function noticia_tipo(Request $request, $origen)
+    {
+        if ($request) 
+        {
+
+        $query=trim($request->get('searchText'));
+        $noticia=DB::table('noticias as n')
+        ->join('indicadors as i', 'i.id', '=', 'n.indicador_id')
+        ->join('tipo__indicadors  as t', 't.id', '=', 'i.indicador_id')
+        ->select('n.*', 't.tipo', 'i.nombre')
+        ->where('n.estado', '=', 'Activo')
+        ->where('n.origen', '=', $origen)
+        ->orderBy('n.id', 'desc')
+        ->paginate(12);
+
+        $tipo=DB::table('noticias as n')
+        ->select('n.origen')
+        ->where('n.origen', '=', $origen)
+        ->paginate(1);
+
+        return view('noticias.origen', ["noticia"=>$noticia,"tipo"=>$tipo, "searchText"=>$query]);
+        }
+    }
+    public function busqueda(Request $request)
+
+    {
+         if ($request) 
+        {
+
+            $query=trim($request->get('searchText'));
+            $noticia=DB::table('noticias as n')
+            ->join('indicadors as i', 'i.id', '=', 'n.indicador_id')
+            ->join('tipo__indicadors  as t', 't.id', '=', 'i.indicador_id')
+            ->select('n.*', 't.tipo', 'i.nombre')
+            ->where('n.estado', '=', 'Activo')
+            ->where('n.titulo','LIKE', '%'.$query.'%')
+            ->orwhere('n.descripcion','LIKE', '%'.$query.'%')
+            ->orderBy('n.id', 'desc')
+            ->paginate(20);
+
+            $indicadores=DB::table('indicadors as i')
+            ->join('tipo__indicadors as t', 'i.indicador_id', '=', 't.id')
+            ->join('institucions as in', 'i.institucion_id', '=', 'in.id')
+            ->select('i.*', 't.tipo', 'in.nombres')
+            ->where('i.nombre','LIKE', '%'.$query.'%')
+            ->where('i.descripcion','LIKE', '%'.$query.'%')
+            ->orderBy('i.id', 'desc')
+            ->paginate(20);   
+        }
+         
+            return view('busqueda', ["noticia"=>$noticia, "indicadores"=>$indicadores, "searchText"=>$query]);
+    }
+
 
 }

@@ -86,18 +86,4 @@
             </div>
 
 </div></div></div>
-
-  
-          <td>
-
-            <a href="" data-target="#modal-edit-{{$n->id}}" data-toggle="modal"><button class="btn btn-info">Editar</button></a>
-          </td>
-          <td>  
-            <a href="" data-target="#modal-delete-{{$n->id}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
-          </td>
-        </tr>
-        
-        
-        
-        \
 @stop

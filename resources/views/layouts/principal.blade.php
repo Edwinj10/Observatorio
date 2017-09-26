@@ -108,28 +108,9 @@
                         
                         </ul>       
                       </li>
-                      <li class="dropdown mega-dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Noticias<span class="caret"></span></a>        
-                        <ul class="dropdown-menu mega-dropdown-menu" id="hijo2">
-                          <li class="col-sm-6">
-                              <ul>
-                              <li class="dropdown-header">Economicas</li>
-                              <li><a href="#">Locales</a></li>
-                                            <li><a href="#">Nacionales</a></li>
-                                            <li><a href="#">Internacionales</a></li>
-                             </ul>
-                          </li>
-                          <li class="col-sm-6">
-                            <ul>
-                              <li class="dropdown-header">Sociales</li>
-                              <li><a href="#">Locales</a></li>
-                              <li><a href="#">Nacionales</a></li>
-                              <li><a href="#">Internacionales</a></li>                                         
-                            </ul>
-                          </li>
-                                  
-                        </ul>       
-                      </li>
+                      <ul class="nav navbar-nav">
+                        <li><a href="/noticia" id="padres">Noticias</a></li>
+                      </ul>
                       <li class="dropdown mega-dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Indicadores<span class="caret"></span></a>        
                         <ul class="dropdown-menu mega-dropdown-menu" id="hijo6">

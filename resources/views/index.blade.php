@@ -48,7 +48,7 @@
         <div class="carousel-inner" role="listbox">
             <!-- Item 1 -->
             <div class="item active slide1">
-                <img src="img/obser21 - copia.jpg" data-animation="animated zoomInLeft" alt="">
+                <img src="img/obser1.jpg" data-animation="animated zoomInLeft" alt="">
              </div> 
             <!-- Item 2 -->
             <div class="item slide2">
@@ -76,168 +76,151 @@
 <!-- comienxo menu -->
 <div class="container" id="menu">
   <nav class="navbar navbar-inverse" id="menu" >
-                  <div class="navbar-header">
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
-                      <span class="sr-only">Menu</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                    </button>
-                    <img class="img-responsive" id="logo" src="img/CIIEMP-2Invertido.png" alt="">
-                  </div>
-                  <div class="collapse navbar-collapse js-navbar-collapse">
-                    <ul class="nav navbar-nav">
-                      <li class="dropdown mega-dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Instituciones <span class="caret"></span></a>        
-                        <ul class="dropdown-menu mega-dropdown-menu" id="hijo1">
-                         
-                          <li class="col-sm-6">
-                            <ul>
-                              <!-- <li class="dropdown-header" id="sociales">Indicadores Sociales</li> -->
-                              <li id="hijos"><a href="/institucion/4">MINSA</a></li>
-                                            <li><a href="/institucion/3">MINED</a></li>
-                                            <li><a href="/institucion/7">Alcaldia de Estelí</a></li>
-                                            <li><a href="#">INSS</a></li>
-                                            <li><a href="/instituciones">Todas</a></li>
-                              
-                              
-                            </ul>
-                          </li>
-                        
-                          <li class="col-sm-6">
-                            <ul>
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
+        <span class="sr-only">Menu</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/">
+      <img class="img-responsive" id="logo" src="img/CIIEMP-2Invertido.png" alt="">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse js-navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown mega-dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Instituciones <span class="caret"></span></a>        
+          <ul class="dropdown-menu mega-dropdown-menu" id="hijo1">
+            <li class="col-sm-6">
+              <ul>
+             <!-- <li class="dropdown-header" id="sociales">Indicadores Sociales</li> -->
+                  <li id="hijos"><a href="/institucion/4">MINSA</a></li>
+                  <li><a href="/institucion/3">MINED</a></li>
+                  <li><a href="/institucion/7">Alcaldia de Estelí</a></li>
+                  <li><a href="#">INSS</a></li>
+                  <li><a href="/instituciones">Todas</a></li>
+              </ul>
+            </li>
+            <li class="col-sm-6">
+                <ul>
                               <!-- <li class="dropdown-header" id="economicos">Indicadores Económicos</li> -->
-                              <li id="hijos"><a href="/institucion/5">Ministerio del Trabajo</a></li>
-                              <li id="hijos"><a href="/institucion/2">Camara de Comercio</a></li>
-                              <li id="hijos"><a href="/institucion/6">Banco Central</a></li>                            
-                              <li id="hijos"><a href="#">Renta</a></li>              
-                            </ul>
-                          </li>
-                        
-                        </ul>       
-                      </li>
-                      <li class="dropdown mega-dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Noticias<span class="caret"></span></a>        
-                        <ul class="dropdown-menu mega-dropdown-menu" id="hijo6">
-                          <li class="col-sm-12">
-                              <ul>
-                              <li class="dropdown-header">Economicas</li>
-                              <li><a href="#">Locales</a></li>
-							  <li><a href="#">Nacionales</a></li>
-                             </ul>
-                          </li>           
-                        </ul>       
-                      </li>
-                      <li class="dropdown mega-dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Indicadores<span class="caret"></span></a>        
-                        <ul class="dropdown-menu mega-dropdown-menu" id="hijo6">
-                          <li class="col-sm-12">
-                              <ul>
-                              <li class="dropdown-header">Tipos</li>
-                              @foreach ($menu as $m)
-                              <li><a href="/indicadores/{{$m->id}}">{{$m->tipo}}</a></li>             
-                              @endforeach
-                             </ul>
+                  <li id="hijos"><a href="/institucion/5">Ministerio del Trabajo</a></li>
+                  <li id="hijos"><a href="/institucion/2">Camara de Comercio</a></li>
+                  <li id="hijos"><a href="/institucion/6">Banco Central</a></li>                            
+                  <li id="hijos"><a href="#">Renta</a></li>              
+                </ul>
+            </li>
+          </ul>       
+        </li>
+        <ul class="nav navbar-nav">
+          <li><a href="/noticia" id="padres">Noticias</a></li>
+        </ul>
+                
+            <!-- <ul class="dropdown-menu mega-dropdown-menu" id="hijo6">
+              <li class="col-sm-12">
+                <ul>
+                  <li class="dropdown-header">Economicas</li>
+                  <li><a href="#">Locales</a></li>
+							     <li><a href="#">Nacionales</a></li>
+                </ul>
+              </li>           
+            </ul>  -->      
+        
+        <li class="dropdown mega-dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Indicadores<span class="caret"></span></a>        
+          <ul class="dropdown-menu mega-dropdown-menu" id="hijo6">
+            <li class="col-sm-12">
+                <ul>
+                <li class="dropdown-header">Tipos</li>
+                @foreach ($menu as $m)
+                <li><a href="/indicadores/{{$m->id}}">{{$m->tipo}}</a></li>             
+                @endforeach
+              </ul>
 
-                          </li>        
-                        </ul>       
-                      </li>
-                      <li class="dropdown mega-dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Estudios<span class="caret"></span></a>        
-                        <ul class="dropdown-menu mega-dropdown-menu" id="hijo3">
-                          <li class="col-sm-6">
-                              <ul>
-                              <li class="dropdown-header">Economia</li>
-                              <li><a href="/tesisporcarreras/1">Mercadotecnia</a></li>
-                                            <li><a href="/tesisporcarreras/2">Admon Empresas</a></li>
-                                            <li><a href="/tesisporcarreras/3">Banca y Finanzas</a></li>
-                                            <li><a href="/listartesis">Todos</a></li>
-                              
-                             </ul>
-                          </li>
-                          <li class="col-sm-6">
-                            <ul>
-                              <li class="dropdown-header">Sociales</li>
-                              <li><a href="#">Turismo</a></li>
-                              <li><a href="#">Admon Turistica y Hotelera</a></li>
-                              <li><a href="#">Trabajo Social</a></li>                            
-                                           
-                            </ul>
-                          </li>
-                                  
-                        </ul>       
-                      </li>
-                      <!-- <li><a href="#" id="padres">Eventos</a></li> -->
-                      
+            </li>        
+          </ul>       
+        </li>
+        <li class="dropdown mega-dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Estudios<span class="caret"></span></a>        
+          <ul class="dropdown-menu mega-dropdown-menu" id="hijo3">
+            <li class="col-sm-6">
+              <ul>
+                <li class="dropdown-header">Economia</li>
+                <li><a href="/tesisporcarreras/1">Mercadotecnia</a></li>
+                <li><a href="/tesisporcarreras/2">Admon Empresas</a></li>
+                <li><a href="/tesisporcarreras/3">Banca y Finanzas</a></li>
+                <li><a href="/listartesis">Todos</a></li>            
+              </ul>
+            </li>
+            <li class="col-sm-6">
+              <ul>
+                <li class="dropdown-header">Sociales</li>
+                <li><a href="#">Turismo</a></li>
+                <li><a href="#">Admon Turistica y Hotelera</a></li>
+                <li><a href="#">Trabajo Social</a></li>                                                      
+              </ul>
+            </li>
+          </ul>       
+        </li>
+        </ul>
+        <ul class="nav navbar-nav">
+          <li><a href="/mail/create" id="padres">Contactenos</a></li>
+        </ul>
+        {!!Form::open(array('url'=>'busqueda', 'method'=> 'GET', 'autocomplete' => 'off', 'class'=>'pull-xs-right', 'role' => 'search')) !!}
+        <div class="search">
+          <input type="text" required="" class="form-control" name="searchText" maxlength="64" placeholder="Search" value="{{$searchText}}">
+              <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
+        </div>
+        {{Form::close()}}
+        @if (Auth::guest())
+        <div class="collapse navbar-collapse" id="mainNav" >
+          <ul class="nav  navbar-nav navbar-right">
+            <li class="dropdown mega-dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Mi Cuenta<span class="caret"></span></a>        
+              <ul class="dropdown-menu mega-dropdown-menu" id="hijo4">
+                <li class="col-sm-6">
+                  <ul>
+                    <li><a href="{{url('login')}}">Login</a></li>                            
+                  </ul>
+                </li>
+                <li class="col-sm-6">
+                  <ul>
+                    <li><a href="{{url('register')}}">Registrarme</a></li>                            
+                  </ul>
+                </li>
+              </ul>
+            </li> 
+          </ul>      
+        </div>
+        @else
+        <div class="collapse navbar-collapse" id="mainNav" >
+          <ul class="nav  navbar-nav navbar-right">
+            <li class="dropdown mega-dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">{{ Auth::user()->name }}<span class="caret"></span></a>        
+                <ul class="dropdown-menu mega-dropdown-menu" id="hijo4">
+                  <li class="col-sm-6">
+                    <ul>
+                      <li><a href="{{url('login')}}">Ajustes</a></li>  
+                      <li><a href="{{url('/administracion')}}">Administracion</a></li>                          
                     </ul>
-                    <ul class="nav navbar-nav">
-                      <li><a href="/mail/create" id="padres">Contactenos</a></li>
-                    </ul>
-                    {!!Form::open(array('url'=>'busqueda', 'method'=> 'GET', 'autocomplete' => 'off', 'class'=>'pull-xs-right', 'role' => 'search')) !!}
-                          <div class="search">
-                            <input type="text" required="" class="form-control" name="searchText" maxlength="64" placeholder="Search" value="">
-                                <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
-                          </div>
-                    {{Form::close()}}
-                    @if (Auth::guest())
-                    <div class="collapse navbar-collapse" id="mainNav" >
-                        <ul class="nav  navbar-nav navbar-right">
-                            <li class="dropdown mega-dropdown">
-
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Mi Cuenta<span class="caret"></span></a>        
-                              <ul class="dropdown-menu mega-dropdown-menu" id="hijo4">
-                                <li class="col-sm-6">
-                                  <ul>
-                                    
-                                    <li><a href="{{url('login')}}">Login</a></li>                            
-                                                 
-                                  </ul>
-                                </li>
-                                <li class="col-sm-6">
-                                  <ul>
-                                    
-                                    <li><a href="{{url('register')}}">Registrarme</a></li>                            
-                                                 
-                                  </ul>
-                                </li>
-                              </ul>
-                            </li> 
-                        </ul>      
-                    </div>
-                    @else
-                    <div class="collapse navbar-collapse" id="mainNav" >
-                        <ul class="nav  navbar-nav navbar-right">
-                            <li class="dropdown mega-dropdown">
-
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">{{ Auth::user()->name }}<span class="caret"></span></a>        
-                              <ul class="dropdown-menu mega-dropdown-menu" id="hijo4">
-                                <li class="col-sm-6">
-                                  <ul>
-                                    
-                                    <li><a href="{{url('login')}}">Ajustes</a></li>  
-                                    <li><a href="{{url('/administracion')}}">Administracion</a></li>                          
-                                                 
-                                  </ul>
-                                </li>
-                                <li class="col-sm-6">
-                                  <ul>
-                                    
-                                    <li>
-                                        <a href=="{{ route('logout') }}" onclick="event.preventDefault();
+                  </li>
+                  <li class="col-sm-6">
+                    <ul>
+                      <li>
+                        <a href=="{{ route('logout') }}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">Salir</a>
-                                    </li>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      </li>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                       {{ csrf_field() }}
-                                    </form>                            
-                                                 
-                                  </ul>
-                                </li>    
-                              </ul>
-                            </li> 
-                        </ul>      
-                    </div>
-                    @endif
-
+                      </form>                                                     
+                    </ul>
+                  </li>    
+                </ul>
+            </li> 
+          </ul>      
+        </div>
+        @endif
   </nav>  
 </div>
 

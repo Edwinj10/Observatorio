@@ -33,6 +33,9 @@ Route::get('listartesis', 'BackController@index');
 Route::get('listado/{id}', 'BackController@indicadores_detalles');
 // FrontController
 Route::get('administracion', 'FrontController@administracion');
+Route::get('noticia', 'FrontController@noticia');
+Route::get('noticia_tipo/{origen}', 'FrontController@noticia_tipo');
+Route::get('busqueda','FrontController@busqueda');
 Route::get('instituciones/{id1}/{id2}', 'FrontController@detalles_indicadores');
 // llamar todos los indicadores
 Route::get('indicadores/{id1}', 'FrontController@indicadores');
