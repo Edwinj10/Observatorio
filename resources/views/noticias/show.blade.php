@@ -62,6 +62,7 @@
     </div>
   </div>
   <br>
+  <!-- lista -->
   <section class="row-section">
     <h3 class="widget-title"><span id="noticia">Comentarios</span></h3>
     <div class="container">
