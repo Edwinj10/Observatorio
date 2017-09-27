@@ -5,6 +5,7 @@
 </div>
 @endif
 @extends('layouts.principal')
+<link rel="stylesheet" href="{{asset('/css/comentario.css')}}">
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -14,6 +15,7 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 @section('content')
+
   <div class="row"> 
     <div class="col-md-12"> 
       @foreach ($users as $u)
@@ -59,6 +61,30 @@
       </div>
     </div>
   </div>
+  <br>
+  <section class="row-section">
+    <h3 class="widget-title"><span id="noticia">Comentarios</span></h3>
+    <div class="container">
+      <div class="col-md-8 row-block">
+        <ul id="sortable">
+            @foreach ($comentario as $co)
+          <li>
+            <div class="media">
+              <div class="media-left align-self-center">
+                <img class="rounded-circle" id="avatar" src="{{asset('/imagenes/usuarios/'.$co->foto)}}">
+              </div>
+              <div class="media-body">
+                  <h4>{{$co->name}}</h4>
+                  <h4 id="fecha">Fecha: {{$co->fecha}} </h4>
+                  <p>{{$co->comentario}}</p>
+              </div>
+            </div>
+                @endforeach
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
   <div class="row">
     <div class="col-md-8">
       <div class="col-md-8">

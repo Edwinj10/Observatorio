@@ -31,17 +31,21 @@ class USController extends Controller
              
         if ($request) 
         {
-
-            $query=trim($request->get('searchText'));
-
             $usuarios=DB::table('users as u')
             ->select('u.*')
-           
             ->orderBy('u.id', 'desc')
             ->paginate(10);
-
-            return view('usuarios.index', ["usuarios"=>$usuarios, "searchText"=>$query]);
+            $query=trim($request->get('searchText'));
+            return view('usuarios.index', ["searchText"=>$query, 'usuarios'=>$usuarios]);
         }
+    }
+    public function listall()
+    {
+        $usuarios=DB::table('users as u')
+        ->select('u.*')
+        ->orderBy('u.id', 'desc')
+        ->paginate(10);
+        return view ('usuarios.listar', ['usuarios'=>$usuarios]);
     }
 
     /**
@@ -83,7 +87,24 @@ class USController extends Controller
         $usuarios->save();
 
         return redirect('/usuarios')-> with('massage','Guardado');
+
+        // if ($request->ajax()) 
+        // {
+        
+        //     $result=User::create($request->all());
+        //     if ($result) 
+        //     {
+        //         return response()->ajax(['success'=>'true']);
+        //     }
+        //     else
+        //     {
+        //         return response()->ajax(['success'=>'false']);
+        //     }
+        // }
+
     }
+    
+
 
     /**
      * Display the specified resource.

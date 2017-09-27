@@ -138,9 +138,17 @@ class NoticiasController extends Controller
             ->where('no.id', '!=', $noticia->id)
             ->paginate(3);
 
+        $comentario=DB::table('comentarios as c')
+            ->join('noticias as n', 'c.noticias_id', '=', 'n.id')
+            ->join('users as u', 'c.user_id', '=', 'u.id')
+            ->select('c.*', 'n.*', 'u.*')
+            ->where('n.id', '=',$id)
+            ->orderBy('c.id', 'desc')
+            ->paginate(10);
+
         $ultimas=Noticia::orderBy('id', 'desc')->where('estado', '=','Activo')->where('id', '!=', $noticia->id)->paginate(3);;;;
 
-        return view ('noticias.show', ['noticia'=>$noticia, 'users' => $users, 'sugerencias' => $sugerencias, 'ultimas' => $ultimas]);
+        return view ('noticias.show', ['noticia'=>$noticia, 'users' => $users, 'sugerencias' => $sugerencias, 'ultimas' => $ultimas, 'comentario'=>$comentario]);
     }
 
     /**

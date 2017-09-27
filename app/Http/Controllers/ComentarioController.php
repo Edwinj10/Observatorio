@@ -20,7 +20,18 @@ class ComentarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request request, $id)
+    public function index(Request $request)
+    {
+        $comentario=DB::table('comentarios as c')
+        ->join('noticias as n', 'c.noticias_id', '=', 'n.id')
+        ->join('users as u', 'c.user_id', '=', 'u.id')
+        ->select('c.*', 'n.*', 'u.*')
+        // ->where('n.id', '=',$id)
+        ->orderBy('c.id', 'desc')
+        ->paginate(10);
+        return view('comentarios.index')->with('comentarios',$comentarios);
+    }
+    public function comment(Request $request, $id)
     {
         $comentario=DB::table('comentarios as c')
         ->join('noticias as n', 'c.noticias_id', '=', 'n.id')
@@ -29,7 +40,8 @@ class ComentarioController extends Controller
         ->where('n.id', '=',$id)
         ->orderBy('c.id', 'desc')
         ->paginate(10);
-        return view('comentarios.index')->with('comentarios',$comentarios);
+        return $comentario;
+        return view('comentarios.listar')->with('comentarios',$comentarios);
     }
 
     /**
@@ -50,26 +62,17 @@ class ComentarioController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->ajax()){
-
-            $comentarios = new Comentario();
-            $comentarios->comentario = $request->comentario;
-            $comentarios->noticias_id = $request->noticias_id;
-            $comentarios->user_id = \Auth::user()->id;
-
-            $fecha = Carbon::now();
-            $fecha = $fecha->format('d-m-Y');
-            $comentarios->fecha=$fecha;
-            $comentarios->save();
-            //dd($comentarios);
-            
-            //si no hay error entonces
-            if($comentarios){
-
-        Session::flash('save','Se ha creado correctamente');
-                return response()->json(['success'=>'true']);
-            }else{
-                return response()->json(['success'=>'false']);
+        if ($request->ajax()) 
+        {
+        
+            $result=Comentario::create($request->all());
+            if ($result) 
+            {
+                return response()->ajax(['success'=>'true']);
+            }
+            else
+            {
+                return response()->ajax(['success'=>'false']);
             }
         }
     }

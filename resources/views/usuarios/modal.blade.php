@@ -43,7 +43,7 @@
 							<!-- la propiedad required value="{{old('nombre')}}" validara de que si e archivo es muygrande mostrata el texto en la vista pero con la condicio de que no cumple con los caracteres -->
 							<input type="file" name="foto"  class="form-control">
 								@if(($usuario->foto)!="")
-									<img src="/imagenes/usuarios/{{$usuario->foto}}" height="200px" width="200px">
+									<img src="/imagenes/usuarios/{{$usuario->foto}}" height="200px" width="200px" class="img-circle">
 								@endif
 						</div>
 					</div>

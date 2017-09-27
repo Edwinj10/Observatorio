@@ -247,7 +247,7 @@
 
       
     <!-- jQuery 2.1.4 -->
-    <script src="/admin/js/jQuery-2.1.4.min.js"></script>
+    {!!Html::script('http://code.jquery.com/jquery-1.11.1.min.js')!!}
     <!-- Bootstrap 3.3.5 -->
     <script src="/admin/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
