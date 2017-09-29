@@ -14,7 +14,7 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
 
-      google.charts.load('current', {'packages':['corechart']});
+            google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
@@ -56,33 +56,69 @@
               </div>
             @endforelse
             </div>
-            <div class="row">
-              <div class="col-md-4">
-                <h4 class="widget-title">Click en la Imagen para Buscar Por Meses:</h4> 
-              </div>
-              <div class="col-md-8">
-                <input type="hidden" id="datepicker" placeholder="Ingrese la fecha aqui" name="datepicker" readonly="readonly" onchange="redireccion();">
-              <input type="hidden" class="form-control" id="capturar" value="{{$i->id}}"> 
-              </div>
+            <div class="form-group">
+              <h4 class="widget-title">Buscar Por Meses</h4> 
+              <input type="hidden" id="datepicker" placeholder="Ingrese la fecha aqui" name="datepicker" readonly="readonly" onchange="redireccion();">
+              <input type="hidden" class="form-control" id="capturar" value="{{$i->id}}" > 
+
+            <!-- <button class="btn btn-primary" onclick="redireccion();">Buscar</button> -->
             </div>
+          
+            
           <div id="chart_div" style="width: 100%; height:400px;"></div>
+          {{$fechas->render()}}
         </div>
         
       </div>
     
 @push ('scripts')
 <script type="text/javascript">
- 
-
 function redireccion()
   {
+    // var id=$('#capturar').val();
     var fecha= $('#datepicker').val();
     var id= $('#capturar').val();
     var capturar = fecha+ '/'+id;
+    // alert(capturar);
+    // console.log('id');
+    // console.log('fecha');
+    // alert(fecha);
+    // alert(id);
+    // console.log(id);
+    // var id=$('#capturar').val();
     var ruta=  '/fechas/'+capturar;
     window.location.href=ruta;
     
   }
-</script>  
+</script> 
+<!-- <script type="text/javascript">
+  $(document).ready(function(){
+    listar_Fechas();
+  });
+
+  $(document).on("click", ".pagination li a", function(e){
+    e.preventDefault();
+    var url = $(this).attr("href");
+
+    $.ajax({
+      type: 'get',
+      url: url,
+      success:function(data){
+        $('#chart_div').empty().html(data);
+      }
+    });
+  });
+
+var listar_Fechas=function()
+{
+  $.ajax({
+    type:'get',
+    url: '{{url('fechas')}}',
+    success:function(data){
+      $('#chart_div').empty().html(data);
+    }
+  });
+}
+</script>  -->
 @endpush  
 @endsection

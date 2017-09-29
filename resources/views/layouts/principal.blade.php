@@ -13,7 +13,6 @@
     {!!Html::style('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')!!}
     {!!Html::style('http://cdn.bootcss.com/animate.css/3.5.1/animate.min.css')!!}
     {!!Html::style('/css/estilo.css')!!}
-    {!!Html::style('/css/comentario.css')!!}
     {!!Html::style('css/boostrap.min.css')!!}
     <link rel="stylesheet" href="{{asset('/css/bootstrap-select.min.css')}}">
     {!!Html::script('http://code.jquery.com/jquery-1.11.1.min.js')!!}

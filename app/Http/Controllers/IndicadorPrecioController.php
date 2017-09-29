@@ -126,7 +126,7 @@ class IndicadorPrecioController extends Controller
         ->select('f.*', 'p.*')
         ->where('p.indicador_id', '=', $id)
         // ->where('f.mes', '=', $mes)
-        ->get();
+        ->simplepaginate(15);
 
         // $precios=DB::table('precios as p')
         // ->join('indicadors as i', 'i.id', '=', 'p.indicador_id')

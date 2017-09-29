@@ -2,17 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\TesisRequest;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Input;
 use App\Tesis;
-use Carbon\Carbon;
-use App\User;
-use Session;
 use DB;
-use Auth;
-use Cache;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 use Image;
 
 class TesisController extends Controller
@@ -24,18 +19,17 @@ class TesisController extends Controller
      */
     public function index(Request $request)
     {
-         if ($request) 
-        {
-            $query=trim($request->get('searchText'));
-            $tesis=DB::table('teses as t')
-            ->join('indicadors as i', 't.id_indicador', '=', 'i.id')
-            ->join('carreras as c', 'c.id', '=', 't.id_carrera')
-            ->select('t.*','i.nombre', 'c.carrera')
-            ->where('t.tema','LIKE', '%'.$query.'%')
-            ->orderBy('t.id', 'desc')
-            ->paginate(10);
+        if ($request) {
+            $query = trim($request->get('searchText'));
+            $tesis = DB::table('teses as t')
+                ->join('indicadors as i', 't.id_indicador', '=', 'i.id')
+                ->join('carreras as c', 'c.id', '=', 't.id_carrera')
+                ->select('t.*', 'i.nombre', 'c.carrera')
+                ->where('t.tema', 'LIKE', '%' . $query . '%')
+                ->orderBy('t.id', 'desc')
+                ->paginate(10);
 
-            return view('tesis.index', ["tesis"=>$tesis, "searchText"=>$query]);
+            return view('tesis.index', ["tesis" => $tesis, "searchText" => $query]);
         }
     }
 
@@ -46,19 +40,17 @@ class TesisController extends Controller
      */
     public function create()
     {
-         $indicador=DB::table('indicadors as i')
-        
-        ->select('i.*')
-        ->get();
+        $indicador = DB::table('indicadors as i')
 
+            ->select('i.*')
+            ->get();
 
+        $carreras = DB::table('carreras as c')
 
-        $carreras=DB::table('carreras as c')
-        
-        ->select('c.*')
-        ->get();
-        return view ('tesis/create', ['indicador'=> $indicador, 'carreras'=> $carreras]);
-        
+            ->select('c.*')
+            ->get();
+        return view('tesis/create', ['indicador' => $indicador, 'carreras' => $carreras]);
+
     }
 
     /**
@@ -69,35 +61,32 @@ class TesisController extends Controller
      */
     public function store(TesisRequest $request)
     {
-        $tesis= new Tesis;
-        $tesis->id_indicador=$request->get('indicador');
-        $tesis->tema=$request->get('tema');
-        $tesis->introduccion=$request->get('introduccion');
-        $tesis->autor=$request->get('autor');
-        
-         if($request->hasFile('imagen'))
-        {
-            $imagen= $request->file('imagen');
-            $filename= time(). '.'. $imagen->getClientOriginalExtension();
-            Image::make($imagen)->resize(750,500)->save(public_path('/imagenes/tesis/'.$filename));
-            $tesis->imagen=$filename;
-        } 
+        $tesis               = new Tesis;
+        $tesis->id_indicador = $request->get('indicador');
+        $tesis->tema         = $request->get('tema');
+        $tesis->introduccion = $request->get('introduccion');
+        $tesis->autor        = $request->get('autor');
 
-         if (Input::hasFile('archivo')) 
-        {
-            $file=Input::file('archivo');
-            $file->move(public_path().'/archivos/tesis/', $file->getClientOriginalName());
-            $tesis->archivo=$file->getClientOriginalName();
+        if ($request->hasFile('imagen')) {
+            $imagen   = $request->file('imagen');
+            $filename = time() . '.' . $imagen->getClientOriginalExtension();
+            Image::make($imagen)->resize(750, 500)->save(public_path('/imagenes/tesis/' . $filename));
+            $tesis->imagen = $filename;
+        }
+
+        if (Input::hasFile('archivo')) {
+            $file = Input::file('archivo');
+            $file->move(public_path() . '/archivos/tesis/', $file->getClientOriginalName());
+            $tesis->archivo = $file->getClientOriginalName();
 
         }
-        
-        $tesis->id_carrera=$request->get('carrera');
-           
-        $tesis->save();
-           
 
-        return redirect('/tesis')->with('message' , 'tesis guardada correctamente');
-    
+        $tesis->id_carrera = $request->get('carrera');
+
+        $tesis->save();
+
+        return redirect('/tesis')->with('message', 'tesis guardada correctamente');
+
     }
 
     /**
@@ -108,8 +97,8 @@ class TesisController extends Controller
      */
     public function show($id)
     {
-        $tesis =Tesis::find($id);
-        return view("tesis.show",array('tesis' =>$tesis));
+        $tesis = Tesis::find($id);
+        return view("tesis.show", array('tesis' => $tesis));
         return $tesis;
     }
 
@@ -133,29 +122,27 @@ class TesisController extends Controller
      */
     public function update(TesisRequest $request, $id)
     {
-        $tesis = Tesis::findOrFail($id);
-        $tesis->id_indicador=$request->get('indicador');
-        $tesis->tema=$request->get('tema');
-        $tesis->introduccion=$request->get('introduccion');
-        $tesis->autor=$request->get('autor');
-        if($request->hasFile('imagen'))
-        {
-            $imagen= $request->file('imagen');
-            $filename= time(). '.'. $imagen->getClientOriginalExtension();
-            Image::make($imagen)->resize(750,500)->save(public_path('/imagenes/tesis/'.$filename));
-            $tesis->imagen=$filename;
-        } 
+        $tesis               = Tesis::findOrFail($id);
+        $tesis->id_indicador = $request->get('indicador');
+        $tesis->tema         = $request->get('tema');
+        $tesis->introduccion = $request->get('introduccion');
+        $tesis->autor        = $request->get('autor');
+        if ($request->hasFile('imagen')) {
+            $imagen   = $request->file('imagen');
+            $filename = time() . '.' . $imagen->getClientOriginalExtension();
+            Image::make($imagen)->resize(750, 500)->save(public_path('/imagenes/tesis/' . $filename));
+            $tesis->imagen = $filename;
+        }
 
-         if (Input::hasFile('archivo')) 
-        {
-            $file=Input::file('archivo');
-            $file->move(public_path().'/archivos/tesis/', $file->getClientOriginalName());
-            $tesis->archivo=$file->getClientOriginalName();
+        if (Input::hasFile('archivo')) {
+            $file = Input::file('archivo');
+            $file->move(public_path() . '/archivos/tesis/', $file->getClientOriginalName());
+            $tesis->archivo = $file->getClientOriginalName();
 
         }
         $tesis->update();
 
-        return redirect('/tesis')-> with('massage','Actualizado');
+        return redirect('/tesis')->with('massage', 'Actualizado');
 
     }
 

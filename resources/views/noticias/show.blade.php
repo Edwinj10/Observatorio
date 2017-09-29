@@ -6,7 +6,7 @@
 @endif
 
 @extends('layouts.principal')
-
+ {!!Html::style('/css/comentario.css')!!}
 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {

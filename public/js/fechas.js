@@ -22,6 +22,13 @@ $("#fecha").datepicker();
 
 $("#datepicker").datepicker({
             dateFormat: 'mm',
-            // dateFormat: 'mm/yy',
+            showOn: 'button', 
+   			buttonImageOnly: true, 
+   			buttonImage: '/img/calen3.png',
+   			showAnim: 'fadeIn',
+   			changeMonth: true,
+   			changeYear: true,
+
+            // dateFormat: 'mmyy',
             
         });

@@ -32,6 +32,7 @@ Route::resource('comentarios', 'ComentarioController');
 Route::get('tesisporcarreras/{id}', 'BackController@tesis');
 Route::get('indicadoresid/{id}','BackController@mostrar');
 Route::get('mostrar/{id1}/{id2}', 'BackController@show');
+Route::get('fechas/{fecha}/{id}', 'BackController@informe_fechas');
 Route::get('listartesis', 'BackController@index');
 Route::get('listado/{id}', 'BackController@indicadores_detalles');
 // FrontController

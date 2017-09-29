@@ -56,29 +56,36 @@
               </div>
             @endforelse
             </div>
-            <div class="row">
-              <div class="col-md-4">
-                <h4 class="widget-title">Click en la Imagen para Buscar Por Meses:</h4> 
-              </div>
-              <div class="col-md-8">
-                <input type="hidden" id="datepicker" placeholder="Ingrese la fecha aqui" name="datepicker" readonly="readonly" onchange="redireccion();">
+            <div class="form-group">
+              <h4 class="widget-title">Buscar Por Meses</h4> 
+              <input type="text" id="datepicker" placeholder="Ingrese la fecha aqui" name="datepicker">
               <input type="hidden" class="form-control" id="capturar" value="{{$i->id}}"> 
-              </div>
+
+            <button class="btn btn-primary" onclick="redireccion();">Buscar</button>
             </div>
+          
+            
           <div id="chart_div" style="width: 100%; height:400px;"></div>
+          {{$fechas->render()}}
         </div>
         
       </div>
     
 @push ('scripts')
 <script type="text/javascript">
- 
-
 function redireccion()
   {
+    // var id=$('#capturar').val();
     var fecha= $('#datepicker').val();
     var id= $('#capturar').val();
     var capturar = fecha+ '/'+id;
+    // alert(capturar);
+    // console.log('id');
+    // console.log('fecha');
+    // alert(fecha);
+    // alert(id);
+    // console.log(id);
+    // var id=$('#capturar').val();
     var ruta=  '/fechas/'+capturar;
     window.location.href=ruta;
     

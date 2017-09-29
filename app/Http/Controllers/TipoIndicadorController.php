@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Redirect;
 use App\Tipo_Indicador;
-use Session;
 use DB;
-use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Image;
-
+use Session;
 
 class TipoIndicadorController extends Controller
 {
@@ -19,28 +16,28 @@ class TipoIndicadorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(){
+    public function __construct()
+    {
         // para los midelware
-       
+
         $this->middleware('auth');
         $this->middleware('admin');
     }
 
     public function index(Request $request)
     {
-        
-        if ($request) 
-        {
 
-            $query=trim($request->get('searchText'));
+        if ($request) {
 
-            $tipo=DB::table('tipo__indicadors as t')
-            ->select('t.*')
-            ->where('t.tipo','LIKE', '%'.$query.'%')
-            ->orderBy('t.id', 'desc')
-            ->paginate(10);
+            $query = trim($request->get('searchText'));
 
-            return view('tipoindicador.index', ["tipo"=>$tipo, "searchText"=>$query]);
+            $tipo = DB::table('tipo__indicadors as t')
+                ->select('t.*')
+                ->where('t.tipo', 'LIKE', '%' . $query . '%')
+                ->orderBy('t.id', 'desc')
+                ->paginate(10);
+
+            return view('tipoindicador.index', ["tipo" => $tipo, "searchText" => $query]);
         }
     }
 
@@ -51,7 +48,7 @@ class TipoIndicadorController extends Controller
      */
     public function create()
     {
-        return view ('tipoindicador/create');
+        return view('tipoindicador/create');
     }
 
     /**
@@ -62,21 +59,19 @@ class TipoIndicadorController extends Controller
      */
     public function store(Request $request)
     {
-        $tipo= new Tipo_Indicador;
-        $tipo->tipo=$request->get('tipo');
-        if($request->hasFile('imagen'))
-        {
-            $imagen= $request->file('imagen');
-            $filename= time(). '.'. $imagen->getClientOriginalExtension();
-            Image::make($imagen)->resize(679,457)->save(public_path('/imagenes/tipos_indicadores/'.$filename));
-            $tipo->imagen=$filename;
-        } 
+        $tipo       = new Tipo_Indicador;
+        $tipo->tipo = $request->get('tipo');
+        if ($request->hasFile('imagen')) {
+            $imagen   = $request->file('imagen');
+            $filename = time() . '.' . $imagen->getClientOriginalExtension();
+            Image::make($imagen)->resize(679, 457)->save(public_path('/imagenes/tipos_indicadores/' . $filename));
+            $tipo->imagen = $filename;
+        }
 
         $tipo->save();
 
-        return redirect('/tipo')->with('message' , 'Creada Correctamente');
+        return redirect('/tipo')->with('message', 'Creada Correctamente');
 
-        
     }
 
     /**
@@ -98,7 +93,7 @@ class TipoIndicadorController extends Controller
      */
     public function edit($id)
     {
-        return view ('tipoindicador.edit', ['tipo'=>Tipo_Indicador::findOrFail($id)]);
+        return view('tipoindicador.edit', ['tipo' => Tipo_Indicador::findOrFail($id)]);
     }
 
     /**
@@ -110,20 +105,19 @@ class TipoIndicadorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tipo= Tipo_Indicador::findOrFail($id);
-        $tipo->tipo=$request->get('tipo');
-        if($request->hasFile('imagen'))
-        {
-            $imagen= $request->file('imagen');
-            $filename= time(). '.'. $imagen->getClientOriginalExtension();
-            Image::make($imagen)->resize(679,457)->save(public_path('/imagenes/tipos_indicadores/'.$filename));
-            $tipo->imagen=$filename;
-        }  
+        $tipo       = Tipo_Indicador::findOrFail($id);
+        $tipo->tipo = $request->get('tipo');
+        if ($request->hasFile('imagen')) {
+            $imagen   = $request->file('imagen');
+            $filename = time() . '.' . $imagen->getClientOriginalExtension();
+            Image::make($imagen)->resize(679, 457)->save(public_path('/imagenes/tipos_indicadores/' . $filename));
+            $tipo->imagen = $filename;
+        }
 
         $tipo->update();
-        Session::flash('message',' Actualizado Correctamente');
+        Session::flash('message', ' Actualizado Correctamente');
         return Redirect::to('/tipo');
-        
+
     }
 
     /**
