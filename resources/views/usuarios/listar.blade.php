@@ -4,7 +4,7 @@
   {{Session::get('message')}}
 </div>
 @endif
-<table class="table table-striped table-bordered table-list table-hover">
+<table class="table table-striped table-bordered table-list table-hover" id="dev-table">
   <thead>
     <tr>
       <th><em class="fa fa-cog"></em></th>

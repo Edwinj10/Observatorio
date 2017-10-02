@@ -43,10 +43,11 @@
                     </a>
                   </div>
                 </div>
+                @include('buscador')
               </div>
               <div class="panel-body">
                 <div class="table-responsive">
-                  <table class="table table-striped table-bordered table-list table-hover">
+                  <table class="table table-striped table-bordered table-list table-hover" id="dev-table">
                     <thead>
                       <tr>
                           <th><em class="fa fa-cog"></em></th>
@@ -124,7 +125,7 @@
      window.location.href=ruta;
     // var id=$('#capturar').val();
     // alert(selected);
-     console.log(ruta);
+     // console.log(ruta);
     // $.ajax({
     //   url:''+ruta,
     //   type:'get',

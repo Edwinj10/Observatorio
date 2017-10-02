@@ -23,6 +23,14 @@ class InstitucionController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function __construct(){
+        // para los midelware
+       
+        $this->middleware('auth', ['only' => ['create', 'destroy', 'edit', 'index']]);
+        $this->middleware('admin',['only' => ['create', 'destroy', 'edit', 'index']]);
+        Carbon::setLocale('es');
+    }
+    
     public function index(Request $request)
     {
         
@@ -31,7 +39,7 @@ class InstitucionController extends Controller
 
             $query=trim($request->get('searchText'));
 
-            $instituciones=Institucion::orderBy('id', 'desc')->paginate(10);;;
+            $instituciones=Institucion::orderBy('id', 'desc')->paginate(15);;;
         }
 
            return view('institucion.index', ["instituciones"=>$instituciones, "searchText"=>$query]);
@@ -42,10 +50,10 @@ class InstitucionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view ('institucion/create');  
-    }
+    // public function create()
+    // {
+    //     return view ('institucion/create');  
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -146,9 +154,9 @@ class InstitucionController extends Controller
      */
     public function destroy($id)
     {
-        $inst = Institucion::find($id);
-        $inst->delete();
-        Session::flash ('message', 'Eliminado Correctamente');
-        return redirect::to('/institucion');
+        // $inst = Institucion::find($id);
+        // $inst->delete();
+        // Session::flash ('message', 'Eliminado Correctamente');
+        // return redirect::to('/institucion');
     }
 }

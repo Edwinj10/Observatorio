@@ -1,94 +1,114 @@
 @extends ('layouts.admin')
 @section ('content')
-  @if(Session::has('message'))
-
+@if(Session::has('message'))
 <div class="alert alert-success alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   {{Session::get('message')}}
 </div>
 @endif
+ @include('error.error')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
 
-
-
-</head>
-<body>
+<div class="container">
   <div class="row">
-    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-      <h3 class="widget-title"><span id="noticia">Listado de Tesis</span></h3>
-    </div>
-  </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Busqueda:</h3>
-            <div class="pull-right">
-              <span class="clickable filter" data-toggle="tooltip" title="Click para buscar" data-container="body">
-                <i class="glyphicon glyphicon-filter"></i>
-              </span>
+    <div class="col-md-12">
+      <div class="panel panel-default panel-table">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col col-xs-6">
+              <h3 class="panel-title">Listado de Tesis</h3>
+            </div>
+            <div class="col col-xs-6 text-right">
+                <button type="button" class="btn btn-sm btn-primary btn-primary" data-target="#modal-create" data-toggle="modal"><em class="fa fa-pencil">Crear Nuevo</em></button>
+                <button type="button" id="ver" class="btn btn-sm btn-primary btn-success">Eliminar</button>
             </div>
           </div>
-          <div class="panel-body">
-            <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Escriba para realizar la busqueda" />
-          </div>
-          <table class="table table-hover" id="dev-table">
-            <thead>
-              <tr>
-                <th>Imagen</th>
-                <th><input type="text" class="form-control" placeholder="Tema"  disabled=""></th>
-                <th><input type="text" class="form-control" placeholder="Introduccion"  disabled=""></th>
-                <th><input type="text" class="form-control" placeholder="Autor"  disabled=""></th>
-                <th><input type="text" class="form-control" placeholder="Indicador" disabled="" ></th>
-                <th><input type="text" class="form-control" placeholder="Carrera" disabled=""></th>
-                <th><input type="text" class="form-control" placeholder="Metodologia" disabled=""></th>
-                <th>Ver</th>
-              </tr>
-            </thead>
-            <tbody>
-              @forelse ($tesis as $t)
+          @include('buscador')
+          @include('tesis.modal-create')
+        </div>
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered table-list table-hover" id="dev-table">
+              <thead>
                 <tr>
-                  <td>
-                    <img src="{{asset('/imagenes/tesis/'.$t->imagen)}}"  height="50px" width="50px" class="img-thumbail">
+                  <th><em class="fa fa-cog"></em></th>
+                  <!-- <th class="hidden-xs">ID</th> -->
+                  <th>Tema</th>
+                  <th>Introduccion</th>
+                  <th>Autor</th>
+                  <th>Indicador</th>
+                  <th>Carrera</th>
+                  <th>Metodologia</th>
+                </tr> 
+              </thead>
+              <tbody>
+                <tr>
+                  @foreach ($tesis as $t)
+                  <td align="center">
+                    <a class="btn btn-default" data-target="#modal-edit-{{$t->id}}" data-toggle="modal"><em class="fa fa-pencil"></em></a>
+                    <a class="btn btn-danger" id="borrar" data-target="#modal-delete-{{$t->id}}" data-toggle="modal"><em class="fa fa-trash"></em></a>
                   </td>
 
-                              <td>{!! $t->tema!!}</td>
-                              <td>{!! $t->introduccion!!}</td>
-                              <td>{{ $t->autor}}</td>
-                              <td>{{ $t->nombre}}</td>
-                              <td>{{ $t->carrera}}</td>
-                              <td>Metodologia</td>
+                  <td>{!! $t->tema!!}</td>
+                  <td>{!! $t->introduccion!!}</td>
+                  <td>{{ $t->autor}}</td>
+                  <td>{{ $t->nombre}}</td>
+                  <td>{{ $t->carrera}}</td>
+                  <td>{{$t->metodologia}}</td>
+                </tr>
+                @include('tesis.modal')
+                @include('tesis.modaledit')
 
-                              <td>
-                               <a href="/tesis/{{$t->id}}" ><img src="/archivos/iconopdf.png" alt="" height="30px" width="30px"></a>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
 
-                              </td>
-
-                             </div>
-                       </tr>
-                  @empty
-                  <div class="alert alert-dismissable alert-warning">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <h4>Mensaje del sistema!</h4>
-                        <p>Actualmento no se encuentran registros para este tipo</p>
-                  </div>
-                  @endforelse
-            </tbody>
-          </table>
+        </div>
+        <div class="panel-footer">
+          <div class="row">
+            <div class="col col-xs-4">
+              Pagina {{$tesis->currentPage()}} de {{$tesis->lastPage()}}
+            </div>
+            <div class="col col-xs-8">
+              <ul class="pagination hidden-xs pull-right">
+                {{$tesis->render()}}
+              </ul>
+              <ul class="pagination visible-xs pull-right">
+                <li><a href="#">«</a></li>
+                <li><a href="#">»</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 
-{!!Html::script('js/tabla.js')!!}
+    </div></div></div>
+@push ('scripts')
+{!!Html::script('/js/tabla.js')!!}
 <script type="text/javascript">
-function ShowSelected()
-  {
+  $(document).ready(function(){
+    $("#ver").click(function(){
+      $('.btn-danger').toggle(1000);
+    });
+  });
+  $(document).ready(function(){
+    $(".btn-danger").hide();
+  });
 
-    var id =$("#seleccion option:selected").val();
-    document.getElementById('capturar').value = id;
-  }
-
- </script>
-</body>
-</html>
-@stop
+  // $(document).ready(function(){
+  //     $('#ver').click(function(){
+  //       $(".btn-danger").show();
+  //     });
+  //   });
+  // function mostrar()
+  // {
+  //   $(document).ready(function(){
+  //     $('#ver').click(function(){
+  //       $(".btn-danger").hide();
+  //     });
+  //   });
+  // }
+</script>
+@endpush
+    @stop

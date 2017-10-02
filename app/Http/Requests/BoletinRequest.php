@@ -24,7 +24,8 @@ class BoletinRequest extends FormRequest
     public function rules()
     {
         return [
-            'url' => 'required|max:80',
+            'url' => 'required|max:100',
+            'descripcion' => 'required|max:400',
             'portada'=> 'mimes:jpeg,bmp,png',
             'archivo'=> 'mimes:pdf',
         ];

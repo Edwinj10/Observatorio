@@ -26,6 +26,7 @@
                     
                   </div>
                 </div>
+                @include('buscador')
               </div>
               <div class="panel-body">
                 <div class="table-responsive">

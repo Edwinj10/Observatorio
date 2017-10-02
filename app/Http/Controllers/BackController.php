@@ -28,7 +28,7 @@ class BackController extends Controller
             ->select('t.*','i.nombre', 'c.carrera')
             ->where('t.tema','LIKE', '%'.$query.'%')
             ->orderBy('t.id', 'desc')
-            ->paginate(10);
+            ->simplepaginate(6);
 
             return view('tesis.listar', ["tesis"=>$tesis, "searchText"=>$query]);
         }

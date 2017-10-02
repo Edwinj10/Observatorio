@@ -20,6 +20,13 @@ class BoletinController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+        // para los midelware
+       
+        $this->middleware('auth', ['only' => ['create', 'destroy', 'edit', 'index']]);
+        $this->middleware('admin',['only' => ['create', 'destroy', 'edit', 'index']]);
+        Carbon::setLocale('es');
+    }
     public function index()
     {
         $boletin=Boletin::orderBy('id', 'desc')->paginate(10);;
@@ -31,10 +38,10 @@ class BoletinController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view ('boletin.create');
-    }
+    // public function create()
+    // {
+    //     return view ('boletin.create');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -46,6 +53,7 @@ class BoletinController extends Controller
     {
         $boletin= new Boletin;
         $boletin->url=$request->get('url');
+        $boletin->descripcion=$request->get('descripcion');
         $boletin['user_id']=Auth::user()->id;
         $dia = Carbon::now();
         $dia = $dia->format('d');
@@ -103,9 +111,26 @@ class BoletinController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BoletinRequest $request, $id)
     {
-        //
+        $boletin = Boletin::findOrFail($id);
+        $boletin->url=$request->get('url');
+        $boletin->descripcion=$request->get('descripcion');
+        if (Input::hasFile('archivo')) {
+            $file=Input::file('archivo');
+            $file->move(public_path().'/archivos/boletines/', $file->getClientOriginalName());
+            $boletin->archivo=$file->getClientOriginalName();
+
+        }
+        if($request->hasFile('portada'))
+        {
+            $portada= $request->file('portada');
+            $filename= time(). '.'. $portada->getClientOriginalExtension();
+            Image::make($portada)->resize(750,500)->save(public_path('/imagenes/boletines/'.$filename));
+            $boletin->portada=$filename;
+        } 
+        $boletin->update();
+        return redirect('/boletin')->with('message' , 'Actualizado Correctamente');
     }
 
     /**

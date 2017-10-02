@@ -20,7 +20,7 @@ Route::resource('noticias', 'NoticiasController');
 Route::resource('usuarios', 'USController');
 Route::get('listall/{page?}', 'USController@listall');
 Route::get('comment/{page?}', 'ComentarioController@comment');
-Route::resource('boletin', 'BoletinController');
+Route::resource('boletin', 'BoletinController', ['except'=>'create']);
 Route::resource('graficos', 'GraficoController');
 Route::resource('informe', 'IndicadorPrecioController');
 Route::resource('tesis', 'TesisController');

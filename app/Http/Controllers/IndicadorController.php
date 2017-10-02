@@ -24,8 +24,9 @@ class IndicadorController extends Controller
     public function __construct(){
         // para los midelware
        
-        $this->middleware('auth');
-        $this->middleware('admin');
+        $this->middleware('auth', ['only' => ['create', 'destroy', 'edit', 'index']]);
+        $this->middleware('admin',['only' => ['create', 'destroy', 'edit', 'index']]);
+        Carbon::setLocale('es');
     }
 
     public function index(Request $request)
@@ -41,7 +42,7 @@ class IndicadorController extends Controller
             ->select('i.*', 't.tipo', 'in.nombres')
             ->where('i.nombre','LIKE', '%'.$query.'%')
             ->orderBy('i.id', 'desc')
-            ->paginate(10);
+            ->paginate(20);
 
             return view('indicador.index', ["indicadores"=>$indicadores, "searchText"=>$query]);
         }

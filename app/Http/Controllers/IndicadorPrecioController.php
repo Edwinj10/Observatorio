@@ -25,8 +25,9 @@ class IndicadorPrecioController extends Controller
     public function __construct(){
         // para los midelware
        
-        $this->middleware('auth', ['only' => ['create', 'destroy', 'edit']]);
-        $this->middleware('admin',['only' => ['create', 'destroy', 'edit']]);
+        $this->middleware('auth', ['only' => ['create', 'destroy', 'edit', 'index']]);
+        $this->middleware('admin',['only' => ['create', 'destroy', 'edit', 'index']]);
+        Carbon::setLocale('es');
     }
     public function index(Request $request)
     {

@@ -1284,3 +1284,21 @@ tr:hover {
 .row-fluid ul.thumbnails li.span3:nth-child(4n + 5) { margin-left : 0px; clear:left}
 .row-fluid ul.thumbnails li.span2:nth-child(6n + 7) { margin-left : 0px;clear:left }
 .row-fluid ul.thumbnails li.span1:nth-child(12n + 13) { margin-left : 0px;clear:left }
+
+
+/*h4 vista show noticias*/
+h4.widget{
+  font-size: 18px;
+  text-align: justify;
+  font-weight: 700;
+}
+p#show{
+  font-size: 18px;
+  text-align: justify;
+}
+i#icontesis.fa.fa-download {
+  color: white;
+}
+i#icontesis.fa.fa-eye {
+  color: white;
+}

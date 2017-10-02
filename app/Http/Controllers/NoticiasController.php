@@ -26,8 +26,8 @@ class NoticiasController extends Controller
     public function __construct(){
         // para los midelware
        
-        $this->middleware('auth', ['only' => ['create', 'destroy', 'edit']]);
-        $this->middleware('admin',['only' => ['create', 'destroy', 'edit']]);
+        $this->middleware('auth', ['only' => ['create', 'destroy', 'edit', 'index']]);
+        $this->middleware('admin',['only' => ['create', 'destroy', 'edit', 'index']]);
         Carbon::setLocale('es');
     }
 
@@ -45,7 +45,7 @@ class NoticiasController extends Controller
             ->where('n.titulo','LIKE', '%'.$query.'%')
             ->orwhere('n.descripcion','LIKE', '%'.$query.'%')
             ->orderBy('n.id', 'desc')
-            ->paginate(10);
+            ->paginate(20);
 
             return view('noticias.index', ["noticias"=>$noticias, "searchText"=>$query]);
         }

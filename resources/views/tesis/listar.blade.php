@@ -37,9 +37,9 @@
               <tr>
                 <th>Imagen</th>
                 <th>Tema</th>
-                <th>Introduccion</th>
+                <!-- <th>Introduccion</th> -->
                 <th>Autor</th>
-                <th>Indicador</th>
+                <!-- <th>Indicador</th> -->
                 <th>Carrera</th>
                 <th>Metodologia</th>
                 <th>Ver</th>
@@ -53,12 +53,11 @@
                   </td>
 
                               <td>{!! $t->tema!!}</td>
-                              <td>{!! $t->introduccion!!}</td>
+                              <!-- <td>{!! $t->introduccion!!}</td> -->
                               <td>{{ $t->autor}}</td>
-                              <td>{{ $t->nombre}}</td>
+                              <!-- <td>{{ $t->nombre}}</td> -->
                               <td>{{ $t->carrera}}</td>
-                              <td>Metodologia</td>
-
+                              <td>{{$t->metodologia}}</td>
                               <td>
                                <a href="/tesis/{{$t->id}}" ><img src="/archivos/iconopdf.png" alt="" height="30px" width="30px"></a>
 
@@ -75,6 +74,7 @@
                   @endforelse
             </tbody>
           </table>
+           {{$tesis->render()}}
         </div>
         </div>
       </div>

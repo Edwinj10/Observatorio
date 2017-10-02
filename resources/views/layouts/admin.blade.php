@@ -253,6 +253,7 @@
     <!-- AdminLTE App -->
     <script src="{{asset('js/bootstrap-select.min.js')}}"></script>
     <script src="/admin/js/app.min.js"></script>
+    {!!Html::script('/js/tabla.js')!!}
     @stack('scripts')
     
   </body>
