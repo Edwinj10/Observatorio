@@ -37,15 +37,15 @@ class BackController extends Controller
     {
 
         $nombre = DB::table('indicadors as i')
-            ->select('i.*')
-            ->where('i.id', '=', $id2)
-            ->where('institucion_id', '=', $id)
-            ->first();
+        ->select('i.*')
+        ->where('i.id', '=', $id2)
+        ->where('institucion_id', '=', $id)
+        ->first();
 
         $inst = DB::table('institucions as in')
-            ->select('in.nombres', 'in.mision', 'in.vision', 'in.logo', 'in.direccion')
-            ->where('in.id', '=', $id)
-            ->first();
+        ->select('in.nombres', 'in.mision', 'in.vision', 'in.logo', 'in.direccion')
+        ->where('in.id', '=', $id)
+        ->first();
 
         $informe = DB::select('CALL indXinstitucion(' . $id2 . ',' . $id . ');');
 
@@ -60,22 +60,22 @@ class BackController extends Controller
         if ($request) {
             $query   = trim($request->get('searchText'));
             $informe = DB::table('indicadors as i')
-                ->join('precios as p', 'i.id', '=', 'p.indicador_id')
-                ->join('fechas as f', 'f.id', '=', 'p.id_fecha')
-                ->select('i.nombre', 'i.id', 'f.dia', 'f.mes', 'f.anio', 'p.precio')
-                ->orderBy('f.id', 'desc')
-                ->where('i.id', '=', $id)
+            ->join('precios as p', 'i.id', '=', 'p.indicador_id')
+            ->join('fechas as f', 'f.id', '=', 'p.id_fecha')
+            ->select('i.nombre', 'i.id', 'f.dia', 'f.mes', 'f.anio', 'p.precio')
+            ->orderBy('f.id', 'desc')
+            ->where('i.id', '=', $id)
             // ->where('i.id', '=', $id)
-                ->paginate(10);
+            ->paginate(10);
 
             $nombre = DB::table('indicadors as i')
-                ->select('i.id', 'i.nombre')
-                ->where('i.id', '=', $id)
-                ->first();
+            ->select('i.id', 'i.nombre')
+            ->where('i.id', '=', $id)
+            ->first();
 
             $indicador = DB::table('indicadors as i')
-                ->select('i.id', 'i.nombre')
-                ->get();
+            ->select('i.id', 'i.nombre')
+            ->get();
         }
         return view('informe.indicadorID', ["informe" => $informe, 'nombre' => $nombre, 'indicador' => $indicador, "searchText" => $query]);
         // return $mostrar;
@@ -85,12 +85,12 @@ class BackController extends Controller
     {
         // $tesis=DB::select('CALL tesisPorCarrera('.$id.');');
         $tesis = DB::table('teses as t')
-            ->join('carreras as c', 'c.id', 't.id_carrera', 'c.id')
-            ->join('indicadors as i', 'i.id', '=', 't.id_indicador')
-            ->select('i.*', 't.*', 'c.*')
-            ->where('t.id_carrera', '=', $id)
-            ->paginate(30);
-        return view('tesis.index', ["tesis" => $tesis]);
+        ->join('carreras as c', 'c.id', 't.id_carrera', 'c.id')
+        ->join('indicadors as i', 'i.id', '=', 't.id_indicador')
+        ->select('i.*', 't.*', 'c.*')
+        ->where('t.id_carrera', '=', $id)
+        ->paginate(30);
+        return view('tesis.listar', ["tesis" => $tesis]);
     }
     public function contacto(Request $request)
     {
@@ -110,24 +110,24 @@ class BackController extends Controller
         if ($request) {
             $query   = trim($request->get('searchText'));
             $detalle = DB::table('indicadors as i')
-                ->join('institucions as in', 'i.institucion_id', '=', 'in.id')
-                ->join('precios as p', 'p.indicador_id', '=', 'i.id')
-                ->join('fechas as f', 'f.id', '=', 'p.id_fecha')
-                ->join('tipo__indicadors as t', 'i.indicador_id', '=', 't.id')
-                ->select('i.nombre', 'i.id as indicador_id', 'i.descripcion', 't.tipo', 'in.nombres', 'f.id as fecha', 'p.precio', 'f.dia', 'f.mes', 'f.anio')
-                ->where('i.id', '=', $id)
-                ->orderBy('f.id', 'desc')
-                ->get();
+            ->join('institucions as in', 'i.institucion_id', '=', 'in.id')
+            ->join('precios as p', 'p.indicador_id', '=', 'i.id')
+            ->join('fechas as f', 'f.id', '=', 'p.id_fecha')
+            ->join('tipo__indicadors as t', 'i.indicador_id', '=', 't.id')
+            ->select('i.nombre', 'i.id as indicador_id', 'i.descripcion', 't.tipo', 'in.nombres', 'f.id as fecha', 'p.precio', 'f.dia', 'f.mes', 'f.anio')
+            ->where('i.id', '=', $id)
+            ->orderBy('f.id', 'desc')
+            ->get();
             // return $detalle;
             $indicador = DB::table('indicadors as i')
-                ->join('institucions as ind', 'i.institucion_id', '=', 'ind.id')
-                ->select('i.nombre', 'i.id', 'ind.id as ind', 'ind.nombres')
-                ->where('i.id', '=', $id)
-                ->get();
+            ->join('institucions as ind', 'i.institucion_id', '=', 'ind.id')
+            ->select('i.nombre', 'i.id', 'ind.id as ind', 'ind.nombres')
+            ->where('i.id', '=', $id)
+            ->get();
 
             $indicador2 = DB::table('indicadors as i')
-                ->select('i.id', 'i.nombre')
-                ->get();
+            ->select('i.id', 'i.nombre')
+            ->get();
 
             return view('institucion.tabla', ["detalle" => $detalle, 'indicador' => $indicador, 'indicador2' => $indicador2, "searchText" => $query]);
         }
@@ -135,20 +135,20 @@ class BackController extends Controller
     public function informe_fechas(Request $request, $fecha, $id)
     {
         $i = DB::table('indicadors as i')
-            ->select('i.*')
-            ->where('i.id', '=', $id)
-            ->first();
+        ->select('i.*')
+        ->where('i.id', '=', $id)
+        ->first();
 
         // $mes = Carbon::now();
         // $mes = $mes->format('m');
 
         $fechas = DB::table('fechas as f')
-            ->join('precios as p', 'p.id_fecha', '=', 'f.id')
-            ->join('indicadors as i', 'i.id', '=', 'p.indicador_id')
-            ->select('f.*', 'p.*')
-            ->where('p.indicador_id', '=', $id)
-            ->where('f.mes', '=', $fecha)
-            ->simplepaginate(15);
+        ->join('precios as p', 'p.id_fecha', '=', 'f.id')
+        ->join('indicadors as i', 'i.id', '=', 'p.indicador_id')
+        ->select('f.*', 'p.*')
+        ->where('p.indicador_id', '=', $id)
+        ->where('f.mes', '=', $fecha)
+        ->simplepaginate(15);
 
         // $precios=DB::table('precios as p')
         // ->join('indicadors as i', 'i.id', '=', 'p.indicador_id')
@@ -159,31 +159,40 @@ class BackController extends Controller
         // 'precios'=> $precios
         return view('informe.fechas', ['i' => $i, 'fechas' => $fechas]);
     }
+    public function meses(Request $request, $id)
+    {
 
-    // public function show($id)
-    // {
+        $i=DB::table('indicadors as i')
+        ->select('i.*')
+        ->where('i.id', '=', $id)
+        ->first();
 
-    //     // $n;
-    //     // $n='Censo Municipal';
-    //     $informe=DB::select('CALL datosporindicador('.$id.');');
-    //     // $indicador_id=DB::table('indicadors as i')
-    //     // ->select('i.*')
-    //     // ->where('i.nombre', '=', $n)
-    //     // ->get();
-    //     // return $indicador_id;
+        // $mes = Carbon::now();
+        // $mes = $mes->format('m');
 
-    //     $nombre=DB::table('indicadors as i')
+        $fechas=DB::table('fechas as f')
+        ->join('precios as p', 'p.id_fecha', '=', 'f.id')
+        ->join('indicadors as i', 'i.id', '=', 'p.indicador_id')
+        ->selectRaw('count(*) as user_count')
+        ->where('f.anio', '=', $id)
+        // ->where('f.mes', '=', $mes)
+        ->simplepaginate(15);
 
-    //     ->select('i.id','i.nombre')
-    //     ->where('i.id','=',$id)
-    //     ->first();
-
-    //     $indicador=DB::table('indicadors as i')
-
-    //     ->select('i.id','i.nombre')
-    //     ->get();
-
-    //     return view('informe.indicadorID', ["informe"=>$informe,'nombre'=>$nombre,'indicador'=>$indicador]);
-    // }
-
+        return view ('informe.promediomeses', ['i'=>$i, 'fechas'=> $fechas,]);
+    }
+    public function vertodos()
+    {
+      $boletines=DB::table('boletins as b')
+      ->select('b.*')
+      ->get();
+      return view('boletin.todos', ["boletines"=>$boletines]);
+    }
+  public function verpormes($mes)
+    {
+        $boletines=DB::table('boletins as b')
+        ->select('b.*')
+        ->where('b.mes', '=', $mes)
+        ->get();
+    return view('boletin.pormes', ["boletines"=>$boletines]);
+    }
 }

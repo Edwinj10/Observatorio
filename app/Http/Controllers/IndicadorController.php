@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\IndicadorRequest;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use App\Indicador;
@@ -39,12 +40,19 @@ class IndicadorController extends Controller
             $indicadores=DB::table('indicadors as i')
             ->join('tipo__indicadors as t', 'i.indicador_id', '=', 't.id')
             ->join('institucions as in', 'i.institucion_id', '=', 'in.id')
-            ->select('i.*', 't.tipo', 'in.nombres')
+            ->select('i.nombre', 'i.descripcion', 'i.id', 'i.indicador_id','i.importante', 't.tipo', 'in.nombres', 'i.institucion_id')
             ->where('i.nombre','LIKE', '%'.$query.'%')
             ->orderBy('i.id', 'desc')
             ->paginate(20);
+            // return $indicadores;
+            $tipo=DB::table('tipo__indicadors as tipos')
+            ->select('tipos.tipo', 'tipos.id')
+            ->get();
+            $ins=DB::table('institucions as i')
+            ->select('i.id', 'i.nombres')
+            ->get();
 
-            return view('indicador.index', ["indicadores"=>$indicadores, "searchText"=>$query]);
+            return view('indicador.index', ["indicadores"=>$indicadores, "searchText"=>$query, 'tipo'=>  $tipo, 'ins'=> $ins]);
         }
     
     }
@@ -73,7 +81,7 @@ class IndicadorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(IndicadorRequest $request)
     {
         
         $indicador= new Indicador;
@@ -124,9 +132,16 @@ class IndicadorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(IndicadorRequest $request, $id)
     {
-        //
+        $indicador = Indicador::findOrFail($id);
+        $indicador->nombre=$request->get('nombre');
+        $indicador->indicador_id=$request->get('tipo');
+        $indicador->institucion_id=$request->get('institucion_id'); 
+        $indicador->importante=$request->get('capimportante'); 
+        $indicador->descripcion=$request->get('descripcion'); 
+        $indicador->update();
+        return redirect('/indicador')->with('message' , 'Actualizado Correctamente');
     }
 
     /**

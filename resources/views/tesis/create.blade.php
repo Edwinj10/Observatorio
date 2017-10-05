@@ -66,20 +66,8 @@
 		</div>
 
 	</div>
-<script type="text/javascript">
-	function cuentatitulo(){
-		var longi=100;
-		var resta="";
-		var titulo = document.getElementById("titulo").value.length;
-		resta=longi-titulo;
-		if (resta==10) {
-			alert("Estas llegando al limite de caracteres");
-		}
-		document.getElementById("mostar_titulo").value=resta;
-		if (titulo==100) {
-			alert("Ha llegando al tamaño maximo de caracteres permitidos");
-		}
-	}
-</script>
+<!-- <script type="text/javascript">
+	
+</script> -->
 </body>
 </html>

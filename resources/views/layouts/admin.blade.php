@@ -122,7 +122,7 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{!!URL::to('/indicador/create')!!}"><i class="fa fa-circle-o"></i> Agregar</a></li>
+                <!-- <li><a href="{!!URL::to('/indicador/create')!!}"><i class="fa fa-circle-o"></i> Agregar</a></li> -->
                 <li><a href="{!!URL::to('/indicador')!!}"><i class="fa fa-circle-o"></i> Listar</a></li>
               </ul>
             </li>
@@ -143,7 +143,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{!!URL::to('/boletin/create')!!}"><i class="fa fa-circle-o"></i> Agregar</a></li>
+                <!-- <li><a href="{!!URL::to('/boletin/create')!!}"><i class="fa fa-circle-o"></i> Agregar</a></li> -->
                 <li><a href="{!!URL::to('/boletin')!!}"><i class="fa fa-circle-o"></i> Listar</a></li>
               </ul>
             </li>
@@ -154,7 +154,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{!!URL::to('/institucion/create')!!}"><i class="fa fa-circle-o"></i> Agregar</a></li>
+                <!-- <li><a href="{!!URL::to('/institucion/create')!!}"><i class="fa fa-circle-o"></i> Agregar</a></li> -->
                 <li><a href="{!!URL::to('/institucion')!!}"><i class="fa fa-circle-o"></i> Listar</a></li>
               </ul>
             </li>
@@ -164,7 +164,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{!!URL::to('/tesis/create')!!}"><i class="fa fa-circle-o"></i> Agregar</a></li>
+               <!--  <li><a href="{!!URL::to('/tesis/create')!!}"><i class="fa fa-circle-o"></i> Agregar</a></li> -->
                 <li><a href="{!!URL::to('/tesis')!!}"><i class="fa fa-circle-o"></i> Listar</a></li>
               </ul>
             </li>

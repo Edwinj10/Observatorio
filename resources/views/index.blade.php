@@ -113,203 +113,195 @@
             </li>
           </ul>       
         </li>
-        <ul class="nav navbar-nav">
+        <li class="nav navbar-nav">
           <li><a href="/noticia" id="padres">Noticias</a></li>
-        </ul>
-        
-            <!-- <ul class="dropdown-menu mega-dropdown-menu" id="hijo6">
-              <li class="col-sm-12">
-                <ul>
-                  <li class="dropdown-header">Economicas</li>
-                  <li><a href="#">Locales</a></li>
-							     <li><a href="#">Nacionales</a></li>
-                </ul>
-              </li>           
-            </ul>  -->      
-            
-            <li class="dropdown mega-dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Indicadores<span class="caret"></span></a>        
-              <ul class="dropdown-menu mega-dropdown-menu" id="hijo6">
-                <li class="col-sm-12">
-                  <ul>
-                    <li class="dropdown-header">Tipos</li>
-                    @foreach ($menu as $m)
-                    <li><a href="/indicadores/{{$m->id}}">{{$m->tipo}}</a></li>             
-                    @endforeach
-                  </ul>
+        </li>
+        <li class="dropdown mega-dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Indicadores<span class="caret"></span></a>        
+          <ul class="dropdown-menu mega-dropdown-menu" id="hijo6">
+            <li class="col-sm-12">
+              <ul>
+                <li class="dropdown-header">Tipos</li>
+                @foreach ($menu as $m)
+                <li><a href="/indicadores/{{$m->id}}">{{$m->tipo}}</a></li>             
+                @endforeach
+              </ul>
 
-                </li>        
-              </ul>       
+            </li>        
+          </ul>       
+        </li>
+        <li class="dropdown mega-dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Estudios<span class="caret"></span></a>        
+          <ul class="dropdown-menu mega-dropdown-menu" id="hijo3">
+            <li class="col-sm-6">
+              <ul>
+                <li class="dropdown-header">Economia</li>
+                <li><a href="/tesisporcarreras/1">Mercadotecnia</a></li>
+                <li><a href="/tesisporcarreras/2">Admon Empresas</a></li>
+                <li><a href="/tesisporcarreras/3">Banca y Finanzas</a></li>
+                <li><a href="/listartesis">Todos</a></li>            
+              </ul>
             </li>
-            <li class="dropdown mega-dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Estudios<span class="caret"></span></a>        
-              <ul class="dropdown-menu mega-dropdown-menu" id="hijo3">
-                <li class="col-sm-6">
-                  <ul>
-                    <li class="dropdown-header">Economia</li>
-                    <li><a href="/tesisporcarreras/1">Mercadotecnia</a></li>
-                    <li><a href="/tesisporcarreras/2">Admon Empresas</a></li>
-                    <li><a href="/tesisporcarreras/3">Banca y Finanzas</a></li>
-                    <li><a href="/listartesis">Todos</a></li>            
-                  </ul>
-                </li>
-                <li class="col-sm-6">
-                  <ul>
-                    <li class="dropdown-header">Sociales</li>
-                    <li><a href="#">Turismo</a></li>
-                    <li><a href="#">Admon Turistica y Hotelera</a></li>
-                    <li><a href="#">Trabajo Social</a></li>                                                      
-                  </ul>
-                </li>
-              </ul>       
+            <li class="col-sm-6">
+              <ul>
+                <li class="dropdown-header">Sociales</li>
+                <li><a href="#">Turismo</a></li>
+                <li><a href="#">Admon Turistica y Hotelera</a></li>
+                <li><a href="#">Trabajo Social</a></li>                                                      
+              </ul>
             </li>
-          </ul>
-          <ul class="nav navbar-nav">
-            <li><a href="/mail/create" id="padres">Contactenos</a></li>
-          </ul>
-          {!!Form::open(array('url'=>'busqueda', 'method'=> 'GET', 'autocomplete' => 'off', 'class'=>'pull-xs-right', 'role' => 'search')) !!}
-          <div class="search">
-            <input type="text" required="" class="form-control" name="searchText" maxlength="64" placeholder="Search" value="{{$searchText}}">
-            <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
-          </div>
-          {{Form::close()}}
-          @if (Auth::guest())
-          <div class="collapse navbar-collapse" id="mainNav" >
-            <ul class="nav  navbar-nav navbar-right">
-              <li class="dropdown mega-dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Mi Cuenta<span class="caret"></span></a>        
-                <ul class="dropdown-menu mega-dropdown-menu" id="hijo4">
-                  <li class="col-sm-6">
-                    <ul>
-                      <li><a href="{{url('login')}}">Login</a></li>                            
-                    </ul>
-                  </li>
-                  <li class="col-sm-6">
-                    <ul>
-                      <li><a href="{{url('register')}}">Registrarme</a></li>                            
-                    </ul>
-                  </li>
-                </ul>
-              </li> 
-            </ul>      
-          </div>
-          @else
-          <div class="collapse navbar-collapse" id="mainNav" >
-            <ul class="nav  navbar-nav navbar-right">
-              <li class="dropdown mega-dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">{{ Auth::user()->name }}<span class="caret"></span></a>        
-                <ul class="dropdown-menu mega-dropdown-menu" id="hijo4">
-                  <li class="col-sm-6">
-                    <ul>
-                      <li><a href="{{url('login')}}">Ajustes</a></li>  
-                      <li><a href="{{url('/administracion')}}">Administracion</a></li>                          
-                    </ul>
-                  </li>
-                  <li class="col-sm-6">
-                    <ul>
-                      <li>
-                        <a href=="{{ route('logout') }}" onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">Salir</a>
-                      </li>
-                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                      </form>                                                     
-                    </ul>
-                  </li>    
-                </ul>
-              </li> 
-            </ul>      
-          </div>
-          @endif
-        </nav>  
+          </ul>       
+        </li>
+      </ul>
+      <ul class="nav navbar-nav">
+        <li><a href="/boletines_todos" id="padres">Boletines</a></li>
+      </ul>
+      <!-- <ul class="nav navbar-nav">
+        <li><a href="/mail/create" id="padres">Contactenos</a></li>
+      </ul> -->
+      {!!Form::open(array('url'=>'busqueda', 'method'=> 'GET', 'autocomplete' => 'off', 'class'=>'pull-xs-right', 'role' => 'search')) !!}
+      <div class="search">
+        <input type="text" required="" class="form-control" name="searchText" maxlength="64" placeholder="Search" value="{{$searchText}}">
+        <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
       </div>
+      {{Form::close()}}
+      @if (Auth::guest())
+      <div class="collapse navbar-collapse" id="mainNav" >
+        <ul class="nav  navbar-nav navbar-right">
+          <li class="dropdown mega-dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Mi Cuenta<span class="caret"></span></a>        
+            <ul class="dropdown-menu mega-dropdown-menu" id="hijo4">
+              <li class="col-sm-6">
+                <ul>
+                  <li><a href="{{url('login')}}">Login</a></li>                            
+                </ul>
+              </li>
+              <li class="col-sm-6">
+                <ul>
+                  <li><a href="{{url('register')}}">Registrarme</a></li>                            
+                </ul>
+              </li>
+            </ul>
+          </li> 
+        </ul>      
+      </div>
+      @else
+      <div class="collapse navbar-collapse" id="mainNav" >
+        <ul class="nav  navbar-nav navbar-right">
+          <li class="dropdown mega-dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">{{ Auth::user()->name }}<span class="caret"></span></a>        
+            <ul class="dropdown-menu mega-dropdown-menu" id="hijo4">
+              <li class="col-sm-6">
+                <ul>
+                  <li><a href="{{url('login')}}">Ajustes</a></li>  
+                  <li><a href="{{url('/administracion')}}">Administracion</a></li>                          
+                </ul>
+              </li>
+              <li class="col-sm-6">
+                <ul>
+                  <li>
+                    <a href=="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">Salir</a>
+                  </li>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                  </form>                                                     
+                </ul>
+              </li>    
+            </ul>
+          </li> 
+        </ul>      
+      </div>
+      @endif
+    </nav>  
+  </div>
 
-      <!-- fin menu -->
-      <div class="container" id="menu">
-        <section id="blog-section">
-          <div class="row">
-           <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-             <div class="row">
-              <div class="col-lg-12 col-md-12" id="sli">
-                <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                  <!-- Indicators -->
-                  <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                    
-                  </ol>
-                  <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                      <img id="carruse" src="/img/web_esteli_tabaco.jpg"  class="img-responsive" width="100%">
-                      <div class="carousel-caption">
-                        <h3 class="option animated pulse">Economia en Estelí</h3>
-                        <a href="index.html"><button class="btn btn-primary">Leer Mas</button>      
-                        </a>
-                      </div>
-                    </div>
-                    <div class="item ">
-                      <img id="carruse" src="/img/esteli2.jpg" class="img-responsive"  width="100%">
-                      <div class="carousel-caption">
-                        <h3 class="option animated pulse">Economia en Estelí</h3>
-                        <a href="index.html"><button class="btn btn-primary">Leer Mas</button></a>
-                      </div>
-                    </div>
-                    <div class="item ">
-                      <img id="carruse" src="/img/esteli3.png" class="img-responsive"  width="100%">
-                      <div class="carousel-caption">
-                        <h3 class="option animated pulse">Indicadores Socioeconomicos</h3>
-                        <a href="index.html"><button class="btn btn-primary">Leer Mas</button></a>
-                      </div>
-                    </div>
+  <!-- fin menu -->
+  <div class="container" id="menu">
+    <section id="blog-section">
+      <div class="row">
+       <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+         <div class="row">
+          <div class="col-lg-12 col-md-12" id="sli">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+
+              </ol>
+              <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                  <img id="carruse" src="/img/web_esteli_tabaco.jpg"  class="img-responsive" width="100%">
+                  <div class="carousel-caption">
+                    <h3 class="option animated pulse">Economia en Estelí</h3>
+                    <a href="index.html"><button class="btn btn-primary">Leer Mas</button>      
+                    </a>
                   </div>
-                  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                  </a>
+                </div>
+                <div class="item ">
+                  <img id="carruse" src="/img/esteli2.jpg" class="img-responsive"  width="100%">
+                  <div class="carousel-caption">
+                    <h3 class="option animated pulse">Economia en Estelí</h3>
+                    <a href="index.html"><button class="btn btn-primary">Leer Mas</button></a>
+                  </div>
+                </div>
+                <div class="item ">
+                  <img id="carruse" src="/img/esteli3.png" class="img-responsive"  width="100%">
+                  <div class="carousel-caption">
+                    <h3 class="option animated pulse">Indicadores Socioeconomicos</h3>
+                    <a href="index.html"><button class="btn btn-primary">Leer Mas</button></a>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <!-- recientes post -->
-          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">           
-            <div class="widget-sidebar">
-             <h3 class="widget-title"><span id="noticia">Indicadores Economicos</span></h3>
-             <div class="table-responsive">
-              <table class="table table-striped table-bordered table-condensed table-hover">
-                <thead class="cf">
-                  <tr>
-                    <th>Indicador</th>
-                    <th>Fecha</th>
-                    <th class="numeric">Precio</th>
-                    <th>Ver</th>
-                    
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    @foreach ($ind as $i)
-                    <td>{{ $i->nombre}}</td>
-                    <td>{{ $i->dia}}/{{ $i->mes}}/{{ $i->anio}}</td>
-                    <td>{{ $i->precio}}</td>
-                    <td><a href="{{ route('informe.show', $i->id ) }}"><i class="fa fa-eye"></i></a></td>
-                    
-                    <!-- <td><i class="fa fa-line-chart"></i></td> -->
-                  </tr>
-                </tbody>
-                @endforeach
-              </table>
+              <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <!-- recientes post -->
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">           
+        <div class="widget-sidebar">
+         <h3 class="widget-title"><span id="noticia">Indicadores Economicos</span></h3>
+         <div class="table-responsive">
+          <table class="table table-striped table-bordered table-condensed table-hover">
+            <thead class="cf">
+              <tr>
+                <th>Indicador</th>
+                <th>Fecha</th>
+                <th class="numeric">Precio</th>
+                <th>Ver</th>
 
-  </section>   
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                @foreach ($ind as $i)
+                <td>{{ $i->nombre}}</td>
+                <td>{{ $i->dia}}/{{ $i->mes}}/{{ $i->anio}}</td>
+                <td>{{ $i->precio}}</td>
+                <td><a href="{{ route('informe.show', $i->id ) }}"><i class="fa fa-eye"></i></a></td>
+
+                <!-- <td><i class="fa fa-line-chart"></i></td> -->
+              </tr>
+            </tbody>
+            @endforeach
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>   
 </div>
 
 <!-- noticias -->
@@ -318,12 +310,12 @@
   <div class="section" id="noticias">
     <h3 class="widget-title"><span id="noticia">Noticias</span></h3>
     <div class="row">
-      
+
       @foreach ($noticias as $n)
 
       <div class="col-md-4">
         <div class="column"> 
-          
+
           <!-- Post-->
           <div class="post-module"> 
             <!-- Thumbnail-->
@@ -434,41 +426,14 @@
       </div>
       <div class="col-md-8 hidden-xs ">
         <h3 class="widget-title"><span id="noticia">Boletin</span></h3>
-        <div class="tabs-x tabs-right">
-          <ul id="myTab-kv-14" class="nav nav-tabs" role="tablist">
-            <li class="active"><a href="#home-kv-14" role="tab" data-toggle="tab"><i
-              class="glyphicon glyphicon-home"></i> Ultimo Publicado</a>
-            </li>
-            <li><a href="#profile-kv-14" role="tab" data-toggle="tab"><i class=" fa fa-newspaper-o"></i>
-            Segundo</a>
-          </li>
-          <li><a href="#profile-kv-14" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-user"></i>
-          Ver Todos</a>
-        </li>
-      </ul>
-      <div id="myTabContent-kv-14" class="tab-content">
-        <div class="tab-pane fade in active" id="home-kv-14">
-          <div class="col-md-5">
-            
-            @foreach ($boletines as $b)
-            <iframe id="boletin" style="width:525px; height:340px;" src="{{ $b->url }}" frameborder="0" allowfullscreen></iframe>
-            @endforeach
-          </div>
-        </div>
-        <div class="tab-pane fade" id="profile-kv-14">
-          <div class="col-md-5">
-            
-            @foreach ($maximo as $mas)
-            <iframe id="boletin" style="width:525px; height:340px;" src="{{ $mas->url }}" frameborder="0" allowfullscreen></iframe>
-            @endforeach
-          </div>
-        </div>
+        @foreach ($boletines as $b)
+        <iframe id="boletin" style="width:700px; height:360px;" src="{{ $b->url }}" frameborder="0" allowfullscreen></iframe>
+        <button class="btn btn-primary">Ver mas</button>
+        @endforeach
+        <!-- /tabs-right -->
       </div>
     </div>
-    <!-- /tabs-right -->
   </div>
-</div>
-</div>
 </div>
 <!-- cargamos las instituciones -->
 <div class="container" id="menu">

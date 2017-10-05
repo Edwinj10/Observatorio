@@ -6,9 +6,8 @@
   {{Session::get('message')}}
 </div>
 @endif
- @include('error.error')
+@include('error.error')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-
 <div class="container">
   <div class="row">
     <div class="col-md-12">
@@ -19,8 +18,8 @@
               <h3 class="panel-title">Listado de Tesis</h3>
             </div>
             <div class="col col-xs-6 text-right">
-                <button type="button" class="btn btn-sm btn-primary btn-primary" data-target="#modal-create" data-toggle="modal"><em class="fa fa-pencil">Crear Nuevo</em></button>
-                <button type="button" id="ver" class="btn btn-sm btn-primary btn-success">Eliminar</button>
+              <button type="button" class="btn btn-sm btn-primary btn-primary" data-target="#modal-create" data-toggle="modal"><em class="fa fa-pencil">Crear Nuevo</em></button>
+              <button type="button" id="ver" class="btn btn-sm btn-primary btn-success">Eliminar</button>
             </div>
           </div>
           @include('buscador')
@@ -84,17 +83,23 @@
       </div>
 
     </div></div></div>
-@push ('scripts')
-{!!Html::script('/js/tabla.js')!!}
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#ver").click(function(){
-      $('.btn-danger').toggle(1000);
-    });
-  });
-  $(document).ready(function(){
-    $(".btn-danger").hide();
-  });
+    @push ('scripts')
+    {!!Html::script('/js/tabla.js')!!}
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $("#ver").click(function(){
+          $('.btn-danger').toggle(1000);
+        });
+      });
+      $(document).ready(function(){
+        $(".btn-danger").hide();
+      });
+  // $(document).ready(function(){
+  //   $(".btn-primary").click(function(){
+  //     seleccionar();
+  //     seleccion();
+  //   });
+  // });
 
   // $(document).ready(function(){
   //     $('#ver').click(function(){
@@ -111,4 +116,4 @@
   // }
 </script>
 @endpush
-    @stop
+@stop

@@ -1,5 +1,6 @@
-<div class="modal fade modal-slide-in-right" aria-hidden="true" role="dialog" tabindex="-1" id="modal-edit-{{$i->id}}">
-	{{Form::open(array('action'=>array('IndicadorController@update', $i->id), 'method'=>'put'))}}	
+<div class="modal fade modal-slide-in-right" aria-hidden="true" role="dialog" tabindex="-1" id="modal-create">
+	{!! Form::open(['route' => 'indicador.store' , 'method' =>'POST']) !!}
+
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -7,12 +8,12 @@
 					<span aria-hidden="true">x</span>
 					
 				</button>
-				<h4 class="modal-title">Editar Indicador</h4>
+				<h4 class="modal-title">Agregar Indicador</h4>
 			</div>
 			<div class="modal-body">
 				{{Form::token()}}
 				<div class="row">			
-				@include('indicador.editar')
+				@include('indicador.create')
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -20,6 +21,5 @@
 				</div>
 			</div>
 		</div>
-
 		{{Form::close()}}
 	</div>

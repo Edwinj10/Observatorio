@@ -44,9 +44,11 @@ class TesisController extends Controller
 
         $indicador=DB::table('indicadors as i')
         ->select('i.*')
+        ->orderBy('i.nombre', 'asc')
         ->get();
         $carreras=DB::table('carreras as c')
         ->select('c.*')
+        ->orderBy('c.carrera', 'asc')
         ->get();
 
             return view('tesis.index', ["tesis"=>$tesis, "searchText"=>$query, 'indicador'=>$indicador, 'carreras'=>$carreras]);
@@ -154,12 +156,12 @@ class TesisController extends Controller
     public function update(TesisRequest $request, $id)
     {
         $tesis = Tesis::findOrFail($id);
-        $tesis->id_indicador=$request->get('capindicador');
+        $tesis->id_indicador=$request->get('indicador');
         $tesis->tema=$request->get('tema');
         $tesis->introduccion=$request->get('introduccion');
         $tesis->metodologia=$request->get('metodologia');
         $tesis->autor=$request->get('autor');
-        $tesis->id_carrera=$request->get('capcarrera');
+        $tesis->id_carrera=$request->get('carrera');
         
         
          if($request->hasFile('imagen'))
@@ -175,7 +177,7 @@ class TesisController extends Controller
             $tesis->archivo=$file->getClientOriginalName();
 
         }
-        
+        // return $tesis;
         $tesis->update();
 
         return redirect('/tesis')->with('message' , 'Actualizado Correctamente');

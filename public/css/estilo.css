@@ -1296,9 +1296,20 @@ p#show{
   font-size: 18px;
   text-align: justify;
 }
+p#bole{
+  font-size: 15px;
+  text-align: justify;
+}
 i#icontesis.fa.fa-download {
   color: white;
 }
 i#icontesis.fa.fa-eye {
   color: white;
+}
+/*alerta*/
+.alert-warning {
+    background-color: #003457;
+    color: white;
+    border-color: black;
+    text-align: center;
 }

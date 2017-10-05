@@ -45,20 +45,20 @@ class FrontController extends Controller
             ->paginate(6);
             $boletines=Boletin::orderBy('id', 'desc')->paginate(1);;
             // cargar boletines
-            $max= DB::table('boletins')->max('id');
-            $m=$max-1;
+            // $max= DB::table('boletins')->max('id');
+            // $m=$max-1;
 
-            $maximo=DB::table('boletins as b')
-                ->select('b.*')
-                ->where('b.id','=', $m)
-                ->paginate(1);
+            // $maximo=DB::table('boletins as b')
+            //     ->select('b.*')
+            //     ->where('b.id','=', $m)
+            //     ->paginate(1);
             // procedimiento de la tabla de index
             $ind=DB::select("call ultimosPrecios");
             // cargar las imagenes de las instituciones en el carrusel
             $inst = Institucion::paginate(6);
             $menu=Tipo_Indicador::all();
         }
-    	return view('/index', ["noticias"=>$noticias,  'boletines'=>$boletines ,'maximo' =>$maximo, 'inst'=>$inst, 'ind'=>$ind, 'menu' =>$menu,  "searchText"=>$query]);
+    	return view('/index', ["noticias"=>$noticias,  'boletines'=>$boletines , 'inst'=>$inst, 'ind'=>$ind, 'menu' =>$menu,  "searchText"=>$query]);
     }
 
 
