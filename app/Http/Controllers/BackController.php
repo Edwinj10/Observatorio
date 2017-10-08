@@ -12,10 +12,8 @@ class BackController extends Controller
 {
     public function __construct()
     {
-        // para los midelware
-
-        // $this->middleware('auth');
-        // $this->middleware('admin', ['only' => ['create', 'destroy', 'edit']]);
+        $this->middleware('auth', ['only' => 'comentarios']);
+        $this->middleware('admin', ['only' => 'comentarios']);
     }
     public function index(Request $request)
     {
@@ -89,7 +87,7 @@ class BackController extends Controller
         ->join('indicadors as i', 'i.id', '=', 't.id_indicador')
         ->select('i.*', 't.*', 'c.*')
         ->where('t.id_carrera', '=', $id)
-        ->paginate(30);
+        ->paginate(50);
         return view('tesis.listar', ["tesis" => $tesis]);
     }
     public function contacto(Request $request)
@@ -182,10 +180,10 @@ class BackController extends Controller
     }
     public function vertodos()
     {
-      $boletines=DB::table('boletins as b')
-      ->select('b.*')
-      ->get();
-      return view('boletin.todos', ["boletines"=>$boletines]);
+          $boletines=DB::table('boletins as b')
+          ->select('b.*')
+          ->get();
+          return view('boletin.todos', ["boletines"=>$boletines]);
     }
   public function verpormes($mes)
     {
@@ -193,6 +191,23 @@ class BackController extends Controller
         ->select('b.*')
         ->where('b.mes', '=', $mes)
         ->get();
-    return view('boletin.pormes', ["boletines"=>$boletines]);
+        return view('boletin.pormes', ["boletines"=>$boletines]);
+    }
+     public function comentarios(Request $request, $id)
+    {
+        $comentarios = DB::table('comentarios as c')
+            ->join('noticias as n', 'c.noticias_id', '=', 'n.id')
+            ->join('users as u', 'c.user_id', '=', 'u.id')
+            ->select('c.*', 'n.titulo', 'u.name', 'u.email')
+            ->where('c.estado', '=', $id)
+        // ->where('n.id', '=',$id)
+            ->orderBy('c.id', 'desc')
+            ->paginate(20);
+
+        $tipo=DB::table('comentarios as co')
+        ->select('co.estado')
+        ->where('co.estado', '=', $id)
+        ->paginate(1);
+        return view('comentarios.espera', ["comentarios"=>$comentarios, 'tipo'=>$tipo]);
     }
 }

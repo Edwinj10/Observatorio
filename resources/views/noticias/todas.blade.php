@@ -9,12 +9,12 @@
       <div class="col-lg-4 col-sm-6 col-md-6 col-xs-12">
         <div class="form-group">
           <select name="importante" class="form-control" onchange="Seleccionar();" id="seleccionar">
-              <option value="">Elegir una opcion</option>
-              <option value="Nacional">Nacional</option>
-              <option value="Local">Local</option>
+            <option value="">Elegir una opcion</option>
+            <option value="Nacional">Nacional</option>
+            <option value="Local">Local</option>
           </select>
         </div>
-    </div>
+      </div>
     </div>
     <div class="row">
     

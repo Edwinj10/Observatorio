@@ -19,7 +19,7 @@
               <h3 class="panel-title">Listado de Precios de Indicadores</h3>
             </div>
             <div class="col col-xs-6 text-right">
-              <a href="/indicador/create">
+              <a href="/indicador/">
                 <button type="button" class="btn btn-sm btn-primary btn-create">Crear Nuevo</button>
               </a>
               <a href="/informe/create">

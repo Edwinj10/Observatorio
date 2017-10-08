@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserEditRequest;
 use DB;
 use App\User;
 use Illuminate\Support\Facades\Input;
@@ -138,12 +139,11 @@ class USController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserEditRequest $request, $id)
     {
         $usuarios = User::findOrFail($id);
         $usuarios->name=$request->get('name');
         $usuarios->email=$request->get('email');
-
         $usuarios->tipo=$request->get('tipo');
         $usuarios->facebook=$request->get('facebook');
         $usuarios->twiter=$request->get('twiter');
@@ -172,6 +172,9 @@ class USController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuario = User::find($id);
+        $usuario->delete();
+        Session::flash ('message', 'Eliminado Correctamente');
+        return redirect::to('/usuarios');
     }
 }

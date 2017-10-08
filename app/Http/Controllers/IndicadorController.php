@@ -62,18 +62,18 @@ class IndicadorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        $tipo=DB::table('tipo__indicadors as t')
+    // public function create()
+    // {
+    //     $tipo=DB::table('tipo__indicadors as t')
         
-        ->select('t.*')
-        ->get();
-        $ins=DB::table('institucions as i')
+    //     ->select('t.*')
+    //     ->get();
+    //     $ins=DB::table('institucions as i')
         
-        ->select('i.*')
-        ->get();
-        return view ('indicador.create' ,['tipo'=>  $tipo, 'ins'=> $ins]);
-    }
+    //     ->select('i.*')
+    //     ->get();
+    //     return view ('indicador.create' ,['tipo'=>  $tipo, 'ins'=> $ins]);
+    // }
 
     /**
      * Store a newly created resource in storage.

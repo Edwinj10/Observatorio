@@ -48,7 +48,6 @@ class IndicadorPrecioController extends Controller
            ->groupBy('i.nombre', 'i.id')
            ->orderBy('f.id', 'desc')
            ->paginate(10);
-           // return $informe;
             
             return view('informe.index', ["informe"=>$informe, "searchText"=>$query]);
         }

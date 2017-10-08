@@ -8,24 +8,24 @@
             <h3 class="form-signin-heading ">
                 <a href="/"><img  src="/img/CIIEMP-logo.jpg" style="width:100px;height:100px" alt="CIIEMP" />
                 </a>
-            <br><br>
+                <br><br>
                 <b style="color:#c7c7c7 !important">Login</b>
             </h3>
             <label for="email" class="col-md-12 control-label">E-Mail Address</label>
-                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-                    @if ($errors->has('email'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('email') }}</strong>
-                        </span>
-                    @endif
-                    <br />
+            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+            @if ($errors->has('email'))
+            <span class="help-block">
+                <strong>{{ $errors->first('email') }}</strong>
+            </span>
+            @endif
+            <br />
             <label for="password" class="col-md-4 control-label">Contraseña</label>
-                <input id="password" type="password" class="form-control" name="password"  required>
-                    @if ($errors->has('password'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('password') }}</strong>
-                        </span>
-                    @endif
+            <input id="password" type="password" class="form-control" name="password"  required>
+            @if ($errors->has('password'))
+            <span class="help-block">
+                <strong>{{ $errors->first('password') }}</strong>
+            </span>
+            @endif
             <div class="form-group">
                 <div class="col-md-6">
                     <div class="checkbox">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Tipo_Indicador;
 use DB;
 use Illuminate\Http\Request;
+use App\Http\Requests\TipoIndicadorRequest;
 use Illuminate\Support\Facades\Redirect;
 use Image;
 use Session;
@@ -35,7 +36,7 @@ class TipoIndicadorController extends Controller
                 ->select('t.*')
                 ->where('t.tipo', 'LIKE', '%' . $query . '%')
                 ->orderBy('t.id', 'desc')
-                ->paginate(10);
+                ->paginate(20);
 
             return view('tipoindicador.index', ["tipo" => $tipo, "searchText" => $query]);
         }
@@ -48,7 +49,7 @@ class TipoIndicadorController extends Controller
      */
     public function create()
     {
-        return view('tipoindicador/create');
+        // return view('tipoindicador/create');
     }
 
     /**
@@ -57,11 +58,12 @@ class TipoIndicadorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TipoIndicadorRequest $request)
     {
-        $tipo       = new Tipo_Indicador;
+        $tipo = new Tipo_Indicador;
         $tipo->tipo = $request->get('tipo');
-        if ($request->hasFile('imagen')) {
+        if ($request->hasFile('imagen')) 
+        {
             $imagen   = $request->file('imagen');
             $filename = time() . '.' . $imagen->getClientOriginalExtension();
             Image::make($imagen)->resize(679, 457)->save(public_path('/imagenes/tipos_indicadores/' . $filename));
@@ -69,9 +71,7 @@ class TipoIndicadorController extends Controller
         }
 
         $tipo->save();
-
         return redirect('/tipo')->with('message', 'Creada Correctamente');
-
     }
 
     /**
@@ -103,9 +103,9 @@ class TipoIndicadorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TipoIndicadorRequest $request, $id)
     {
-        $tipo       = Tipo_Indicador::findOrFail($id);
+        $tipo = Tipo_Indicador::findOrFail($id);
         $tipo->tipo = $request->get('tipo');
         if ($request->hasFile('imagen')) {
             $imagen   = $request->file('imagen');

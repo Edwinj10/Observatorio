@@ -1,5 +1,5 @@
-<div class="modal fade modal-slide-in-right" aria-hidden="true" role="dialog" tabindex="-1" id="modal-edit-{{$c->id}}">
-	{{Form::open(array('action'=>array('carrerasController@update', $c->id), 'method'=>'put'))}}	
+<div class="modal fade modal-slide-in-right" aria-hidden="true" role="dialog" tabindex="-1" id="modal-create">
+	{!! Form::open(['route' => 'carreras.store' , 'method' =>'POST']) !!}
 
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -8,12 +8,12 @@
 					<span aria-hidden="true">x</span>
 					
 				</button>
-				<h4 class="modal-title">Editar Carrera</h4>
+				<h4 class="modal-title">Agregar Carrera</h4>
 			</div>
 			<div class="modal-body">
 				{{Form::token()}}
 				<div class="row">			
-				@include('carreras.edit')
+				@include('carreras.create')
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -21,6 +21,5 @@
 				</div>
 			</div>
 		</div>
-
 		{{Form::close()}}
 	</div>

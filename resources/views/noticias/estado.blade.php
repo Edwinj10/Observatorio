@@ -16,7 +16,7 @@
         <div class="panel-heading">
           <div class="row">
             <div class="col col-xs-6">
-              <h3 class="panel-title">Listado de Noticias</h3>
+              <h3 class="panel-title">Listado de Noticas en Estado: @foreach ($tipo as $e) {{$e->estado}} @endforeach</h3>
               <div class="form-group">
                 <h3 class="panel-title">Filtrar por estado:</h3>
                 <select name="estado" class="form-control selectpicker" data-live-search="true" onchange="Seleccionar();" id="estado">
@@ -31,6 +31,9 @@
                 <button type="button" class="btn btn-sm btn-primary btn-create">Crear Nuevo</button>
               </a>
               <button type="button" id="ver" class="btn btn-sm btn-primary btn-success">Eliminar</button>
+              <a href="/noticias">
+                <button type="button" id="ver" class="btn btn-sm btn-primary">Ver todos</button>
+              </a>
             </div>
           </div>
           @include('buscador')

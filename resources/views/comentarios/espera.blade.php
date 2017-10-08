@@ -6,31 +6,30 @@
   {{Session::get('message')}}
 </div>
 @endif
+@include('error.error')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-
       <div class="panel panel-default panel-table">
         <div class="panel-heading">
           <div class="row">
             <div class="col col-xs-6">
-              <h3 class="panel-title">Listado de Noticias</h3>
+              <h3 class="panel-title">Listado de Comentarios en @foreach ($tipo as $e) {{$e->estado}} @endforeach</h3>
               <div class="form-group">
-                <h3 class="panel-title">Filtrar por estado:</h3>
+                <h3 class="panel-title">Filtrar por:</h3>
                 <select name="estado" class="form-control selectpicker" data-live-search="true" onchange="Seleccionar();" id="estado">
                   <option value="">Eliga una opcion</option>
                   <option value="Activo">Activo</option>
-                  <option value="Inactivo">Espera</option>
+                  <option value="Espera">Espera</option>
                 </select>
               </div>
             </div>
             <div class="col col-xs-6 text-right">
-              <a href="/noticias/create">
-                <button type="button" class="btn btn-sm btn-primary btn-create">Crear Nuevo</button>
-              </a>
               <button type="button" id="ver" class="btn btn-sm btn-primary btn-success">Eliminar</button>
+              <a href="/comentarios">
+                <button type="button" class="btn btn-sm btn-primary btn-create">Ver todos</button>
+              </a>
             </div>
           </div>
           @include('buscador')
@@ -42,49 +41,44 @@
                 <tr>
                   <th><em class="fa fa-cog"></em></th>
                   <!-- <th class="hidden-xs">ID</th> -->
-                  <th>Titulo</th>
-                  <th>Resumen</th>
-                  <th>Creador</th>
-                  <th>Estado</th>
-                  <th>Indicador</th>
+                  <th>Nombre del Usuario</th>
+                  <th>Correo</th>
+                  <th>Titulo de la Noticia</th>
+                  <th>Comentario</th>
                   <th>Fecha</th>
-                  <th>Imagen</th>
+                  <th>Estado</th>
                 </tr> 
               </thead>
               <tbody>
                 <tr>
-                  @foreach ($noticias as $n)
+                  @foreach ($comentarios as $c)
                   <td align="center">
-                    <a class="btn btn-default" href="{{ route ('noticias.edit',[$n->id])}}"><em class="fa fa-pencil"></em></a>
-                    <a class="btn btn-danger" href="" data-target="#modal-delete-{{$n->id}}" data-toggle="modal"><em class="fa fa-trash"></em></a>
+                    <a class="btn btn-default" data-target="#modal-delete-{{$c->id}}" data-toggle="modal"><em class="fa fa-pencil"></em></a>
+                    <a class="btn btn-danger" id="borrar" data-target="#modal-eliminar-{{$c->id}}" data-toggle="modal"><em class="fa fa-trash"></em></a>
                   </td>
 
-                  <td>{{ $n->titulo}}</td>
-                  <td>{!! $n->resumen!!}</td>
-                  <td>{{ $n->name}}</td>
-                  <td>{{ $n->estado}}</td>
-                  <td>{{ $n->nombre}}</td>
-                  <td>{{ $n->fecha}}</td>
-                  <td>
-                    <img src="{{asset('imagenes/noticias/'.$n->foto)}}" alt="{{ $n->titulo}}" height="100px" width="100px" class="img-thumbail">
-                  </td>
+                  <td>{!! $c->name!!}</td>
+                  <td>{!! $c->email!!}</td>
+                  <td>{{ $c->titulo}}</td>
+                  <td>{{ $c->comentario}}</td>
+                  <td>{{ $c->fecha}}</td>
+                  <td>{{$c->estado}}</td>
                 </tr>
-                @include('noticias.modal') 
-
+                @include('comentarios.modal')
+                @include('comentarios.modal-delete')
                 @endforeach
               </tbody>
             </table>
           </div>
-
         </div>
         <div class="panel-footer">
           <div class="row">
             <div class="col col-xs-4">
-              Pagina {{$noticias->currentPage()}} de {{$noticias->lastPage()}}
+              Pagina {{$comentarios->currentPage()}} de {{$comentarios->lastPage()}}
             </div>
             <div class="col col-xs-8">
               <ul class="pagination hidden-xs pull-right">
-                {{$noticias->render()}}
+                {{$comentarios->render()}}
               </ul>
               <ul class="pagination visible-xs pull-right">
                 <li><a href="#">«</a></li>
@@ -97,6 +91,7 @@
 
     </div></div></div>
     @push ('scripts')
+    {!!Html::script('/js/tabla.js')!!}
     <script type="text/javascript">
       $(document).ready(function(){
         $("#ver").click(function(){
@@ -106,7 +101,7 @@
       $(document).ready(function(){
         $(".btn-danger").hide();
       });
-       function Seleccionar()
+      function Seleccionar()
       {
 
     // var cod = document.getElementById("indicadorcap").value;
@@ -120,7 +115,7 @@
     // /* Para obtener el valor */
     var id=$('#estado option:selected').val();
 
-    var ruta='/noticias/estado/'+ id;
+    var ruta='/comentarios/estado/'+ id;
 
     window.location.href=ruta;
     // var id=$('#capturar').val();
@@ -131,6 +126,6 @@
     //   type:'get',
     // });
   }
-    </script>
-    @endpush
-    @stop
+</script>
+@endpush
+@stop

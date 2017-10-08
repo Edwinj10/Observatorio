@@ -25,9 +25,9 @@ class NoticiasController extends Controller
      */
     public function __construct(){
         // para los midelware
-       
-        $this->middleware('auth', ['only' => ['create', 'destroy', 'edit', 'index']]);
-        $this->middleware('admin',['only' => ['create', 'destroy', 'edit', 'index']]);
+
+        $this->middleware('auth', ['only' => ['create', 'destroy', 'edit', 'index', 'estado']]);
+        $this->middleware('admin',['only' => ['create', 'destroy', 'edit', 'index', 'estado']]);
         Carbon::setLocale('es');
     }
 
@@ -98,7 +98,7 @@ class NoticiasController extends Controller
             $noticia->foto=$filename;
         }     
         $noticia->save();
-           
+
         return redirect('/noticias')->with('message' , 'Noticia Creada Correctamente');
     }
 
@@ -111,40 +111,41 @@ class NoticiasController extends Controller
     public function show($id)
     {
         $noticia=DB::table('noticias as n')
-            ->join('indicadors as i', 'n.indicador_id', '=', 'i.id')
-            ->join('users as u', 'n.user_id', '=', 'u.id')
-            ->select('n.*', 'u.name', 'i.nombre')
-            ->where('n.id','=',$id)
-            ->first();
+        ->join('indicadors as i', 'n.indicador_id', '=', 'i.id')
+        ->join('users as u', 'n.user_id', '=', 'u.id')
+        ->select('n.*', 'u.name', 'i.nombre')
+        ->where('n.id','=',$id)
+        ->first();
         $variable = Noticia::find($id);
 
-            if(Cache::has($id)==false){
+        if(Cache::has($id)==false){
                 // Cache::add($id,'contador',0.30);
-                Cache::add($id,'contador',0.01);
-                $variable->total_visitas++;
-                $variable->save();
-            }
+            Cache::add($id,'contador',0.01);
+            $variable->total_visitas++;
+            $variable->save();
+        }
 
         $users=DB::table('users as u')
-            ->join('noticias as n', 'n.user_id', '=', 'u.id')
-            ->select('u.id', 'u.name')
-            ->where('n.id', '=',$id)
-            ->get();
+        ->join('noticias as n', 'n.user_id', '=', 'u.id')
+        ->select('u.id', 'u.name')
+        ->where('n.id', '=',$id)
+        ->get();
 
         $sugerencias=DB::table('noticias as no')
-           
-            ->select('no.*')
-            ->where('no.origen', '=', $noticia->origen)
-            ->where('no.id', '!=', $noticia->id)
-            ->paginate(3);
+
+        ->select('no.*')
+        ->where('no.origen', '=', $noticia->origen)
+        ->where('no.id', '!=', $noticia->id)
+        ->paginate(3);
 
         $comentario=DB::table('comentarios as c')
-            ->join('noticias as n', 'c.noticias_id', '=', 'n.id')
-            ->join('users as u', 'c.user_id', '=', 'u.id')
-            ->select('c.*', 'n.*', 'u.*')
-            ->where('n.id', '=',$id)
-            ->orderBy('c.id', 'desc')
-            ->paginate(10);
+        ->join('noticias as n', 'c.noticias_id', '=', 'n.id')
+        ->join('users as u', 'c.user_id', '=', 'u.id')
+        ->select('c.*', 'n.*', 'u.*')
+        ->where('n.id', '=',$id)
+        ->where('c.estado', '=', 'Activo')
+        ->orderBy('c.id', 'desc')
+        ->paginate(10);
 
         $ultimas=Noticia::orderBy('id', 'desc')->where('estado', '=','Activo')->where('id', '!=', $noticia->id)->paginate(3);;;;
 
@@ -159,7 +160,11 @@ class NoticiasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $indicador=DB::table('indicadors as i')
+        ->select('i.*')
+        ->get();
+        $n = Noticia::find($id);
+        return view('noticias.edit',['n'=>$n, 'indicador'=>$indicador]);
     }
 
     /**
@@ -176,6 +181,7 @@ class NoticiasController extends Controller
         $noticia->descripcion=$request->get('descripcion');
         $noticia->origen=$request->get('origen');
         $noticia->resumen=$request->get('resumen');
+        $noticia->indicador_id=$request->get('nombre');
 
         if($request->hasFile('foto'))
         {
@@ -184,10 +190,10 @@ class NoticiasController extends Controller
             Image::make($foto)->resize(750,500)->save(public_path('/imagenes/noticias/'.$filename));
             $noticia->foto=$filename;
         }
-            $noticia->update(); 
-            Session::flash('message',' Actualizada Correctamente');
-            return Redirect::to('/noticias');
-         
+        $noticia->update(); 
+        Session::flash('message',' Actualizada Correctamente');
+        return Redirect::to('/noticias');
+
     }
 
     /**
@@ -203,15 +209,28 @@ class NoticiasController extends Controller
         {
             $noticia->estado='Activo';
             $noticia->update();
-            Session::flash('message',' Estado Modificado a Activo');
-            return Redirect::to('/noticias');
+            return back()->with('message', 'Estado Modificado a Activo');
         }
         else 
         {
             $noticia->estado='Inactivo';
             $noticia->update();
-            Session::flash('message',' Estado Modificado a Inactivo');
-            return Redirect::to('/noticias');
+            return back()->with('message', 'Estado Modificado a Inactivo');
         }
+    }
+    public function estado($id)
+    {
+        $noticias=DB::table('noticias as n')
+        ->join('indicadors as i', 'n.indicador_id', '=', 'i.id')
+        ->join('users as u', 'n.user_id', '=', 'u.id')
+        ->select('n.*', 'u.name', 'i.nombre')
+        ->where('n.estado', '=', $id)
+        ->orderBy('n.id', 'desc')
+        ->paginate(20);
+        $tipo=DB::table('noticias as no')
+        ->select('no.estado')
+        ->where('no.estado', '=', $id)
+        ->paginate(1);
+        return view('noticias.estado', ["noticias"=>$noticias, 'tipo'=>$tipo]);
     }
 }

@@ -127,8 +127,7 @@ margin-right: 7px;
  @import url('https://fonts.googleapis.com/css?family=Kumar+One');
 @import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
 .row-section{float:left; width:100%; background: #42275a;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #734b6d, #42275a);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #734b6d, #42275a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: #292424; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 .row-section h2{float:left; width:100%; color:#fff; margin-bottom:30px; font-size: 14px;}
 .row-section h2 span{font-family: 'Kumar One', cursive; display:block; font-size:20px;}
@@ -144,3 +143,12 @@ background: linear-gradient(to bottom, #734b6d, #42275a); /* W3C, IE 10+/ Edge, 
 .row-section .media .media-body h4 {color: #6b456a; font-size: 18px; font-weight: 600; margin-bottom: 0; padding-left: 14px; margin-top:12px;}
 .btn-default{background:#6B456A; color:#fff; border-radius:30px; border:none; font-size:16px;}
 h4#fecha {color: black; font-size: 14px; font-weight: 600;  padding-left: 14px; margin-top:12px;}
+.btn-success#comentar {
+    background: #289dcc;
+    width: 120px;
+    color: white;
+}
+i.fa.fa-share#comen{
+	background:  #289dcc;
+	color: white;
+}

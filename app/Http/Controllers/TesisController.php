@@ -40,7 +40,7 @@ class TesisController extends Controller
             ->select('t.*','i.nombre', 'c.carrera')
             ->where('t.tema','LIKE', '%'.$query.'%')
             ->orderBy('t.id', 'desc')
-            ->paginate(35);
+            ->paginate(50);
 
         $indicador=DB::table('indicadors as i')
         ->select('i.*')
@@ -128,7 +128,7 @@ class TesisController extends Controller
             ->join('carreras', 'carreras.id', '=', 'teses.id_carrera')
             ->select('teses.*', 'carreras.carrera')
             ->where('teses.id','!=', $tesis->id)
-             ->orderBy('teses.id', 'desc')
+            ->orderBy('teses.id', 'desc')
             ->paginate(3);
 
         return view("tesis.show",array('tesis' =>$tesis, 'sugerencias'=>$sugerencias));

@@ -1,5 +1,5 @@
-<div class="modal fade modal-slide-in-right" aria-hidden="true" role="dialog" tabindex="-1" id="modal-delete-{{$publicacion->id}}">
-	{{Form::open(array('action'=>array('PublicacionesController@destroy', $publicacion->id), 'method'=>'delete'))}}	
+<div class="modal fade modal-slide-in-right" aria-hidden="true" role="dialog" tabindex="-1" id="modal-delete-{{$c->id}}">
+	{{Form::open(array('action'=>array('carrerasController@destroy', $c->id), 'method'=>'delete'))}}	
 
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -8,10 +8,10 @@
 					<span aria-hidden="true">x</span>
 					
 				</button>
-				<h4 class="modal-title">Eliminar Publicacion</h4>
+				<h4 class="modal-title">Eliminar Carrera</h4>
 			</div>
 			<div class="modal-body">
-				<p>Confirmar si desea Eliminar La Publicacion</p>
+				<p>Confirmar si desea Eliminar La Carrera</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

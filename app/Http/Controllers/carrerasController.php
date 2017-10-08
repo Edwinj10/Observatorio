@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Carreras;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
+use App\Tesis;
+use Carbon\Carbon;
+use App\User;
+use Session;
 
 class carrerasController extends Controller
 {
@@ -15,10 +21,8 @@ class carrerasController extends Controller
      */
     public function index(Request $request)
     {
-         
-
-            $carreras=DB::select('select * from carreras;');
-            return view('carreras.index', ["carreras"=>$carreras]);
+        $carreras=Carreras::orderBy('id', 'desc')->paginate(20);;
+        return view ('carreras.index', ["carreras"=>$carreras]);
         
     }
 
@@ -29,8 +33,8 @@ class carrerasController extends Controller
      */
     public function create()
     {
-        
-       
+
+
         return view ('carreras/create');
         
     }
@@ -46,10 +50,10 @@ class carrerasController extends Controller
         $carreras= new Carreras;
         $carreras->carrera=$request->get('carrera');
         $carreras->save();
-           
 
-        return redirect('/carreras')->with('message' , 'carrera guardada correctamente');
-    
+
+        return redirect('/carreras')->with('message' , 'Carrera Guardada Correctamente');
+
     }
 
     /**
@@ -83,7 +87,12 @@ class carrerasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $carreras = Carreras::findOrFail($id);
+        $carreras->carrera=$request->get('carrera');
+        $carreras->update();
+
+        return redirect('/carreras')->with('message' , 'Actualizado Correctamente');
+
     }
 
     /**
@@ -94,6 +103,9 @@ class carrerasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $c = Carreras::find($id);
+        $c->delete();
+        Session::flash ('message', 'Eliminado Correctamente');
+        return redirect::to('/carreras');
     }
 }
