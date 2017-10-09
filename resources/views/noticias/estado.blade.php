@@ -18,11 +18,11 @@
             <div class="col col-xs-6">
               <h3 class="panel-title">Listado de Noticas en Estado: @foreach ($tipo as $e) {{$e->estado}} @endforeach</h3>
               <div class="form-group">
-                <h3 class="panel-title">Filtrar por estado:</h3>
+                <h3 class="panel-title"><b>Filtrar por estado:</b></h3>
                 <select name="estado" class="form-control selectpicker" data-live-search="true" onchange="Seleccionar();" id="estado">
                   <option value="">Eliga una opcion</option>
                   <option value="Activo">Activo</option>
-                  <option value="Inactivo">Espera</option>
+                  <option value="Inactivo">Inactivo</option>
                 </select>
               </div>
             </div>

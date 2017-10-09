@@ -45,7 +45,7 @@ class USController extends Controller
         $usuarios=DB::table('users as u')
         ->select('u.*')
         ->orderBy('u.id', 'desc')
-        ->paginate(10);
+        ->paginate(20);
         return view ('usuarios.listar', ['usuarios'=>$usuarios]);
     }
 

@@ -48,7 +48,7 @@
           <div class="carousel-inner" role="listbox">
             <!-- Item 1 -->
             <div class="item active slide1">
-              <img src="img/obser1.jpg" data-animation="animated zoomInLeft" alt="">
+              <img src="img/observatorio.jpg" data-animation="animated zoomInLeft" alt="">
             </div> 
             <!-- Item 2 -->
             <div class="item slide2">
@@ -329,7 +329,7 @@
                 <div class="category">{{$n->tipo}}</div>
                 <h2 class=" title"><a href="{{ route('noticias.show', $n->id ) }}">{{$n->titulo}}</a></h2>
                 <p class="description">{{ $n->resumen }}</p>
-                <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">o</i> {{ $n->fecha }}</span><span class="comments"><i class="fa fa-comments"></i><a href="#"> 0 comments</a></span></div>
+                <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">o</i> {{ $n->fecha }}</span><span class="comments"><i class="fa fa-comments"></i><a href="#"> 0 Comentarios</a></span></div>
               </div>
             </div>
           </div>

@@ -57,8 +57,9 @@ class FrontController extends Controller
             // cargar las imagenes de las instituciones en el carrusel
             $inst = Institucion::paginate(6);
             $menu=Tipo_Indicador::all();
+            $comentarios = DB::table('comentarios')->count();
         }
-    	return view('/index', ["noticias"=>$noticias,  'boletines'=>$boletines , 'inst'=>$inst, 'ind'=>$ind, 'menu' =>$menu,  "searchText"=>$query]);
+        return view('/index', ["noticias"=>$noticias,  'boletines'=>$boletines , 'inst'=>$inst, 'ind'=>$ind, 'menu' =>$menu, 'comentarios'=>$comentarios,  "searchText"=>$query]);
     }
 
 
@@ -70,10 +71,10 @@ class FrontController extends Controller
         // }
         // else
         // {
-            return view ('admin.index')->with('message' , 'Bienvenido ');
+        return view ('admin.index')->with('message' , 'Bienvenido ');
         // }
         
-       
+
         
     }
     public function indicadores(Request $request, $id)
@@ -83,19 +84,19 @@ class FrontController extends Controller
 
             $query=trim($request->get('searchText'));
             $social = DB::table('institucions as i')
-                    ->join('indicadors as in', 'in.institucion_id', '=', 'i.id')
-                    ->join('tipo__indicadors as t', 'in.indicador_id', '=', 't.id')
-                    ->select(DB::raw('i.nombres','t.id', 'in.nombre','i.id'),DB::raw('i.logo'),DB::raw('i.id'),DB::raw('in.institucion_id'), DB::raw('in.indicador_id'),DB::raw('i.direccion'), DB::raw('count(in.nombre) as indicador_count'))
-                    ->where('in.indicador_id','=', $id)
-                    ->groupBy('i.nombres', 'i.logo','i.id', 'i.direccion', 'in.institucion_id', 'in.indicador_id')
-                    ->get();
+            ->join('indicadors as in', 'in.institucion_id', '=', 'i.id')
+            ->join('tipo__indicadors as t', 'in.indicador_id', '=', 't.id')
+            ->select(DB::raw('i.nombres','t.id', 'in.nombre','i.id'),DB::raw('i.logo'),DB::raw('i.id'),DB::raw('in.institucion_id'), DB::raw('in.indicador_id'),DB::raw('i.direccion'), DB::raw('count(in.nombre) as indicador_count'))
+            ->where('in.indicador_id','=', $id)
+            ->groupBy('i.nombres', 'i.logo','i.id', 'i.direccion', 'in.institucion_id', 'in.indicador_id')
+            ->get();
                     // return $social;
-                    
-                    
+
+
             // $id2;
             // $id2=$id; 'i.institucion_id'
             // return $id2;
-             $tipo=Tipo_Indicador::orderBy('id', 'desc')->where('id', '=',$id)->paginate(1);;;
+            $tipo=Tipo_Indicador::orderBy('id', 'desc')->where('id', '=',$id)->paginate(1);;;
             return view('indicador.listar', ["social"=>$social, "tipo"=>$tipo, "searchText"=>$query]);
         }
         
@@ -107,13 +108,13 @@ class FrontController extends Controller
 
             $query=trim($request->get('searchText'));
             $detalle = DB::table('indicadors as i')
-                    ->join('institucions as in', 'i.institucion_id', '=', 'in.id')
-                    ->join('tipo__indicadors as t', 'i.indicador_id', '=', 't.id')
-                    ->select('i.nombre','i.id','i.descripcion','t.tipo', 'in.nombres')
-                    ->where('in.id','=', $id)
-                    ->where('i.indicador_id','=', $id2)
-                    ->orderBy('i.id', 'desc')
-                    ->get();
+            ->join('institucions as in', 'i.institucion_id', '=', 'in.id')
+            ->join('tipo__indicadors as t', 'i.indicador_id', '=', 't.id')
+            ->select('i.nombre','i.id','i.descripcion','t.tipo', 'in.nombres')
+            ->where('in.id','=', $id)
+            ->where('i.indicador_id','=', $id2)
+            ->orderBy('i.id', 'desc')
+            ->get();
             // return $detalle;
             $institucion=Institucion::orderBy('id', 'desc')->where('id', '=',$id)->paginate(1);;;
             return view('institucion.listar', ["detalle"=>$detalle, "institucion"=>$institucion, "searchText"=>$query]);
@@ -142,53 +143,53 @@ class FrontController extends Controller
         if ($request) 
         {
 
-        $query=trim($request->get('searchText'));
-        $noticia=DB::table('noticias as n')
-        ->join('indicadors as i', 'i.id', '=', 'n.indicador_id')
-        ->join('tipo__indicadors  as t', 't.id', '=', 'i.indicador_id')
-        ->select('n.*', 't.tipo', 'i.nombre')
-        ->where('n.estado', '=', 'Activo')
-        ->where('n.origen', '=', $origen)
-        ->orderBy('n.id', 'desc')
-        ->paginate(12);
-
-        $tipo=DB::table('noticias as n')
-        ->select('n.origen')
-        ->where('n.origen', '=', $origen)
-        ->paginate(1);
-
-        return view('noticias.origen', ["noticia"=>$noticia,"tipo"=>$tipo, "searchText"=>$query]);
-        }
-    }
-    public function busqueda(Request $request)
-
-    {
-         if ($request) 
-        {
-
             $query=trim($request->get('searchText'));
             $noticia=DB::table('noticias as n')
             ->join('indicadors as i', 'i.id', '=', 'n.indicador_id')
             ->join('tipo__indicadors  as t', 't.id', '=', 'i.indicador_id')
             ->select('n.*', 't.tipo', 'i.nombre')
             ->where('n.estado', '=', 'Activo')
-            ->where('n.titulo','LIKE', '%'.$query.'%')
-            ->orwhere('n.descripcion','LIKE', '%'.$query.'%')
+            ->where('n.origen', '=', $origen)
             ->orderBy('n.id', 'desc')
-            ->paginate(20);
+            ->paginate(12);
 
-            $indicadores=DB::table('indicadors as i')
-            ->join('tipo__indicadors as t', 'i.indicador_id', '=', 't.id')
-            ->join('institucions as in', 'i.institucion_id', '=', 'in.id')
-            ->select('i.*', 't.tipo', 'in.nombres')
-            ->where('i.nombre','LIKE', '%'.$query.'%')
-            ->orwhere('i.descripcion','LIKE', '%'.$query.'%')
-            ->orderBy('i.id', 'desc')
-            ->paginate(20);   
+            $tipo=DB::table('noticias as n')
+            ->select('n.origen')
+            ->where('n.origen', '=', $origen)
+            ->paginate(1);
+
+            return view('noticias.origen', ["noticia"=>$noticia,"tipo"=>$tipo, "searchText"=>$query]);
         }
-         
-            return view('busqueda', ["noticia"=>$noticia, "indicadores"=>$indicadores, "searchText"=>$query]);
     }
+    public function busqueda(Request $request)
+
+    {
+       if ($request) 
+       {
+
+        $query=trim($request->get('searchText'));
+        $noticia=DB::table('noticias as n')
+        ->join('indicadors as i', 'i.id', '=', 'n.indicador_id')
+        ->join('tipo__indicadors  as t', 't.id', '=', 'i.indicador_id')
+        ->select('n.*', 't.tipo', 'i.nombre')
+        ->where('n.estado', '=', 'Activo')
+        ->where('n.titulo','LIKE', '%'.$query.'%')
+        ->orwhere('n.descripcion','LIKE', '%'.$query.'%')
+        ->orderBy('n.id', 'desc')
+        ->paginate(20);
+
+        $indicadores=DB::table('indicadors as i')
+        ->join('tipo__indicadors as t', 'i.indicador_id', '=', 't.id')
+        ->join('institucions as in', 'i.institucion_id', '=', 'in.id')
+        ->select('i.*', 't.tipo', 'in.nombres')
+        ->where('i.nombre','LIKE', '%'.$query.'%')
+        ->orwhere('i.descripcion','LIKE', '%'.$query.'%')
+        ->orderBy('i.id', 'desc')
+        ->paginate(20);   
+    }
+
+    return view('busqueda', ["noticia"=>$noticia, "indicadores"=>$indicadores, "searchText"=>$query]);
+}
 
 
 }

@@ -23,8 +23,8 @@ class BoletinController extends Controller
     public function __construct(){
         // para los midelware
        
-        $this->middleware('auth', ['only' => ['create', 'destroy', 'edit', 'index', ;'comentarios']]);
-        $this->middleware('admin',['only' => ['create', 'destroy', 'edit', 'index', ;'comentarios']]);
+        $this->middleware('auth', ['only' => ['create', 'destroy', 'edit', 'index','comentarios']]);
+        $this->middleware('admin',['only' => ['create', 'destroy', 'edit', 'index','comentarios']]);
         Carbon::setLocale('es');
     }
     public function index()

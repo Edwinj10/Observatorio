@@ -17,7 +17,7 @@
             <div class="col col-xs-6">
               <h3 class="panel-title">Listado de Comentarios</h3>
               <div class="form-group">
-                <h3 class="panel-title">Filtrar por:</h3>
+                <h3 class="panel-title"><b>Filtrar por estado:</b></h3>
                 <select name="estado" class="form-control selectpicker" data-live-search="true" onchange="Seleccionar();" id="estado">
                   <option value="">Eliga una opcion</option>
                   <option value="Activo">Activo</option>
