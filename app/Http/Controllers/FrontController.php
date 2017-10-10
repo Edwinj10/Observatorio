@@ -188,8 +188,8 @@ class FrontController extends Controller
         ->paginate(20);   
     }
 
-    return view('busqueda', ["noticia"=>$noticia, "indicadores"=>$indicadores, "searchText"=>$query]);
-}
+    return view('busqueda', ["noticia"=>$noticia, "indicadores"=>$indicadores, "searchText"=>$query]);  
+    }
 
 
 }

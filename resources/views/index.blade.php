@@ -117,7 +117,7 @@
           <li><a href="/noticia" id="padres">Noticias</a></li>
         </li>
         <li class="dropdown mega-dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Indicadores<span class="caret"></span></a>        
+          <a href="/indicador" class="dropdown-toggle" data-toggle="dropdown" id="padres">Indicadores<span class="caret"></span></a>        
           <ul class="dropdown-menu mega-dropdown-menu" id="hijo6">
             <li class="col-sm-12">
               <ul>

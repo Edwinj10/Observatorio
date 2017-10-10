@@ -1,13 +1,13 @@
 @extends ('layouts.principal')
-<link rel="stylesheet" href="{{asset('/css/listar.css')}}">
 @section ('content')
+<link rel="stylesheet" href="{{asset('/css/listar.css')}}">
 
-  @if(Session::has('message'))
+  <!-- @if(Session::has('message'))
 <div class="alert alert-success alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   {{Session::get('message')}}
 </div>
-@endif
+@endif -->
 
  <!-- <link rel="stylesheet" href="{{asset('/css/indicadores.css')}}"> -->
  

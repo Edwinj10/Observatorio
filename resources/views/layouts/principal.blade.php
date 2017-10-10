@@ -15,7 +15,6 @@
   {!!Html::style('/css/estilo.css')!!}
   <link rel="stylesheet" href="{{asset('/css/bootstrap-select.min.css')}}">
   {!!Html::script('http://code.jquery.com/jquery-1.11.1.min.js')!!}
-  {!!Html::script('http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js')!!}
   {!!Html::style('css/bootstrap.css')!!}
   {!!Html::script('https://use.fontawesome.com/07b0ce5d10.js')!!}  
   <link rel="shortcut icon" type="/img/CIIEMP.png" href="/favicon.ico">
@@ -107,7 +106,7 @@
         <li><a href="/noticia" id="padres">Noticias</a></li>
       </li>
       <li class="nav navbar-nav">
-        <li><a href="/noticia" id="padres">Indicadores</a></li>
+        <li><a href="/indicador" id="padres">Indicadores</a></li>
       </li>
       <li class="dropdown mega-dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Estudios<span class="caret"></span></a>        
@@ -261,23 +260,5 @@
   <script src="{{asset('/js/bootstrap-select.min.js')}}"></script>
   <script src="{{asset('/js/fechas.js')}}"></script>
   @stack('scripts')
-  <script>
-    $(document).ready(function(){
-      $('[data-toggle="tooltip"]').tooltip(); 
-    });      
-    var acc = document.getElementsByClassName("accordion");
-    var i;
-    for (i = 0; i < acc.length; i++) {
-      acc[i].onclick = function() {
-        this.classList.toggle("active");
-        var panel = this.nextElementSibling;
-        if (panel.style.maxHeight){
-          panel.style.maxHeight = null;
-        } else {
-          panel.style.maxHeight = panel.scrollHeight + "px";
-        } 
-      }
-    }
-  </script>
 </body>
 </html>

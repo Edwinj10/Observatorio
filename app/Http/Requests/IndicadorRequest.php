@@ -25,7 +25,7 @@ class IndicadorRequest extends FormRequest
     {
         return [
             'nombre' => 'required|max:250',
-            'descripcion' => 'required|max:300',
+            'descripcion' => 'required|max:99',
         ];
     }
 }

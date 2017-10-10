@@ -30,6 +30,8 @@ Route::resource('institucion', 'InstitucionController');
 Route::resource('comentarios', 'ComentarioController');
 Route::delete('comentarios_delete{id}', 'ComentarioController@eliminar');
 Route::get('comentarios/estado/{id}', 'BackController@comentarios');
+Route::get('indicador', 'BackController@indicadores');
+Route::get('indicador/tipo/{id}', 'BackController@indicadores_tipo');
 // BackController
 Route::get('tesisporcarreras/{id}', 'BackController@tesis');
 Route::get('promedio_meses/{id}', 'BackController@meses');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Contacto;
 use App\Tesis;
+use App\Indicador;
+use App\Tipo_Indicador;
 use DB;
 use Illuminate\Http\Request;
 use Mail;
@@ -209,5 +211,26 @@ class BackController extends Controller
         ->where('co.estado', '=', $id)
         ->paginate(1);
         return view('comentarios.espera', ["comentarios"=>$comentarios, 'tipo'=>$tipo]);
+    }
+    public function indicadores(Request $request)
+    {
+        $indicadores=DB::table('indicadors as i')
+        ->join('tipo__indicadors as t', 'i.indicador_id', '=', 't.id')
+        ->select('i.*', 't.tipo', 't.id')
+        ->orderBy('i.nombre', 'asc')
+        ->paginate(39);
+        $tipo=Tipo_Indicador::all();
+        return view ('indicador.listado', ["indicadores"=>$indicadores, 'tipo'=>$tipo]);
+    }
+    public function indicadores_tipo(Request $request, $id)
+    {
+        $indicadores=DB::table('indicadors as i')
+        ->join('tipo__indicadors as t', 'i.indicador_id', '=', 't.id')
+        ->select('i.*', 't.tipo', 't.id')
+        ->where('t.tipo', '=', $id)
+        ->orderBy('i.nombre', 'asc')
+        ->paginate(39);
+        $tipo=Tipo_Indicador::all();
+        return view ('indicador.tipo', ["indicadores"=>$indicadores, 'tipo'=>$tipo]);
     }
 }

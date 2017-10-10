@@ -1,22 +1,22 @@
 @extends ('layouts.principal')
-<link rel="stylesheet" href="{{asset('/css/listar.css')}}">
 @section ('content')
-  @if(Session::has('message'))
+<link rel="stylesheet" href="{{asset('/css/listar.css')}}">
+@if(Session::has('message'))
 
 <div class="alert alert-success alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   {{Session::get('message')}}
 </div>
 @endif
-  
-    
+
+
 </head>
 <h3 class="widget-title"><span id="noticia">Perfil</span></h3>
 <div class="row">
   
   <div class="col-md-3">
-      <img src="/imagenes/instituciones/{{$inst->logo}}" height="250px" width="250px" alt="">
-  
+    <img src="/imagenes/instituciones/{{$inst->logo}}" height="250px" width="250px" alt="">
+    
   </div>
   <div class="col-md-9">
     <div class="col-md-6">
@@ -27,7 +27,7 @@
       <h3>Vision:</h3>
       <p class="text-justify">{{$inst->vision}}</p>
     </div>
-     <div class="col-md-12">
+    <div class="col-md-12">
       <h3>Dirección:</h3>
       <p class="text-justify">{{$inst->direccion}}</p>
     </div>
@@ -41,31 +41,33 @@
 </div>
 <h3 class="widget-title"><span id="noticia">Tipo de Indicadores de:  {{$inst->nombres}} </span></h3>
 <div class="row">
-    <section class="new-deal">
-     <div class="container">
-      @foreach ($ind as $i)
-      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 deal deal-block">
-        <div class="item-slide">
-            <div class="box-img-active">
-            <img src="{{asset('imagenes/tipos_indicadores/'.$i->imagen)}}" alt="" alt=""/>
-              <div class="text-wrap">
-              <h4>{{$i->tipo}}</h4>
-                <div class="desc">                  
-                  <span>Total Indicadores</span>
-                  <h3>{{$i->count}}</h3>
-                </div>
-                <div class="book-now-c">                
-                <a href="/instituciones/{{$i->institucion_id}}/{{$i->indicador_id}}">Ver</a>
-                </div>
-              </div>
+  <section class="new-deal">
+   <div class="container">
+    @forelse ($ind as $i)
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 deal deal-block">
+      <div class="item-slide">
+        <div class="box-img-active">
+          <img src="{{asset('imagenes/tipos_indicadores/'.$i->imagen)}}" alt="" alt=""/>
+          <div class="text-wrap">
+            <h4>{{$i->tipo}}</h4>
+            <div class="desc">                  
+              <span>Total Indicadores</span>
+              <h3>{{$i->count}}</h3>
             </div>
+            <div class="book-now-c">                
+              <a href="/instituciones/{{$i->institucion_id}}/{{$i->indicador_id}}">Ver</a>
+            </div>
+          </div>
         </div>
       </div>
-      @endforeach
-      </div>
-     </div>
-     </section>
-          
+    </div>
+    @empty
+    @include('error.alert')
+    @endforelse
+  </div>
+</div>
+</section>
+
 </div>
 <!-- <div class="container-fluid">
     <div class="row">
@@ -105,7 +107,7 @@
 
         
     </div>
-</div> -->
-    
-@stop
+  </div> -->
+  
+  @stop
 

@@ -1,6 +1,6 @@
 @extends ('layouts.principal')
-<link rel="stylesheet" href="{{asset('/css/listar.css')}}">
 @section ('content')
+<link rel="stylesheet" href="{{asset('/css/listar.css')}}">
 
   @if(Session::has('message'))
 <div class="alert alert-success alert-dismissible" role="alert">
