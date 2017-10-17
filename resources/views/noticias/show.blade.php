@@ -1,6 +1,6 @@
 @extends('layouts.principal')
+@section('content')
 {!!Html::style('/css/comentario.css')!!}
-
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -9,7 +9,6 @@
   js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.10&appId=1515275818535109";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-@section('content')
 
 <div class="row"> 
   <div class="col-md-12"> 
@@ -26,10 +25,11 @@
 </div>
 <div class="row">          
   <div class="col-lg-8 col-md-8 col-sm-8">
-    <h4 id="titulo" align="center">{{$noticia->titulo}}</h4>
+    <h4 id="titulo" align="center"><b>{{$noticia->titulo}}</b></h4>
     <a href="/imagenes/noticias/{{$noticia->foto}}" data-lightbox="publicaciones" data-title="{{$noticia->titulo}}">
       <img class="img-thumbnail" src="/imagenes/noticias/{{$noticia->foto}}"  width="500px" height="auto" align="center" alt=""/>
     </a>
+    <br><br>
     <p>
       {!!$noticia->descripcion!!}
     </p>
@@ -43,20 +43,54 @@
           @foreach ($ultimas as $u)
           <li class="recent-post">
             <div class="post-img">
-              <img src="/imagenes/noticias/{{$u->foto}}" class="img-responsive" alt="{{$u->titulo}}">
+              <a href="{{ route('noticias.show', $u->id ) }}">
+                <img src="/imagenes/noticias/{{$u->foto}}" class="img-responsive" alt="{{$u->titulo}}">
+              </a>
             </div>
             <a href="{{ route('noticias.show', $u->id ) }}"><h5 id="titulo">{{$u->titulo}}</h5></a>
             <p id="fecha" align="center"><small><i class="fa fa-calendar" data-original-title="" title=""></i> {{$u->created_at->diffForHumans()}}</small></p>
           </li>
           <hr>
           @endforeach
-
         </ul>
       </div>
     </div>
   </div>
 </div>
 <br>
+<div class="row">
+  <div class="col-md-8">
+    @if (Auth::guest())
+    <h4>Para realizar algun comentario debes Registrarte O Iniciar Session</h4>
+    
+    <a href="{{ route('register') }}"  class="nav-link"><button class="btn btn-success" id="comentar">Registrame</button></a>
+    <a href="{{ route('login') }}"  class="nav-link"><button class="btn btn-success" id="comentar">Iniciar Sesion</button></a>
+    
+    @else
+    <div class="col-md-8">
+      <div class="widget-area no-padding blank">
+        <div class="status-upload">
+          <input type="hidden" name="_token" value="{{ csrf_token()}}" id="token">
+          <!-- <input type="hidden" id="id"> -->
+          {!! Form::open(['route' => 'comentarios.store' , 'method' =>'POST','files' => true]) !!}
+          <textarea  name="comentario" class="form-control" placeholder="Cual es tu comentario?" id="comentario" ></textarea>
+          <input type="hidden" name="noticia_id" value="{{$noticia->id}}">
+          <!-- <ul>
+            <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a></li>
+            <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class="fa fa-video-camera"></i></a></li>
+            <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><i class="fa fa-microphone"></i></a></li>
+            <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
+          </ul> -->
+          <button type="submit" class="btn btn-success" id="comentar"><i class="fa fa-share" id="comen"></i> Comentar</button>
+          {!!Form::close()!!}
+        </div>
+      </div>
+    </div>
+    @endif
+  </div>
+</div>
+@include('error.mensaje')
+@include('error.error')
 <!-- lista -->
 <section class="row-section">
   <h3 class="widget-title"><span id="noticia">Comentarios</span></h3>
@@ -84,40 +118,6 @@
 
   </div>
 </section>
-<div class="row">
-  <div class="col-md-8">
-    @if (Auth::guest())
-    <h4>Para realizar algun comentario debes Registrarte O Iniciar Session</h4>
-    
-      <a href="{{ route('register') }}"  class="nav-link"><button class="btn btn-success" id="comentar">Registrame</button></a>
-      <a href="{{ route('login') }}"  class="nav-link"><button class="btn btn-success" id="comentar">Iniciar Sesion</button></a>
-    
-    @else
-    <div class="col-md-8">
-      <div class="widget-area no-padding blank">
-        <div class="status-upload">
-          <input type="hidden" name="_token" value="{{ csrf_token()}}" id="token">
-          <!-- <input type="hidden" id="id"> -->
-          {!! Form::open(['route' => 'comentarios.store' , 'method' =>'POST','files' => true]) !!}
-          <textarea  name="comentario" class="form-control" placeholder="Cual es tu comentario?" id="comentario" ></textarea>
-          <input type="hidden" name="noticia_id" value="{{$noticia->id}}">
-          <!-- <ul>
-            <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a></li>
-            <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class="fa fa-video-camera"></i></a></li>
-            <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><i class="fa fa-microphone"></i></a></li>
-            <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
-          </ul> -->
-          <button type="submit" class="btn btn-success" id="comentar"><i class="fa fa-share" id="comen"></i> Comentar</button>
-          {!!Form::close()!!}
-        </div>
-      </div>
-    </div>
-    @endif
-  </div>
-</div>
-@include('error.mensaje')
-@include('error.error')
-
 <!-- sugerencias -->
 
 <div class="col-lg-12 col-md-12">

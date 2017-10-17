@@ -15,7 +15,7 @@
   {!!Html::style('/css/estilo.css')!!}
   <link rel="stylesheet" href="{{asset('/css/bootstrap-select.min.css')}}">
   {!!Html::script('http://code.jquery.com/jquery-1.11.1.min.js')!!}
-  {!!Html::style('css/bootstrap.css')!!}
+  <!-- {!!Html::style('css/bootstrap.css')!!} -->
   {!!Html::script('https://use.fontawesome.com/07b0ce5d10.js')!!}  
   <link rel="shortcut icon" type="/img/CIIEMP.png" href="/favicon.ico">
 
@@ -106,7 +106,7 @@
         <li><a href="/noticia" id="padres">Noticias</a></li>
       </li>
       <li class="nav navbar-nav">
-        <li><a href="/indicador" id="padres">Indicadores</a></li>
+        <li><a href="/indicadors" id="padres">Indicadores</a></li>
       </li>
       <li class="dropdown mega-dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Estudios<span class="caret"></span></a>        

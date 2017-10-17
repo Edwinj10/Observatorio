@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BoletinRequest extends FormRequest
+class ImagenesRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,9 @@ class BoletinRequest extends FormRequest
     public function rules()
     {
         return [
-            'url' => 'required|max:100',
-            'descripcion' => 'required|max:4000',
-            'portada'=> 'mimes:jpeg,bmp,png',
-            'archivo'=> 'mimes:pdf',
+            'titulo' => 'required|max:50',
+            'descripcion' => 'required|max:15000',
+            'foto'=> 'mimes:jpeg,bmp,png',
         ];
     }
 }

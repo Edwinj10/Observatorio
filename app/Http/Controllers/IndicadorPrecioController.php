@@ -34,22 +34,29 @@ class IndicadorPrecioController extends Controller
         if ($request) 
         {
 
-            $query=trim($request->get('searchText'));
+            $query=trim($request->get('searchText'));            
+           //   $informe=DB::table('indicadors as i')
+           //  ->join('precios as p', 'p.indicador_id', '=', 'i.id')
+           //  ->join('fechas as f', 'p.id_fecha', '=', 'f.id')
+            
+           //  ->select(DB::raw('i.nombre'),DB::raw('i.id'),DB::raw("max(p.id) as Id"), DB::raw('max(p.precio) as precio'), DB::raw('max(f.dia) as dia'),DB::raw('max(f.mes) as mes'),DB::raw('max(f.anio) as anio'))
+           //  //->where('p.id_fecha','==',"f.id")
+           //  //->where('p.id_fecha', '=',max(f.id))
+           //  // agrupamos las dos tabas
+           // ->groupBy('i.nombre','i.id')
+          // ->orderBy("f.id","desc")
+            // ->paginate(4);
+              $ind=DB::select("call informeIndicador");
+              //$ind = Indicador::paginate(6)
+               // $ind = Fecha::paginate(7);
+               //$ind = Precio::paginate(6);
+              $tipo=DB::table('indicadors as i')
+                ->select('i.*')
+                ->get();
 
-            // $informe=DB::select('CALL `indicadores`();');
-            
-             $informe=DB::table('indicadors as i')
-            ->join('precios as p', 'p.indicador_id', '=', 'i.id')
-            ->join('fechas as f', 'p.id_fecha', '=', 'f.id')
-            
-            ->select(DB::raw('i.nombre'),DB::raw('i.id'),DB::raw('max(p.id) as idp'), DB::raw('max(f.dia) as dia'),DB::raw('max(f.mes) as mes'),DB::raw('max(f.anio) as anio'))
-            //->where('p.id_fecha', '=',max(f.id))
-            // agrupamos las dos tabas
-           ->groupBy('i.nombre', 'i.id')
-           ->orderBy('f.id', 'desc')
-           ->paginate(10);
-            
-            return view('informe.index', ["informe"=>$informe, "searchText"=>$query]);
+
+           // return view('informe.index', ["informe"=>$informe, "searchText"=>$query]);
+            return view('informe.index', ["ind"=>$ind,'tipo'=>  $tipo,"searchText"=>$query]);
         }
     }
     
@@ -90,14 +97,15 @@ class IndicadorPrecioController extends Controller
         $fecha->anio=$anio;
        
          
-        $fecha->save();
-        $id_fecha= DB::table('fechas')->max('id');
+         $fecha->save();
+         $id_fecha= DB::table('fechas')->max('id');
+
+
         $precio=new Precio;
         $precio->precio=$request->get('precio');
         $precio->indicador_id=$request->get('indicador_id');
         $precio->id_fecha=$id_fecha; 
         $precio->save();
-       
         return redirect('/informe')->with('message' , 'Creado Correctamente');
     }
 
@@ -156,9 +164,14 @@ class IndicadorPrecioController extends Controller
      * @param  \App\IndicadorPrecio  $indicadorPrecio
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, IndicadorPrecio $indicadorPrecio)
+    public function update(Request $request,$indicadorPrecio)
     {
-        //
+        $precio = Precio::findOrFail($indicadorPrecio);
+        $precio->precio=$request->get('precio');
+        //return $precio;
+        $precio->update();
+
+        return redirect('/informe')->with('message' , 'Actualizado Correctamente');
     }
 
     /**

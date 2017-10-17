@@ -1,6 +1,6 @@
 @extends('layouts.principal')
 @section('content')
-<link rel="stylesheet" href="{{asset('/css/indicadores.css')}}">
+<!-- <link rel="stylesheet" href="{{asset('/css/indicadores.css')}}"> -->
  
  </head>
 
@@ -60,10 +60,10 @@
 		            <span class="glyphicon glyphicon-credit-card"></span>
 		          </div>
 		          <div class='col-lg-12 well well-add-card'>
-		            <h4>{{$d->nombre}}</h4>
+		            <h4 id="nombre">{{$d->nombre}}</h4>
 		          </div>
 		          <div class='col-lg-12'>
-		            <p class="text-muted">{{$d->descripcion}}</p>
+		            <p class="text-muted" id="indi_descripcion">{{$d->descripcion}}</p>
 		          </div>
 		          <a href="{{ route('informe.show', $d->id ) }}"><button type="button" class="btn btn-primary">Ver Grafica</button>
 		          </a>

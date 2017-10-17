@@ -127,7 +127,7 @@ class NoticiasController extends Controller
 
         $users=DB::table('users as u')
         ->join('noticias as n', 'n.user_id', '=', 'u.id')
-        ->select('u.id', 'u.name')
+        ->select('u.*')
         ->where('n.id', '=',$id)
         ->get();
 

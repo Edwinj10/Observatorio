@@ -26,13 +26,8 @@
     <link href="../css/bootstrap-tabs-x.css" media="all" rel="stylesheet" type="text/css"/>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="../js/bootstrap-tabs-x.js" type="text/javascript"></script>
-
-    
     <link rel="shortcut icon" type="img/CIIEMP.png" href="/favicon.ico">
-    
   </head>
-
-
   <body>
     <!-- empieza el headeer -->
     <div class="container" id="menu">
@@ -116,19 +111,8 @@
         <li class="nav navbar-nav">
           <li><a href="/noticia" id="padres">Noticias</a></li>
         </li>
-        <li class="dropdown mega-dropdown">
-          <a href="/indicador" class="dropdown-toggle" data-toggle="dropdown" id="padres">Indicadores<span class="caret"></span></a>        
-          <ul class="dropdown-menu mega-dropdown-menu" id="hijo6">
-            <li class="col-sm-12">
-              <ul>
-                <li class="dropdown-header">Tipos</li>
-                @foreach ($menu as $m)
-                <li><a href="/indicadores/{{$m->id}}">{{$m->tipo}}</a></li>             
-                @endforeach
-              </ul>
-
-            </li>        
-          </ul>       
+        <li class="nav navbar-nav">
+          <li><a href="/indicadors" id="padres">Indicadores</a></li>
         </li>
         <li class="dropdown mega-dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Estudios<span class="caret"></span></a>        
@@ -229,31 +213,19 @@
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                 <li data-target="#myCarousel" data-slide-to="1"></li>
                 <li data-target="#myCarousel" data-slide-to="2"></li>
-
               </ol>
-              <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                  <img id="carruse" src="/img/web_esteli_tabaco.jpg"  class="img-responsive" width="100%">
+              <div class="carousel-inner">
+                @foreach($imagen as $img)
+                <div class="item @if($img->id === $img->first()->id) {{ 'active' }} @endif">
+                  <img  id="carruse" src="imagenes/imagenes/{{ $img->foto }}" data-animation="animated zoomInLeft" alt="{{ $img->alt }}" class="img-responsive"  width="100%"> 
                   <div class="carousel-caption">
-                    <h3 class="option animated pulse">Economia en Estelí</h3>
-                    <a href="index.html"><button class="btn btn-primary">Leer Mas</button>      
+                    <a id="enlace" href="{{ route('portadas.show', $img->id ) }}">
+                      <h4 class="option animated pulse">{{$img->titulo}}</h4>
                     </a>
+                    <a href="{{ route('portadas.show', $img->id ) }}"><button class="btn btn-primary">Leer Mas</button></a>
                   </div>
                 </div>
-                <div class="item ">
-                  <img id="carruse" src="/img/esteli2.jpg" class="img-responsive"  width="100%">
-                  <div class="carousel-caption">
-                    <h3 class="option animated pulse">Economia en Estelí</h3>
-                    <a href="index.html"><button class="btn btn-primary">Leer Mas</button></a>
-                  </div>
-                </div>
-                <div class="item ">
-                  <img id="carruse" src="/img/esteli3.png" class="img-responsive"  width="100%">
-                  <div class="carousel-caption">
-                    <h3 class="option animated pulse">Indicadores Socioeconomicos</h3>
-                    <a href="index.html"><button class="btn btn-primary">Leer Mas</button></a>
-                  </div>
-                </div>
+                @endforeach
               </div>
               <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -270,7 +242,7 @@
       <!-- recientes post -->
       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">           
         <div class="widget-sidebar">
-         <h3 class="widget-title"><span id="noticia">Indicadores Economicos</span></h3>
+         <h3 class="widget-title"><span id="noticia">Indicadores</span></h3>
          <div class="table-responsive">
           <table class="table table-striped table-bordered table-condensed table-hover">
             <thead class="cf">
@@ -305,14 +277,11 @@
 </div>
 
 <!-- noticias -->
-
 <div class="container" id="menu">
-  <div class="section" id="noticias">
+  <div class="section" id="noticias2">
     <h3 class="widget-title"><span id="noticia">Noticias</span></h3>
     <div class="row">
-
       @foreach ($noticias as $n)
-
       <div class="col-md-4">
         <div class="column"> 
 
@@ -339,190 +308,193 @@
       </div>
     </div>
     
-  </div>
+  </div>   
+  <div class="container" id="menu">
+    <div class="section">
+      <div class="row">
+        <div class="col-md-4">
+          <h3 class="widget-title"><span id="noticia">Ubicacion</span></h3>
+          <div class="span8">
+            <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.9844870824563!2d-86.37052568593182!3d13.10016921559033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f718c57866892dd%3A0xb23ca385a77b0c03!2sUNAN-FAREM+Estel%C3%AD+(Recinto+universitario+Leonel+Rugama)!5e0!3m2!1ses!2ses!4v1502825665128" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 
-<!-- <div class="container" id="menu">
-  <section id="blog-section-tres">
-    <h3 class="widget-title"><span id="noticia">Boletines Trimestrales Publicados</span></h3>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-              <div class="col-lg-3 col-md-6 col-xs-6">
-                <div class="cuadro_intro_hover " style="background-color:white;">
-                  <p style="text-align:center;">
-                    <img src="img/fondopdf2.jpg" id="img" class="img-responsive" alt="">
-                  </p>
-                  <div class="caption">
-                    <div class="blur"></div>
-                    <div class="caption-text">
-                      <h3 style="border-top:2px solid white; border-bottom:2px solid white; padding:10px;">Enero-Marzo</h3>
-                      <p>Loren ipsum dolor si amet ipsum dolor si amet ipsum dolor...</p>
-                      <a class=" btn btn-default" href="https://plus.google.com/u/0/100371904807783155711/posts" target="_blank"><span class="glyphicon glyphicon-plus"> INFO</span></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-xs-6">
-                <div class="cuadro_intro_hover " style="background-color:white;">
-                  <p style="text-align:center;">
-                    <img src="img/fondopdf2.jpg" id="img" class="img-responsive" alt="">
-                  </p>
-                  <div class="caption">
-                    <div class="blur"></div>
-                    <div class="caption-text">
-                      <h3 style="border-top:2px solid white; border-bottom:2px solid white; padding:10px;">Abril-Junio</h3>
-                      <p>Loren ipsum dolor si amet ipsum dolor si amet ipsum dolor...</p>
-                      <a class=" btn btn-default" href="https://plus.google.com/u/0/100371904807783155711/posts" target="_blank"><span class="glyphicon glyphicon-plus"> INFO</span></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-xs-6">
-                <div class="cuadro_intro_hover" style="background-color:white;">
-                  <p style="text-align:center;">
-                    <img src="img/fondopdf2.jpg" id="img" class="img-responsive" alt="">
-                  </p>
-                  <div class="caption">
-                    <div class="blur"></div>
-                    <div class="caption-text">
-                      <h3 style="border-top:2px solid white; border-bottom:2px solid white; padding:10px;">Julio-Septiembre</h3>
-                      <p>Loren ipsum dolor si amet ipsum dolor si amet ipsum dolor...</p>
-                      <a class=" btn btn-default" href="https://plus.google.com/u/0/100371904807783155711/posts" target="_blank"><span class="glyphicon glyphicon-plus"> INFO</span></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-xs-6">
-                <div class="cuadro_intro_hover " style="background-color:white;">
-                  <p style="text-align:center;">
-                    <img src="img/fondopdf2.jpg" id="img" class="img-responsive" alt="">
-                  </p>
-                  <div class="caption">
-                    <div class="blur"></div>
-                    <div class="caption-text">
-                      <h3 style="border-top:2px solid white; border-bottom:2px solid white; padding:10px;">Octubre-Dici</h3>
-                      <p>Loren ipsum dolor si amet ipsum dolor si amet ipsum dolor...</p>
-                      <a class=" btn btn-default" href="https://plus.google.com/u/0/100371904807783155711/posts" target="_blank"><span class="glyphicon glyphicon-plus"> INFO</span></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              </div>
           </div>
         </div>
-      </div>
-    </section>
-</div>
--->   
-<div class="container" id="menu">
-  <div class="section">
-    <div class="row">
-      <div class="col-md-4">
-        <h3 class="widget-title"><span id="noticia">Ubicacion</span></h3>
-        <div class="span8">
-          <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.9844870824563!2d-86.37052568593182!3d13.10016921559033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f718c57866892dd%3A0xb23ca385a77b0c03!2sUNAN-FAREM+Estel%C3%AD+(Recinto+universitario+Leonel+Rugama)!5e0!3m2!1ses!2ses!4v1502825665128" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-
+        <div class="col-md-8 hidden-xs ">
+          <h3 class="widget-title"><span id="noticia">Boletin</span></h3>
+          @foreach ($boletines as $b)
+          <iframe id="boletin" style="width:100%; height:360px;" src="{{ $b->url }}" frameborder="0" allowfullscreen></iframe>
+          @endforeach
+          <!-- /tabs-right -->
         </div>
-      </div>
-      <div class="col-md-8 hidden-xs ">
-        <h3 class="widget-title"><span id="noticia">Boletin</span></h3>
-        @foreach ($boletines as $b)
-        <iframe id="boletin" style="width:700px; height:360px;" src="{{ $b->url }}" frameborder="0" allowfullscreen></iframe>
-        <button class="btn btn-primary">Ver mas</button>
-        @endforeach
-        <!-- /tabs-right -->
       </div>
     </div>
   </div>
-</div>
-<!-- cargamos las instituciones -->
-<div class="container" id="menu">
-  <div class="section">
-    <div class="row">
-      <h3 class="widget-title"><span id="noticia">Instituciones</span></h3>
-      <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="carousel carousel-showmanymoveone slide" id="itemslider">
-          <div class="carousel-inner">
-            @foreach ($inst as $i)
-            <div class="item @if($i->id === $i->first()->id) {{ 'active' }} @endif">
-              <div class="col-xs-12 col-sm-6 col-md-2">
-                <a href="{{ route('institucion.show', $i->id ) }}"><img src="{{asset('imagenes/instituciones/'.$i->logo)}}" class="img-responsive center-block" width="100px" height="100px"></a>
-                <h4 class="text-center">{{$i->nombres}}</h4>
+  <!-- cargamos las instituciones -->
+  <div class="container" id="menu">
+    <div class="section">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <h3 class="widget-title"><span id="noticia">Instituciones</span></h3>
+          <div class="carousel carousel-showmanymoveone slide" id="itemslider">
+            <div class="carousel-inner">
+              @foreach ($inst as $i)
+              <div class="item @if($i->id === $i->first()->id) {{ 'active' }} @endif">
+                <div class="col-xs-12 col-sm-6 col-md-2">
+                  <a href="{{ route('institucion.show', $i->id ) }}"><img src="{{asset('imagenes/instituciones/'.$i->logo)}}" class="img-responsive center-block" width="100px" height="100px"></a>
+                  <h4 class="text-center">{{$i->nombres}}</h4>
+                </div>
+              </div>
+              @endforeach
+            </div>
+            <div id="slider-control">
+              <a class="left carousel-control" href="#itemslider" data-slide="prev"><img src="https://s12.postimg.org/uj3ffq90d/arrow_left.png" alt="Left" class="img-responsive"></a>
+              <a class="right carousel-control" href="#itemslider" data-slide="next"><img src="https://s12.postimg.org/djuh0gxst/arrow_right.png" alt="Right" class="img-responsive"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container" id="menu">
+    <section class="section">
+      <div class="row">
+        <div class="col-md-9">
+          <h3 class="widget-title"><span id="noticia">Tesis</span></h3>
+          <!-- ITEM -->
+          <div class="item">
+            <div class="row">
+              @foreach($tesis as $t)
+              <div class="col-md-3">
+                <a href="{{ route('tesis.show', $t->id ) }}">
+                  <img class="img-responsive" src="{{asset('imagenes/tesis/'.$t->imagen)}}" alt="">
+                </a>
+              </div>
+              <div class="col-md-9">
+                <div class="descrip">
+                  <h2 class="titles"><a href="{{ route('tesis.show', $t->id ) }}">{{$t->tema}}</a></h2>
+                  <p class="description" id="texto-cortado">{{ $t->introduccion }}</p>
+                  <p><a href="#">Continuar ...</a></p>
+                  <p><i class="fa fa-calendar"></i> {{$t->created_at->diffForHumans()}}/ <i class="fa  fa-user-o"></i>{{$t->autor}}</p>
+                </div>
+              </div>
+              @endforeach
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <h3 class="widget-title"><span id="noticia">Enlaces de Interes</span></h3>
+        </div>
+        <!-- <div class="col-md-3">
+          <h3 class="widget-title"><span id="noticia">Tesis</span></h3> -->
+          <!-- ITEM -->
+          <!-- <div class="item">
+            <div class="thumbnail">
+              <div class="caption">
+                <div class="descrip">
+                  <p class="strong">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit.</p>
+                  <p>
+                    <a href="#" class="btn btn-link" role="button">Leer mas...</a>
+                  </p>
+                </div>
               </div>
             </div>
-            @endforeach
+          </div> -->
+
+          <!-- ITEM -->
+          <!-- <div class="item">
+            <div class="thumbnail">
+              <div class="caption">
+                <div class="descrip">
+                  <p class="strong">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit.</p>
+                  <p>
+                    <a href="#" class="btn btn-link" role="button">Leer mas...</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- ITEM -->
+          <!-- <div class="item">
+            <div class="thumbnail">
+              <div class="caption">
+                <div class="descrip">
+                  <p class="strong">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit.</p>
+                  <p>
+                    <a href="#" class="btn btn-link" role="button">Leer mas...</a>
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div id="slider-control">
-            <a class="left carousel-control" href="#itemslider" data-slide="prev"><img src="https://s12.postimg.org/uj3ffq90d/arrow_left.png" alt="Left" class="img-responsive"></a>
-            <a class="right carousel-control" href="#itemslider" data-slide="next"><img src="https://s12.postimg.org/djuh0gxst/arrow_right.png" alt="Right" class="img-responsive"></a>
-          </div>
+        </div> -->
+      </div>
+    </section>
+  </div>
+  <!-- empieza footer -->
+  <div class="container" id="menu">
+    <footer>
+      <div class="container">
+        <div class="row text-center">
+          <ul class="list-inline">
+            <li>
+              <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-youtube-play fa-2x"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-instagram fa-2x"></i></a> 
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
+            </li>               
+          </ul>
+        </div>
+        <div class="row text-center">   
+          <ul class="menu list-inline">
+            <li>
+              <a href="http://www.farem.unan.edu.ni" id="enlaces">Farem Estelí</a>
+            </li>     
+            <li>
+              <a href="http://www.bcn.gob.ni" id="enlaces">Banco Central de Nicaragua</a>
+            </li>
+            <li>
+              <a href="#" id="enlaces"></a>
+            </li>      
+            <!-- <li>
+              <a href="#" id="enlaces">Gallery</a>
+            </li> -->
+            <li>
+              <a href="#" id="enlaces">Contáctenos</a>
+            </li>
+          </ul>
+        </div>   
+      </div> 
+    </footer>
+    <div class="copyright">
+      <div class="container">
+        <div class="row text-center">
+          <p>Copyright © 2017 All rights reserved</p>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- empieza footer -->
-<div class="container" id="menu">
-  <footer>
-    <div class="container">
-      <div class="row text-center">
-        <ul class="list-inline">
-          <li>
-            <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-youtube-play fa-2x"></i></a>
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-instagram fa-2x"></i></a> 
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
-          </li>               
-        </ul>
-      </div>
-      <div class="row text-center">   
-        <ul class="menu list-inline">
-          <li>
-            <a href="http://www.farem.unan.edu.ni" id="enlaces">Farem Estelí</a>
-          </li>     
-          <li>
-            <a href="http://www.bcn.gob.ni" id="enlaces">Banco Central de Nicaragua</a>
-          </li>
-          <li>
-            <a href="#" id="enlaces"></a>
-          </li>      
-          <li>
-            <a href="#" id="enlaces">Gallery</a>
-          </li>
-          <li>
-            <a href="#" id="enlaces">Contact</a>
-          </li>
-        </ul>
-      </div>   
-    </div> 
-  </footer>
-  <div class="copyright">
-    <div class="container">
-      <div class="row text-center">
-        <p>Copyright © 2017 All rights reserved</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- End -->
-<script src="js/bootstrap.js"></script>
-<script>
- $(window).load(function() {
-  $('.post-module').hover(function() {
-    $(this).find('.description').stop().animate({
-      height: "toggle",
-      opacity: "toggle"
-    }, 300);
-  });
-});      
+  <!-- End -->
+  <script src="js/bootstrap.js"></script>
+  <script>
+   $(window).load(function() {
+    $('.post-module').hover(function() {
+      $(this).find('.description').stop().animate({
+        height: "toggle",
+        opacity: "toggle"
+      }, 300);
+    });
+  });      
 </script>
 <!-- script carrusel instituciones -->
 <script>  

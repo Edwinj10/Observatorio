@@ -124,6 +124,7 @@
                 <ul class="treeview-menu">
                   <!-- <li><a href="{!!URL::to('/indicador/create')!!}"><i class="fa fa-circle-o"></i> Agregar</a></li> -->
                   <li><a href="{!!URL::to('/indicador')!!}"><i class="fa fa-circle-o"></i> Listar</a></li>
+                  <li><a href="{!!URL::to('/tipo')!!}"><i class="fa fa-circle-o"></i> Tipo de indicadores</a></li>
                 </ul>
               </li>
 
@@ -133,7 +134,6 @@
                   <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="{!!URL::to('/informe/create')!!}"><i class="fa fa-circle-o"></i> Agregar</a></li>
                   <li><a href="{!!URL::to('/informe')!!}"><i class="fa fa-circle-o"></i> Listar</a></li>
                 </ul>
               </li>
@@ -185,8 +185,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="ventas/venta"><i class="fa fa-circle-o"></i> Agregar</a></li>
-                <li><a href="ventas/cliente"><i class="fa fa-circle-o"></i> Listar</a></li>
+                <li><a href="{!!URL::to('/portadas')!!}"><i class="fa fa-circle-o"></i> Listar</a></li>
               </ul>
             </li>
             <li class="treeview">

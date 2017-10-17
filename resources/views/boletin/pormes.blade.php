@@ -29,7 +29,9 @@
    <div class="col-md-4">
     <div class="container-fluid">    
       <iframe id="boletin" style="width:325px; height:240px;" src="{{ $b->url }}" frameborder="0" allowfullscreen></iframe>
-      <p id="show"> {{ $b->descripcion }} </p>
+      <a href="{{ route ('boletin.show',[$b->id])}}">
+        <p id="bole"> Fecha: <b>{{ $b->dia }}/{{ $b->mes }}/{{$b->anio }}</b></p> <button class="btn btn-primary">Ver</button>
+      </a>
     </div>
   </div>
   @empty

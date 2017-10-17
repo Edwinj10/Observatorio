@@ -14,8 +14,8 @@
 </head>
   <div class="row">
     <section class="new-deal">
-      <h3 class="widget-title"><span id="noticia">Instutuciones Afiliadas</span></h3>
      <div class="container">
+      <h3 class="widget-title"><span id="noticia">Instutuciones Afiliadas</span></h3>
       @foreach ($instituciones as $s)
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 deal deal-block">
         <div class="item-slide">

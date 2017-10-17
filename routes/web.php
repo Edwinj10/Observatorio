@@ -28,9 +28,10 @@ Route::resource('carreras', 'carrerasController');
 Route::resource('mail', 'MailController');
 Route::resource('institucion', 'InstitucionController');
 Route::resource('comentarios', 'ComentarioController');
+Route::resource('portadas', 'ImageneController');
 Route::delete('comentarios_delete{id}', 'ComentarioController@eliminar');
 Route::get('comentarios/estado/{id}', 'BackController@comentarios');
-Route::get('indicador', 'BackController@indicadores');
+Route::get('indicadors', 'BackController@indicadores');
 Route::get('indicador/tipo/{id}', 'BackController@indicadores_tipo');
 // BackController
 Route::get('tesisporcarreras/{id}', 'BackController@tesis');

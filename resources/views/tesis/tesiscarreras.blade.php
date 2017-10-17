@@ -6,6 +6,8 @@
     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
       <h3 class="widget-title"><span id="noticia">Listado de Tesis
       </span></h3>
+      <h4 class="widget-title">Carrera: <b>@foreach ($tesis2 as $tes2)
+        {{$tes2->carrera}} @endforeach</b></h4>
     </div>
   </div>
   <div class="row">

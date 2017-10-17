@@ -25,10 +25,7 @@
 		<div class="form-group">
 			<label for="descripcion">Descripcion</label>
 			<textarea rows="5" id="bodyField" name="descripcion"  class="form-control" placeholder="Ingrese la Descripcion"></textarea>
-			
-			
-
-			@ckeditor('bodyField', ['height' => 400, 'width'=>800])
+			@ckeditor('bodyField')
 			
 			<!-- <input type="text" name="descripcion" required value="{{old('descripcion')}}" class="form-control" placeholder="Ingrese la Descripcion"> -->
 		</div>

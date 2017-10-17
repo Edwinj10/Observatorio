@@ -1,14 +1,23 @@
 @extends ('layouts.principal')
 @section ('content')
-<br>
 <h3 class="widget-title"><span id="noticia">Indicadores</span></h3>
 <div class="row">
 	<div class="col-md-6">
 		<div class="form-group">
-			<h3 class="panel-title"><b>Filtrar por tipo de indicador:</b></h3>
-			<select name="tipo" class="form-control" onchange="Seleccionar();" id="tipo">
+			<h4><b>Filtrar por tipo de indicador:</b></h4>
+			<select name="tipo" class="form-control selectpicker" data-live-search="true" onchange="Seleccionar();" id="tipo">
 				@foreach ($tipo as $t)
 				<option value="{{$t->id}}">{{$t->tipo}}</option>
+				@endforeach
+			</select>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="form-group">
+			<h4><b>Filtrar tipos de indicadores por Instituciones:</b></h4>
+			<select name="captura" class="form-control selectpicker" data-live-search="true" onchange="Capturar();" id="captura">
+				@foreach ($menu as $m)
+				<option value="{{$m->id}}">{{$m->tipo}}</option>
 				@endforeach
 			</select>
 		</div>
@@ -41,16 +50,23 @@
 	@endforelse
 </div>  
 @push ('scripts')
-{!!Html::script('/js/tabla.js')!!}
-<script type="text/javascript">
+<!-- {!!Html::script('/js/tabla.js')!!}
+ --><script type="text/javascript">
 	function Seleccionar()
 	{
 		var id=$('#tipo option:selected').text();
 
 		var ruta='/indicador/tipo/'+ id;
 
-		console.log(id);
+		// console.log(id);
 		window.location.href=ruta;
+	}
+	function Capturar()
+	{
+		var cap=$('#captura option:selected').val();
+		var rutas='/indicadores/' + cap;
+		window.location.href=rutas;
+
 	}
 </script>
 @endpush

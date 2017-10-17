@@ -1,5 +1,5 @@
-<div class="modal fade modal-slide-in-right" aria-hidden="true" role="dialog" tabindex="-1" id="modal-eliminar-{{$c->id}}">
-	{{Form::open(array('action'=>array('ComentarioController@eliminar', $c->id), 'method'=>'delete'))}}	
+<div class="modal fade modal-slide-in-right" aria-hidden="true" role="dialog" tabindex="-1" id="modal-delete-{{$i->id}}">
+	{{Form::open(array('action'=>array('ImageneController@destroy', $i->id), 'method'=>'delete'))}}	
 
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -8,10 +8,10 @@
 					<span aria-hidden="true">x</span>
 					
 				</button>
-				<h4 class="modal-title">Eliminar Comentario</h4>
+				<h4 class="modal-title">Eliminar Imagene</h4>
 			</div>
 			<div class="modal-body">
-				<p>Confirmar si desea realizar la accion</p>
+				<p>Confirmar si desea realizar la acción</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

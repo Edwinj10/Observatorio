@@ -14,8 +14,8 @@ class BackController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['only' => 'comentarios']);
-        $this->middleware('admin', ['only' => 'comentarios']);
+        $this->middleware('auth', ['only' => ['comentarios', 'mostrar']]);
+        $this->middleware('admin',['only' => ['comentarios', 'mostrar']]);
     }
     public function index(Request $request)
     {
@@ -28,7 +28,7 @@ class BackController extends Controller
             ->select('t.*','i.nombre', 'c.carrera')
             ->where('t.tema','LIKE', '%'.$query.'%')
             ->orderBy('t.id', 'desc')
-            ->simplepaginate(6);
+            ->simplepaginate(50);
 
             return view('tesis.listar', ["tesis"=>$tesis, "searchText"=>$query]);
         }
@@ -89,8 +89,13 @@ class BackController extends Controller
         ->join('indicadors as i', 'i.id', '=', 't.id_indicador')
         ->select('i.*', 't.*', 'c.*')
         ->where('t.id_carrera', '=', $id)
-        ->paginate(50);
-        return view('tesis.listar', ["tesis" => $tesis]);
+        ->simplepaginate(50);
+        $tesis2 = DB::table('teses as tes')
+        ->join('carreras as car', 'car.id', 'tes.id_carrera', 'car.id')
+        ->select('car.carrera', 'car.id')
+        ->where('car.id', '=', $id)
+        ->paginate(1);
+        return view('tesis.tesiscarreras', ["tesis" => $tesis, 'tesis2'=>$tesis2]);
     }
     public function contacto(Request $request)
     {
@@ -117,7 +122,7 @@ class BackController extends Controller
             ->select('i.nombre', 'i.id as indicador_id', 'i.descripcion', 't.tipo', 'in.nombres', 'f.id as fecha', 'p.precio', 'f.dia', 'f.mes', 'f.anio')
             ->where('i.id', '=', $id)
             ->orderBy('f.id', 'desc')
-            ->get();
+            ->simplepaginate(50);
             // return $detalle;
             $indicador = DB::table('indicadors as i')
             ->join('institucions as ind', 'i.institucion_id', '=', 'ind.id')
@@ -127,6 +132,7 @@ class BackController extends Controller
 
             $indicador2 = DB::table('indicadors as i')
             ->select('i.id', 'i.nombre')
+            ->orderBy('i.nombre', 'asc')
             ->get();
 
             return view('institucion.tabla', ["detalle" => $detalle, 'indicador' => $indicador, 'indicador2' => $indicador2, "searchText" => $query]);
@@ -182,55 +188,57 @@ class BackController extends Controller
     }
     public function vertodos()
     {
-          $boletines=DB::table('boletins as b')
-          ->select('b.*')
-          ->get();
-          return view('boletin.todos', ["boletines"=>$boletines]);
-    }
+      $boletines=DB::table('boletins as b')
+      ->select('b.*')
+      ->get();
+      return view('boletin.todos', ["boletines"=>$boletines]);
+  }
   public function verpormes($mes)
-    {
-        $boletines=DB::table('boletins as b')
-        ->select('b.*')
-        ->where('b.mes', '=', $mes)
-        ->get();
-        return view('boletin.pormes', ["boletines"=>$boletines]);
-    }
-     public function comentarios(Request $request, $id)
-    {
-        $comentarios = DB::table('comentarios as c')
-            ->join('noticias as n', 'c.noticias_id', '=', 'n.id')
-            ->join('users as u', 'c.user_id', '=', 'u.id')
-            ->select('c.*', 'n.titulo', 'u.name', 'u.email')
-            ->where('c.estado', '=', $id)
+  {
+    $boletines=DB::table('boletins as b')
+    ->select('b.*')
+    ->where('b.mes', '=', $mes)
+    ->get();
+    return view('boletin.pormes', ["boletines"=>$boletines]);
+}
+public function comentarios(Request $request, $id)
+{
+    $comentarios = DB::table('comentarios as c')
+    ->join('noticias as n', 'c.noticias_id', '=', 'n.id')
+    ->join('users as u', 'c.user_id', '=', 'u.id')
+    ->select('c.*', 'n.titulo', 'u.name', 'u.email')
+    ->where('c.estado', '=', $id)
         // ->where('n.id', '=',$id)
-            ->orderBy('c.id', 'desc')
-            ->paginate(20);
+    ->orderBy('c.id', 'desc')
+    ->paginate(20);
 
-        $tipo=DB::table('comentarios as co')
-        ->select('co.estado')
-        ->where('co.estado', '=', $id)
-        ->paginate(1);
-        return view('comentarios.espera', ["comentarios"=>$comentarios, 'tipo'=>$tipo]);
-    }
-    public function indicadores(Request $request)
-    {
-        $indicadores=DB::table('indicadors as i')
-        ->join('tipo__indicadors as t', 'i.indicador_id', '=', 't.id')
-        ->select('i.*', 't.tipo', 't.id')
-        ->orderBy('i.nombre', 'asc')
-        ->paginate(39);
-        $tipo=Tipo_Indicador::all();
-        return view ('indicador.listado', ["indicadores"=>$indicadores, 'tipo'=>$tipo]);
-    }
-    public function indicadores_tipo(Request $request, $id)
-    {
-        $indicadores=DB::table('indicadors as i')
-        ->join('tipo__indicadors as t', 'i.indicador_id', '=', 't.id')
-        ->select('i.*', 't.tipo', 't.id')
-        ->where('t.tipo', '=', $id)
-        ->orderBy('i.nombre', 'asc')
-        ->paginate(39);
-        $tipo=Tipo_Indicador::all();
-        return view ('indicador.tipo', ["indicadores"=>$indicadores, 'tipo'=>$tipo]);
-    }
+    $tipo=DB::table('comentarios as co')
+    ->select('co.estado')
+    ->where('co.estado', '=', $id)
+    ->paginate(1);
+    return view('comentarios.espera', ["comentarios"=>$comentarios, 'tipo'=>$tipo]);
+}
+public function indicadores(Request $request)
+{
+    $indicadores=DB::table('indicadors as i')
+    ->join('tipo__indicadors as t', 'i.indicador_id', '=', 't.id')
+    ->select('i.*', 't.tipo')
+    ->orderBy('i.nombre', 'asc')
+    ->paginate(39);
+    $tipo=Tipo_Indicador::all();
+    $menu=Tipo_Indicador::all();
+    return view ('indicador.listado', ["indicadores"=>$indicadores, 'tipo'=>$tipo, 'menu'=>$menu]);
+}
+public function indicadores_tipo(Request $request, $id)
+{
+    $indicadores=DB::table('indicadors as i')
+    ->join('tipo__indicadors as t', 'i.indicador_id', '=', 't.id')
+    ->select('i.*', 't.tipo')
+    ->where('t.tipo', '=', $id)
+    ->orderBy('i.nombre', 'asc')
+    ->paginate(39);
+    $tipo=Tipo_Indicador::all();
+    $menu=Tipo_Indicador::all();
+    return view ('indicador.tipo', ["indicadores"=>$indicadores, 'tipo'=>$tipo, 'menu'=>$menu]);
+}
 }

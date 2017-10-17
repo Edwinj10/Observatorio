@@ -90,7 +90,8 @@ class BoletinController extends Controller
      */
     public function show($id)
     {
-        //
+        $boletin = Boletin::find($id);
+        return view ('boletin.show', ['boletin'=>$boletin]);
     }
 
     /**

@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use App\Noticia;
 use App\Tipo_Indicador;
 use App\Boletin;
+use App\Tesis;
 use App\Indicador;
 use App\Institucion;
+use App\Imagen;
 use Carbon\Carbon;
 use Session;
 use Redirect;
@@ -22,10 +24,7 @@ class FrontController extends Controller
         $this->middleware('auth', ['only' => 'administracion']);
         // para los midelware
         $this->middleware('admin', ['only' => 'administracion']);
-        Carbon::setLocale('es');
-        
-        
-        
+        Carbon::setLocale('es');  
     }
     
     public function index (Request $request) 
@@ -44,6 +43,8 @@ class FrontController extends Controller
             ->orderBy('n.id', 'desc')
             ->paginate(6);
             $boletines=Boletin::orderBy('id', 'desc')->paginate(1);;
+            $tesis=Tesis::orderBy('id', 'desc')->paginate(3);;
+            $imagen=Imagen::all();
             // cargar boletines
             // $max= DB::table('boletins')->max('id');
             // $m=$max-1;
@@ -56,12 +57,10 @@ class FrontController extends Controller
             $ind=DB::select("call ultimosPrecios");
             // cargar las imagenes de las instituciones en el carrusel
             $inst = Institucion::paginate(6);
-            $menu=Tipo_Indicador::all();
-            $comentarios = DB::table('comentarios')->count();
+            // $comentarios = DB::table('comentarios')->count();
         }
-        return view('/index', ["noticias"=>$noticias,  'boletines'=>$boletines , 'inst'=>$inst, 'ind'=>$ind, 'menu' =>$menu, 'comentarios'=>$comentarios,  "searchText"=>$query]);
+        return view('/index', ["noticias"=>$noticias,  'boletines'=>$boletines , 'inst'=>$inst, 'ind'=>$ind,  "searchText"=>$query, 'tesis'=>$tesis, 'imagen'=>$imagen]);
     }
-
 
     public function administracion()
     {
@@ -90,14 +89,10 @@ class FrontController extends Controller
             ->where('in.indicador_id','=', $id)
             ->groupBy('i.nombres', 'i.logo','i.id', 'i.direccion', 'in.institucion_id', 'in.indicador_id')
             ->get();
-                    // return $social;
-
-
-            // $id2;
-            // $id2=$id; 'i.institucion_id'
-            // return $id2;
-            $tipo=Tipo_Indicador::orderBy('id', 'desc')->where('id', '=',$id)->paginate(1);;;
-            return view('indicador.listar', ["social"=>$social, "tipo"=>$tipo, "searchText"=>$query]);
+            $tipo=Tipo_Indicador::all();
+            $filtro=Tipo_Indicador::all();
+            $capturar=Tipo_Indicador::orderBy('id', 'desc')->where('id', '=',$id)->paginate(1);;;
+            return view('indicador.listar', ["social"=>$social, "tipo"=>$tipo, "searchText"=>$query, 'filtro'=>$filtro, 'capturar'=>$capturar]);
         }
         
     }

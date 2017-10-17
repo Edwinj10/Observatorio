@@ -16,22 +16,16 @@
       <div class="panel panel-default panel-table">
         <div class="panel-heading">
           <div class="row">
-            <div class="col-lg-4 col-xs-12">
-              <h3 class="panel-title">Listado de Indicadores</h3>
+            <div class="col col-xs-6">
+              <h3 class="panel-title">Listado de Imagenes de portada</h3>
             </div>
-            <div class="col-lg-8 col-xs-12 text-right">
+            <div class="col col-xs-6 text-right">
               <button type="button" class="btn btn-sm btn-primary btn-primary" data-target="#modal-create" data-toggle="modal"><em class="fa fa-pencil">Crear Nuevo</em></button>
-              <a href="/informe">
-                <button type="button" class="btn btn-sm btn-primary btn-create">Ver Precios</button>
-              </a>
-              <a href="/tipo/">
-                <button type="button" class="btn btn-sm btn-primary btn-create">Listar Tipos Indicadores</button>
-              </a>
-
+              <button type="button" id="ver" class="btn btn-sm btn-primary btn-success">Eliminar</button>
             </div>
+            @include('imagenes.modal-create')
           </div>
           @include('buscador')
-          @include('indicador.modal-create')
         </div>
         <div class="panel-body">
           <div class="table-responsive">
@@ -40,37 +34,39 @@
                 <tr>
                   <th><em class="fa fa-cog"></em></th>
                   <!-- <th class="hidden-xs">ID</th> -->
-                  <th>Nombre</th>
-                  <th>Nombre de la Institucion</th>
-                  <th>Tipo Indicador</th>
+                  <th>Titulo</th>
+                  <th>Creador</th>
+                  <th>Imagen</th>
                 </tr> 
               </thead>
               <tbody>
                 <tr>
-                  @foreach ($indicadores as $i)
+                  @foreach ($imagenes as $i)
                   <td align="center">
-                    <a class="btn btn-default" data-target="#modal-edit-{{$i->id}}" data-toggle="modal"><em class="fa fa-pencil"></em></a>
+                    <a class="btn btn-default" href="{{ route ('portadas.edit',[$i->id])}}"><em class="fa fa-pencil"></em></a>
+                    <a class="btn btn-danger" href="" data-target="#modal-delete-{{$i->id}}" data-toggle="modal"><em class="fa fa-trash"></em></a>
                   </td>
-                  <!-- <td>{{ $i->id}}</td> -->
-                  <td>{!! $i->nombre!!}</td>
-                  <td>{!! $i->nombres!!}</td>
-                  <td>{{ $i->tipo}}</td>
+
+                  <td>{{ $i->titulo}}</td>
+                  <td>{{ $i->name}}</td>
+                  <td>
+                    <img src="{{asset('imagenes/imagenes/'.$i->foto)}}" alt="{{ $i->titulo}}" height="100px" width="100px" class="img-thumbail">
+                  </td>
                 </tr>
-                @include('indicador.modaledit')
+                @include('imagenes.modal') 
                 @endforeach
               </tbody>
             </table>
           </div>
-
         </div>
         <div class="panel-footer">
           <div class="row">
             <div class="col col-xs-4">
-              Pagina {{$indicadores->currentPage()}} de {{$indicadores->lastPage()}}
+              Pagina {{$imagenes->currentPage()}} de {{$imagenes->lastPage()}}
             </div>
             <div class="col col-xs-8">
               <ul class="pagination hidden-xs pull-right">
-                {{$indicadores->render()}}
+                {{$imagenes->render()}}
               </ul>
               <ul class="pagination visible-xs pull-right">
                 <li><a href="#">«</a></li>
@@ -82,4 +78,16 @@
       </div>
 
     </div></div></div>
-    @stop
+    @push ('scripts')
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $("#ver").click(function(){
+          $('.btn-danger').toggle(1000);
+        });
+      });
+      $(document).ready(function(){
+        $(".btn-danger").hide();
+      });
+    </script>
+      @endpush
+      @stop
