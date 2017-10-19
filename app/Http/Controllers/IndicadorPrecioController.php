@@ -134,6 +134,11 @@ class IndicadorPrecioController extends Controller
         // ->where('f.mes', '=', $mes)
         ->simplepaginate(15);
 
+        $indicadores=DB::table('indicadors as i')
+        ->select('i.*')
+        ->orderBy('i.nombre', 'asc')
+        ->get();
+
         // $precios=DB::table('precios as p')
         // ->join('indicadors as i', 'i.id', '=', 'p.indicador_id')
         // ->select('p.*', 'i.*')
@@ -143,7 +148,7 @@ class IndicadorPrecioController extends Controller
          // 'precios'=> $precios
 
 
-        return view ('informe.show', ['i'=>$i, 'fechas'=> $fechas,]);
+        return view ('informe.show', ['i'=>$i, 'fechas'=> $fechas,  'indicadores'=>$indicadores]);
     }
 
     /**

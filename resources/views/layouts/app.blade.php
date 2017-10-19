@@ -83,6 +83,7 @@
     <!-- Scripts -->
 
     <script src="js/app.js"></script>
+    <script src="/js/precargar.js"></script>
 @stack('scripts')
 </body>
 </html>

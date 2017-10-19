@@ -372,9 +372,10 @@
               <div class="col-md-9">
                 <div class="descrip">
                   <h2 class="titles"><a href="{{ route('tesis.show', $t->id ) }}">{{$t->tema}}</a></h2>
-                  <p class="description" id="texto-cortado">{{ $t->introduccion }}</p>
-                  <p><a href="#">Continuar ...</a></p>
-                  <p><i class="fa fa-calendar"></i> {{$t->created_at->diffForHumans()}}/ <i class="fa  fa-user-o"></i>{{$t->autor}}</p>
+                  <div id="descripcion">
+                    <p class="description" id="texto-cortado">{{ $t->introduccion }}</p>
+                  </div>
+                  <p><i class="fa fa-calendar"></i> {{$t->created_at->diffForHumans()}}/   <i class="fa  fa-user-o"></i>{{$t->autor}}</p>
                 </div>
               </div>
               @endforeach
@@ -519,7 +520,19 @@
     });
   });
 </script>
+<script>
+  function ellipsisJS ( containerId , largomaximo) {
+    var $container = $("#" + containerId); 
+    var $text = $("#descripcion p");    
 
+    while ( $container.text().length > largomaximo ) {
+      $text.text(function (index, text) {
+        return text.replace(/\W*\s(\S)*$/, '...');
+      });
+    }
+  }
 
+  ellipsisJS("descripcion", 500);  
+</script>
 </body>
 </html>

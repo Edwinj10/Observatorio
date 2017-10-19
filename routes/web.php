@@ -43,6 +43,7 @@ Route::get('listartesis', 'BackController@index');
 Route::get('listado/{id}', 'BackController@indicadores_detalles');
 Route::get('boletines_todos', 'BackController@vertodos');
 Route::get('boletines_mes/{id}', 'BackController@verpormes');
+Route::get('promedios_meses/{anio}/{id}', 'BackController@promedios_meses');
 // FrontController
 Route::get('administracion', 'FrontController@administracion');
 Route::get('noticia', 'FrontController@noticia');

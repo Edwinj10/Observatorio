@@ -37,7 +37,7 @@
         <div class="carousel-inner" role="listbox">
           <!-- Item 1 -->
           <div class="item active slide1">
-            <img src="/img/obser1.jpg" data-animation="animated zoomInLeft" alt="">
+            <img src="/img/observatorio.jpg" data-animation="animated zoomInLeft" alt="">
           </div> 
           <!-- Item 2 -->
           <div class="item slide2">

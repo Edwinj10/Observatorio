@@ -11,20 +11,24 @@
   <div class="col-lg-4 col-xs-12">
     <h4 class="widget">Portada</h4>
     <div class="avatar">
-      <img class="img-responsive" id="tesis" alt="" src="{{asset('imagenes/tesis/'.$tesis->imagen)}}" height="250px" width="250px">
+      <img class="img-responsive" id="tesis" alt="" src="{{asset('/imagenes/tesis/'.$tesis->imagen)}}" height="250px" width="250px">
     </div>
   </div>
-  <div class="col-lg-4 col-xs-12">
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
     <h4 class="widget">Tema</h4>
     <p id="show">{{ $tesis->tema}}</p>
   </div>
-  <div class="col-lg-4 col-xs-12">
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
     <h4 class="widget">Autor(es)</h4>
     <p id="show">{{ $tesis->autor}}</p>  
   </div>
-  <div class="col-lg-4 col-xs-12">
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
     <h4 class="widget">Carrera(es)</h4> 
     <p id="show">{{ $tesis->carrera}}</p> 
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+    <h4 class="widget">Metodologia</h4> 
+    <p id="show">{{ $tesis->metodologia}}</p> 
   </div>
 </div>
 <div class="row">

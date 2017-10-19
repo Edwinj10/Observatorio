@@ -2,12 +2,22 @@
 @section ('content')
 </head>
 <body>
+  <h3 class="widget-title"><span id="noticia">Listado de Tesis
+  </span></h3>
   <div class="row">
-    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-      <h3 class="widget-title"><span id="noticia">Listado de Tesis
-      </span></h3>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+      <h4 class="widget-title">Click en la lista para filtar por carreras:</h4>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+      <select name="nombre" class="form-control selectpicker" data-live-search="true" id="carre" onchange="ShowSelected();">
+        <option value="">Elegir una opcion</option>
+        @foreach ($carreras as $c)
+        <option value="{{$c->id}}"><a href="/indicadoresid/{{$c->id}}">{{$c->carrera}}</a></option>
+        @endforeach
+      </select>
     </div>
   </div>
+  <br>
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default panel-table">
@@ -35,7 +45,9 @@
                 <tr>
                   @forelse ($tesis as $t)
                   <td>
-                    <img src="{{asset('/imagenes/tesis/'.$t->imagen)}}"  height="50px" width="50px" class="img-thumbail">
+                    <a href="/tesis/{{$t->id}}">
+                      <img src="{{asset('/imagenes/tesis/'.$t->imagen)}}"  height="50px" width="50px" class="img-thumbail">
+                    </a>
                   </td>
                   <td>{!! $t->tema!!}</td>
                   <td>{{ $t->autor}}</td>
@@ -75,8 +87,10 @@
 <script type="text/javascript">
   function ShowSelected()
   {
-    var id =$("#seleccion option:selected").val();
-    document.getElementById('capturar').value = id;
+
+    var id=$('#carre option:selected').val();
+    var ruta='/tesisporcarreras/'+ id;
+    window.location.href=ruta;
   }
 
 </script>
