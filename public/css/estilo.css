@@ -1367,3 +1367,23 @@ i.fa.fa-bars {
     font-size: 24px !important;
     font-weight: 700;
   }
+ /*img tesis index*/
+ img#tesis.img-responsive:hover {
+    
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+    
+ }
+
+ /*ir arriba*/
+ .ir-arriba {
+  display:none;
+  padding:20px;
+  background:#004679;
+  font-size:20px;
+  color:#fff;
+  cursor:pointer;
+  position: fixed;
+  bottom:20px;
+  right:20px;
+}

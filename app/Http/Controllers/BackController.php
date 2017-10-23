@@ -5,17 +5,22 @@ namespace App\Http\Controllers;
 use App\Contacto;
 use App\Tesis;
 use App\Indicador;
+use App\Comentario;
 use App\Tipo_Indicador;
+use Carbon\Carbon;
 use DB;
+use App\User;
 use Illuminate\Http\Request;
 use Mail;
+use Auth;
 
 class BackController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['only' => ['comentarios', 'mostrar']]);
+        $this->middleware('auth', ['only' => ['comentarios', 'mostrar', 'perfil']]);
         $this->middleware('admin',['only' => ['comentarios', 'mostrar']]);
+        Carbon::setLocale('es');
     }
     public function index(Request $request)
     {
@@ -145,7 +150,7 @@ class BackController extends Controller
             return view('institucion.tabla', ["detalle" => $detalle, 'indicador' => $indicador, 'indicador2' => $indicador2, "searchText" => $query]);
         }
     }
-    public function informe_fechas(Request $request, $fecha, $id)
+    public function informe_fechas(Request $request, $fecha, $fecha2, $id)
     {
         $i = DB::table('indicadors as i')
         ->select('i.*')
@@ -161,6 +166,8 @@ class BackController extends Controller
         ->select('f.*', 'p.*')
         ->where('p.indicador_id', '=', $id)
         ->where('f.mes', '=', $fecha)
+        ->where('f.anio', '=', $fecha2)
+        ->orderBy('f.dia', 'asc')
         ->simplepaginate(15);
 
         $indicadores=DB::table('indicadors as i')
@@ -288,10 +295,28 @@ class BackController extends Controller
         // return $promedio;
         return view ('graficos.promediomeses', ['promedio'=>$promedio, 'indicadores'=>$indicadores, 'fechas'=>$fechas, 'anios'=>$anios, 'i'=>$i]);
     }
-    public function promedios_anios(Request $request, $anio1, $anio2, $id)
+    public function perfil(Request $request)
     {
-        $promedio=DB::select('CALL promedioanios(' .$anio1 . ',' . $anio2 . ',' .$id . ');');
+        // $promedio=DB::select('CALL promedioxmes(' .$anio1 . ',' . $anio2 . ');');
+        // $anio1=DB::select('CALL promedioanios(' .$year . ',' . $id . ');');
+        // $anio2=DB::select('CALL promedioanios(' .$years . ',' . $id . ');');
+        // return $anio2;
+        // $perfil=User::orderBy('id', 'desc')->where('id', '=',$id);; 
+        $id = Auth::id();
+        $perfil=DB::table('users as u')
+        ->select('u.*')
+        ->where('u.id', '=', $id)
+        ->get();
 
-        return view('graficos.promedioanios', ['promedio'=>$promedio]); 
+        $user = User::find($id);
+
+        $comentario=DB::table('comentarios as c')
+        ->join('noticias as n', 'c.noticias_id', '=', 'n.id')
+        ->join('users as u', 'c.user_id', '=', 'u.id')
+        ->select('c.comentario', 'c.estado', 'n.titulo', 'n.foto as fotos', 'n.id as idd','u.id', 'c.id', 'u.tipo', 'c.fecha', 'u.foto', 'u.name')
+        ->where('c.user_id', '=',$id)
+        ->orderBy('c.id', 'desc')
+        ->paginate(10);
+        return view('perfil.perfil', ['perfil'=>$perfil, 'user'=>$user, 'comentario'=>$comentario]); 
     }
 }

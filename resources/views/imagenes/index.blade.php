@@ -43,8 +43,8 @@
                 <tr>
                   @foreach ($imagenes as $i)
                   <td align="center">
-                    <a class="btn btn-default" href="{{ route ('portadas.edit',[$i->id])}}"><em class="fa fa-pencil"></em></a>
-                    <a class="btn btn-danger" href="" data-target="#modal-delete-{{$i->id}}" data-toggle="modal"><em class="fa fa-trash"></em></a>
+                    <a class="btn btn-default" data-target="#modal-edit-{{$i->id}}" data-toggle="modal"><em class="fa fa-pencil"></em></a>
+                    <a class="btn btn-danger" data-target="#modal-delete-{{$i->id}}" data-toggle="modal"><em class="fa fa-trash"></em></a>
                   </td>
 
                   <td>{{ $i->titulo}}</td>
@@ -54,6 +54,7 @@
                   </td>
                 </tr>
                 @include('imagenes.modal') 
+                @include('imagenes.modaledit')
                 @endforeach
               </tbody>
             </table>

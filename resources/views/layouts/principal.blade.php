@@ -23,6 +23,9 @@
 
 
 <body>
+  <div class="hidden-xs">
+    <span class="ir-arriba fa fa-arrow-up"></span>
+  </div>
   <!-- empieza el headeer -->
   <div class="container" id="menu">
     <div id="first-slider">
@@ -171,8 +174,12 @@
             <ul class="dropdown-menu mega-dropdown-menu" id="hijo4">
               <li class="col-sm-6">
                 <ul>
-                  <li><a href="{{url('login')}}">Ajustes</a></li>  
-                  <li><a href="{{url('/administracion')}}">Administracion</a></li>                          
+
+                  @if (Auth::user()->tipo == "Administrador") 
+                  <li><a href="{{url('/administracion')}}">Administracion</a></li> 
+                  @else       
+                  <li><a href="{{url('/perfil')}}">Perfil</a></li>
+                  @endif                  
                 </ul>
               </li>
               <li class="col-sm-6">
@@ -259,6 +266,26 @@
   {!!Html::script('http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js')!!}
   <script src="{{asset('/js/bootstrap-select.min.js')}}"></script>
   <script src="{{asset('/js/fechas.js')}}"></script>
+  <script src="/js/precargar.js"></script>
+  <script>
+    $(document).ready(function(){
+
+      $('.ir-arriba').click(function(){
+        $('body, html').animate({
+          scrollTop: '0px'
+        },300 );
+      });
+
+      $(window).scroll(function(){
+        if ($(this).scrollTop() > 0){
+          $('.ir-arriba').slideDown(300);
+        } else {
+          $('.ir-arriba').slideUp(300);
+        };
+      });
+
+    });
+  </script>
   @stack('scripts')
 </body>
 </html>

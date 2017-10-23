@@ -38,9 +38,7 @@
       <td>{{ $usuario->twiter}}</td>
       <!-- <td>{{ $usuario->googleplus}}</td> -->
     </tr>
-   
     @endforeach
-
   </tbody>
 </table>
 <div class="panel-footer">

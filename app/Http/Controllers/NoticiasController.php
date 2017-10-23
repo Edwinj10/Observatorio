@@ -47,7 +47,11 @@ class NoticiasController extends Controller
             ->orderBy('n.id', 'desc')
             ->paginate(20);
 
-            return view('noticias.index', ["noticias"=>$noticias, "searchText"=>$query]);
+            $indicador=DB::table('indicadors as i')
+            ->select('i.*')
+            ->get();
+
+            return view('noticias.index', ["noticias"=>$noticias, "searchText"=>$query, 'indicador'=>$indicador]);
         }
         
 
@@ -60,12 +64,7 @@ class NoticiasController extends Controller
      */
     public function create()
     {
-        $indicador=DB::table('indicadors as i')
-        
-        ->select('i.*')
-        ->get();
 
-        return view ('noticias/create', ['indicador'=> $indicador]);
         
     }
 

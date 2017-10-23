@@ -27,13 +27,12 @@
               </div>
             </div>
             <div class="col col-xs-6 text-right">
-              <a href="/noticias/create">
-                <button type="button" class="btn btn-sm btn-primary btn-create">Crear Nuevo</button>
-              </a>
+              <button type="button" class="btn btn-sm btn-primary btn-primary" data-target="#modal-create" data-toggle="modal"><em class="fa fa-pencil">Crear Nuevo</em></button>
               <button type="button" id="ver" class="btn btn-sm btn-primary btn-success">Eliminar</button>
             </div>
           </div>
           @include('buscador')
+          @include('noticias.modal-create')
         </div>
         <div class="panel-body">
           <div class="table-responsive">
@@ -106,7 +105,7 @@
       $(document).ready(function(){
         $(".btn-danger").hide();
       });
-       function Seleccionar()
+      function Seleccionar()
       {
 
     // var cod = document.getElementById("indicadorcap").value;
@@ -131,6 +130,6 @@
     //   type:'get',
     // });
   }
-    </script>
-    @endpush
-    @stop
+</script>
+@endpush
+@stop

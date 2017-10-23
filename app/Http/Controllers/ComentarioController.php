@@ -101,7 +101,10 @@ class ComentarioController extends Controller
      */
     public function update(ComentarioRequest $request, $id)
     {
-        //
+        $c = Comentario::findOrFail($id);
+        $c->comentario=$request->get('comentario');
+        $c->update();
+        return back()->with('message', 'Comentario Modificado Correctamente');
     }
 
     /**

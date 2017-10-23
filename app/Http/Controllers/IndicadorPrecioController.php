@@ -131,6 +131,7 @@ class IndicadorPrecioController extends Controller
         ->join('indicadors as i', 'i.id', '=', 'p.indicador_id')
         ->select('f.*', 'p.*')
         ->where('p.indicador_id', '=', $id)
+        ->orderBy('f.mes', 'asc')
         // ->where('f.mes', '=', $mes)
         ->simplepaginate(15);
 

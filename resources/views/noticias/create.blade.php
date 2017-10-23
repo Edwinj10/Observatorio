@@ -1,11 +1,8 @@
-﻿@extends('layouts.admin')
-
-@section('content')
-
-@include('error.error')
-
-{!! Form::open(['route' => 'noticias.store' , 'method' =>'POST','files' => true]) !!}
-<div class="row">			
+﻿<html>
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
 	<div class="col-lg-6 col-sm-6 col-m-6 col-xs-12">
 		<div class="form-group">
 			<label for="titulo">Titulo</label>
@@ -46,7 +43,7 @@
 			<label>Categoria</label>
 			<select name="origen" class="form-control selectpicker" data-live-search="true">
 				<option value="Local">Local</option>
-				<option value="Nacional">Internacional</option>
+				<option value="Nacional">Nacional</option>
 			</select>
 
 		</div>
@@ -60,39 +57,7 @@
 		</div>
 		
 	</div>
-	<div class="col-lg-6 col-sm-6 col-m-6 col-xs-12">
-		<div class="form-group">
-			<!-- este toke nos ayudara a trabajr con las trasaciones -->
-			<input name="_token" value="{{ csrf_token() }}" type="hidden"></input>
-			<button class="btn btn-primary" type="submit">Guardar</button>
-			<button class="btn btn-danger" type="reset">Cancelar</button>
-		</div>
-		
-	</div>
-</div>
-
-
-
-{!!Form::close()!!}
-
-@push ('scripts')
-
-<!-- <script type="text/javascript">
-	function cuenta(){
-		var longi=140;
-		var resta="";
-		var detalles = document.getElementById("detalles").value.length;
-		resta=longi-detalles;
-		if (resta==10) {
-			alert("Estas llegando al limite de caracteres");
-		}
-		document.getElementById("mostar_caracter").value=resta;
-		if (detalles==140) {
-			alert("Ha llegando al tamaño maximo de caracteres permitidos");
-		}
-	}
-</script>
--->
+</body>
 <script type="text/javascript">
 	function ShowSelected()
 	{
@@ -131,5 +96,4 @@ function cuentatitulo(){
 	}
 }
 </script>
-@endpush
-@endsection
+</html>

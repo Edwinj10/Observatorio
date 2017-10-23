@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\UsuarioRequest;
 use App\Http\Requests\UserEditRequest;
 use DB;
 use App\User;
@@ -13,6 +14,7 @@ use Session;
 use Auth;
 use Carbon\Carbon;
 use Cache;
+use Image;
 class USController extends Controller
 {
     /**
@@ -78,31 +80,14 @@ class USController extends Controller
 
         if (Input::hasFile('foto')) 
         {
-           
             $file=Input::file('foto');
             $file->move(public_path().'/imagenes/usuarios/', $file->getClientOriginalName());
             $usuarios->foto=$file->getClientOriginalName();
-
         }
 
         $usuarios->save();
 
         return redirect('/usuarios')-> with('massage','Guardado');
-
-        // if ($request->ajax()) 
-        // {
-        
-        //     $result=User::create($request->all());
-        //     if ($result) 
-        //     {
-        //         return response()->ajax(['success'=>'true']);
-        //     }
-        //     else
-        //     {
-        //         return response()->ajax(['success'=>'false']);
-        //     }
-        // }
-
     }
     
 
@@ -151,11 +136,9 @@ class USController extends Controller
 
         if (Input::hasFile('foto')) 
         {
-           
             $file=Input::file('foto');
             $file->move(public_path().'/imagenes/usuarios/', $file->getClientOriginalName());
             $usuarios->foto=$file->getClientOriginalName();
-
         }
 
         $usuarios->update();
@@ -176,5 +159,12 @@ class USController extends Controller
         $usuario->delete();
         Session::flash ('message', 'Eliminado Correctamente');
         return redirect::to('/usuarios');
+    }
+    public function foto(UsuarioRequest $request, $id)
+    {
+        $p = User::findOrFail($id);
+        $p->fill($request->all());
+        $p->update();
+         return back()->with('message', 'Foto Modificada Correctamente');
     }
 }

@@ -56,12 +56,6 @@
                 @endif
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-md-8 col-md-offset-4">
-
-
-            </div>
-        </div>
         <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit">Registrarme</button>
     </form>
 </div>

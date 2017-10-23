@@ -29,6 +29,10 @@
     <link rel="shortcut icon" type="img/CIIEMP.png" href="/favicon.ico">
   </head>
   <body>
+      <div class="hidden-xs">
+        <span class="ir-arriba fa fa-arrow-up"></span>
+      </div>
+    
     <!-- empieza el headeer -->
     <div class="container" id="menu">
       <div id="first-slider">
@@ -177,8 +181,12 @@
             <ul class="dropdown-menu mega-dropdown-menu" id="hijo4">
               <li class="col-sm-6">
                 <ul>
-                  <li><a href="{{url('login')}}">Ajustes</a></li>  
-                  <li><a href="{{url('/administracion')}}">Administracion</a></li>                          
+
+                  @if (Auth::user()->tipo == "Administrador") 
+                  <li><a href="{{url('/administracion')}}">Administracion</a></li> 
+                  @else       
+                  <li><a href="{{url('/perfil')}}">Perfil</a></li>
+                  @endif                  
                 </ul>
               </li>
               <li class="col-sm-6">
@@ -219,10 +227,8 @@
                 <div class="item @if($img->id === $img->first()->id) {{ 'active' }} @endif">
                   <img  id="carruse" src="imagenes/imagenes/{{ $img->foto }}" data-animation="animated zoomInLeft" alt="{{ $img->alt }}" class="img-responsive"  width="100%"> 
                   <div class="carousel-caption">
-                    <a id="enlace" href="{{ route('portadas.show', $img->id ) }}">
-                      <h4 class="option animated pulse">{{$img->titulo}}</h4>
-                    </a>
-                    <a href="{{ route('portadas.show', $img->id ) }}"><button class="btn btn-primary">Leer Mas</button></a>
+                    <h4 class="option animated pulse">{{$img->titulo}}</h4>
+                    <!-- <a href="{{ route('portadas.show', $img->id ) }}"><button class="btn btn-primary">Leer Mas</button></a> -->
                   </div>
                 </div>
                 @endforeach
@@ -366,7 +372,7 @@
               @foreach($tesis as $t)
               <div class="col-md-3">
                 <a href="{{ route('tesis.show', $t->id ) }}">
-                  <img class="img-responsive" src="{{asset('imagenes/tesis/'.$t->imagen)}}" alt="">
+                  <img class="img-responsive" id="tesis" src="{{asset('imagenes/tesis/'.$t->imagen)}}" alt="">
                 </a>
               </div>
               <div class="col-md-9">
@@ -497,6 +503,25 @@
     });
   });      
 </script>
+<script>
+  $(document).ready(function(){
+
+    $('.ir-arriba').click(function(){
+      $('body, html').animate({
+        scrollTop: '0px'
+      },300 );
+    });
+
+    $(window).scroll(function(){
+      if ($(this).scrollTop() > 0){
+        $('.ir-arriba').slideDown(300);
+      } else {
+        $('.ir-arriba').slideUp(300);
+      };
+    });
+
+  });
+</script>
 <!-- script carrusel instituciones -->
 <script>  
   $(document).ready(function(){
@@ -534,5 +559,6 @@
 
   ellipsisJS("descripcion", 500);  
 </script>
+
 </body>
 </html>

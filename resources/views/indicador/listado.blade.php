@@ -6,6 +6,7 @@
 		<div class="form-group">
 			<h4><b>Filtrar por tipo de indicador:</b></h4>
 			<select name="tipo" class="form-control selectpicker" data-live-search="true" onchange="Seleccionar();" id="tipo">
+				 <option value="">Eliga una opcion</option>
 				@foreach ($tipo as $t)
 				<option value="{{$t->id}}">{{$t->tipo}}</option>
 				@endforeach
@@ -16,6 +17,7 @@
 		<div class="form-group">
 			<h4><b>Filtrar tipos de indicadores por Instituciones:</b></h4>
 			<select name="captura" class="form-control selectpicker" data-live-search="true" onchange="Capturar();" id="captura">
+				 <option value="">Eliga una opcion</option>
 				@foreach ($menu as $m)
 				<option value="{{$m->id}}">{{$m->tipo}}</option>
 				@endforeach

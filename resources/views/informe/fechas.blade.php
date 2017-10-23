@@ -8,7 +8,7 @@
 @section('content')
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
+<!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -65,6 +65,7 @@
         <div class="form-group">
           <h4><b>Ver otros indicadores:</b></h4>
           <select name="captura" class="form-control selectpicker" data-live-search="true" onchange="Capturar();" id="captura">
+            <option value="">Eliga una opcion</option>
             @foreach ($indicadores as $indic)
             <option value="{{$indic->id}}">{{$indic->nombre}}</option>
             @endforeach
@@ -81,6 +82,7 @@
         <div class="form-group" id="mostrar">
           <h4><b>Ver promedio de indicadores:</b></h4>
           <select name="captura2" class="form-control selectpicker" data-live-search="true" onchange="Capturar2();" id="captura2">
+            <option value="">Eliga una opcion</option>
             @foreach ($indicadores as $indic)
             <option value="{{$indic->id}}">{{$indic->nombre}}</option>
             @endforeach
@@ -110,15 +112,14 @@
   {
     // var id=$('#capturar').val();
     var fecha= $('#datepicker').val();
+    var month = fecha.substr(0,2);
+    // 12
+    var year = fecha.substr(3,4);
+    // 2017
     var id= $('#capturar').val();
-    var capturar = fecha+ '/'+id;
-    // alert(capturar);
-    // console.log('id');
-    // console.log('fecha');
-    // alert(fecha);
-    // alert(id);
-    // console.log(id);
-    // var id=$('#capturar').val();
+    var capturar = month+ '/'+year+ '/'+id;
+    var ruta=  '/fechas/'+capturar;
+    window.location.href=ruta;
     var ruta=  '/fechas/'+capturar;
     window.location.href=ruta;
     

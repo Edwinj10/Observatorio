@@ -60,8 +60,8 @@ class ImageneController extends Controller
     {
         $imagenes= new Imagen;
         $imagenes->titulo=$request->get('titulo');
-        $imagenes->descripcion=$request->get('descripcion');
-        $imagenes->total_visitas='0';
+        // $imagenes->descripcion=$request->get('descripcion');
+        // $imagenes->total_visitas='0';
         // para capturar el id del usuario que esta logeado
         $imagenes['user_id']=Auth::user()->id;
         if($request->hasFile('foto'))
@@ -83,21 +83,21 @@ class ImageneController extends Controller
      */
     public function show($id)
     {
-        $imagen = Imagen::find($id);
-        $variable = Imagen::find($id);
-        if(Cache::has($id)==false){
-                // Cache::add($id,'contador',0.30);
-            Cache::add($id,'contador',0.01);
-            $variable->total_visitas++;
-            $variable->save();
-        }
-        $user=DB::table('imagens as i')
-        ->join('users as u', 'i.user_id', '=', 'u.id')
-        ->select('u.name')
-        ->orderBy('u.id', '=', $imagen->id)
-        ->paginate(1);
-        $noticias=Noticia::orderBy('id', 'desc')->paginate(3);;
-        return view('imagenes.show',['imagen'=>$imagen, 'user'=>$user, 'noticias'=>$noticias]);
+        // $imagen = Imagen::find($id);
+        // $variable = Imagen::find($id);
+        // if(Cache::has($id)==false){
+        //         // Cache::add($id,'contador',0.30);
+        //     Cache::add($id,'contador',0.01);
+        //     $variable->total_visitas++;
+        //     $variable->save();
+        // }
+        // $user=DB::table('imagens as i')
+        // ->join('users as u', 'i.user_id', '=', 'u.id')
+        // ->select('u.name')
+        // ->orderBy('u.id', '=', $imagen->id)
+        // ->paginate(1);
+        // $noticias=Noticia::orderBy('id', 'desc')->paginate(3);;
+        // return view('imagenes.show',['imagen'=>$imagen, 'user'=>$user, 'noticias'=>$noticias]);
     }
 
     /**
@@ -108,8 +108,8 @@ class ImageneController extends Controller
      */
     public function edit($id)
     {
-        $i = Imagen::find($id);
-        return view('imagenes.edit',['i'=>$i]);
+        // $i = Imagen::find($id);
+        // return view('imagenes.edit',['i'=>$i]);
     }
 
     /**
@@ -123,7 +123,7 @@ class ImageneController extends Controller
     {
         $i= Imagen::findOrFail($id);
         $i->titulo=$request->get('titulo');
-        $i->descripcion=$request->get('descripcion');
+        // $i->descripcion=$request->get('descripcion');
         if($request->hasFile('foto'))
         {
             $foto= $request->file('foto');
