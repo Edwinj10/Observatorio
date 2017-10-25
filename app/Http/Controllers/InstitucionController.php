@@ -39,7 +39,7 @@ class InstitucionController extends Controller
 
             $query=trim($request->get('searchText'));
 
-            $instituciones=Institucion::orderBy('id', 'desc')->paginate(15);;;
+            $instituciones=Institucion::orderBy('id', 'desc')->paginate(20);;;
         }
 
            return view('institucion.index', ["instituciones"=>$instituciones, "searchText"=>$query]);

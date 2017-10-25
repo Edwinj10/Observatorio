@@ -18,76 +18,69 @@
           <div class="row">
             <div class="col-lg-4 col-xs-12">
               <h3 class="panel-title">Listado de Carreras</h3>
-          </div>
-          <div class="col-lg-8 col-xs-12 text-right">
+              <h3 class="panel-title">Actualmente se encuentran registradas <b>{{$carreras->total()}}</b></h3>
+            </div>
+            <div class="col-lg-8 col-xs-12 text-right">
               <button type="button" class="btn btn-sm btn-primary btn-primary" data-target="#modal-create" data-toggle="modal"><em class="fa fa-pencil">Crear Nuevo</em></button>
               <button type="button" id="ver" class="btn btn-sm btn-primary btn-success">Eliminar</button>
               <a href="/tesis">
                 <button type="button" class="btn btn-sm btn-primary btn-create">Ver Tesis</button>
-            </a>
+              </a>
+            </div>
+          </div>
+          @include('buscador')
+          @include('carreras.modal-create')
         </div>
-    </div>
-    @include('buscador')
-    @include('carreras.modal-create')
-</div>
-<div class="panel-body">
-  <div class="table-responsive">
-    <table class="table table-striped table-bordered table-list table-hover" id="dev-table">
-      <thead>
-        <tr>
-          <th><em class="fa fa-cog"></em></th>
-          <!-- <th class="hidden-xs">ID</th> -->
-          <th>Id</th>
-          <th>Carrera</th>
-      </tr> 
-  </thead>
-  <tbody>
-    <tr>
-        @foreach ($carreras as $c)
-        <td align="center">
-            <a class="btn btn-default" data-target="#modal-edit-{{$c->id}}" data-toggle="modal"><em class="fa fa-pencil"></em></a>
-            <a class="btn btn-danger" id="borrar" data-target="#modal-delete-{{$c->id}}" data-toggle="modal"><em class="fa fa-trash"></em></a>
-        </td>
-        <td>{!! $c->id!!}</td>
-        <td>{!! $c->carrera!!}</td>
-    </tr>
-    @include('carreras.modal')
-    @include('carreras.modaledit')
-    @endforeach 
-</tbody>
-</table>
-</div>
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered table-list table-hover" id="dev-table">
+              <thead>
+                <tr>
+                  <th><em class="fa fa-cog"></em></th>
+                  <!-- <th class="hidden-xs">ID</th> -->
+                  <!-- <th>Id</th> -->
+                  <th>Carrera</th>
+                </tr> 
+              </thead>
+              <tbody>
+                <tr>
+                  @foreach ($carreras as $c)
+                  <td align="center">
+                    <a class="btn btn-default" data-target="#modal-edit-{{$c->id}}" data-toggle="modal"><em class="fa fa-pencil"></em></a>
+                    <a class="btn btn-danger" id="borrar" data-target="#modal-delete-{{$c->id}}" data-toggle="modal"><em class="fa fa-trash"></em></a>
+                  </td>
+                  <!-- <td>{!! $c->id!!}</td> -->
+                  <td>{!! $c->carrera!!}</td>
+                </tr>
+                @include('carreras.modal')
+                @include('carreras.modaledit')
+                @endforeach 
+              </tbody>
+            </table>
+          </div>
 
-</div>
-<div class="panel-footer">
-  <div class="row">
-    <div class="col col-xs-4">
-      Pagina {{$carreras->currentPage()}} de {{$carreras->lastPage()}}
-  </div>
-  <div class="col col-xs-8">
-      <ul class="pagination hidden-xs pull-right">
-        {{$carreras->render()}}
-    </ul>
-    <ul class="pagination visible-xs pull-right">
-        <li><a href="#">«</a></li>
-        <li><a href="#">»</a></li>
-    </ul>
-</div>
-</div>
-</div>
-</div>
+        </div>
+        <div class="panel-footer">
+          <div class="row">
+            <div class="col col-xs-8">
+              {{$carreras->render()}}
 
-</div></div></div>
-@push ('scripts')
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#ver").click(function(){
-      $('.btn-danger').toggle(1000);
-  });
-});
-  $(document).ready(function(){
-    $(".btn-danger").hide();
-});
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div></div></div>
+    @push ('scripts')
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $("#ver").click(function(){
+          $('.btn-danger').toggle(1000);
+        });
+      });
+      $(document).ready(function(){
+        $(".btn-danger").hide();
+      });
   // $(document).ready(function(){
   //   $(".btn-primary").click(function(){
   //     seleccionar();

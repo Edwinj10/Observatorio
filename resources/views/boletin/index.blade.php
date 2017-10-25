@@ -18,6 +18,7 @@
           <div class="row">
             <div class="col col-xs-6">
               <h3 class="panel-title">Listado de Boletines</h3>
+               <h3 class="panel-title">Actualmente se encuentran registrados <b>{{$boletin->total()}}</b></h3>
             </div>
             <div class="col col-xs-6 text-right">
               <button type="button" class="btn btn-sm btn-primary btn-primary" data-target="#modal-create" data-toggle="modal"><em class="fa fa-pencil">Crear Nuevo</em></button>
@@ -47,38 +48,48 @@
                     <a class="btn btn-primary" href="{{ route('boletin.show', $b->id ) }}"><em class="fa fa-eye"></em></a>
                   </td>
                   <td>{!! $b->url!!}</td>
-                  <td>{!! $b->descripcion!!}</td>
+
+                  <td>
+                    <div id="descripcion">
+                      <h4>{!! $b->descripcion!!}</h4>
+                    </div>
+                  </td>
                   <td>
                     <img src="{{asset('imagenes/boletines/'.$b->portada)}}" alt="{{ $b->titulo}}" height="100px" width="100px" class="img-thumbail">
                   </td>
-                              <!-- <td>
-                                  <embed src="{{asset('archivos/boletines/'.$b->archivo)}}" type="application/pdf" width="50%" height="200"></embed>
-                                </td> -->
-                              </tr>
-                              @include('boletin.modal') 
-                              @endforeach
-                            </tbody>
-                          </table>
-                        </div>
-                        
-                      </div>
-                      <div class="panel-footer">
-                        <div class="row">
-                          <div class="col col-xs-4">
-                            Pagina {{$boletin->currentPage()}} de {{$boletin->lastPage()}}
-                          </div>
-                          <div class="col col-xs-8">
-                            <ul class="pagination hidden-xs pull-right">
-                              {{$boletin->render()}}
-                            </ul>
-                            <ul class="pagination visible-xs pull-right">
-                              <li><a href="#">«</a></li>
-                              <li><a href="#">»</a></li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
 
-                  </div></div></div>
-                  @stop
+                </tr>
+                @include('boletin.modal') 
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+        <div class="panel-footer">
+          <div class="row">
+            <div class="col-xs-12">
+             {{$boletin->render()}}
+           </div>
+         </div>
+       </div>
+     </div>
+
+   </div></div></div>
+   @push ('scripts')
+   <script>
+    function ellipsisJS ( containerId , largomaximo) {
+      var $container = $("#" + containerId); 
+      var $text = $("#descripcion h4");    
+
+      while ( $container.text().length > largomaximo ) {
+        $text.text(function (index, text) {
+          return text.replace(/\W*\s(\S)*$/, '...');
+        });
+      }
+    }
+
+    ellipsisJS("descripcion", 200);  
+  </script>
+  @endpush
+  @stop

@@ -70,11 +70,11 @@ class BackController extends Controller
             $informe = DB::table('indicadors as i')
             ->join('precios as p', 'i.id', '=', 'p.indicador_id')
             ->join('fechas as f', 'f.id', '=', 'p.id_fecha')
-            ->select('i.nombre', 'i.id', 'f.dia', 'f.mes', 'f.anio', 'p.precio')
+            ->select('i.nombre', 'i.id', 'f.dia', 'f.mes', 'f.anio', 'p.precio','p.id as idp', 'p.descripcion')
             ->orderBy('f.id', 'desc')
             ->where('i.id', '=', $id)
             // ->where('i.id', '=', $id)
-            ->paginate(10);
+            ->paginate(25);
 
             $nombre = DB::table('indicadors as i')
             ->select('i.id', 'i.nombre')
@@ -84,8 +84,16 @@ class BackController extends Controller
             $indicador = DB::table('indicadors as i')
             ->select('i.id', 'i.nombre')
             ->get();
+
+            // $ind=DB::select("call informeIndicador");
+              //$ind = Indicador::paginate(6)
+               // $ind = Fecha::paginate(7);
+               //$ind = Precio::paginate(6);
+            $tipo=DB::table('indicadors as i')
+                ->select('i.*')
+                ->get();
         }
-        return view('informe.indicadorID', ["informe" => $informe, 'nombre' => $nombre, 'indicador' => $indicador, "searchText" => $query]);
+        return view('informe.indicadorID', ["informe" => $informe, 'nombre' => $nombre, 'indicador' => $indicador, "searchText" => $query, 'tipo'=>$tipo]);
         // return $mostrar;
 
     }

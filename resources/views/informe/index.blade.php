@@ -35,7 +35,7 @@
               <th><em class="fa fa-cog"></em></th>
               <!-- <th class="hidden-xs">ID</th> -->
 
-              <th>ID</th>
+              <!-- <th>ID</th> -->
               <th>Tipo</th>
               <th>Dia</th>
               <th>Mes</th>
@@ -52,7 +52,7 @@
                 <a class="btn btn-primary" href="/indicadoresid/{{$inf->id}}"><em class="fa fa-eye"></em></a>
               </td>
 
-              <td>{!! $inf->Id!!}</td>
+              <!-- <td>{!! $inf->Id!!}</td> -->
               <td>{!! $inf->nombre!!}</td>
               <td>{!! $inf->dia!!}</td>
               <td>{!! $inf->mes!!}</td>

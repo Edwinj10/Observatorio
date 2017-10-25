@@ -45,7 +45,7 @@ class NoticiasController extends Controller
             ->where('n.titulo','LIKE', '%'.$query.'%')
             ->orwhere('n.descripcion','LIKE', '%'.$query.'%')
             ->orderBy('n.id', 'desc')
-            ->paginate(20);
+            ->paginate(30);
 
             $indicador=DB::table('indicadors as i')
             ->select('i.*')
@@ -225,7 +225,7 @@ class NoticiasController extends Controller
         ->select('n.*', 'u.name', 'i.nombre')
         ->where('n.estado', '=', $id)
         ->orderBy('n.id', 'desc')
-        ->paginate(20);
+        ->paginate(30);
         $tipo=DB::table('noticias as no')
         ->select('no.estado')
         ->where('no.estado', '=', $id)

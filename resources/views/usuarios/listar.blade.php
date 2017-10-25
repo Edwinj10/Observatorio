@@ -43,17 +43,8 @@
 </table>
 <div class="panel-footer">
   <div class="row">
-    <div class="col col-xs-4">
-      Pagina {{$usuarios->currentPage()}} de {{$usuarios->lastPage()}}
-    </div>
-    <div class="col col-xs-8">
-      <ul class="pagination hidden-xs pull-right">
-        {{$usuarios->render()}}
-      </ul>
-      <ul class="pagination visible-xs pull-right">
-        <li><a href="#">«</a></li>
-        <li><a href="#">»</a></li>
-      </ul>
+    <div class="col-xs-8">
+      {{$usuarios->render()}}
     </div>
   </div>
 </div>

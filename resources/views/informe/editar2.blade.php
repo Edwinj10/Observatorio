@@ -25,9 +25,8 @@
 </div>
 
 </body>
-</html>
 <script type="text/javascript">
-	function validar(e){
+    function validar(e){
 		tecla = (document.all) ? e.keyCode : e.which;
 
     //Tecla de retroceso para borrar, siempre la permite
@@ -41,3 +40,5 @@
     return patron.test(tecla_final);
 }
 </script>
+
+</html>

@@ -32,15 +32,15 @@ class USController extends Controller
     public function index(Request $request)
     {
              
-        if ($request) 
-        {
+        // if ($request) 
+        // {
             $usuarios=DB::table('users as u')
             ->select('u.*')
             ->orderBy('u.id', 'desc')
-            ->paginate(20);
-            $query=trim($request->get('searchText'));
-            return view('usuarios.index', ["searchText"=>$query, 'usuarios'=>$usuarios]);
-        }
+            ->paginate(2);
+            // $query=trim($request->get('searchText'));
+            return view('usuarios.index', ['usuarios'=>$usuarios]);
+        // }
     }
     public function listall()
     {

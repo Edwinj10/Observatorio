@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\IndicadorPrecio;
 use Illuminate\Http\Request;
+use App\Http\Requests\IndicadorPrecioRequest;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use App\Indicador;
@@ -25,8 +26,8 @@ class IndicadorPrecioController extends Controller
     public function __construct(){
         // para los midelware
        
-        $this->middleware('auth', ['only' => ['create', 'destroy', 'edit', 'index']]);
-        $this->middleware('admin',['only' => ['create', 'destroy', 'edit', 'index']]);
+        $this->middleware('auth', ['only' => ['create', 'destroy', 'edit', 'index', 'editar']]);
+        $this->middleware('admin',['only' => ['create', 'destroy', 'edit', 'index', 'editar']]);
         Carbon::setLocale('es');
     }
     public function index(Request $request)
@@ -82,7 +83,7 @@ class IndicadorPrecioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(IndicadorPrecioRequest $request)
     {
         
         $fecha= new Fecha;
@@ -103,6 +104,7 @@ class IndicadorPrecioController extends Controller
 
         $precio=new Precio;
         $precio->precio=$request->get('precio');
+        $precio->descripcion=$request->get('descripcion');
         $precio->indicador_id=$request->get('indicador_id');
         $precio->id_fecha=$id_fecha; 
         $precio->save();
@@ -170,14 +172,24 @@ class IndicadorPrecioController extends Controller
      * @param  \App\IndicadorPrecio  $indicadorPrecio
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$indicadorPrecio)
+    public function update(IndicadorPrecioRequest $request,$indicadorPrecio)
     {
         $precio = Precio::findOrFail($indicadorPrecio);
         $precio->precio=$request->get('precio');
+        $precio->descripcion=$request->get('descripcion');
         //return $precio;
         $precio->update();
 
         return redirect('/informe')->with('message' , 'Actualizado Correctamente');
+    }
+    public function editar(IndicadorPrecioRequest $request, $id)
+    {
+        $precio = Precio::findOrFail($id);
+        $precio->precio=$request->get('precio');
+        $precio->descripcion=$request->get('descripcion');
+        //return $precio;
+        $precio->update();
+        return back()->with('message', 'Actualizado Correctamente');
     }
 
     /**

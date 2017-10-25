@@ -40,7 +40,7 @@ class TesisController extends Controller
             ->select('t.*','i.nombre', 'c.carrera')
             ->where('t.tema','LIKE', '%'.$query.'%')
             ->orderBy('t.id', 'desc')
-            ->paginate(50);
+            ->paginate(30);
 
         $indicador=DB::table('indicadors as i')
         ->select('i.*')

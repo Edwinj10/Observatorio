@@ -17,7 +17,8 @@
         <div class="panel-heading">
           <div class="row">
             <div class="col-lg-4 col-xs-12">
-              <h3 class="panel-title">Listado de Tipos de Indicadores</h3>
+              <h3 class="panel-title">Listado de Tipos de Indicadores</h3><br>  
+              <h3 class="panel-title">Actualmente se encuentran registrados <b>{{$tipo->total()}}</b></h3>
             </div>
             <div class="col-lg-8 col-xs-12 text-right">
               <button type="button" class="btn btn-sm btn-primary btn-primary" data-target="#modal-create" data-toggle="modal"><em class="fa fa-pencil">Crear Nuevo</em></button>
@@ -36,7 +37,7 @@
                 <tr>
                   <th><em class="fa fa-cog"></em></th>
                   <!-- <th class="hidden-xs">ID</th> -->
-                  <th>Id</th>
+                 <!--  <th>Id</th> -->
                   <th>Tipo</th>
                   <th>Imagen</th>
                 </tr> 
@@ -47,7 +48,7 @@
                   <td align="center">
                     <a class="btn btn-default" data-target="#modal-edit-{{$t->id}}" data-toggle="modal"><em class="fa fa-pencil"></em></a>
                   </td>
-                  <td>{{ $t->id}}</td>
+                  <!-- <td>{{ $t->id}}</td> -->
                   <td>{!! $t->tipo!!}</td>
                   <td>
                     <img src="{{asset('imagenes/tipos_indicadores/'.$t->imagen)}}" alt="{{ $t->tipo}}" height="100px" width="100px" class="img-thumbail">
@@ -61,17 +62,10 @@
           </div>
           <div class="panel-footer">
             <div class="row">
-              <div class="col col-xs-4">
-                Pagina {{$tipo->currentPage()}} de {{$tipo->lastPage()}}
-              </div>
               <div class="col col-xs-8">
-                <ul class="pagination hidden-xs pull-right">
-                  {{$tipo->render()}}
-                </ul>
-                <ul class="pagination visible-xs pull-right">
-                  <li><a href="#">«</a></li>
-                  <li><a href="#">»</a></li>
-                </ul>
+                
+                {{$tipo->render()}}
+                
               </div>
             </div>
           </div>
@@ -80,5 +74,5 @@
       </div></div></div>
       @push ('scripts')
       
-@endpush
-@stop
+      @endpush
+      @stop

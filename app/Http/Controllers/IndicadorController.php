@@ -43,7 +43,7 @@ class IndicadorController extends Controller
             ->select('i.nombre', 'i.descripcion', 'i.id', 'i.indicador_id','i.importante', 't.tipo', 'in.nombres', 'i.institucion_id')
             ->where('i.nombre','LIKE', '%'.$query.'%')
             ->orderBy('i.id', 'desc')
-            ->paginate(20);
+            ->paginate(30);
             // return $indicadores;
             $tipo=DB::table('tipo__indicadors as tipos')
             ->select('tipos.tipo', 'tipos.id')

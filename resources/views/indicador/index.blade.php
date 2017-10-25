@@ -18,6 +18,7 @@
           <div class="row">
             <div class="col-lg-4 col-xs-12">
               <h3 class="panel-title">Listado de Indicadores</h3>
+              <h3 class="panel-title">Actualmente se encuentran registrados <b>{{$indicadores->total()}}</b></h3>
             </div>
             <div class="col-lg-8 col-xs-12 text-right">
               <button type="button" class="btn btn-sm btn-primary btn-primary" data-target="#modal-create" data-toggle="modal"><em class="fa fa-pencil">Crear Nuevo</em></button>
@@ -65,21 +66,11 @@
         </div>
         <div class="panel-footer">
           <div class="row">
-            <div class="col col-xs-4">
-              Pagina {{$indicadores->currentPage()}} de {{$indicadores->lastPage()}}
-            </div>
-            <div class="col col-xs-8">
-              <ul class="pagination hidden-xs pull-right">
-                {{$indicadores->render()}}
-              </ul>
-              <ul class="pagination visible-xs pull-right">
-                <li><a href="#">«</a></li>
-                <li><a href="#">»</a></li>
-              </ul>
-            </div>
+            {{$indicadores->render()}}
           </div>
         </div>
       </div>
+    </div>
 
-    </div></div></div>
-    @stop
+  </div></div></div>
+  @stop

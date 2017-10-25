@@ -38,6 +38,7 @@ Route::get('indicador/tipo/{id}', 'BackController@indicadores_tipo');
 Route::get('tesisporcarreras/{id}', 'BackController@tesis');
 Route::get('promedio_meses/{id}', 'BackController@meses');
 Route::get('indicadoresid/{id}', 'BackController@mostrar');
+Route::put('editar/{id}', 'IndicadorPrecioController@editar');
 Route::get('mostrar/{id1}/{id2}', 'BackController@show');
 Route::get('fechas/{fecha}/{fecha2}/{id}', 'BackController@informe_fechas');
 Route::get('listartesis', 'BackController@index');

@@ -17,6 +17,7 @@
           <div class="row">
             <div class="col col-xs-6">
               <h3 class="panel-title">Listado de Noticas en Estado: @foreach ($tipo as $e) {{$e->estado}} @endforeach</h3>
+              <h3 class="panel-title">Actualmente se encuentran registradas <b>{{$noticias->total()}}</b></h3>
               <div class="form-group">
                 <h3 class="panel-title"><b>Filtrar por estado:</b></h3>
                 <select name="estado" class="form-control selectpicker" data-live-search="true" onchange="Seleccionar();" id="estado">
@@ -82,17 +83,8 @@
         </div>
         <div class="panel-footer">
           <div class="row">
-            <div class="col col-xs-4">
-              Pagina {{$noticias->currentPage()}} de {{$noticias->lastPage()}}
-            </div>
             <div class="col col-xs-8">
-              <ul class="pagination hidden-xs pull-right">
                 {{$noticias->render()}}
-              </ul>
-              <ul class="pagination visible-xs pull-right">
-                <li><a href="#">«</a></li>
-                <li><a href="#">»</a></li>
-              </ul>
             </div>
           </div>
         </div>

@@ -14,8 +14,9 @@
       <div class="panel panel-default panel-table">
         <div class="panel-heading">
           <div class="row">
-            <div class="col col-xs-6">
-              <h3 class="panel-title">Listado de Comentarios en @foreach ($tipo as $e) {{$e->estado}} @endforeach</h3>
+            <div class="col col-xs-8">
+              <h3 class="panel-title">Listado de Comentarios en @foreach ($tipo as $e) {{$e->estado}} @endforeach</h3><br>
+              <h3 class="panel-title">Actualmente se encuentran registrados <b>{{$comentarios->total()}}</b></h3><br>
               <div class="form-group">
                 <h3 class="panel-title"><b>Filtrar por estado:</b></h3>
                 <select name="estado" class="form-control selectpicker" data-live-search="true" onchange="Seleccionar();" id="estado">
@@ -25,7 +26,7 @@
                 </select>
               </div>
             </div>
-            <div class="col col-xs-6 text-right">
+            <div class="col col-xs-4 text-right">
               <button type="button" id="ver" class="btn btn-sm btn-primary btn-success">Eliminar</button>
               <a href="/comentarios">
                 <button type="button" class="btn btn-sm btn-primary btn-create">Ver todos</button>
@@ -73,17 +74,8 @@
         </div>
         <div class="panel-footer">
           <div class="row">
-            <div class="col col-xs-4">
-              Pagina {{$comentarios->currentPage()}} de {{$comentarios->lastPage()}}
-            </div>
             <div class="col col-xs-8">
-              <ul class="pagination hidden-xs pull-right">
-                {{$comentarios->render()}}
-              </ul>
-              <ul class="pagination visible-xs pull-right">
-                <li><a href="#">«</a></li>
-                <li><a href="#">»</a></li>
-              </ul>
+              {{$comentarios->render()}}
             </div>
           </div>
         </div>

@@ -16,12 +16,14 @@
           <div class="row">
             <div class="col col-xs-6">
               <h3 class="panel-title">Listado de Tesis</h3>
+              <h3 class="panel-title">Actualmente se encuentran registradas <b>{{$tesis->total()}}</b></h3><br>
             </div>
             <div class="col col-xs-6 text-right">
               <button type="button" class="btn btn-sm btn-primary btn-primary" data-target="#modal-create" data-toggle="modal"><em class="fa fa-pencil">Crear Nuevo</em></button>
               <button type="button" id="ver" class="btn btn-sm btn-primary btn-success">Eliminar</button>
             </div>
           </div>
+          <br>
           @include('buscador')
           @include('tesis.modal-create')
         </div>
@@ -66,17 +68,8 @@
         </div>
         <div class="panel-footer">
           <div class="row">
-            <div class="col col-xs-4">
-              Pagina {{$tesis->currentPage()}} de {{$tesis->lastPage()}}
-            </div>
             <div class="col col-xs-8">
-              <ul class="pagination hidden-xs pull-right">
-                {{$tesis->render()}}
-              </ul>
-              <ul class="pagination visible-xs pull-right">
-                <li><a href="#">«</a></li>
-                <li><a href="#">»</a></li>
-              </ul>
+              {{$tesis->render()}}
             </div>
           </div>
         </div>

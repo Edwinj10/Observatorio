@@ -28,18 +28,14 @@ class TipoIndicadorController extends Controller
     public function index(Request $request)
     {
 
-        if ($request) {
 
-            $query = trim($request->get('searchText'));
+        $tipo = DB::table('tipo__indicadors as t')
+        ->select('t.*')
+        // ->where('t.tipo', 'LIKE', '%' . $query . '%')
+        ->orderBy('t.id', 'desc')
+        ->paginate(20);
 
-            $tipo = DB::table('tipo__indicadors as t')
-                ->select('t.*')
-                ->where('t.tipo', 'LIKE', '%' . $query . '%')
-                ->orderBy('t.id', 'desc')
-                ->paginate(20);
-
-            return view('tipoindicador.index', ["tipo" => $tipo, "searchText" => $query]);
-        }
+        return view('tipoindicador.index', ["tipo" => $tipo]);
     }
 
     /**

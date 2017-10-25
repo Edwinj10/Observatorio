@@ -23,13 +23,13 @@ class BoletinController extends Controller
     public function __construct(){
         // para los midelware
        
-        $this->middleware('auth', ['only' => ['create', 'destroy', 'edit', 'index','comentarios']]);
-        $this->middleware('admin',['only' => ['create', 'destroy', 'edit', 'index','comentarios']]);
+        $this->middleware('auth', ['only' => ['create', 'destroy', 'edit', 'index']]);
+        $this->middleware('admin',['only' => ['create', 'destroy', 'edit', 'index']]);
         Carbon::setLocale('es');
     }
     public function index()
     {
-        $boletin=Boletin::orderBy('id', 'desc')->paginate(10);;
+        $boletin=Boletin::orderBy('id', 'desc')->paginate(25);;
         return view ('boletin.index', ["boletin"=>$boletin]);
     }
 
