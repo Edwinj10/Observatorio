@@ -40,7 +40,7 @@
         <div class="carousel-inner" role="listbox">
           <!-- Item 1 -->
           <div class="item active slide1">
-            <img src="/img/observatorio.jpg" data-animation="animated zoomInLeft" alt="">
+            <img src="/img/observatoriomejorado.png" data-animation="animated zoomInLeft" alt="">
           </div> 
           <!-- Item 2 -->
           <div class="item slide2">
@@ -86,118 +86,106 @@
           <ul class="dropdown-menu mega-dropdown-menu" id="hijo1">
             <li class="col-sm-6">
               <ul>
-               <!-- <li class="dropdown-header" id="sociales">Indicadores Sociales</li> -->
-               <li id="hijos"><a href="/institucion/4">MINSA</a></li>
-               <li><a href="/institucion/3">MINED</a></li>
-               <li><a href="/institucion/7">Alcaldia de Estelí</a></li>
-               <li><a href="#">INSS</a></li>
-               <li><a href="/instituciones">Todas</a></li>
-             </ul>
-           </li>
-           <li class="col-sm-6">
-            <ul>
-              <!-- <li class="dropdown-header" id="economicos">Indicadores Económicos</li> -->
-              <li id="hijos"><a href="/institucion/5">Ministerio del Trabajo</a></li>
-              <li id="hijos"><a href="/institucion/2">Camara de Comercio</a></li>
-              <li id="hijos"><a href="/institucion/6">Banco Central</a></li>                            
-              <li id="hijos"><a href="#">Renta</a></li>              
-            </ul>
-          </li>
-        </ul>       
-      </li>
-      <li class="nav navbar-nav">
-        <li><a href="/noticia" id="padres">Noticias</a></li>
-      </li>
-      <li class="nav navbar-nav">
-        <li><a href="/indicadors" id="padres">Indicadores</a></li>
-      </li>
-      <li class="dropdown mega-dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Estudios<span class="caret"></span></a>        
-        <ul class="dropdown-menu mega-dropdown-menu" id="hijo3">
-          <li class="col-sm-6">
-            <ul>
-              <li class="dropdown-header">Economia</li>
-              <li><a href="/tesisporcarreras/1">Mercadotecnia</a></li>
-              <li><a href="/tesisporcarreras/2">Admon Empresas</a></li>
-              <li><a href="/tesisporcarreras/3">Banca y Finanzas</a></li>
-              <li><a href="/listartesis">Todos</a></li>            
-            </ul>
-          </li>
-          <li class="col-sm-6">
-            <ul>
-              <li class="dropdown-header">Sociales</li>
-              <li><a href="#">Turismo</a></li>
-              <li><a href="#">Admon Turistica y Hotelera</a></li>
-              <li><a href="#">Trabajo Social</a></li>                                                      
-            </ul>
-          </li>
-        </ul>       
-      </li>
-    </ul>
-    <ul class="nav navbar-nav">
-      <li><a href="/boletines_todos" id="padres">Boletines</a></li>
-    </ul>
-      <!-- <ul class="nav navbar-nav">
-        <li><a href="/mail/create" id="padres">Contactenos</a></li>
-      </ul> -->
+                <!-- <li class="dropdown-header" id="sociales">Indicadores Sociales</li> -->
+                <li id="hijos"><a href="/institucion/4">MINSA</a></li>
+                <li><a href="/institucion/3">MINED</a></li>
+                <li><a href="/institucion/7">Alcaldia de Estelí</a></li>
+                <li><a href="#">INSS</a></li>
+                <li><a href="/instituciones">Todas</a></li>
+              </ul>
+            </li>
+            <li class="col-sm-6">
+              <ul>
+                <!-- <li class="dropdown-header" id="economicos">Indicadores Económicos</li> -->
+                <li id="hijos"><a href="/institucion/5">Ministerio del Trabajo</a></li>
+                <li id="hijos"><a href="/institucion/2">Camara de Comercio</a></li>
+                <li id="hijos"><a href="/institucion/6">Banco Central</a></li>                            
+                <li id="hijos"><a href="#">Renta</a></li>              
+              </ul>
+            </li>
+          </ul>       
+        </li>
+        <li class="nav navbar-nav">
+          <li><a href="/noticia" id="padres">Noticias</a></li>
+        </li>
+        <li class="nav navbar-nav">
+          <li><a href="/indicadors" id="padres">Indicadores</a></li>
+        </li>
+        <li class="dropdown mega-dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Estudios<span class="caret"></span></a>        
+          <ul class="dropdown-menu mega-dropdown-menu" id="hijo7">
+            <li class="col-sm-6">
+              <ul>
+                <li class="dropdown-header">Economia</li>
+                <li><a href="/tesisporcarreras/1">Mercadotecnia</a></li>
+                <li><a href="/tesisporcarreras/2">Admon Empresas</a></li>
+                <li><a href="/tesisporcarreras/3">Banca y Finanzas</a></li>
+                <li><a href="/listartesis">Todos</a></li>            
+              </ul>
+            </li>
+            <li class="col-sm-6">
+              <ul>
+                <li class="dropdown-header">Sociales</li>
+                <li><a href="#">Turismo</a></li>
+                <li><a href="#">Admon Turistica y Hotelera</a></li>
+                <li><a href="#">Trabajo Social</a></li>                                                      
+              </ul>
+            </li>
+          </ul>       
+        </li>
+        <li><a href="/boletines_todos" id="padres">Boletines</a></li>
+        @if (Auth::guest())
+        <li class="dropdown mega-dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Mi Cuenta<span class="caret"></span></a>        
+          <ul class="dropdown-menu mega-dropdown-menu" id="hijo3">
+            <li class="col-sm-6">
+              <ul>
+                <li><a href="{{url('login')}}">Login</a></li>         
+              </ul>
+            </li>
+            <li class="col-sm-6">
+              <ul>
+                <li><a href="{{url('register')}}">Registrarme</a></li>                                                      
+              </ul>
+            </li>
+          </ul>       
+        </li>
+        @else
+        <li class="dropdown mega-dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">{{ Auth::user()->name }}<span class="caret"></span></a>        
+          <ul class="dropdown-menu mega-dropdown-menu" id="hijo3">
+            <li class="col-sm-6">
+              <ul>
+                @if (Auth::user()->tipo == "Administrador") 
+                <li><a href="{{url('/administracion')}}">Administracion</a></li> 
+                <li><a href="{{url('/perfil')}}">Perfil</a></li>
+                @else       
+                <li><a href="{{url('/perfil')}}">Perfil</a></li>
+                @endif             
+              </ul>
+            </li>
+            <li class="col-sm-6">
+              <ul>
+                <li>
+                  <a href=="{{ route('logout') }}" onclick="event.preventDefault();
+                  document.getElementById('logout-form').submit();">Salir</a>
+                </li>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  {{ csrf_field() }}
+                </form>                                                        
+              </ul>
+            </li>
+          </ul>       
+        </li>
+        @endif
+      </ul>
+
       {!!Form::open(array('url'=>'busqueda', 'method'=> 'GET', 'autocomplete' => 'off', 'class'=>'pull-xs-right', 'role' => 'search')) !!}
       <div class="search">
         <input type="text" required="" class="form-control" name="searchText" maxlength="64" placeholder="Search" value="">
         <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
       </div>
       {{Form::close()}}
-      @if (Auth::guest())
-      <div class="collapse navbar-collapse" id="mainNav" >
-        <ul class="nav  navbar-nav navbar-right">
-          <li class="dropdown mega-dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Mi Cuenta<span class="caret"></span></a>        
-            <ul class="dropdown-menu mega-dropdown-menu" id="hijo4">
-              <li class="col-sm-6">
-                <ul>
-                  <li><a href="{{url('login')}}">Login</a></li>                            
-                </ul>
-              </li>
-              <li class="col-sm-6">
-                <ul>
-                  <li><a href="{{url('register')}}">Registrarme</a></li>                            
-                </ul>
-              </li>
-            </ul>
-          </li> 
-        </ul>      
-      </div>
-      @else
-      <div class="collapse navbar-collapse" id="mainNav" >
-        <ul class="nav  navbar-nav navbar-right">
-          <li class="dropdown mega-dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">{{ Auth::user()->name }}<span class="caret"></span></a>        
-            <ul class="dropdown-menu mega-dropdown-menu" id="hijo4">
-              <li class="col-sm-6">
-                <ul>
-
-                  @if (Auth::user()->tipo == "Administrador") 
-                  <li><a href="{{url('/administracion')}}">Administracion</a></li> 
-                  @else       
-                  <li><a href="{{url('/perfil')}}">Perfil</a></li>
-                  @endif                  
-                </ul>
-              </li>
-              <li class="col-sm-6">
-                <ul>
-                  <li>
-                    <a href=="{{ route('logout') }}" onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">Salir</a>
-                  </li>
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                  </form>                                                     
-                </ul>
-              </li>    
-            </ul>
-          </li> 
-        </ul>      
-      </div>
-      @endif
     </nav>  
   </div>
 

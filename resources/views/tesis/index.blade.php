@@ -37,9 +37,10 @@
                   <th>Tema</th>
                   <th>Introduccion</th>
                   <th>Autor</th>
-                  <th>Indicador</th>
+                  <!-- <th>Indicador</th> -->
                   <th>Carrera</th>
                   <th>Metodologia</th>
+                  <th>Archivo</th>
                 </tr> 
               </thead>
               <tbody>
@@ -51,11 +52,12 @@
                   </td>
 
                   <td>{!! $t->tema!!}</td>
-                  <td>{!! $t->introduccion!!}</td>
+                  <td>{{substr(strip_tags($t->introduccion), 0,200)}}...</td>
                   <td>{{ $t->autor}}</td>
-                  <td>{{ $t->nombre}}</td>
+                  <!-- <td>{{ $t->nombre}}</td> -->
                   <td>{{ $t->carrera}}</td>
                   <td>{{$t->metodologia}}</td>
+                  <td><a href="/archivos/tesis/{{$t->archivo}}">{{substr(strip_tags($t->archivo), 0,10)}}...</a></td>
                 </tr>
                 @include('tesis.modal')
                 @include('tesis.modaledit')

@@ -43,11 +43,18 @@
             </div>
             <div class="form-group">
                 <div class="col-md-8 col-md-offset-4">
-                    
-                    
+
+
                 </div>
             </div>
             <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit">Iniciar</button>
+            <div class="col-md-2 col-md-offset-3">
+                <a class="btn btn-link" href="{{ route('register') }}">
+                    Crear Cuenta Nueva
+                </a>
+
+            </div>
+            
         </form>
     </div>
 </div>

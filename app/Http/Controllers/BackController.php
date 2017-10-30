@@ -175,12 +175,25 @@ class BackController extends Controller
         ->where('p.indicador_id', '=', $id)
         ->where('f.mes', '=', $fecha)
         ->where('f.anio', '=', $fecha2)
+        ->orderBy('f.id', 'asc')
         ->orderBy('f.dia', 'asc')
         ->simplepaginate(15);
 
         $indicadores=DB::table('indicadors as i')
         ->select('i.*')
         ->orderBy('i.nombre', 'asc')
+        ->get();
+
+        $auxiliar = DB::table('fechas as f')
+        ->join('precios as p', 'p.id_fecha', '=', 'f.id')
+        ->join('indicadors as i', 'i.id', '=', 'p.indicador_id')
+        ->select(DB::raw('i.id'),DB::raw('f.mes'),DB::raw('f.anio'))
+        // ->select('f.mes', 'f.anio', 'i.id')
+        ->where('i.id', '=', $id)
+        ->where('f.mes', '=', $fecha)
+        ->where('f.anio', '=', $fecha2)
+        ->groupBy('i.id', 'f.mes','f.anio')
+        ->orderBy('f.id', 'desc')
         ->get();
 
         // $precios=DB::table('precios as p')
@@ -190,7 +203,7 @@ class BackController extends Controller
         // ->get();
         // // return $fechas;
         // 'precios'=> $precios
-        return view('informe.fechas', ['i' => $i, 'fechas' => $fechas, 'indicadores'=>$indicadores]);
+        return view('informe.fechas', ['i' => $i, 'fechas' => $fechas, 'indicadores'=>$indicadores, 'auxiliar'=>$auxiliar]);
     }
     public function meses(Request $request, $id)
     {

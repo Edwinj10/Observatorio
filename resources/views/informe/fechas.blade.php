@@ -76,11 +76,18 @@
         <br><br>
         <button class="btn btn-primary" id="ver">Ver Promedios Anuales</button>
       </div>
+      <div class="col-md-2"></div>
     </div>
     <div class="row">
       <div class="col-md-4">
+          @forelse($auxiliar as $a) 
+          <h4 class="widget-title">Exportar datos a Excel <a href="/descargarmeses/{{$a->mes}}/{{$a->anio}}/{{$a->id}}/excel" class="btn-primary">Descargar</a></h4>
+          @empty
+          @endforelse
+      </div>
+      <div class="col-md-4">
         <div class="form-group" id="mostrar">
-          <h4><b>Ver promedio de indicadores:</b></h4>
+          <h4><b>Ver promedio anual de indicadores:</b></h4>
           <select name="captura2" class="form-control selectpicker" data-live-search="true" onchange="Capturar2();" id="captura2">
             <option value="">Eliga una opcion</option>
             @foreach ($indicadores as $indic)
@@ -90,8 +97,6 @@
         </div>
       </div>
     </div>
-
-
     <div id="chart_div" style="width: 100%; height:400px;"></div>
     {{$fechas->render()}}
   </div>
@@ -103,6 +108,7 @@
   $(document).ready(function(){
     $("#ver").click(function(){
       $('#mostrar').toggle(1000);
+      alert("Seleccione un indicador de la nueva lista");
     });
   });
   $(document).ready(function(){
@@ -142,13 +148,17 @@
     mes[9]= "10";
     mes[10]= "11";
     mes[11]= "12";
+    // total es el mes
+    // years anio
     var total=mes[fecha.getMonth()];
+    var f = new Date();
+    var years = f.getFullYear();
     // alert('El año actual es: '+ano);
     var cap=$('#captura option:selected').val();
     // var fechas= $('#datepicker').val();
-    var auxiliar= total+ '/'+cap;
-    var ruta='/fechas/'+ auxiliar;
-
+    var auxiliar= total+ '/'+years;
+    var auxiliar3= auxiliar + '/'+cap;
+    var ruta='/fechas/'+ auxiliar3;
     window.location.href=ruta;
   }
   function Capturar2()

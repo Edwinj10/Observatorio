@@ -38,8 +38,15 @@ class USController extends Controller
             ->select('u.*')
             ->orderBy('u.id', 'desc')
             ->paginate(2);
+            
+            $user=DB::table('users as us')      
+            ->select(DB::raw('us.id', 'us.tipo'))
+            ->select(DB::raw('us.tipo'))
+            ->groupBy('us.tipo')
+            ->get();
+            // return $user;
             // $query=trim($request->get('searchText'));
-            return view('usuarios.index', ['usuarios'=>$usuarios]);
+            return view('usuarios.index', ['usuarios'=>$usuarios, 'user'=>$user]);
         // }
     }
     public function listall()
@@ -49,6 +56,22 @@ class USController extends Controller
         ->orderBy('u.id', 'desc')
         ->paginate(20);
         return view ('usuarios.listar', ['usuarios'=>$usuarios]);
+    }
+    public function index2(Request $request, $id)
+    {
+       $usuarios=DB::table('users as u')
+        ->select('u.*')
+        ->where('u.tipo', '=', $id)
+        ->orderBy('u.id', 'desc')
+        ->paginate(20);
+            
+        $user=DB::table('users as us')      
+        ->select(DB::raw('us.id', 'us.tipo'))
+        ->select(DB::raw('us.tipo'))
+        ->groupBy('us.tipo')
+        ->get();
+    
+        return view('usuarios.index2', ['usuarios'=>$usuarios, 'user'=>$user]);
     }
 
     /**
@@ -128,7 +151,7 @@ class USController extends Controller
     {
         $usuarios = User::findOrFail($id);
         $usuarios->name=$request->get('name');
-        $usuarios->email=$request->get('email');
+        
         $usuarios->tipo=$request->get('tipo');
         $usuarios->facebook=$request->get('facebook');
         $usuarios->twiter=$request->get('twiter');
@@ -143,7 +166,7 @@ class USController extends Controller
 
         $usuarios->update();
 
-        return redirect('/usuarios')-> with('massage','Actualizado');
+        return redirect('/usuarios')-> with('message','Actualizado Correctamente');
 
     }
 
@@ -156,10 +179,13 @@ class USController extends Controller
     public function destroy($id)
     {
         $usuario = User::find($id);
+        $usuario_foto =public_path('imagenes/usuarios').'/'.$usuario->foto;
+        unlink($usuario_foto);
         $usuario->delete();
         Session::flash ('message', 'Eliminado Correctamente');
         return redirect::to('/usuarios');
     }
+
     public function foto(UsuarioRequest $request, $id)
     {
         $p = User::findOrFail($id);

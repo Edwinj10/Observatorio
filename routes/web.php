@@ -20,6 +20,7 @@ Route::get('noticias/estado/{id}', 'NoticiasController@estado');
 Route::resource('usuarios', 'USController');
 Route::put('modificar_foto/{id}', 'USController@foto');
 Route::get('listall/{page?}', 'USController@listall');
+Route::get('usuarios/tipo/{id}', 'USController@index2');
 Route::get('comment/{page?}', 'ComentarioController@comment');
 Route::resource('boletin', 'BoletinController', ['except' => 'create']);
 Route::resource('graficos', 'GraficoController');
@@ -60,6 +61,8 @@ Route::get('instituciones', 'FrontController@instituciones');
 Route::get('exportar/{id}/excel', 'ExportarController@indicadores');
 Route::get('exportarindicadores/{id}/excel', 'ExportarController@indicadores_precios');
 Route::get('descargar/{id}/excel', 'ExportarController@indicadores_fechas');
+Route::get('descargarshow/{id}/excel', 'ExportarController@indicadores_show');
+Route::get('descargarmeses/{mes}/{anio}/{id}/excel', 'ExportarController@indicadores_meses');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

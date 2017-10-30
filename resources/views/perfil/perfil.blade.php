@@ -10,7 +10,11 @@
 						@foreach($perfil as $p)
 						
 						<div class="file" id="file">
+							@if(empty($p->foto))
+							<img class="thumbnail img-responsive" src="/img/usuario.png" width="300px" height="300px" id="perfil">
+							@else
 							<img class="thumbnail img-responsive" src="{{asset('/imagenes/usuarios/'.$p->foto)}}" width="300px" height="300px" id="perfil">
+							@endif
 							{{Form::open(array('action'=>array('USController@foto', $p->id), 'method'=>'put', 'files'=> 'true'))}}
 							<p id="imagen">Modificar Imagen</p>
 							<input type="file" id="addfotoarea" name="foto">
@@ -44,16 +48,22 @@
 		</div>
 	</div>
 	<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+		<h3 class="widget-title"><span id="noticia">Perfil</span></h3>
 		@include('error.mensaje')
 		@include('error.error')
 		<hr>
 		<!-- Sample post content with picture. -->
+		<h5><b>Listado de Comentarios realizados</b></h5>
 		@forelse($comentario as $c)
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="pull-left">
 					<a href="#">
+						@if(empty($c->foto))
+						<img class="media-object img-circle" src="/img/usuario.png" width="50px" height="50px" style="margin-right:8px; margin-top:-5px;">
+						@else
 						<img class="media-object img-circle" src="{{asset('/imagenes/usuarios/'.$c->foto)}}" width="50px" height="50px" style="margin-right:8px; margin-top:-5px;">
+						@endif
 					</a>
 				</div>
 				<h4><a href="#" style="text-decoration:none;"><strong>{{$c->name}}</strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i>{{$c->fecha}}</i></a></small></small></h4>
@@ -78,13 +88,13 @@
 				<hr>
 				<div class="post-content">
 
-					<p><b>{{$c->comentario}}</b></p>
+					<p>Comentario realizado: <b>{{$c->comentario}}</b></p>
 					<a href="{{ route('noticias.show', $c->idd ) }}">
-						<img class="img-responsive" src="/imagenes/noticias/{{$c->fotos}}">
+						<img class="img-responsive" src="/imagenes/noticias/{{$c->fotos}}" width="300px" height="300px">
 					</a>
 					<br>
 					<a href="{{ route('noticias.show', $c->idd ) }}">
-						<h4>{{$c->titulo}}</h4>
+						<h4>Titulo de la noticia: {{$c->titulo}}</h4>
 					</a>
 					<!-- <p><br><a href="/tags/christmas" class="tag">#Christmas</a> <a href="/tags/caturday" class="tag">#Caturday</a></p> -->
 				</div>

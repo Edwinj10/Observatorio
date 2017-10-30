@@ -74,9 +74,17 @@
     </div>
     <div class="row">
       <div class="col-md-4">
+        @forelse($auxiliar as $a) 
+        <h4 class="widget-title">Exportar datos a Excel <a href="/descargarshow/{{$a->id}}/excel" class="btn-primary">Descargar</a></h4>
+        @empty
+        @endforelse
+        
+      </div>
+      <div class="col-md-4">
         <div class="form-group" id="mostrar">
-          <h4><b>Ver promedio de indicadores:</b></h4>
+          <h4><b>Ver promedio anual de indicadores:</b></h4>
           <select name="captura2" class="form-control selectpicker" data-live-search="true" onchange="Capturar2();" id="captura2">
+            <option value="">Eliga una opcion</option>
             @foreach ($indicadores as $indic)
             <option value="{{$indic->id}}">{{$indic->nombre}}</option>
             @endforeach
@@ -95,6 +103,7 @@
   $(document).ready(function(){
     $("#ver").click(function(){
       $('#mostrar').toggle(1000);
+      alert("Seleccione un indicador de la nueva lista");
     });
   });
   $(document).ready(function(){

@@ -121,9 +121,14 @@ class IndicadorPrecioController extends Controller
     {
         
         $i=DB::table('indicadors as i')
-            ->select('i.*')
-            ->where('i.id', '=', $id)
-            ->first();
+        ->select('i.*')
+        ->where('i.id', '=', $id)
+        ->first();
+
+        $auxiliar=DB::table('indicadors')
+        ->select('indicadors.id')
+        ->where('indicadors.id', '=', $id)
+        ->get();
 
         // $mes = Carbon::now();
         // $mes = $mes->format('m');
@@ -131,9 +136,10 @@ class IndicadorPrecioController extends Controller
         $fechas=DB::table('fechas as f')
         ->join('precios as p', 'p.id_fecha', '=', 'f.id')
         ->join('indicadors as i', 'i.id', '=', 'p.indicador_id')
-        ->select('f.*', 'p.*')
+        ->select('f.*', 'p.*', 'i.id as idindi')
         ->where('p.indicador_id', '=', $id)
         ->orderBy('f.mes', 'asc')
+        ->orderBy('f.dia', 'asc')
         // ->where('f.mes', '=', $mes)
         ->simplepaginate(15);
 
@@ -141,6 +147,15 @@ class IndicadorPrecioController extends Controller
         ->select('i.*')
         ->orderBy('i.nombre', 'asc')
         ->get();
+        // $indicadores=DB::table('indicadors as ind')
+        // ->join('precios as pre', 'pre.indicador_id', '=', 'ind.id')
+        // ->join('fechas as fec', 'pre.id_fecha', '=', 'fec.id')
+        // ->select('i.nombre', 'i.descripcion', 'i.id', 'i.indicador_id','i.importante', 't.tipo', 'in.nombres', 'i.institucion_id')        
+        // ->select(DB::raw('ind.nombre','ind.id'),  DB::raw('ind.id'))
+        // ->orderBy('ind.nombre', 'asc')
+        // ->groupBy('ind.nombre', 'ind.id')
+        // ->get();
+        // return $indicadores;
 
         // $precios=DB::table('precios as p')
         // ->join('indicadors as i', 'i.id', '=', 'p.indicador_id')
@@ -151,7 +166,7 @@ class IndicadorPrecioController extends Controller
          // 'precios'=> $precios
 
 
-        return view ('informe.show', ['i'=>$i, 'fechas'=> $fechas,  'indicadores'=>$indicadores]);
+        return view ('informe.show', ['i'=>$i, 'fechas'=> $fechas,  'indicadores'=>$indicadores, 'auxiliar'=>$auxiliar]);
     }
 
     /**

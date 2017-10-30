@@ -126,7 +126,7 @@
 /*fin comentarios*/
 @import url('https://fonts.googleapis.com/css?family=Kumar+One');
 @import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
-.row-section{float:left; width:100%; background: #42275a;  /* fallback for old browsers */
+.row-section{float:left; width:100%;   /* fallback for old browsers */
 	background: #292424; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 .row-section h2{float:left; width:100%; color:#fff; margin-bottom:30px; font-size: 14px;}
@@ -395,3 +395,7 @@ i.fa.fa-share#comen{
 }
 
 /*.btn{ border-radius: 50%; width:32px; height:32px; line-height:18px;  }*/
+div.container#menu2 {
+    background-color: #292424;
+    margin-left: -15px;
+}

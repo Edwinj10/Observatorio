@@ -3,6 +3,11 @@
 	<meta charset="UTF-8">
 </head>
 <body>
+
+	<div class="alert alert-success alert-dismissible" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		Se recomienda poner un tamaño de letra de 16 y justificar  el texto agregado en la descripcion antes de proceder a guardar.
+	</div>
 	<div class="col-lg-6 col-sm-6 col-m-6 col-xs-12">
 		<div class="form-group">
 			<label for="titulo">Titulo</label>

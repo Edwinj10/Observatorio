@@ -14,6 +14,7 @@
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
       <h4 class="widget-title">Seleccionar Indicador</h4>
       <select name="nombre" class="form-control selectpicker" data-live-search="true" id="indicadorcap" onchange="ShowSelected();">
+        <option value="">Eliga una opcion</option>
         @foreach ($indicador2 as $in)
         <option value="{{$in->id}}"><a href="/listado/{{$in->id}}">{{$in->nombre}}</a></option>
         @endforeach

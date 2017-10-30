@@ -59,7 +59,7 @@
 </div>
 <br>
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-12">
     @if (Auth::guest())
     <h4>Para realizar algun comentario debes Registrarte O Iniciar Session</h4>
     
@@ -92,16 +92,21 @@
 @include('error.mensaje')
 @include('error.error')
 <!-- lista -->
-<section class="row-section">
+<br><br><br>
+<div class="container" id="menu2">
+  <section class="row-section">
   <h3 class="widget-title"><span id="noticia">Comentarios</span></h3>
-  <div class="container">
-    <div class="col-md-8 row-block">
+    <div class="col-md-8 row-block col-xs-12 row-block">
       <ul id="sortable">
         @forelse ($comentario as $co)
         <li>
           <div class="media">
             <div class="media-left align-self-center">
+              @if(empty($co->foto))
+              <img class="rounded-circle" id="avatar" src="/img/usuario.png">
+              @else
               <img class="rounded-circle" id="avatar" src="{{asset('/imagenes/usuarios/'.$co->foto)}}">
+              @endif
             </div>
             <div class="media-body">
               <h4>{{$co->name}}</h4>
@@ -115,9 +120,11 @@
         </li>
       </ul>
     </div>
-
-  </div>
 </section>
+</div>
+
+
+                
 <!-- sugerencias -->
 
 <div class="col-lg-12 col-md-12">

@@ -111,7 +111,7 @@
                   <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="{!!URL::to('/noticias/create')!!}"><i class="fa fa-circle-o"></i> Agregar</a></li>
+                  <!-- <li><a href="{!!URL::to('/noticias/create')!!}"><i class="fa fa-circle-o"></i> Agregar</a></li>-->                 
                   <li><a href="{!!URL::to('/noticias')!!}"><i class="fa fa-circle-o"></i> Listar</a></li>
                 </ul>
               </li>

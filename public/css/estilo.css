@@ -58,6 +58,10 @@ div.panel-footer#panelfo {
     padding: 6px 12px;
     display: inline-block;
   }
+  #descr {
+    font-size: 16px;
+    text-align: justify;
+  }
   #blog-section-tres{
     background-color: white;
 
@@ -607,7 +611,19 @@ body {
   }
   #hijo3 {
 
-    width: 450%;
+    width: 230%
+
+  }
+  #hijo5 {
+
+    width: 300%;
+
+
+  }
+  #hijo7{
+
+    width: 400%;
+
 
   }
   #hijo4 {
@@ -694,7 +710,7 @@ body {
 
   .fa.fa-dropbox, .fa.fa-flickr , .fa.fa-github , .fa.fa-linkedin ,.fa,fa-tumblr ,.fa.fa-google-plus , .fa.fa-tumblr {
     color:#b1aca1;
-    font-size: 28px;
+    font-size: 20px;
     color: #517fa4;
     
   }

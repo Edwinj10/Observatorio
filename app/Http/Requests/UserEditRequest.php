@@ -25,7 +25,7 @@ class UserEditRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            // 'email' => 'required',
             // 'password' => 'required|string|min:6|confirmed',
             'foto' => 'mimes:jpeg,bmp,png',
         ];
