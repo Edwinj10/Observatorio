@@ -12,7 +12,7 @@
             </h3>
             <h4 class="text-center">¿Olvidaste tu Contraseña?</h4>
             <br>
-            <p><b>Escribe tu email y se te enviará un enlace para restablecer tu contraseña</b></p>
+            <p><b>Escribe tu email y se te enviará un enlace para restablecer tu contraseña </b></p>
             <div class="form-group">
                 @if (session('status'))
                 <div class="alert alert-success">
