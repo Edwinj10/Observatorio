@@ -45,7 +45,7 @@ class MailController extends Controller
     {
         Mail::send('emails.contact',$request->all(), function($msj){
            $msj->subject('Correo de Contacto Para CIIEMP');
-           $msj->to('edwinjosealtamirano@gmail.com');
+           $msj->to('ciiempfarem@gmail.com');
             });
 
         $correo= new Contacto;
