@@ -24,6 +24,7 @@
 
               <label>Indicador</label>
               <select name="nombre" class="form-control selectpicker" data-live-search="true" id="indicadorcap" onchange="ShowSelected();">
+                <option value="">Elegir una opcion</option>
                 @foreach ($indicador as $i)
                 <option value="{{$i->id}}"><a href="/indicadoresid/{{$i->id}}">{{$i->nombre}}</a></option>
                 @endforeach

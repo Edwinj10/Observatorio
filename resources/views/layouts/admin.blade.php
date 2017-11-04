@@ -190,6 +190,16 @@
             </li>
             <li class="treeview">
               <a href="#">
+                <i class="fa fa-comments"></i> <span>Correos</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <!-- <li><a href="{!!URL::to('/institucion/create')!!}"><i class="fa fa-circle-o"></i> Agregar</a></li> -->
+                <li><a href="{!!URL::to('/mail')!!}"><i class="fa fa-circle-o"></i> Listar</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
                 <i class="fa fa-plus-square"></i> <span>Ayuda</span>
                 <small class="label pull-right bg-red">PDF</small>
               </a>

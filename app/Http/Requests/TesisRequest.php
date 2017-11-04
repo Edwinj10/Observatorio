@@ -25,12 +25,12 @@ class TesisRequest extends FormRequest
     {
         return [
             
-            'tema' => 'required|max:100',
-            'introduccion' => 'required|max:2000',
+            'tema' => 'required|max:300',
+            'introduccion' => 'required|max:4000',
             'metodologia' => 'required|max:200',
             'autor' => 'required|max:200',
             'imagen'=> 'mimes:jpeg,bmp,png',
-            'archivo'=> 'mimes:pdf|unique:teses',
+            'archivo'=> 'required|mimes:pdf|max:7000',
 
     
         ];

@@ -43,7 +43,7 @@ class FrontController extends Controller
             ->orderBy('n.id', 'desc')
             ->paginate(6);
             $boletines=Boletin::orderBy('id', 'desc')->paginate(1);;
-            $tesis=Tesis::orderBy('id', 'desc')->paginate(3);;
+            $tesis=Tesis::orderBy('id', 'desc')->paginate(2);;
             $imagen=Imagen::all();
             // cargar boletines
             // $max= DB::table('boletins')->max('id');
@@ -184,6 +184,10 @@ class FrontController extends Controller
     }
 
     return view('busqueda', ["noticia"=>$noticia, "indicadores"=>$indicadores, "searchText"=>$query]);  
+    }
+    public function error()
+    {
+        return view ('error.404');
     }
 
 

@@ -69,4 +69,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-// Route::get('/{slug?}', 'FrontController@index');
+Route::get('/{slug?}', 'FrontController@error');

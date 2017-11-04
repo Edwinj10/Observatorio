@@ -5,7 +5,7 @@
   <div class="col-lg-7 col-md-7">
     <h4 class="widget">Portada:</h4>
     <div class="avatar">
-      <img src="{{asset('imagenes/boletines/'.$boletin->portada)}}" alt="{{ $boletin->titulo}}" height="300px" width="100%" class="img-thumbail">
+      <img src="{{asset('imagenes/boletines/'.$boletin->portada)}}" alt="" height="300px" width="70%" class="img-thumbail">
     </div>
   </div>
   <div class="col-lg-3 col-md-3 col-xs-12">
@@ -14,11 +14,11 @@
   </div>
   <div class="col-lg-2 col-md-2 col-xs-12">
     <h4 class="widget">Publicado por:</h4>
-    <p id="show">{{ $boletin->user_id}}</p>  
+    <p id="show">{{ $boletin->name}}</p>  
   </div>
 </div>
 <div class="row">
-  <div class="col-lg-12 col-xs-12">
+  <div class="col-lg-8 col-xs-12">
     <h4 class="widget">Descripcion</h4>
     <p id="show">{{ $boletin->descripcion}}</p>
     <br>
@@ -30,7 +30,7 @@
   </div>
   <div class="col-lg-4 col-md-4 col-xs-12">
     <div class="form-group" align="center">
-      <a href="{{asset('/archivos/boletines/'.$boletin->archivo)}}" download="{{$boletin->tema}}">
+      <a href="{{asset('/archivos/boletines/'.$boletin->archivo)}}" download="CIIEMPBoletin/{{$boletin->dia}}">
         <button class="btn btn-primary" id="descargar"><i class="fa fa-download" id="icontesis" aria-hidden="true"></i>Descargar Archivo</button>
       </a>
       <a href="/archivos/boletines/{{$boletin->archivo}}">

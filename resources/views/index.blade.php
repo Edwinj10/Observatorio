@@ -238,7 +238,7 @@
   						<div class="widget-sidebar">
   							<h3 class="widget-title"><span id="noticia">Indicadores</span></h3>
   							<div class="table-responsive">
-  								<table class="table table-striped table-bordered table-condensed table-hover">
+  								<table class="table table-striped  table-condensed table-hover">
   									<thead class="cf">
   										<tr>
   											<th>Indicador</th>
@@ -290,8 +290,8 @@
             <!-- Post Content-->
             <div class="post-content">
             	<div class="category">{{$n->tipo}}</div>
-            	<h2 class=" title"><a href="{{ route('noticias.show', $n->id ) }}">{{$n->titulo}}</a></h2>
-            	<p class="description">{{ $n->resumen }}</p>
+            	<h2 class=" title"><a href="{{ route('noticias.show', $n->id ) }}">{{substr(strip_tags($n->titulo), 0,50)}}...</a></h2>
+            	<p class="description">{{substr(strip_tags($n->resumen), 0,90)}}...</p>
             	<div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">o</i> {{ $n->fecha }}</span></div>
               <!-- <span class="comments"><i class="fa fa-comments"></i><a href="#"> 0 Comentarios</a></span> -->
             </div>
@@ -354,32 +354,33 @@
 <div class="container" id="menu">
 	<section class="section">
 		<div class="row">
-			<div class="col-md-9">
+			<div class="col-md-8">
 				<h3 class="widget-title"><span id="noticia">Tesis</span></h3>
 				<!-- ITEM -->
 				<div class="item">
 					<div class="row">
 						@foreach($tesis as $t)
-						<div class="col-md-3">
+						<div class="col-md-4">
 							<a href="{{ route('tesis.show', $t->id ) }}">
 								<img class="img-responsive" id="tesis" src="{{asset('imagenes/tesis/'.$t->imagen)}}" alt="">
 							</a>
 						</div>
-						<div class="col-md-9">
+						<div class="col-md-8">
 							<div class="descrip">
-								<h2 class="titles"><a href="{{ route('tesis.show', $t->id ) }}">{{$t->tema}}</a></h2>
+								<h2 class="titles"><a href="{{ route('tesis.show', $t->id ) }}">{{substr(strip_tags($t->tema), 0,100)}}...</a></h2>
 								<div id="descripcion">
 									<p class="description" id="texto-cortado">{{substr(strip_tags($t->introduccion), 0,300)}}...</p>
 								</div>
-								<p><i class="fa fa-calendar"></i> {{$t->created_at->diffForHumans()}}/   <i class="fa  fa-user-o"></i>{{$t->autor}}</p>
+								<p><i class="fa fa-calendar"></i> {{$t->created_at->diffForHumans()}}/   <i class="fa  fa-user-o"></i>{{substr(strip_tags($t->autor), 0,30)}}...</p>
 							</div>
 						</div>
 						@endforeach
 					</div>
 				</div>
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-4">
 				<h3 class="widget-title"><span id="noticia">Enlaces de Interes</span></h3>
+        <h3>FAREM</h3>
 			</div>
         <!-- <div class="col-md-3">
         	<h3 class="widget-title"><span id="noticia">Tesis</span></h3> -->

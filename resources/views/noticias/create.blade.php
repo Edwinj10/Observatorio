@@ -6,12 +6,12 @@
 
 	<div class="alert alert-success alert-dismissible" role="alert">
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		Se recomienda poner un tamaño de letra de 16 y justificar  el texto agregado en la descripcion antes de proceder a guardar.
+		Se recomienda poner un tamaño de letra de 16 y justificar  el texto agregado en la descripcion antes de proceder a guardar. Todo esto con el objetivo de mantener uniformidad en el texto.
 	</div>
 	<div class="col-lg-6 col-sm-6 col-m-6 col-xs-12">
 		<div class="form-group">
 			<label for="titulo">Titulo</label>
-			<input type="text"  id="titulo" maxlength="50" onkeyup="cuentatitulo();" name="titulo" required value="{{old('titulo')}}" 
+			<input type="text"  id="titulo"  onkeyup="cuentatitulo();" name="titulo" required value="{{old('titulo')}}" 
 			class="form-control" placeholder="Ingrese el Titulo">
 		</div>
 		<input type="text" id="mostar_titulo" name="mostar_titulo" style="border:0px;color:#ff0000;background-color:transparent;font-size:15px;" size="1">
@@ -20,8 +20,9 @@
 	<div class="col-lg-6 col-sm-6 col-m-6 col-xs-12">
 		<div class="form-group">
 			<label for="resumen">Resumen</label>
-			<input type="text"  id="resumen" maxlength="90"  name="resumen" required value="{{old('resumen')}}" class="form-control" placeholder="Ingrese el breve resumen">
+			<input type="text"  id="resumen"  onkeyup="cuentaresumen();"  name="resumen" required value="{{old('resumen')}}" class="form-control" placeholder="Ingrese el breve resumen">
 		</div>
+		<input type="text" id="mostar_resumen" name="mostar_resumen" style="border:0px;color:#ff0000;background-color:transparent;font-size:15px;" size="1">
 	</div>
 	<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 		<div class="form-group">
@@ -88,7 +89,7 @@
     // });
 }
 function cuentatitulo(){
-	var longi=50;
+	var longi=150;
 	var resta="";
 	var titulo = document.getElementById("titulo").value.length;
 	resta=longi-titulo;
@@ -96,6 +97,19 @@ function cuentatitulo(){
 		alert("Estas llegando al limite de caracteres");
 	}
 	document.getElementById("mostar_titulo").value=resta;
+	if (resta==0) {
+		alert("Ha llegando al tamaño maximo de caracteres permitidos");
+	}
+}
+function cuentaresumen(){
+	var longi=100;
+	var resta="";
+	var resumen = document.getElementById("resumen").value.length;
+	resta=longi-resumen;
+	if (resta==10) {
+		alert("Estas llegando al limite de caracteres");
+	}
+	document.getElementById("mostar_resumen").value=resta;
 	if (resta==0) {
 		alert("Ha llegando al tamaño maximo de caracteres permitidos");
 	}

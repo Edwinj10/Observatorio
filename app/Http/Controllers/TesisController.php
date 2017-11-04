@@ -92,7 +92,7 @@ class TesisController extends Controller
         {
             $imagen= $request->file('imagen');
             $filename= time(). '.'. $imagen->getClientOriginalExtension();
-            Image::make($imagen)->resize(750,500)->save(public_path('/imagenes/tesis/'.$filename));
+            Image::make($imagen)->resize(546,619)->save(public_path('/imagenes/tesis/'.$filename));
             $tesis->imagen=$filename;
         } 
          if (Input::hasFile('archivo')) {
@@ -168,7 +168,7 @@ class TesisController extends Controller
         {
             $imagen= $request->file('imagen');
             $filename= time(). '.'. $imagen->getClientOriginalExtension();
-            Image::make($imagen)->resize(750,500)->save(public_path('/imagenes/tesis/'.$filename));
+            Image::make($imagen)->resize(546,619)->save(public_path('/imagenes/tesis/'.$filename));
             $tesis->imagen=$filename;
         } 
         if (Input::hasFile('archivo')) {

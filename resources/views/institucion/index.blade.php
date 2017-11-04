@@ -50,8 +50,8 @@
                   </td>
                   <td>{{ $inst->nombres}}</td>
                   <td>{!! $inst->direccion!!}</td>
-                  <td>{{ $inst->mision}}</td>
-                  <td>{{ $inst->vision}}</td>
+                  <td>{{substr(strip_tags($inst->mision), 0,100)}}...</td>
+                  <td>{{substr(strip_tags($inst->vision), 0,100)}}...</td>
                   <td>
                     <img src="{{asset('imagenes/instituciones/'.$inst->logo)}}" alt="{{ $inst->titulo}}" height="100px" width="100px" class="img-thumbail">
                   </td>

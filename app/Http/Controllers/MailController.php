@@ -20,9 +20,32 @@ class MailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function __construct(){
+        // para los midelware
+       
+        $this->middleware('auth', ['only' => ['index', 'destroy', 'edit', 'show']]);
+        $this->middleware('admin',['only' => ['index', 'destroy', 'edit', 'show']]);
+        Carbon::setLocale('es');
+    }
+    public function index(Request $request)
     {
-        //
+        // $correo = Mail::orderBy('id', 'DESC')->paginate(20);
+        $correo = Contacto::orderBy('id', 'DESC')->paginate(30);
+        // para paginas hay que crear dos listas una para la paginacion y otra para los datos
+        // return [
+        //         'pagination' => [
+        //         'total'         => $correo->total(),
+        //         'current_page'  => $correo->currentPage(),
+        //         'per_page'      => $correo->perPage(),
+        //         'last_page'     => $correo->lastPage(),
+        //         'from'          => $correo->firstItem(),
+        //         'to'            => $correo->lastItem(),
+        //     ],
+        //     // segunda lista
+        //     'correo' => $correo
+        // ];
+        return view('correo.index', ["correo"=>$correo]);
+        
     }
 
     /**
@@ -98,6 +121,9 @@ class MailController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $correo = Contacto::findOrFail($id);
+        $correo->delete();
+        Session::flash ('message', 'Eliminado Correctamente');
+        return redirect::to('/mail');
     }
 }

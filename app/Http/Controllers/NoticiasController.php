@@ -65,7 +65,7 @@ class NoticiasController extends Controller
     public function create()
     {
 
-        
+
     }
 
     /**
@@ -112,7 +112,8 @@ class NoticiasController extends Controller
         $noticia=DB::table('noticias as n')
         ->join('indicadors as i', 'n.indicador_id', '=', 'i.id')
         ->join('users as u', 'n.user_id', '=', 'u.id')
-        ->select('n.*', 'u.name', 'i.nombre')
+        ->join('tipo__indicadors as t', 'i.indicador_id', '=', 't.id')
+        ->select('n.*', 'u.name', 'i.nombre', 't.tipo')
         ->where('n.id','=',$id)
         ->first();
         $variable = Noticia::find($id);
@@ -131,9 +132,10 @@ class NoticiasController extends Controller
         ->get();
 
         $sugerencias=DB::table('noticias as no')
-
-        ->select('no.*')
-        ->where('no.origen', '=', $noticia->origen)
+        ->join('indicadors as in', 'no.indicador_id', '=', 'in.id')
+        ->join('tipo__indicadors as t', 'in.indicador_id', '=', 't.id')
+        ->select('no.*', 't.tipo')
+        ->where('t.tipo', '=', $noticia->tipo)
         ->where('no.id', '!=', $noticia->id)
         ->paginate(3);
 

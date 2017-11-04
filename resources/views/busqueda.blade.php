@@ -32,7 +32,7 @@
             <!-- Post Content-->
             <div class="post-content">
               <div class="category">{{$n->tipo}}</div>
-              <h2 class=" title"><a href="{{ route('noticias.show', $n->id ) }}">{{$n->titulo}}</a></h2>
+              <h2 class=" title"><a href="{{ route('noticias.show', $n->id ) }}">{{substr(strip_tags($n->titulo), 0,50)}}...</a></h2>
               <p class="description">{{ $n->descripcion }}</p>
               <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">o</i> {{ $n->fecha }}</span></div>
             </div>

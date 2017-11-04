@@ -90,7 +90,12 @@ class BoletinController extends Controller
      */
     public function show($id)
     {
-        $boletin = Boletin::find($id);
+        // $boletin = Boletin::find($id);
+        $boletin = DB::table('boletins as b')
+        ->join('users as u', 'b.user_id', '=', 'u.id')
+        ->select('b.*', 'u.*')
+        ->where('b.id', '=', $id)
+        ->first();
         return view ('boletin.show', ['boletin'=>$boletin]);
     }
 

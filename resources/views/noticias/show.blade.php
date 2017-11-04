@@ -13,14 +13,14 @@
 <div class="row"> 
   <div class="col-md-12"> 
     @foreach ($users as $u)
-    <i class="fa fa-user " id="user"></i>Por: {{$u->name}} 
+    <i class="fa fa-user " id="user"></i> <label id="show"> Por: {{$u->name}}</label> 
     @endforeach
   </div>
   <div class="col-md-12"> 
-    <i class="fa fa-calendar" aria-hidden="true" id="cale"></i>Publicado:  {{$noticia->fecha}}
+    <i class="fa fa-calendar" id="user" aria-hidden="true" id="cale"></i><label id="show"> Publicado: {{$noticia->fecha}}</label>
   </div>
   <div class="col-md-12">
-    <i class="fa fa-eye" id="ver" aria-hidden="true"></i>Visto Por: {{$noticia->total_visitas}}
+    <i class="fa fa-eye" id="user" aria-hidden="true"></i><label id="show">Visto Por: {{$noticia->total_visitas}}</label>
   </div>
 </div>
 <div class="row">          
@@ -95,7 +95,7 @@
 <br><br><br>
 <div class="container" id="menu2">
   <section class="row-section">
-  <h3 class="widget-title"><span id="noticia">Comentarios</span></h3>
+    <h3 class="widget-title"><span id="noticia">Comentarios</span></h3>
     <div class="col-md-8 row-block col-xs-12 row-block">
       <ul id="sortable">
         @forelse ($comentario as $co)
@@ -120,18 +120,18 @@
         </li>
       </ul>
     </div>
-</section>
+  </section>
 </div>
 
 
-                
+
 <!-- sugerencias -->
 
 <div class="col-lg-12 col-md-12">
   <div class="section" id="noticias">
     <h3 class="widget-title"><span id="noticia">Noticias Relacionadas</span></h3>
     <div class="row">
-      @foreach ($sugerencias as $s)
+      @forelse ($sugerencias as $s)
       <div class="col-md-4  col-lg-4 col-xs-12">
         <div class="column"> 
           <!-- Post-->
@@ -144,15 +144,17 @@
               <img src="/imagenes/noticias/{{ $s->foto }}" class="img-responsive" alt=""> </div>
               <!-- Post Content-->
               <div class="post-content">
-                <div class="category">Economicas</div>
-                <h2 class=" title"><a href="{{ route('noticias.show', $s->id ) }}">{{$s->titulo}}</a></h2>
+                <div class="category">{{ $s->tipo }}</div>
+                <h2 class=" title"><a href="{{ route('noticias.show', $s->id ) }}">{{substr(strip_tags($s->titulo), 0,50)}}...</a></h2>
                 <p class="description">{{ $s->resumen }}</p>
-                <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">o</i> {{ $s->created_at }}</span><span class="comments"><i class="fa fa-comments"></i><a href="#"> 0 comments</a></span></div>
+                <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">o</i> {{ $s->created_at }}</span></div>
               </div>
             </div>
           </div>
         </div>
-        @endforeach
+        @empty
+        @include('error.alert')
+        @endforelse
       </div>
     </div>
   </div>

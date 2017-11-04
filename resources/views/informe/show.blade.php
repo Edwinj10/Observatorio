@@ -16,9 +16,7 @@
       ['Year', 'Precio'],
       @foreach ($fechas as $f)
       ['{{$f->dia}}-{{$f->mes}}'
-      
       , {{$f->precio}}],
-
       @endforeach
       
       ]);

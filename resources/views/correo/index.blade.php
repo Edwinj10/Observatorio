@@ -8,7 +8,6 @@
 @endif
 @include('error.error')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-
 <div class="container">
   <div class="row">
     <div class="col-md-12">
@@ -17,19 +16,16 @@
         <div class="panel-heading">
           <div class="row">
             <div class="col col-xs-6">
-              <h3 class="panel-title">Listado de Imagenes de portada</h3>
-              <h3 class="panel-title">Actualmente se encuentran registradas <b>{{$imagenes->total()}}</b></h3>
+              <h3 class="panel-title">Listado de correos enviados dentro de la aplicacion</h3>
+              <h3 class="panel-title">Actualmente se encuentran almacenados <b>{{$correo->total()}}</b></h3>
             </div>
             <div class="col col-xs-6 text-right">
-              <button type="button" class="btn btn-sm btn-primary btn-primary" data-target="#modal-create" data-toggle="modal"><em class="fa fa-pencil">Crear Nuevo</em></button>
               <button type="button" id="ver" class="btn btn-sm btn-primary btn-success">Eliminar</button>
             </div>
-            @include('imagenes.modal-create')
           </div>
           @include('buscador')
         </div>
-        <br>  
-        <div class="alert alert-success">Nota: Las imagenes deben de ser de un tamaño de 950px de ancho y 425 px de alto. Si se ingresa una imagen de un tamaño mayor o menor, la aplicacion cambiara el tamaño de la imagen automaticamente, a la medida antes mencionada.</div><br> 
+        <br>   
         <div class="panel-body">
           <div class="table-responsive">
             <table class="table table-striped table-bordered table-list table-hover" id="dev-table">
@@ -37,27 +33,22 @@
                 <tr>
                   <th><em class="fa fa-cog"></em></th>
                   <!-- <th class="hidden-xs">ID</th> -->
-                  <th>Titulo</th>
-                  <th>Creador</th>
-                  <th>Imagen</th>
+                  <th>Nombre</th>
+                  <th>Correo</th>
+                  <th>Descripcion</th>
                 </tr> 
               </thead>
               <tbody>
                 <tr>
-                  @foreach ($imagenes as $i)
+                  @foreach ($correo as $c)
                   <td align="center">
-                    <a class="btn btn-default" data-target="#modal-edit-{{$i->id}}" data-toggle="modal"><em class="fa fa-pencil"></em></a>
-                    <a class="btn btn-danger" data-target="#modal-delete-{{$i->id}}" data-toggle="modal"><em class="fa fa-trash"></em></a>
+                    <a class="btn btn-danger" data-target="#modal-delete-{{$c->id}}" data-toggle="modal"><em class="fa fa-trash"></em></a>
                   </td>
-
-                  <td>{{ $i->titulo}}</td>
-                  <td>{{ $i->name}}</td>
-                  <td>
-                    <img src="{{asset('imagenes/imagenes/'.$i->foto)}}" alt="{{ $i->titulo}}" height="100px" width="100px" class="img-thumbail">
-                  </td>
+                  <td>{{ $c->name}}</td>
+                  <td>{{ $c->email}}</td>
+                  <td>{{substr(strip_tags($c->descripcion), 0,200)}}...</td>
                 </tr>
-                @include('imagenes.modal') 
-                @include('imagenes.modaledit')
+                @include('correo.modal-delete')
                 @endforeach
               </tbody>
             </table>
@@ -66,7 +57,7 @@
         <div class="panel-footer">
           <div class="row">
             <div class="col-xs-8">
-              {{$imagenes->render()}}
+                {{$correo->render()}}
             </div>
           </div>
         </div>
@@ -84,5 +75,5 @@
         $(".btn-danger").hide();
       });
     </script>
-    @endpush
-    @stop
+      @endpush
+      @stop

@@ -6,6 +6,7 @@
   {{Session::get('message')}}
 </div>
 @endif
+@include('error.error')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
 
 <div class="container">
