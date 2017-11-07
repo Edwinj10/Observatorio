@@ -39,7 +39,7 @@
                   <th>Autor</th>
                   <!-- <th>Indicador</th> -->
                   <th>Carrera</th>
-                  <th>Metodologia</th>
+                  <!-- <th>Metodologia</th> -->
                   <th>Archivo</th>
                 </tr> 
               </thead>
@@ -56,7 +56,7 @@
                   <td>{{ $t->autor}}</td>
                   <!-- <td>{{ $t->nombre}}</td> -->
                   <td>{{ $t->carrera}}</td>
-                  <td>{{$t->metodologia}}</td>
+                  <!-- <td>{{$t->metodologia}}</td> -->
                   <td><a href="/archivos/tesis/{{$t->archivo}}">{{substr(strip_tags($t->archivo), 0,10)}}...</a></td>
                 </tr>
                 @include('tesis.modal')

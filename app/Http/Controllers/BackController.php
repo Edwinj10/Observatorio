@@ -230,7 +230,8 @@ class BackController extends Controller
     {
       $boletines=DB::table('boletins as b')
       ->select('b.*')
-      ->get();
+      ->orderBy('b.id', 'desc')
+      ->paginate(30);
       return view('boletin.todos', ["boletines"=>$boletines]);
     }
 
@@ -240,7 +241,8 @@ class BackController extends Controller
     $boletines=DB::table('boletins as b')
     ->select('b.*')
     ->where('b.mes', '=', $mes)
-    ->get();
+    ->orderBy('b.id', 'desc')
+    ->paginate(24);
     return view('boletin.pormes', ["boletines"=>$boletines]);
     }
 

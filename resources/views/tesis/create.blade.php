@@ -14,7 +14,7 @@
 	<div class="col-lg-6 col-sm-6 col-m-6 col-xs-12">
 		<div class="form-group">
 			<label for="introduccion">Introducción</label>
-			<input type="text"  id="introduccion"  name="introduccion" required value="{{old('introduccion')}}" class="form-control" placeholder="Ingrese una breve introducción">
+			<textarea name="introduccion" required value="{{old('introduccion')}}" class="form-control" placeholder="Ingrese una breve introducción" id="introducción" cols="30" rows="10"></textarea>
 		</div>
 	</div>
 	<div class="col-lg-6 col-sm-6 col-m-6 col-xs-12">
@@ -43,12 +43,12 @@
 			<input type="text"  id="autor"   name="autor" required value="{{old('autor')}}" class="form-control" placeholder="Ingrese el autor">
 		</div>
 	</div>
-	<div class="col-lg-6 col-sm-6 col-m-6 col-xs-12">
+	<!-- <div class="col-lg-6 col-sm-6 col-m-6 col-xs-12">
 		<div class="form-group">
 			<label for="autor">Metodologia</label>
 			<input type="text"  id="metodologia"   name="metodologia" required value="{{old('metodologia')}}" class="form-control" placeholder="Ingrese la Metodologia">
 		</div>
-	</div>
+	</div> -->
 
 	<div class="col-lg-6 col-sm-6 col-m-6 col-xs-12">
 		<div class="form-group">

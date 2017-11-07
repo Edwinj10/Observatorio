@@ -26,10 +26,10 @@
     <h4 class="widget">Carrera(es)</h4> 
     <p id="show">{{ $tesis->carrera}}</p> 
   </div>
-  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+  <!-- <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
     <h4 class="widget">Metodologia</h4> 
     <p id="show">{{ $tesis->metodologia}}</p> 
-  </div>
+  </div> -->
 </div>
 <div class="row">
   <div class="col-lg-8 col-xs-12">

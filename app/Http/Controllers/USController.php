@@ -24,29 +24,29 @@ class USController extends Controller
      */
     public function __construct(){
         // para los midelware
-       
+
         $this->middleware('auth');
         $this->middleware('admin', ['only' => ['create', 'destroy', 'edit', 'index']]);
     }
 
     public function index(Request $request)
     {
-             
+
         // if ($request) 
         // {
-            $usuarios=DB::table('users as u')
-            ->select('u.*')
-            ->orderBy('u.id', 'desc')
-            ->paginate(2);
-            
-            $user=DB::table('users as us')      
-            ->select(DB::raw('us.id', 'us.tipo'))
-            ->select(DB::raw('us.tipo'))
-            ->groupBy('us.tipo')
-            ->get();
+        $usuarios=DB::table('users as u')
+        ->select('u.*')
+        ->orderBy('u.id', 'desc')
+        ->paginate(2);
+
+        $user=DB::table('users as us')      
+        ->select(DB::raw('us.id', 'us.tipo'))
+        ->select(DB::raw('us.tipo'))
+        ->groupBy('us.tipo')
+        ->get();
             // return $user;
             // $query=trim($request->get('searchText'));
-            return view('usuarios.index', ['usuarios'=>$usuarios, 'user'=>$user]);
+        return view('usuarios.index', ['usuarios'=>$usuarios, 'user'=>$user]);
         // }
     }
     public function listall()
@@ -59,20 +59,20 @@ class USController extends Controller
     }
     public function index2(Request $request, $id)
     {
-       $usuarios=DB::table('users as u')
-        ->select('u.*')
-        ->where('u.tipo', '=', $id)
-        ->orderBy('u.id', 'desc')
-        ->paginate(20);
-            
-        $user=DB::table('users as us')      
-        ->select(DB::raw('us.id', 'us.tipo'))
-        ->select(DB::raw('us.tipo'))
-        ->groupBy('us.tipo')
-        ->get();
-    
-        return view('usuarios.index2', ['usuarios'=>$usuarios, 'user'=>$user]);
-    }
+     $usuarios=DB::table('users as u')
+     ->select('u.*')
+     ->where('u.tipo', '=', $id)
+     ->orderBy('u.id', 'desc')
+     ->paginate(20);
+
+     $user=DB::table('users as us')      
+     ->select(DB::raw('us.id', 'us.tipo'))
+     ->select(DB::raw('us.tipo'))
+     ->groupBy('us.tipo')
+     ->get();
+
+     return view('usuarios.index2', ['usuarios'=>$usuarios, 'user'=>$user]);
+ }
 
     /**
      * Show the form for creating a new resource.
@@ -81,8 +81,8 @@ class USController extends Controller
      */
     public function create()
     {
-         return view ('usuarios/create');  
-    }
+       return view ('usuarios/create');  
+   }
 
     /**
      * Store a newly created resource in storage.
@@ -92,27 +92,22 @@ class USController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $usuarios = new User;
-        $usuarios->name=$request->get('name');
-        $usuarios->email=$request->get('email');
-        $usuarios->password=bcrypt($request["password"]);
-        $usuarios->tipo=$request->get('tipo');
-        $usuarios->facebook=$request->get('facebook');
-        $usuarios->twiter=$request->get('twiter');
-        $usuarios->googleplus=$request->get('googleplus');
+        User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password']),
+            'tipo' => $request['tipo'],
+            'facebook' => $request['facebook'],
+            'twiter' => $request['twiter'],
+            'googleplus' => $request['googleplus'],
+            'foto' => $request['foto'],
 
-        if (Input::hasFile('foto')) 
-        {
-            $file=Input::file('foto');
-            $file->move(public_path().'/imagenes/usuarios/', $file->getClientOriginalName());
-            $usuarios->foto=$file->getClientOriginalName();
-        }
+        ]);
 
-        $usuarios->save();
 
         return redirect('/usuarios')-> with('massage','Guardado');
     }
-    
+
 
 
     /**
@@ -126,7 +121,7 @@ class USController extends Controller
         $usuarios =User::find($id);
         return view("usuarios.show",array('usuarios' =>$usuarios));
         return $usuarios;
-     
+
     }
 
     /**
@@ -149,26 +144,31 @@ class USController extends Controller
      */
     public function update(UserEditRequest $request, $id)
     {
-        $usuarios = User::findOrFail($id);
-        $usuarios->name=$request->get('name');
+        $usuarios = User::find($id);
+        $usuarios->fill($request->all());
+        $usuarios->save();
+        Session::flash('message','Usuario Actualizado Correctamente');
+        return Redirect::to('/usuarios');
+        // $usuarios = User::findOrFail($id);
+        // $usuarios->name=$request->get('name');
         
-        $usuarios->tipo=$request->get('tipo');
-        $usuarios->facebook=$request->get('facebook');
-        $usuarios->twiter=$request->get('twiter');
-        $usuarios->googleplus=$request->get('googleplus');
+        // $usuarios->tipo=$request->get('tipo');
+        // $usuarios->facebook=$request->get('facebook');
+        // $usuarios->twiter=$request->get('twiter');
+        // $usuarios->googleplus=$request->get('googleplus');
 
-        if (Input::hasFile('foto')) 
-        {
-            $file=Input::file('foto');
-            $file->move(public_path().'/imagenes/usuarios/', $file->getClientOriginalName());
-            $usuarios->foto=$file->getClientOriginalName();
+        // if (Input::hasFile('foto')) 
+        //     {
+        //         $file=Input::file('foto');
+        //         $file->move(public_path().'/imagenes/usuarios/', $file->getClientOriginalName());
+        //         $usuarios->foto=$file->getClientOriginalName();
+        //     }
+
+        //     $usuarios->update();
+
+        //     return redirect('/usuarios')-> with('message','Actualizado Correctamente');
+
         }
-
-        $usuarios->update();
-
-        return redirect('/usuarios')-> with('message','Actualizado Correctamente');
-
-    }
 
     /**
      * Remove the specified resource from storage.
@@ -191,6 +191,6 @@ class USController extends Controller
         $p = User::findOrFail($id);
         $p->fill($request->all());
         $p->update();
-         return back()->with('message', 'Foto Modificada Correctamente');
+        return back()->with('message', 'Foto Modificada Correctamente');
     }
 }

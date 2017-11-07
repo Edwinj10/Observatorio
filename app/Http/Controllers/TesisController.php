@@ -24,23 +24,23 @@ class TesisController extends Controller
      */
     public function __construct(){
         // para los midelware
-       
+
         $this->middleware('auth', ['only' => ['create', 'destroy', 'edit', 'index']]);
         $this->middleware('admin',['only' => ['create', 'destroy', 'edit', 'index']]);
         Carbon::setLocale('es');
     }
     public function index(Request $request)
     {
-         if ($request) 
-        {
-            $query=trim($request->get('searchText'));
-            $tesis=DB::table('teses as t')
-            ->join('indicadors as i', 't.id_indicador', '=', 'i.id')
-            ->join('carreras as c', 'c.id', '=', 't.id_carrera')
-            ->select('t.*','i.nombre', 'c.carrera')
-            ->where('t.tema','LIKE', '%'.$query.'%')
-            ->orderBy('t.id', 'desc')
-            ->paginate(30);
+       if ($request) 
+       {
+        $query=trim($request->get('searchText'));
+        $tesis=DB::table('teses as t')
+        ->join('indicadors as i', 't.id_indicador', '=', 'i.id')
+        ->join('carreras as c', 'c.id', '=', 't.id_carrera')
+        ->select('t.*','i.nombre', 'c.carrera')
+        ->where('t.tema','LIKE', '%'.$query.'%')
+        ->orderBy('t.id', 'desc')
+        ->paginate(30);
 
         $indicador=DB::table('indicadors as i')
         ->select('i.*')
@@ -51,9 +51,9 @@ class TesisController extends Controller
         ->orderBy('c.carrera', 'asc')
         ->get();
 
-            return view('tesis.index', ["tesis"=>$tesis, "searchText"=>$query, 'indicador'=>$indicador, 'carreras'=>$carreras]);
-        }
+        return view('tesis.index', ["tesis"=>$tesis, "searchText"=>$query, 'indicador'=>$indicador, 'carreras'=>$carreras]);
     }
+}
 
     /**
      * Show the form for creating a new resource.
@@ -69,7 +69,7 @@ class TesisController extends Controller
     //     ->select('c.*')
     //     ->get();
     //     return view ('tesis/create', ['indicador'=> $indicador, 'carreras'=> $carreras]);
-        
+
     // }
 
     /**
@@ -84,18 +84,18 @@ class TesisController extends Controller
         $tesis->id_indicador=$request->get('indicador');
         $tesis->tema=$request->get('tema');
         $tesis->introduccion=$request->get('introduccion');
-        $tesis->metodologia=$request->get('metodologia');
+        // $tesis->metodologia=$request->get('metodologia');
         $tesis->autor=$request->get('autor');
         $tesis->id_carrera=$request->get('carrera');
         
-         if($request->hasFile('imagen'))
+        if($request->hasFile('imagen'))
         {
             $imagen= $request->file('imagen');
             $filename= time(). '.'. $imagen->getClientOriginalExtension();
             Image::make($imagen)->resize(546,619)->save(public_path('/imagenes/tesis/'.$filename));
             $tesis->imagen=$filename;
         } 
-         if (Input::hasFile('archivo')) {
+        if (Input::hasFile('archivo')) {
             $file=Input::file('archivo');
             $file->move(public_path().'/archivos/tesis/', $file->getClientOriginalName());
             $tesis->archivo=$file->getClientOriginalName();
@@ -103,10 +103,10 @@ class TesisController extends Controller
         }
         // return $tesis;
         $tesis->save();
-           
+
 
         return redirect('/tesis')->with('message' , 'Tesis Guardada Correctamente');
-    
+
     }
 
     /**
@@ -117,13 +117,18 @@ class TesisController extends Controller
      */
     public function show($id)
     {
-        $tesis=DB::table('teses as t')
+        $max= DB::table('teses')->max('id');
+        if ($max < $id) {
+            return view("error.404");
+        }
+        else {
+            $tesis=DB::table('teses as t')
             ->join('indicadors as i', 't.id_indicador', '=', 'i.id')
             ->join('carreras as c', 'c.id', '=', 't.id_carrera')
             ->select('t.*','i.nombre', 'c.carrera')
             ->where('t.id','=', $id)
             ->first();
-        $sugerencias=DB::table('teses')
+            $sugerencias=DB::table('teses')
             ->join('indicadors', 'teses.id_indicador', '=', 'indicadors.id')
             ->join('carreras', 'carreras.id', '=', 'teses.id_carrera')
             ->select('teses.*', 'carreras.carrera')
@@ -131,7 +136,9 @@ class TesisController extends Controller
             ->orderBy('teses.id', 'desc')
             ->paginate(3);
 
-        return view("tesis.show",array('tesis' =>$tesis, 'sugerencias'=>$sugerencias));
+            return view("tesis.show",array('tesis' =>$tesis, 'sugerencias'=>$sugerencias));
+        }
+        
         
     }
 
@@ -159,12 +166,12 @@ class TesisController extends Controller
         $tesis->id_indicador=$request->get('indicador');
         $tesis->tema=$request->get('tema');
         $tesis->introduccion=$request->get('introduccion');
-        $tesis->metodologia=$request->get('metodologia');
+        // $tesis->metodologia=$request->get('metodologia');
         $tesis->autor=$request->get('autor');
         $tesis->id_carrera=$request->get('carrera');
         
         
-         if($request->hasFile('imagen'))
+        if($request->hasFile('imagen'))
         {
             $imagen= $request->file('imagen');
             $filename= time(). '.'. $imagen->getClientOriginalExtension();

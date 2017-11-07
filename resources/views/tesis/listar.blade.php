@@ -68,13 +68,9 @@
        <div class="panel-footer" id="panelfo">
         <div class="row">
           <div class="col col-xs-8">
-            <ul class="pagination hidden-xs pull-right">
-              {{$tesis->render()}}
-            </ul>
-            <ul class="pagination visible-xs pull-right">
-              <li><a href="#">«</a></li>
-              <li><a href="#">»</a></li>
-            </ul>
+
+            {{$tesis->render()}}
+            
           </div>
         </div>
       </div>

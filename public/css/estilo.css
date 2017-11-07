@@ -800,7 +800,7 @@ body {
   .h3, h3 {
     font-family: 'Raleway', sans-serif;
     font-size: 24px;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
   }
 /*.btn-default {
   background: transparent none repeat scroll 0 0;
@@ -988,7 +988,7 @@ body {
   color: #FFFFFF;
   font-size: 14px;
   font-weight: 600;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
 }
 .post-module .post-content .title {
   margin: 0;
@@ -1427,4 +1427,7 @@ i.fa.fa-bars {
         text-align: center;
       }
 
+    }
+    img#tesis.img-responsive {
+      width: 200px;
     }

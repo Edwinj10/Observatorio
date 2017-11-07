@@ -27,7 +27,7 @@
           </div>
           <div class="slide-hover">
             <div class="text-wrap">
-              <p>Direccion: {{$s->direccion}}</p>
+              <p>Dirección: {{$s->direccion}}</p>
                 <div class="desc">                  
                 </div>
                 <div class="book-now-c">

@@ -48,7 +48,17 @@
 	@empty
 	@include('error.alert')
 	@endforelse 
-</div>  
+</div> 
+<div class="row">
+	<div class="col-md-4">
+
+	</div>
+	<div class="col-md-4">
+		<div class="form-group">
+			{{$indicadores->render()}}
+		</div>
+	</div>
+</div> 
 @push ('scripts')
 {!!Html::script('/js/tabla.js')!!}
 <script type="text/javascript">

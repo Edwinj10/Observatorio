@@ -20,8 +20,8 @@
 	</div>
 	<div class="col-lg-6 col-sm-6 col-m-6 col-xs-12">
 		<div class="form-group">
-			<label for="introduccion">Metodologia</label>
-			<input type="text" name="metodologia"  required value="{{$t->metodologia}}" class="form-control" placeholder="Ingrese la Metodologia">
+			<!-- <label for="introduccion">Metodologia</label>
+			<input type="text" name="metodologia"  required value="{{$t->metodologia}}" class="form-control" placeholder="Ingrese la Metodologia"> -->
 		</div>
 	</div>
 	<div class="col-lg-6 col-sm-6 col-m-6 col-xs-12">
