@@ -23,7 +23,7 @@
                   <div class="form-group">
                     <div class="form-group">
                       <label for="exampleInputName2">Nombre:</label>
-                      <input type="text" class="form-control" name="name" id="exampleInputName2" placeholder="Juan">
+                      <input type="text" class="form-control" name="name" id="exampleInputName2" placeholder="Escribe Tu Nombre">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail2">Correo:</label>
@@ -31,7 +31,7 @@
                     </div>
                     <div class="form-group ">
                       <label for="exampleInputText">Mensaje:</label>
-                     <textarea  class="form-control" placeholder="Description" name="descripcion"></textarea> 
+                     <textarea  class="form-control" name="descripcion" placeholder="Ingrese el Mensaje"></textarea> 
                     </div>
                     <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
                   </div>
@@ -41,19 +41,16 @@
                     <h3>Siguenos en Nuestras Redes Sociales</h3>
                   <ul class="list-inline banner-social-buttons">
                     <li>
-                        <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
+                        <a href="https://www.facebook.com/CiiempFaremEsteli/"><i class="fa fa-facebook fa-2x"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-youtube-play fa-2x"></i></a>
+                        <a href="https://www.youtube.com/channel/UCYqqo6I2mxLsW6PLc5CttKA"><i class="fa fa-youtube-play fa-2x"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-instagram fa-2x"></i></a>
+                        <a href="https://www.instagram.com/ciiempfarem/"><i class="fa fa-instagram fa-2x"></i></a>
                     </li>
                     <li>
-                      <a href="#"><i class="fa fa-twitter fa-2x"></i></a> 
-                    </li>
-                    <li>
-                      <a href="#"><i class="fa fa-youtube-play fa-2x"></i></a>
+                      <a href="https://twitter.com/ciiempfarem"><i class="fa fa-twitter fa-2x"></i></a> 
                     </li>
                   </ul>
                 </div>

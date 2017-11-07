@@ -41,7 +41,7 @@
   				<ol class="carousel-indicators">
   					<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
   					<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-  					<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  					<!-- <li data-target="#carousel-example-generic" data-slide-to="2"></li> -->
   				</ol>
   				<!-- Wrapper for slides -->
   				<div class="carousel-inner" role="listbox">
@@ -51,7 +51,7 @@
   					</div> 
   					<!-- Item 2 -->
   					<div class="item slide2">
-  						<img src="img/obser2.jpg" data-animation="animated zoomInLeft" alt="">
+  						<img src="img/observatoriofarem.jpg" data-animation="animated zoomInLeft" alt="">
   					</div>
   					<!-- Item 3 -->
   					<div class="item slide3">
@@ -439,35 +439,33 @@
 			<div class="row text-center">
 				<ul class="list-inline">
 					<li>
-						<a href="#"><i class="fa fa-facebook fa-2x"></i></a>
+						<a href="https://www.facebook.com/CiiempFaremEsteli/"><i class="fa fa-facebook fa-2x"></i></a>
 					</li>
 					<li>
-						<a href="#"><i class="fa fa-youtube-play fa-2x"></i></a>
+						<a href="https://www.youtube.com/channel/UCYqqo6I2mxLsW6PLc5CttKA"><i class="fa fa-youtube-play fa-2x"></i></a>
 					</li>
 					<li>
-						<a href="#"><i class="fa fa-instagram fa-2x"></i></a> 
+						<a href="https://www.instagram.com/ciiempfarem/"><i class="fa fa-instagram fa-2x"></i></a> 
 					</li>
 					<li>
-						<a href="#"><i class="fa fa-twitter fa-2x"></i></a>
+						<a href="https://twitter.com/ciiempfarem"><i class="fa fa-twitter fa-2x"></i></a>
 					</li>               
 				</ul>
 			</div>
 			<div class="row text-center">   
 				<ul class="menu list-inline">
 					<li>
-						<a href="http://www.farem.unan.edu.ni" id="enlaces">Farem Estelí</a>
+						<a href="http://www.farem.unan.edu.ni" id="enlaces">Farem-Estelí</a>
 					</li>     
 					<li>
 						<a href="http://www.bcn.gob.ni" id="enlaces">Banco Central de Nicaragua</a>
 					</li>
-					<li>
-						<a href="#" id="enlaces"></a>
-					</li>      
+					     
             <!-- <li>
               <a href="#" id="enlaces">Gallery</a>
           </li> -->
           <li>
-          	<a href="#" id="enlaces">Contáctenos</a>
+          	<a href="/mail/create" id="enlaces">Contáctenos</a>
           </li>
       </ul>
   </div>   

@@ -89,6 +89,8 @@
 				<div class="post-content">
 
 					<p>Comentario realizado: <b>{{$c->comentario}}</b></p>
+					<p>Estado del Comentario: <b>{{$c->estado}}</b></p>
+					<h4>Noticia: </h4>
 					<a href="{{ route('noticias.show', $c->idd ) }}">
 						<img class="img-responsive" src="/imagenes/noticias/{{$c->fotos}}" width="300px" height="300px">
 					</a>
@@ -97,6 +99,7 @@
 						<h4>Titulo de la noticia: {{$c->titulo}}</h4>
 					</a>
 					<!-- <p><br><a href="/tags/christmas" class="tag">#Christmas</a> <a href="/tags/caturday" class="tag">#Caturday</a></p> -->
+
 				</div>
 				<hr>
 <!-- 					<div>
