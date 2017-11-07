@@ -30,8 +30,10 @@
  <div class="col-md-4">
   <div class="container-fluid">    
     <iframe id="boletin" style="width:325px; height:240px;" src="{{ $b->url }}" frameborder="0" allowfullscreen></iframe>
-    <a href="{{ route ('boletin.show',[$b->id])}}">
-      <p id="bole">{{substr(strip_tags($b->descripcion), 0,200)}}...</b></p> <!-- <button class="btn btn-primary">Ver</button> -->
+    
+      <p id="bole">{{substr(strip_tags($b->descripcion), 0,200)}}...</b></p>
+      <a href="{{ route ('boletin.show',[$b->id])}}">
+      <button class="btn btn-primary">Ver</button>
     </a>
     
   </div>

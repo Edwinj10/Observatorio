@@ -37,7 +37,7 @@
                   <th>Tema</th>
                   <th>Autor</th>
                   <th>Carrera</th>
-                  <th>Metodologia</th>
+                  <!--<th>Metodologia</th>-->
                   <th>Ver</th>
                 </tr> 
               </thead>
@@ -52,7 +52,7 @@
                   <td>{!! $t->tema!!}</td>
                   <td>{{ $t->autor}}</td>
                   <td>{{ $t->carrera}}</td>
-                  <td>{{$t->metodologia}}</td>
+                  <!--<td>{{$t->metodologia}}</td>-->
                   <td>
                    <a href="/tesis/{{$t->id}}" ><img src="/archivos/iconopdf.png" alt="" height="30px" width="30px"></a>
                  </td>
