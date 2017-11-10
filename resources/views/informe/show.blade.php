@@ -91,6 +91,14 @@
       </div>
     </div>
     <div id="chart_div" style="width: 100%; height:400px;"></div>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        @foreach ($ultimo as $u)
+        <h5 id="ultimo"><b>{{$u->descripcion}}</b></h5>
+        @endforeach
+      </div>
+    </div>
   </div>
   
 </div>

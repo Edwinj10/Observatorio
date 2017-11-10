@@ -54,9 +54,6 @@
   						<img src="img/observatoriofarem.jpg" data-animation="animated zoomInLeft" alt="">
   					</div>
   					<!-- Item 3 -->
-  					<div class="item slide3">
-  						<img src="img/obser3.jpg" data-animation="animated zoomInLeft" alt="">
-  					</div>
   					<!-- Item 4 -->
   					<!-- End Item 4 -->
 
@@ -243,7 +240,7 @@
   										<tr>
   											<th>Indicador</th>
   											<th>Fecha</th>
-  											<th class="numeric">Precio</th>
+  											<th class="numeric">Cantidad</th>
   											<th>Ver</th>
 
   										</tr>
@@ -251,7 +248,7 @@
   									<tbody>
   										<tr>
   											@foreach ($ind as $i)
-  											<td>{{ $i->nombre}}</td>
+  											<td>{{substr(strip_tags($i->nombre), 0,20)}}...</td>
   											<td>{{ $i->dia}}/{{ $i->mes}}/{{ $i->anio}}</td>
   											<td>{{ $i->precio}}</td>
   											<td><a href="{{ route('informe.show', $i->id ) }}"><i class="fa fa-eye"></i></a></td>
@@ -285,45 +282,45 @@
   							<div class="thumbnail">
              <!--  <div class="date"> <a href="#0">
                 <div class="day"><i class="fa fa-bars" aria-hidden="true"></i></div>
-            </a> </div> -->
-            <img src="imagenes/noticias/{{ $n->foto }}" class="img-responsive" alt=""> </div>
-            <!-- Post Content-->
-            <div class="post-content">
-            	<div class="category">{{$n->tipo}}</div>
-            	<h2 class=" title"><a href="{{ route('noticias.show', $n->id ) }}">{{substr(strip_tags($n->titulo), 0,50)}}...</a></h2>
-            	<p class="description">{{substr(strip_tags($n->resumen), 0,90)}}...</p>
-            	<div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">o</i> {{ $n->fecha }}</span></div>
-              <!-- <span class="comments"><i class="fa fa-comments"></i><a href="#"> 0 Comentarios</a></span> -->
-            </div>
-        </div>
-    </div>
-</div>
-@endforeach
+              </a> </div> -->
+              <img src="imagenes/noticias/{{ $n->foto }}" class="img-responsive" alt=""> </div>
+              <!-- Post Content-->
+              <div class="post-content">
+               <div class="category">{{$n->tipo}}</div>
+               <h2 class=" title"><a href="{{ route('noticias.show', $n->id ) }}">{{substr(strip_tags($n->titulo), 0,50)}}...</a></h2>
+               <p class="description">{{substr(strip_tags($n->resumen), 0,90)}}...</p>
+               <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">o</i> {{ $n->fecha }}</span></div>
+               <!-- <span class="comments"><i class="fa fa-comments"></i><a href="#"> 0 Comentarios</a></span> -->
+             </div>
+           </div>
+         </div>
+       </div>
+       @endforeach
 
+     </div>
+   </div>
+
+ </div>   
+ <div class="container" id="menu">
+   <div class="section">
+    <div class="row">
+     <div class="col-md-4">
+      <h3 class="widget-title"><span id="noticia">Ubicacion</span></h3>
+      <div class="span8">
+       <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.9844870824563!2d-86.37052568593182!3d13.10016921559033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f718c57866892dd%3A0xb23ca385a77b0c03!2sUNAN-FAREM+Estel%C3%AD+(Recinto+universitario+Leonel+Rugama)!5e0!3m2!1ses!2ses!4v1502825665128" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+     </div>
+   </div>
+   <div class="col-md-8">
+    <!-- hidden-xs -->
+    <h3 class="widget-title"><span id="noticia">Boletin</span></h3>
+    @foreach ($boletines as $b)
+    <iframe id="boletin" style="width:100%; height:360px;" src="{{ $b->url }}" frameborder="0" allowfullscreen></iframe>
+    @endforeach
+    <!-- /tabs-right -->
+  </div>
 </div>
 </div>
-
-</div>   
-<div class="container" id="menu">
-	<div class="section">
-		<div class="row">
-			<div class="col-md-4">
-				<h3 class="widget-title"><span id="noticia">Ubicacion</span></h3>
-				<div class="span8">
-					<iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.9844870824563!2d-86.37052568593182!3d13.10016921559033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f718c57866892dd%3A0xb23ca385a77b0c03!2sUNAN-FAREM+Estel%C3%AD+(Recinto+universitario+Leonel+Rugama)!5e0!3m2!1ses!2ses!4v1502825665128" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-
-				</div>
-			</div>
-			<div class="col-md-8">
-        <!-- hidden-xs -->
-				<h3 class="widget-title"><span id="noticia">Boletin</span></h3>
-				@foreach ($boletines as $b)
-				<iframe id="boletin" style="width:100%; height:360px;" src="{{ $b->url }}" frameborder="0" allowfullscreen></iframe>
-				@endforeach
-				<!-- /tabs-right -->
-			</div>
-		</div>
-	</div>
 </div>
 <!-- cargamos las instituciones -->
 <div class="container" id="menu">
@@ -354,7 +351,7 @@
 <div class="container" id="menu">
 	<section class="section">
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-8 col-lg-8">
 				<h3 class="widget-title"><span id="noticia">Tesis</span></h3>
 				<!-- ITEM -->
 				<div class="item">
@@ -378,10 +375,26 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-4">
-				<h3 class="widget-title"><span id="noticia">Enlaces de Interes</span></h3>
-        <h3>FAREM</h3>
-			</div>
+			<div class="col-md-4 col-lg-4">
+				<h3 class="widget-title"><span id="noticia">Acerca de nosotros</span></h3>
+        <a href="/acerca_de_observatorio_CIIEMP">
+          <img src="/img/ObservarorioCIIEMP.jpg" alt="" class="img-responsive">
+        </a>
+        <h3 class="widget-title"><span id="noticia">Enlaces de Interés</span></h3>
+        <a href="https://www." target="_blank">
+          <h4 id="enla">Plataforma CIIEMP</h4>
+        </a>
+        <a href="https://www." target="_blank">
+          <h4 id="enla">Bolsa de Empleo CIIEMP</h4>
+        </a>
+        <a href="https://www.unan.edu.ni." target="_blank">
+          <h4 id="enla">UNAN- Managua</h4>
+        </a>
+        <!-- <a href="repositorio.unan.edu.ni" target="_blank">
+          <h4 id="enla">Repositorio UNAN- Managua</h4>
+       </a> -->
+       <h4></h4>
+     </div>
         <!-- <div class="col-md-3">
         	<h3 class="widget-title"><span id="noticia">Tesis</span></h3> -->
         	<!-- ITEM -->
@@ -397,9 +410,9 @@
                 </div>
               </div>
             </div>
-        </div> -->
+          </div> -->
 
-        <!-- ITEM -->
+          <!-- ITEM -->
           <!-- <div class="item">
             <div class="thumbnail">
               <div class="caption">
@@ -412,9 +425,9 @@
                 </div>
               </div>
             </div>
-        </div> -->
+          </div> -->
 
-        <!-- ITEM -->
+          <!-- ITEM -->
           <!-- <div class="item">
             <div class="thumbnail">
               <div class="caption">
@@ -428,56 +441,56 @@
               </div>
             </div>
           </div>
-      </div> -->
+        </div> -->
+      </div>
+    </section>
   </div>
-</section>
-</div>
-<!-- empieza footer -->
-<div class="container" id="menu">
-	<footer>
-		<div class="container">
-			<div class="row text-center">
-				<ul class="list-inline">
-					<li>
-						<a href="https://www.facebook.com/CiiempFaremEsteli/"><i class="fa fa-facebook fa-2x"></i></a>
-					</li>
-					<li>
-						<a href="https://www.youtube.com/channel/UCYqqo6I2mxLsW6PLc5CttKA"><i class="fa fa-youtube-play fa-2x"></i></a>
-					</li>
-					<li>
-						<a href="https://www.instagram.com/ciiempfarem/"><i class="fa fa-instagram fa-2x"></i></a> 
-					</li>
-					<li>
-						<a href="https://twitter.com/ciiempfarem"><i class="fa fa-twitter fa-2x"></i></a>
-					</li>               
-				</ul>
-			</div>
-			<div class="row text-center">   
-				<ul class="menu list-inline">
-					<li>
-						<a href="http://www.farem.unan.edu.ni" id="enlaces">Farem-Estelí</a>
-					</li>     
-					<li>
-						<a href="http://www.bcn.gob.ni" id="enlaces">Banco Central de Nicaragua</a>
-					</li>
-					     
+  <!-- empieza footer -->
+  <div class="container" id="menu">
+   <footer>
+    <div class="container">
+     <div class="row text-center">
+      <ul class="list-inline">
+       <li>
+        <a href="https://www.facebook.com/CiiempFaremEsteli/" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/channel/UCYqqo6I2mxLsW6PLc5CttKA" target="_blank"><i class="fa fa-youtube-play fa-2x"></i></a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/ciiempfarem/" target="_blank"><i class="fa fa-instagram fa-2x"></i></a> 
+      </li>
+      <li>
+        <a href="https://twitter.com/ciiempfarem" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
+      </li>               
+    </ul>
+  </div>
+  <div class="row text-center">   
+    <ul class="menu list-inline">
+     <li>
+      <a href="http://www.farem.unan.edu.ni" id="enlaces" target="_blank">Farem-Estelí</a>
+    </li>     
+    <li>
+      <a href="http://www.bcn.gob.ni" id="enlaces" target="_blank">Banco Central de Nicaragua</a>
+    </li>
+
             <!-- <li>
               <a href="#" id="enlaces">Gallery</a>
-          </li> -->
-          <li>
-          	<a href="/mail/create" id="enlaces">Contáctenos</a>
-          </li>
-      </ul>
-  </div>   
-</div> 
-</footer>
-<div class="copyright">
-	<div class="container">
-		<div class="row text-center">
-			<p>Copyright © 2017 All rights reserved</p>
-		</div>
-	</div>
-</div>
+            </li> -->
+            <li>
+             <a href="/mail/create" id="enlaces">Contáctenos</a>
+           </li>
+         </ul>
+       </div>   
+     </div> 
+   </footer>
+   <div class="copyright">
+     <div class="container">
+      <div class="row text-center">
+       <p>Copyright © 2017 FAREM-Estelí. Todos los Derechos Reservados.</p>
+     </div>
+   </div>
+ </div>
 </div>
 
 <!-- End -->
@@ -498,12 +511,12 @@
 		$('.ir-arriba').click(function(){
 			$('body, html').animate({
 				scrollTop: '0px'
-			},300 );
+			},1000 );
 		});
 
 		$(window).scroll(function(){
 			if ($(this).scrollTop() > 0){
-				$('.ir-arriba').slideDown(300);
+				$('.ir-arriba').slideDown(900);
 			} else {
 				$('.ir-arriba').slideUp(300);
 			};

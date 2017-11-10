@@ -25,7 +25,7 @@ class IndicadorPrecioRequest extends FormRequest
     {
         return [
             'precio' => 'required|numeric',
-            'descripcion' => 'required|max:99',
+            'descripcion' => 'required|max:100',
         ];
     }
 }

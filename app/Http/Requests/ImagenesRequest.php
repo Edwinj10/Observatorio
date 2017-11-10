@@ -26,7 +26,7 @@ class ImagenesRequest extends FormRequest
         return [
             'titulo' => 'required|max:50',
             // 'descripcion' => 'required|max:15000',
-            'foto'=> 'mimes:jpeg,bmp,png',
+            'foto'=> 'mimes:jpeg,bmp,png|max:2000',
         ];
     }
 }

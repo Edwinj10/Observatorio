@@ -60,7 +60,9 @@
 					<h3>Instituciones</h3>
 					<p>Instituciones afiliadas al Observatorio Socioeconómico</p>
 					<div class="hero-unit">
-						<img src="/img/instituciones.PNG"><!--Why Not Put a Picture To Celebrate Your 404-->
+						<a href="/instituciones">
+							<img src="/img/instituciones.PNG">
+						</a><!--Why Not Put a Picture To Celebrate Your 404-->
 						<p></p>
 					</div>
 					<a href="/instituciones" class="btn btn-danger btn-large"><i class="icon-share icon-white"></i> Ir</a>
@@ -69,7 +71,9 @@
 					<h3>Noticias</h3>
 					<p>Noticias Socioeconómicas de carácter Nacional e Internacionas</p>
 					<div class="hero-unit">
-						<img src="/img/noticias.PNG"><!--Why Not Put a Picture To Celebrate Your 404-->
+						<a href="/noticia">
+							<img src="/img/noticias.PNG">
+						</a><!--Why Not Put a Picture To Celebrate Your 404-->
 						<p></p>
 					</div>
 					<a href="/noticia" class="btn btn-danger btn-large"><i class="icon-share icon-white"></i> Ir</a>
@@ -78,7 +82,9 @@
 					<h3>Indicadores</h3>
 					<p>Monitoreo de indicadores Económicos, Educación, Salud, entre otros.</p>
 					<div class="hero-unit">
-						<img src="/img/INDICADORES-3.PNG"><!--Why Not Put a Picture To Celebrate Your 404-->
+						<a href="/indicadors">
+							<img src="/img/INDICADORES-3.PNG">
+						</a><!--Why Not Put a Picture To Celebrate Your 404-->
 						<p></p>
 					</div>
 					<a href="/indicadors" class="btn btn-danger btn-large"><i class="icon-share icon-white"></i>Ir</a>
@@ -87,7 +93,9 @@
 					<h3>Boletín Informativo</h3>
 					<p>Boletín trimestal sobre principales temas Socioeconómicos</p>
 					<div class="hero-unit">
-						<img src="/img/icono-boletines1.jpg"><!--Why Not Put a Picture To Celebrate Your 404-->
+						<a href="/boletines_todos">
+							<img src="/img/icono-boletines1.jpg">
+						</a><!--Why Not Put a Picture To Celebrate Your 404-->
 						<p></p>
 					</div>
 					<a href="/boletines_todos" class="btn btn-danger btn-large"><i class="icon-share icon-white"></i>Ir</a>
@@ -98,6 +106,7 @@
 			</div>
 		</div>
 	</div>
+	<br>
 
 	<script type="text/javascript">
 

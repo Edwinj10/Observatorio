@@ -40,7 +40,7 @@
               <th>Dia</th>
               <th>Mes</th>
               <th>Año</th>
-              <th>Precio</th>
+              <th>Cantidad</th>
             </tr> 
           </thead>
           <tbody>

@@ -12,7 +12,7 @@
 	</div>
 	<div class="col-lg-6 col-sm-6 col-m-6 col-xs-12">
 		<div class="form-group">
-			<label for="titulo">Precio</label>
+			<label for="titulo">Cantidad</label>
 			<input type="text"  name="precio" onkeypress="return validar(event)" required value="{{$inf->precio}}" class="form-control" placeholder="Ingrese el Precio">
 		</div>
 	</div>

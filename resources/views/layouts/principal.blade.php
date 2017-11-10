@@ -242,7 +242,7 @@
     <div class="copyright">
       <div class="container">
         <div class="row text-center">
-          <p>Copyright © 2017 All rights reserved</p>
+          <p>Copyright © 2017 FAREM-Estelí. Todos los Derechos Reservados.</p>
         </div>
       </div>
     </div>
@@ -261,12 +261,12 @@
       $('.ir-arriba').click(function(){
         $('body, html').animate({
           scrollTop: '0px'
-        },300 );
+        },1000 );
       });
 
       $(window).scroll(function(){
         if ($(this).scrollTop() > 0){
-          $('.ir-arriba').slideDown(300);
+          $('.ir-arriba').slideDown(900);
         } else {
           $('.ir-arriba').slideUp(300);
         };

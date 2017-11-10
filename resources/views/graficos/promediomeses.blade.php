@@ -43,6 +43,7 @@
         </div>
         @endforelse
       </div>
+      <div class="col-md-4"><h5 id="ultimo"><b>En la siguiente gráfica se muestra el crecimiento de un indicador determinadado, promediados por meses para un año en específico.</b></h5></div>
       <div class="col-md-4">
         <h4>Año: <b>
           @foreach($anios as $a)
@@ -53,7 +54,6 @@
       <div class="col-md-4">
         <h4>Indicador: <b>{{$i->nombre}}</b></h4>
       </div>
-      <div class="col-md-4"></div>
     </div>
     <div class="col-lg-12">
       <h4><b>Ver Promedio de otros indicadores:</b></h4>

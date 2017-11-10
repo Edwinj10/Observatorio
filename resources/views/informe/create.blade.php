@@ -20,7 +20,7 @@
         <div class="col-lg-6 col-sm-6 col-m-6 col-xs-12">
             <div class="form-group">
                 <label for="titulo">
-                    Precio
+                    Cantidad
                 </label>
                 <input class="form-control" name="precio" onkeypress="return validar(event)" placeholder="Ingrese el Precio" required="" type="text" value="{{old('precio')}}">
                 </input>

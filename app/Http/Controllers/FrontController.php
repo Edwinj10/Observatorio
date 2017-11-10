@@ -189,6 +189,10 @@ class FrontController extends Controller
     {
         return view ('error.404');
     }
+    public function acerca()
+    {
+        return view ('error.acerca');
+    }
 
 
 }

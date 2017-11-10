@@ -64,9 +64,9 @@ Route::get('descargar/{id}/excel', 'ExportarController@indicadores_fechas');
 Route::get('descargarshow/{id}/excel', 'ExportarController@indicadores_show');
 Route::get('descargarmeses/{mes}/{anio}/{id}/excel', 'ExportarController@indicadores_meses');
 
-Route::get('/home', 'HomeController@index')->name('home');
-
+// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/acerca_de_observatorio_CIIEMP', 'FrontController@acerca');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/{slug?}', 'FrontController@error');
