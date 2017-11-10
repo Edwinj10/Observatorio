@@ -727,7 +727,7 @@ body {
     color: white;
     margin: 1em;
     transition: all ease 0.5s;
-    font-size: 16px;
+    font-size: 13px;
   }
   .fa.fa-facebook:hover {
     background: #003457;
@@ -740,7 +740,7 @@ body {
     color: white;
     margin: 1em;
     transition: all ease 0.5s;
-    font-size: 16px;
+    font-size: 13px;
   }
   .fa.fa-instagram:hover {
     background: #003457;
@@ -753,7 +753,7 @@ body {
     color: white;
     margin: 1em;
     transition: all ease 0.5s;
-    font-size: 16px;
+    font-size: 13px;
   }
   .fa.fa-twitter:hover {
     background: #003457;
@@ -769,7 +769,7 @@ body {
     color: white;
     margin: 1em;
     transition: all ease 0.5s;
-    font-size: 16px;
+    font-size: 13px;
   }
   .fa.fa-twitter#red {
     font-size: 11px;
