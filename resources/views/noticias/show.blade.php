@@ -2,6 +2,7 @@
 @section('content')
 {!!Html::style('/css/comentario.css')!!}
 <div id="fb-root"></div>
+<meta property="og:img" content="http://www.gabydiaz.com/wp-content/uploads/facebook_debug-1024x840.jpg">
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;

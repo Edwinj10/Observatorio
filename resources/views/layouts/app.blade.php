@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Observatorio SocioEconomico</title>
+    <title>Observatorio SocioEconomico CIIEMP | FAREM-Estelí</title>
     <link rel="icon" href="../img/CIIEMP.png" type="image/x-icon">
 
     <!-- Styles -->
