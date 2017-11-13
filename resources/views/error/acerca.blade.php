@@ -46,7 +46,7 @@ img.img-responsive {
 		<img src="/img/grupoCIIEMP.jpg" alt="CIIEMP" class="img-responsive">
 	</div>
 </div>
-<h3 class="widget-title"><span id="noticia">Acerca de Programadores de la Página</span></h3>
+<h3 class="widget-title"><span id="noticia">Desarrolladores de la Página Web</span></h3>
 <div class="row">
 	<hr>
 	<div class="col-md-6 col-sm-6 col-xs-12">

@@ -10,23 +10,23 @@
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
   	<meta charset="utf-8">
   	<!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
-  	 <title>Observatorio SocioEconomico CIIEMP | FAREM-Estelí</title>
-  	<link rel="icon" href="../img/CIIEMP.png" type="image/x-icon">
+    <title>Observatorio SocioEconomico CIIEMP | FAREM-Estelí</title>
+    <link rel="icon" href="../img/CIIEMP.png" type="image/x-icon">
 
-  	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  	{!!Html::style('http://cdn.bootcss.com/animate.css/3.5.1/animate.min.css')!!}
-  	<link rel="stylesheet" type="text/css" href="../css/estilo.css">
-  	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-  	<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-  	<link href="css/animate.css" rel="stylesheet" type="text/css">
-  	<link href="css/iframe-embed.css" rel="stylesheet" type="text/css">
-  	<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
-  	<link href="../css/bootstrap-tabs-x.css" media="all" rel="stylesheet" type="text/css"/>
-  	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
-  	<script src="../js/bootstrap-tabs-x.js" type="text/javascript"></script>
-  	<link rel="shortcut icon" type="img/CIIEMP.png" href="/favicon.ico">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    {!!Html::style('http://cdn.bootcss.com/animate.css/3.5.1/animate.min.css')!!}
+    <link rel="stylesheet" type="text/css" href="../css/estilo.css">
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/animate.css" rel="stylesheet" type="text/css">
+    <link href="css/iframe-embed.css" rel="stylesheet" type="text/css">
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+    <link href="../css/bootstrap-tabs-x.css" media="all" rel="stylesheet" type="text/css"/>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../js/bootstrap-tabs-x.js" type="text/javascript"></script>
+    <link rel="shortcut icon" type="img/CIIEMP.png" href="/favicon.ico">
   </head>
   <body>
   	<div class="hidden-xs">
@@ -390,11 +390,10 @@
         <a href="https://www.unan.edu.ni." target="_blank">
           <h4 id="enla">UNAN- Managua</h4>
         </a>
-        <!-- <a href="repositorio.unan.edu.ni" target="_blank">
-          <h4 id="enla">Repositorio UNAN- Managua</h4>
-       </a> -->
-       <h4></h4>
-     </div>
+        <a href="http://www.biblio.unan.edu.ni/" target="_blank">
+          <h4 id="enla">Biblioteca Central</h4>
+        </a>
+      </div>
         <!-- <div class="col-md-3">
         	<h3 class="widget-title"><span id="noticia">Tesis</span></h3> -->
         	<!-- ITEM -->
