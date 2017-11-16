@@ -44,7 +44,7 @@
           </div> 
           <!-- Item 2 -->
           <div class="item slide2">
-           <img src="img/observatoriofarem.jpg" data-animation="animated zoomInLeft" alt="">
+           <img src="/img/observatoriofarem.jpg" data-animation="animated zoomInLeft" alt="">
          </div>
          <!-- Item 3 -->
          <!-- <div class="item slide3">
@@ -90,7 +90,7 @@
                 <li id="hijos"><a href="/institucion/4">MINSA</a></li>
                 <li><a href="/institucion/3">MINED</a></li>
                 <li><a href="/institucion/7">Alcaldia de Estelí</a></li>
-                <li><a href="#">INSS</a></li>
+                <!-- <li><a href="#">INSS</a></li> -->
                 <li><a href="/instituciones">Todas</a></li>
               </ul>
             </li>
@@ -99,8 +99,8 @@
                 <!-- <li class="dropdown-header" id="economicos">Indicadores Económicos</li> -->
                 <li id="hijos"><a href="/institucion/5">Ministerio del Trabajo</a></li>
                 <li id="hijos"><a href="/institucion/2">Camara de Comercio</a></li>
-                <li id="hijos"><a href="/institucion/6">Banco Central</a></li>                            
-                <li id="hijos"><a href="#">Renta</a></li>              
+                <li id="hijos"><a href="/institucion/6">Banco Central de Nicaragua</a></li>                            
+                <<!-- li id="hijos"><a href="#">Renta</a></li>  -->             
               </ul>
             </li>
           </ul>       
@@ -114,23 +114,23 @@
         <li class="dropdown mega-dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Estudios<span class="caret"></span></a>        
           <ul class="dropdown-menu mega-dropdown-menu" id="hijo7">
-            <li class="col-sm-6">
+            <li class="col-sm-8">
               <ul>
-                <li class="dropdown-header">Economia</li>
+                <!-- <li class="dropdown-header">Economia</li> -->
                 <li><a href="/tesisporcarreras/1">Mercadotecnia</a></li>
-                <li><a href="/tesisporcarreras/2">Admon Empresas</a></li>
+                <li><a href="/tesisporcarreras/2">Administración de Empresas</a></li>
                 <li><a href="/tesisporcarreras/3">Banca y Finanzas</a></li>
                 <li><a href="/listartesis">Todos</a></li>            
               </ul>
             </li>
-            <li class="col-sm-6">
+            <!-- <li class="col-sm-6">
               <ul>
                 <li class="dropdown-header">Sociales</li>
                 <li><a href="#">Turismo</a></li>
                 <li><a href="#">Admon Turistica y Hotelera</a></li>
                 <li><a href="#">Trabajo Social</a></li>                                                      
               </ul>
-            </li>
+            </li> -->
           </ul>       
         </li>
         <li><a href="/boletines_todos" id="padres">Boletines</a></li>

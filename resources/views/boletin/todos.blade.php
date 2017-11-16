@@ -1,7 +1,7 @@
 @extends('layouts.principal')
 @section('content')
 <div class="section" id="noticias">
- <h3 class="widget-title"><span id="noticia">Listado de boletines</span></h3>
+ <h3 class="widget-title"><span id="noticia">Listado de Boletines Informativos Trimestrales</span></h3>
  <div class="row">
   <div class="col-lg-6">
 
@@ -31,9 +31,9 @@
   <div class="container-fluid">    
     <iframe id="boletin" style="width:325px; height:240px;" src="{{ $b->url }}" frameborder="0" allowfullscreen></iframe>
     
-      <p id="bole">{{substr(strip_tags($b->descripcion), 0,200)}}...</b></p>
-      <a href="{{ route ('boletin.show',[$b->id])}}">
-      <button class="btn btn-primary">Ver</button>
+    <p id="bole">{{substr(strip_tags($b->descripcion), 0,200)}}...</b></p>
+    <a href="{{ route ('boletin.show',[$b->id])}}">
+      <button class="btn btn-primary">Ver Más</button>
     </a>
     
   </div>
@@ -45,7 +45,7 @@
 </div>
 <div class="row">
   <div class="col-md-4">
-    
+
   </div>
   <div class="col-md-4">
     <div class="form-group">

@@ -1,7 +1,7 @@
 @extends('layouts.principal')
 @section('content')
 <div class="section" id="noticias">
-  <h3 class="widget-title"><span id="noticia">Listado de boletines</span></h3>
+  <h3 class="widget-title"><span id="noticia">Listado de Boletines Informativos Trimestrales</span></h3>
   <div class="row">
     <div class="col-lg-6">
 
@@ -41,7 +41,7 @@
 </div>
 <div class="row">
   <div class="col-md-4">
-    
+
   </div>
   <div class="col-md-4">
     <div class="form-group">

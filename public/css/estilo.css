@@ -622,7 +622,7 @@ body {
   }
   #hijo7{
 
-    width: 400%;
+    width: 280%;
 
 
   }
@@ -1452,3 +1452,11 @@ i.fa.fa-bars {
     height: 30px;
     width: 250px;
   }
+  h4#enla:hover {
+    background-color: black;
+  }
+  /*div#caption.caption:hover {
+    
+    background-color: transparent;
+    
+  }*/

@@ -29,7 +29,7 @@
 	@forelse ($indicadores as $i)
 	<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 		<div class="thumbnail">
-			<div class="caption">
+			<div class="caption" id="caption">
 				<div class='col-lg-12'>
 					<span class="glyphicon glyphicon-credit-card" id="indicador"> Tipo: <b>{{$i->tipo}}</b></span>
 				</div>
