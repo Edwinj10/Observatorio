@@ -223,9 +223,9 @@
             <li>
               <a href="http://www.bcn.gob.ni" id="enlaces">Banco Central de Nicaragua</a>
             </li>
-            <li>
+            <!-- <li>
               <a href="#" id="enlaces">CIIEMP</a>
-            </li>  
+            </li> -->  
             <li>
               <a href="/mail/create" id="enlaces">Contáctanos</a>
             </li>      
