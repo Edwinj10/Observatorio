@@ -56,7 +56,7 @@ style.css:164
 		<div class="col-md-6">
 			<div class="team-info">
 				<div class="img-sec">
-					<img src="/img/edwin2.jpg" class="img-responsive">
+					<img src="/img/edwin.jpg" class="img-responsive">
 				</div>
 			</div>
 		</div>
