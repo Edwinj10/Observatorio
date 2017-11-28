@@ -381,10 +381,10 @@
 					<img src="/img/ObservarorioCIIEMP.jpg" alt="" class="img-responsive">
 				</a>
 				<h3 class="widget-title"><span id="noticia">Enlaces de Interés</span></h3>
-				<a href="https://www." target="_blank">
+				<a href="http://ciiemp.com/" target="_blank">
 					<h4 id="enla">Plataforma CIIEMP</h4>
 				</a>
-				<a href="https://www." target="_blank">
+				<a href="http://bolsaempleo.ciiemp.com/" target="_blank">
 					<h4 id="enla">Bolsa de Empleo CIIEMP</h4>
 				</a>
 				<a href="https://www.unan.edu.ni." target="_blank">

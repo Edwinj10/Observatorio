@@ -199,17 +199,17 @@
               </ul>
             </li>
             <li class="treeview">
-              <a href="#">
-                <i class="fa fa-plus-square"></i> <span>Ayuda</span>
-                <small class="label pull-right bg-red">PDF</small>
+              <a data-target="#modal-ayuda" data-toggle="modal">
+                <i class="fa fa-plus-square"></i> <span>Ayuda</span> 
+                <!--  <small class="label pull-right bg-red">PDF</small> -->
               </a>
             </li>
-            <li>
+            <!-- <li>
               <a href="#">
                 <i class="fa fa-info-circle"></i> <span>Acerca De...</span>
                 <small class="label pull-right bg-yellow">IT</small>
               </a>
-            </li>
+            </li> -->
 
           </ul>
         </section>
@@ -244,6 +244,7 @@
                   <div class="col-md-12">
                     <!--Contenido-->
                     @yield('content')
+                    @include('modal.ayuda')
                     <!--Fin Contenido-->
                   </div>
                 </div>
@@ -258,23 +259,23 @@
   </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
 <!--Fin-Contenido-->
-      <!-- <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-          <b>Version</b> 2.3.0
-        </div>
-        <strong>Copyright &copy; 2015-2020 <a href="www.incanatoit.com">IncanatoIT</a>.</strong> All rights reserved.
-      </footer> -->
+<footer class="main-footer">
+  <div class="pull-right hidden-xs">
+    <b>Version</b> 1.0.0
+  </div>
+  <strong>Copyright &copy; 2017</strong> All rights reserved.
+</footer>
 
-      
-      <!-- jQuery 2.1.4 -->
-      {!!Html::script('http://code.jquery.com/jquery-1.11.1.min.js')!!}
-      <!-- Bootstrap 3.3.5 -->
-      <script src="/admin/js/bootstrap.min.js"></script>
-      <!-- AdminLTE App -->
-      <script src="{{asset('js/bootstrap-select.min.js')}}"></script>
-      <script src="/admin/js/app.min.js"></script>
-      {!!Html::script('/js/tabla.js')!!}
-      @stack('scripts')
 
-    </body>
-    </html>
+<!-- jQuery 2.1.4 -->
+{!!Html::script('http://code.jquery.com/jquery-1.11.1.min.js')!!}
+<!-- Bootstrap 3.3.5 -->
+<script src="/admin/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="{{asset('js/bootstrap-select.min.js')}}"></script>
+<script src="/admin/js/app.min.js"></script>
+{!!Html::script('/js/tabla.js')!!}
+@stack('scripts')
+
+</body>
+</html>
