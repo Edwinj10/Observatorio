@@ -138,7 +138,7 @@ class IndicadorController extends Controller
         $indicador->nombre=$request->get('nombre');
         $indicador->indicador_id=$request->get('tipo');
         $indicador->institucion_id=$request->get('institucion_id'); 
-        $indicador->importante=$request->get('capimportante'); 
+        $indicador->importante=$request->get('importante'); 
         $indicador->descripcion=$request->get('descripcion'); 
         $indicador->update();
         return redirect('/indicador')->with('message' , 'Actualizado Correctamente');

@@ -27,7 +27,7 @@ class NoticiaResquest extends FormRequest
             'titulo' => 'required|max:150',
             'resumen' => 'required|max:100',
             'descripcion' => 'required|max:15000',
-            'foto'=> 'mimes:jpeg,bmp,png|max:4000'',
+            'foto'=> 'mimes:jpeg,bmp,png|max:4000',
         ];
     }
 }

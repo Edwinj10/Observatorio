@@ -30,7 +30,7 @@ class TesisRequest extends FormRequest
             // 'metodologia' => 'required|max:200',
             'autor' => 'required|max:200',
             'imagen'=> 'mimes:jpeg,bmp,png|max:4000',
-            'archivo'=> 'required|mimes:pdf|max:5000',
+            // 'archivo'=> 'required|mimes:pdf|max:5000',
 
     
         ];
