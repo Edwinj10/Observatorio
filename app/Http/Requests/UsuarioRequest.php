@@ -24,7 +24,7 @@ class UsuarioRequest extends FormRequest
     public function rules()
     {
         return [
-            'foto' => 'mimes:jpeg,bmp,png|max:4000',
+            'foto' => 'mimes:jpeg,bmp,png|max:8000',
         ];
     }
 }
