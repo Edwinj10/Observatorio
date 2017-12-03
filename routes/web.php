@@ -44,6 +44,7 @@ Route::get('mostrar/{id1}/{id2}', 'BackController@show');
 Route::get('fechas/{fecha}/{fecha2}/{id}', 'BackController@informe_fechas');
 Route::get('listartesis', 'BackController@index');
 Route::get('listado/{id}', 'BackController@indicadores_detalles');
+Route::get('listado_fechas/{fecha1}/{fecha2}/{id}', 'BackController@indicadores_detalles_fechas');
 Route::get('boletines_todos', 'BackController@vertodos');
 Route::get('boletines_mes/{id}', 'BackController@verpormes');
 Route::get('promedios_meses/{anio}/{id}', 'BackController@promedios_meses');

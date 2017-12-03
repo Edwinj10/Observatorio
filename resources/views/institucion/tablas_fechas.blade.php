@@ -10,21 +10,19 @@
   <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
       @foreach ($indicador as $i)
-      <h4 class="widget-title">Nombre del Indicador: <b>{{$i->nombre}}</b></h4>
+      <h4 class="widget-title">Nombre del Indicador: <br> <b>{{$i->nombre}}</b></h4>
+      
       <h4 class="widget-title">Indicador de : <a href="{{ route('institucion.show', $i->ind ) }}"><b>{{$i->nombres}}</b></a> </h4>
       @endforeach   
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
       <h4 class="widget-title">Seleccionar Indicador</h4>
-      <select name="nombre" class="form-control selectpicker" data-live-search="true" id="indicadorcap" onchange="ShowSelected();">
+      <select name="nombre" class="form-control selectpicker" data-live-search="true" id="indicadorcap" onchange="Capturar();">
         <option value="">Eliga una opcion</option>
         @foreach ($indicador2 as $in)
         <option value="{{$in->id}}"><a href="/listado/{{$in->id}}">{{$in->nombre}}</a></option>
         @endforeach
       </select>           
-    </div>
-    <div class="col-lg-6 col-sm-6 col-sm-6 col-xs-12">
-      <h4 class="widget-title">Exportar datos a Excel <a href="/descargar/{{$i->id}}/excel" class="btn-primary">Descargar</a></h4>
     </div>
     <div class="col-md-2">
       <h4><b>Click en la Imagen para Buscar Por Meses:</b></h4> 
@@ -87,40 +85,6 @@
 
 {!!Html::script('js/tabla.js')!!}
 <script type="text/javascript">
-
-  // $("#indicadorcap").onchange(function(){
-  //   var text= $(this).val();
-  //   console.log(text);
-  // });
-
-
-
-  function ShowSelected()
-  {
-
-    // var cod = document.getElementById("indicadorcap").value;
-    //  //` alert(cod);
-
-    //  /* Para obtener el texto */
-    // var combo = document.getElementById("indicadorcap");
-    // var selected = combo.options[combo.selectedIndex].text;
-    
-    // document.getElementById('capturar').value = cod;
-    // /* Para obtener el valor */
-    var id=$('#indicadorcap option:selected').val();
-
-    var ruta='/listado/'+ id;
-
-    window.location.href=ruta;
-    // var id=$('#capturar').val();
-    // alert(selected);
-    console.log(ruta);
-    // $.ajax({
-    //   url:''+ruta,
-    //   type:'get',
-    // });
-  }
-
   function redireccion()
   {
     var fecha= $('#datepicker').val();
@@ -133,25 +97,40 @@
     var ruta=  '/listado_fechas/'+capturar;
     window.location.href=ruta;
   }
-
-  // para seleccionar y buscar con el botton
-  // function redireccion()
-  // {
-  //   // var id=$('#capturar').val();
-  //   var id=  '/indicadoresid/'+$('#capturar').val();
-  //   window.location.href=id;
-
-  // }
-
+  function Capturar()
+  {
+    // declaramos un arreglo y lo recorremos
+    var fecha = new Date();
+    // var ano = fecha.getMonth();
+    var mes = new Array();
+    mes[0]= "01";
+    mes[1]= "02";
+    mes[2]= "03";
+    mes[3]= "04";
+    mes[4]= "05";
+    mes[5]= "06";
+    mes[6]= "07";
+    mes[7]= "08";
+    mes[8]= "09";
+    mes[9]= "10";
+    mes[10]= "11";
+    mes[11]= "12";
+    // total es el mes
+    // years anio
+    var total=mes[fecha.getMonth()];
+    var f = new Date();
+    var years = f.getFullYear();
+    // alert('El año actual es: '+ano);
+    var cap=$('#indicadorcap option:selected').val();
+    // var fechas= $('#datepicker').val();
+    var auxiliar= years+ '/'+total;
+    var auxiliar3= auxiliar + '/'+cap;
+    var ruta='/listado_fechas/'+ auxiliar3;
+    window.location.href=ruta;
+  }
+  
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
 @stop
 

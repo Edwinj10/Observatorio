@@ -90,8 +90,8 @@ class BackController extends Controller
                // $ind = Fecha::paginate(7);
                //$ind = Precio::paginate(6);
             $tipo=DB::table('indicadors as i')
-                ->select('i.*')
-                ->get();
+            ->select('i.*')
+            ->get();
         }
         return view('informe.indicadorID', ["informe" => $informe, 'nombre' => $nombre, 'indicador' => $indicador, "searchText" => $query, 'tipo'=>$tipo]);
         // return $mostrar;
@@ -157,6 +157,34 @@ class BackController extends Controller
 
             return view('institucion.tabla', ["detalle" => $detalle, 'indicador' => $indicador, 'indicador2' => $indicador2, "searchText" => $query]);
         }
+    }
+    public function indicadores_detalles_fechas(Request $request, $fecha1, $fecha2, $id)
+    {
+
+        $detalle = DB::table('fechas as f')
+        ->join('precios as p', 'p.id_fecha', '=', 'f.id')
+        ->join('indicadors as i', 'i.id', '=', 'p.indicador_id')
+        ->select('f.*', 'p.*')
+        ->where('f.anio', '=', $fecha1)
+        ->where('f.mes', '=', $fecha2)
+        ->where('i.id', '=', $id)
+        ->orderBy('f.id', 'desc')
+        ->simplepaginate(50);
+        
+            // return $detalle;
+        $indicador = DB::table('indicadors as i')
+        ->join('institucions as ind', 'i.institucion_id', '=', 'ind.id')
+        ->select('i.nombre', 'i.id', 'ind.id as ind', 'ind.nombres')
+        ->where('i.id', '=', $id)
+        ->get();
+
+        $indicador2 = DB::table('indicadors as i')
+        ->select('i.id', 'i.nombre')
+        ->orderBy('i.nombre', 'asc')
+        ->get();
+
+        return view('institucion.tablas_fechas', ["detalle" => $detalle, 'indicador' => $indicador, 'indicador2' => $indicador2]);
+        
     }
     public function informe_fechas(Request $request, $fecha, $fecha2, $id)
     {
@@ -233,21 +261,21 @@ class BackController extends Controller
       ->orderBy('b.id', 'desc')
       ->paginate(30);
       return view('boletin.todos', ["boletines"=>$boletines]);
-    }
+  }
 
-    public function verpormes($mes)
-    {
-    
+  public function verpormes($mes)
+  {
+
     $boletines=DB::table('boletins as b')
     ->select('b.*')
     ->where('b.mes', '=', $mes)
     ->orderBy('b.id', 'desc')
     ->paginate(24);
     return view('boletin.pormes', ["boletines"=>$boletines]);
-    }
+}
 
-    public function comentarios(Request $request, $id)
-    {
+public function comentarios(Request $request, $id)
+{
 
     $comentarios = DB::table('comentarios as c')
     ->join('noticias as n', 'c.noticias_id', '=', 'n.id')
@@ -263,9 +291,9 @@ class BackController extends Controller
     ->where('co.estado', '=', $id)
     ->paginate(1);
     return view('comentarios.espera', ["comentarios"=>$comentarios, 'tipo'=>$tipo]);
-    }
-    public function indicadores(Request $request)
-    {
+}
+public function indicadores(Request $request)
+{
 
     $indicadores=DB::table('indicadors as i')
     ->join('tipo__indicadors as t', 'i.indicador_id', '=', 't.id')
@@ -275,10 +303,10 @@ class BackController extends Controller
     $tipo=Tipo_Indicador::all();
     $menu=Tipo_Indicador::all();
     return view ('indicador.listado', ["indicadores"=>$indicadores, 'tipo'=>$tipo, 'menu'=>$menu]);
-    }
+}
 
-    public function indicadores_tipo(Request $request, $id)
-    {
+public function indicadores_tipo(Request $request, $id)
+{
 
     $indicadores=DB::table('indicadors as i')
     ->join('tipo__indicadors as t', 'i.indicador_id', '=', 't.id')
@@ -289,57 +317,57 @@ class BackController extends Controller
     $tipo=Tipo_Indicador::all();
     $menu=Tipo_Indicador::all();
     return view ('indicador.tipo', ["indicadores"=>$indicadores, 'tipo'=>$tipo, 'menu'=>$menu]);
-    }
-    public function promedios_meses(Request $request, $anio, $id)
-    {
+}
+public function promedios_meses(Request $request, $anio, $id)
+{
         // $promedio = DB::select('CALL promedioxmes(' . $id .');');
-        $promedio = DB::select('CALL promedioxmes(' . $anio . ',' . $id . ');');
+    $promedio = DB::select('CALL promedioxmes(' . $anio . ',' . $id . ');');
         // return $promedio;
         // return $promedio;
-        $indicadores=DB::table('indicadors as i')
-        ->select('i.*')
-        ->orderBy('i.nombre', 'asc')
-        ->get();
-        $fechas=DB::table('fechas as f')
-        ->select('f.anio', 'f.id')
-        ->select(DB::raw('f.anio'))
-        ->groupBy('f.anio')
-        ->get();
-        $anios = DB::table('fechas as f')
-        ->select('f.anio as actual')
-        ->where('f.anio', '=', $anio)
-        ->paginate(1);
+    $indicadores=DB::table('indicadors as i')
+    ->select('i.*')
+    ->orderBy('i.nombre', 'asc')
+    ->get();
+    $fechas=DB::table('fechas as f')
+    ->select('f.anio', 'f.id')
+    ->select(DB::raw('f.anio'))
+    ->groupBy('f.anio')
+    ->get();
+    $anios = DB::table('fechas as f')
+    ->select('f.anio as actual')
+    ->where('f.anio', '=', $anio)
+    ->paginate(1);
 
-        $i = DB::table('indicadors as i')
-        ->select('i.nombre', 'i.id')
-        ->where('i.id', '=', $id)
-        ->first();
+    $i = DB::table('indicadors as i')
+    ->select('i.nombre', 'i.id')
+    ->where('i.id', '=', $id)
+    ->first();
         // return $anios;
         // return $promedio;
-        return view ('graficos.promediomeses', ['promedio'=>$promedio, 'indicadores'=>$indicadores, 'fechas'=>$fechas, 'anios'=>$anios, 'i'=>$i]);
-    }
-    public function perfil(Request $request)
-    {
+    return view ('graficos.promediomeses', ['promedio'=>$promedio, 'indicadores'=>$indicadores, 'fechas'=>$fechas, 'anios'=>$anios, 'i'=>$i]);
+}
+public function perfil(Request $request)
+{
         // $promedio=DB::select('CALL promedioxmes(' .$anio1 . ',' . $anio2 . ');');
         // $anio1=DB::select('CALL promedioanios(' .$year . ',' . $id . ');');
         // $anio2=DB::select('CALL promedioanios(' .$years . ',' . $id . ');');
         // return $anio2;
         // $perfil=User::orderBy('id', 'desc')->where('id', '=',$id);; 
-        $id = Auth::id();
-        $perfil=DB::table('users as u')
-        ->select('u.*')
-        ->where('u.id', '=', $id)
-        ->get();
+    $id = Auth::id();
+    $perfil=DB::table('users as u')
+    ->select('u.*')
+    ->where('u.id', '=', $id)
+    ->get();
 
-        $user = User::find($id);
+    $user = User::find($id);
 
-        $comentario=DB::table('comentarios as c')
-        ->join('noticias as n', 'c.noticias_id', '=', 'n.id')
-        ->join('users as u', 'c.user_id', '=', 'u.id')
-        ->select('c.comentario', 'c.estado', 'n.titulo', 'n.foto as fotos', 'n.id as idd','u.id', 'c.id', 'u.tipo', 'c.fecha', 'u.foto', 'u.name')
-        ->where('c.user_id', '=',$id)
-        ->orderBy('c.id', 'desc')
-        ->paginate(10);
-        return view('perfil.perfil', ['perfil'=>$perfil, 'user'=>$user, 'comentario'=>$comentario]); 
-    }
+    $comentario=DB::table('comentarios as c')
+    ->join('noticias as n', 'c.noticias_id', '=', 'n.id')
+    ->join('users as u', 'c.user_id', '=', 'u.id')
+    ->select('c.comentario', 'c.estado', 'n.titulo', 'n.foto as fotos', 'n.id as idd','u.id', 'c.id', 'u.tipo', 'c.fecha', 'u.foto', 'u.name')
+    ->where('c.user_id', '=',$id)
+    ->orderBy('c.id', 'desc')
+    ->paginate(10);
+    return view('perfil.perfil', ['perfil'=>$perfil, 'user'=>$user, 'comentario'=>$comentario]); 
+}
 }
