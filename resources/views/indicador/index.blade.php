@@ -34,6 +34,7 @@
           @include('buscador')
           @include('indicador.modal-create')
         </div>
+        <br><div class="alert alert-success">Nota: Los indicadores que se guarden con el campo importante marcado en si, estos se mostraran en la tabla que se muestra en la vista principal</div><br> 
         <div class="panel-body">
           <div class="table-responsive">
             <table class="table table-striped table-bordered table-list table-hover" id="dev-table">

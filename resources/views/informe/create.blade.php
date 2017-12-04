@@ -7,6 +7,7 @@
         <div class="col-lg-6 col-sm-6 col-m-6 col-xs-12">
             <div class="form-group">
                 <label>
+                    Indicador
                 </label>
                 <select class="form-control" data-live-search="true" name="indicador_id">
                     @foreach ($tipo as $t)

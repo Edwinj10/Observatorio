@@ -49,9 +49,13 @@
 			<div class="form-group">
 				<label>Importante</label>
 				<select name="importante" class="form-control">
-					<option value="{{$i->importante}}">Si</option>
+					@if($i->importante==1)
+					<option value="{{$i->importante}}" selected="">Si</option>
 					<option value="0">No</option>
+					@else
+					<option value="{{$i->importante}}" selected="">No</option>
 					<option value="1">Si</option>
+					@endif
 				</select>
 			</div>
 		</div>
