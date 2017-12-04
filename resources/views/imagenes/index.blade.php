@@ -29,7 +29,7 @@
           @include('buscador')
         </div>
         <br>  
-        <div class="alert alert-success">Nota: Las imagenes deben de ser de un tamaño de 950px de ancho y 425 px de alto. Si se ingresa una imagen de un tamaño mayor o menor, la aplicacion cambiara el tamaño de la imagen automaticamente, a la medida antes mencionada.</div><br> 
+        <div class="alert alert-success">Nota: Las imagenes deben de ser de un tamaño de 425px de ancho y 800 px de alto. Si se ingresa una imagen de un tamaño mayor o menor, la aplicacion cambiara el tamaño de la imagen automaticamente, a la medida antes mencionada.</div><br> 
         <div class="panel-body">
           <div class="table-responsive">
             <table class="table table-striped table-bordered table-list table-hover" id="dev-table">

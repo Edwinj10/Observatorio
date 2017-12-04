@@ -210,7 +210,7 @@
 							<div class="carousel-inner">
 								@foreach($imagen as $img)
 								<div class="item @if($img->id === $img->first()->id) {{ 'active' }} @endif">
-									<img  id="carruse" src="imagenes/imagenes/{{ $img->foto }}" data-animation="animated zoomInLeft" alt="{{ $img->alt }}" class="img-responsive"  width="100%"> 
+									<img src="imagenes/imagenes/{{ $img->foto }}" data-animation="animated zoomInLeft" alt="{{ $img->alt }}" class="img-responsive"  width="100%"> 
 									<div class="carousel-caption">
 										<h4 class="option animated pulse">{{$img->titulo}}</h4>
 										<!-- <a href="{{ route('portadas.show', $img->id ) }}"><button class="btn btn-primary">Leer Mas</button></a> -->

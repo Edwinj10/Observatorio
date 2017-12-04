@@ -68,7 +68,7 @@ class ImageneController extends Controller
         {
             $foto= $request->file('foto');
             $filename= time(). '.'. $foto->getClientOriginalExtension();
-            Image::make($foto)->resize(950,425)->save(public_path('/imagenes/imagenes/'.$filename));
+            Image::make($foto)->resize(800,425)->save(public_path('/imagenes/imagenes/'.$filename));
             $imagenes->foto=$filename;
         }     
         $imagenes->save();
@@ -128,7 +128,7 @@ class ImageneController extends Controller
         {
             $foto= $request->file('foto');
             $filename= time(). '.'. $foto->getClientOriginalExtension();
-            Image::make($foto)->resize(950,425)->save(public_path('/imagenes/imagenes/'.$filename));
+            Image::make($foto)->resize(800,425)->save(public_path('/imagenes/imagenes/'.$filename));
             $i->foto=$filename;
         }     
         $i->update();
@@ -145,6 +145,8 @@ class ImageneController extends Controller
     public function destroy($id)
     {
         $i = Imagen::find($id);
+        $foto =public_path('imagenes/imagenes').'/'.$i->foto;
+        unlink($foto);
         $i->delete();
         Session::flash ('message', 'Eliminado Correctamente');
         return redirect::to('/portadas');
