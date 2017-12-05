@@ -50,7 +50,7 @@
                     </select>
             </div>  
         </div>
-        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+        <!-- <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
             <div class="form-group">
                 <label for="descripcion">Facebook <b id="campos">*Campo no obligatorios</b></label>
                 <input type="text"  name="facebook" id="facebook"  value="{{old('facebook')}}" class="form-control" placeholder="Ingrese el Facebook">
@@ -67,7 +67,7 @@
                 <label for="descripcion">Google + <b id="campos">*Campo no obligatorios</b></label>
                 <input type="text"  name="googleplus" id="googleplus" value="{{old('googleplus')}}" class="form-control" placeholder="Ingrese el Google">
             </div>  
-        </div>
+        </div> -->
         <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
             <div class="form-group">
                 <label for="foto">Foto de Perfil</label>

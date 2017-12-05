@@ -13,8 +13,8 @@
       <th>Email</th>
       <th>Tipo de Usuario</th>
       <th>Foto</th>
-      <th>Facebook</th>
-      <th>Twiter</th>
+      <!-- <th>Facebook</th>
+      <th>Twiter</th> -->
       <!-- <th>Google+</th> -->
     </tr> 
   </thead>
@@ -34,8 +34,8 @@
       <td>
         <img src=" {{asset('/imagenes/usuarios/'.$usuario->foto)}}" alt="" height="50px" width="50px">
       </td>
-      <td>{{ $usuario->facebook}}</td>
-      <td>{{ $usuario->twiter}}</td>
+     <!--  <td>{{ $usuario->facebook}}</td>
+      <td>{{ $usuario->twiter}}</td> -->
       <!-- <td>{{ $usuario->googleplus}}</td> -->
     </tr>
     @endforeach

@@ -40,7 +40,7 @@
 							</select>
 						</div>
 					</div>
-					<div class="col-lg-6 col-sm-6 col-m-6 col-xs-12">
+					<!-- <div class="col-lg-6 col-sm-6 col-m-6 col-xs-12">
 						<div class="form-group">
 							<label for="titulo">Facebook</label>
 							<input type="text" name="facebook" maxlength="100"  value="{{$usuario->facebook}}" class="form-control" placeholder="Ingrese el Facebook">
@@ -57,7 +57,7 @@
 							<label for="titulo">Twitter</label>
 							<input type="text" name="twiter" maxlength="100"  value="{{$usuario->twiter}}" class="form-control" placeholder="Ingrese el Correo">
 						</div>
-					</div>
+					</div> -->
 					<div class="col-lg-12 col-sm-12 col-m-12 col-xs-12">
 						<div class="form-group">
 							<label for="foto">Foto de perfil</label>
