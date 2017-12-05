@@ -14,11 +14,13 @@
       <div class="panel panel-default panel-table">
         <div class="panel-heading">
           <div class="row">
-            <div class="col col-xs-8">
+            <div class="col-md-6 col-xs-12">
               <h3 class="panel-title">Listado de Comentarios en @foreach ($tipo as $e) {{$e->estado}} @endforeach</h3><br>
               <h3 class="panel-title">Actualmente se encuentran registrados <b>{{$comentarios->total()}}</b></h3><br>
+              <br>
               <div class="form-group">
                 <h3 class="panel-title"><b>Filtrar por estado:</b></h3>
+                <br>
                 <select name="estado" class="form-control selectpicker" data-live-search="true" onchange="Seleccionar();" id="estado">
                   <option value="">Eliga una opcion</option>
                   <option value="Activo">Activo</option>
@@ -26,7 +28,7 @@
                 </select>
               </div>
             </div>
-            <div class="col col-xs-4 text-right">
+            <div class="col-md-6 text-right col-xs-12">
               <button type="button" id="ver" class="btn btn-sm btn-primary btn-success">Eliminar</button>
               <a href="/comentarios">
                 <button type="button" class="btn btn-sm btn-primary btn-create">Ver todos</button>

@@ -16,11 +16,13 @@
       <div class="panel panel-default panel-table">
         <div class="panel-heading">
           <div class="row">
-            <div class="col col-xs-6">
+            <div class="col-md-6 col-xs-12">
               <h3 class="panel-title">Listado de Noticias</h3>
               <h3 class="panel-title">Actualmente se encuentran registradas <b>{{$noticias->total()}}</b></h3>
+              <br>
               <div class="form-group">
                 <h3 class="panel-title"><b>Filtrar por estado:</b></h3>
+                <br>
                 <select name="estado" class="form-control selectpicker" data-live-search="true" onchange="Seleccionar();" id="estado">
                   <option value="">Eliga una opcion</option>
                   <option value="Activo">Activo</option>
@@ -28,7 +30,7 @@
                 </select>
               </div>
             </div>
-            <div class="col col-xs-6 text-right">
+            <div class="col-md-6 text-right col-xs-12">
               <button type="button" class="btn btn-sm btn-primary btn-primary" data-target="#modal-create" data-toggle="modal"><em class="fa fa-pencil">Crear Nuevo</em></button>
               <button type="button" id="ver" class="btn btn-sm btn-primary btn-success">Eliminar</button>
             </div>

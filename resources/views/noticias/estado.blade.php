@@ -15,11 +15,13 @@
       <div class="panel panel-default panel-table">
         <div class="panel-heading">
           <div class="row">
-            <div class="col col-xs-6">
+            <div class="col-md-6 col-xs-12">
               <h3 class="panel-title">Listado de Noticas en Estado: @foreach ($tipo as $e) {{$e->estado}} @endforeach</h3>
               <h3 class="panel-title">Actualmente se encuentran registradas <b>{{$noticias->total()}}</b></h3>
               <div class="form-group">
+                <br>
                 <h3 class="panel-title"><b>Filtrar por estado:</b></h3>
+                <br>
                 <select name="estado" class="form-control selectpicker" data-live-search="true" onchange="Seleccionar();" id="estado">
                   <option value="">Eliga una opcion</option>
                   <option value="Activo">Activo</option>
@@ -27,7 +29,7 @@
                 </select>
               </div>
             </div>
-            <div class="col col-xs-6 text-right">
+            <div class="col-md-6 text-right col-xs-12">
               <a href="/noticias/create">
                 <button type="button" class="btn btn-sm btn-primary btn-create">Crear Nuevo</button>
               </a>
@@ -84,7 +86,7 @@
         <div class="panel-footer">
           <div class="row">
             <div class="col col-xs-8">
-                {{$noticias->render()}}
+              {{$noticias->render()}}
             </div>
           </div>
         </div>
@@ -101,7 +103,7 @@
       $(document).ready(function(){
         $(".btn-danger").hide();
       });
-       function Seleccionar()
+      function Seleccionar()
       {
 
     // var cod = document.getElementById("indicadorcap").value;
@@ -126,6 +128,6 @@
     //   type:'get',
     // });
   }
-    </script>
-    @endpush
-    @stop
+</script>
+@endpush
+@stop
