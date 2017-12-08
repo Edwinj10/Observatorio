@@ -1,9 +1,11 @@
 @extends('layouts.principal')
+<meta property="og:title"              content="{{$noticia->titulo}}" />
+<meta property="og:description"        content="{{$noticia->descripcion}}" />
+<meta property="og:image"              content="http://observatorio.ciiemp.com/imagenes/noticias/{{$noticia->foto}}" />
 @section('title','Noticias')
 @section('content')
 {!!Html::style('/css/comentario.css')!!}
 <div id="fb-root"></div>
-<meta property="og:img" content="http://observatorio.ciiemp.com/imagenes/noticias/{{$noticia->foto}}">
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
