@@ -94,39 +94,39 @@
   									<li id="hijos"><a href="/institucion/4">MINSA</a></li>
   									<li><a href="/institucion/3">MINED</a></li>
   									<li><a href="/institucion/7">Alcaldia de Estelí</a></li>
-  									<!-- <li><a href="#">INSS</a></li> -->
-  									<li><a href="/instituciones">Todas</a></li>
-  								</ul>
-  							</li>
-  							<li class="col-sm-6">
-  								<ul>
-  									<!-- <li class="dropdown-header" id="economicos">Indicadores Económicos</li> -->
-  									<li id="hijos"><a href="/institucion/5">Ministerio del Trabajo</a></li>
-  									<li id="hijos"><a href="/institucion/2">Camara de Comercio</a></li>
-  									<li id="hijos"><a href="/institucion/6">Banco Central de Nicaragua</a></li>                            
-  									<<!-- li id="hijos"><a href="#">Renta</a></li>  -->             
-  								</ul>
-  							</li>
-  						</ul>       
-  					</li>
-  					<li class="nav navbar-nav">
-  						<li><a href="/noticia" id="padres">Noticias</a></li>
-  					</li>
-  					<li class="nav navbar-nav">
-  						<li><a href="/indicadors" id="padres">Indicadores</a></li>
-  					</li>
-  					<li class="dropdown mega-dropdown">
-  						<a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Estudios<span class="caret"></span></a>        
-  						<ul class="dropdown-menu mega-dropdown-menu" id="hijo7">
-  							<li class="col-sm-8">
-  								<ul>
-  									<!-- <li class="dropdown-header">Economia</li> -->
-  									<li><a href="/tesisporcarreras/1">Mercadotecnia</a></li>
-  									<li><a href="/tesisporcarreras/2">Administración de Empresas</a></li>
-  									<li><a href="/tesisporcarreras/3">Banca y Finanzas</a></li>
-  									<li><a href="/listartesis">Todos</a></li>            
-  								</ul>
-  							</li>
+                    <!-- <li><a href="#">INSS</a></li> -->
+                    <li><a href="/instituciones">Todas</a></li>
+                  </ul>
+                </li>
+                <li class="col-sm-6">
+                  <ul>
+                   <!-- <li class="dropdown-header" id="economicos">Indicadores Económicos</li> -->
+                   <li id="hijos"><a href="/institucion/5">Ministerio del Trabajo</a></li>
+                   <li id="hijos"><a href="/institucion/2">Camara de Comercio</a></li>
+                   <li id="hijos"><a href="/institucion/6">Banco Central de Nicaragua</a></li>                            
+                   <<!-- li id="hijos"><a href="#">Renta</a></li>  -->             
+                 </ul>
+               </li>
+             </ul>       
+           </li>
+           <li class="nav navbar-nav">
+            <li><a href="/noticia" id="padres">Noticias</a></li>
+          </li>
+          <li class="nav navbar-nav">
+            <li><a href="/indicadors" id="padres">Indicadores</a></li>
+          </li>
+          <li class="dropdown mega-dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Estudios<span class="caret"></span></a>        
+            <ul class="dropdown-menu mega-dropdown-menu" id="hijo7">
+             <li class="col-sm-8">
+              <ul>
+               <!-- <li class="dropdown-header">Economia</li> -->
+               <li><a href="/tesisporcarreras/1">Mercadotecnia</a></li>
+               <li><a href="/tesisporcarreras/2">Administración de Empresas</a></li>
+               <li><a href="/tesisporcarreras/3">Banca y Finanzas</a></li>
+               <li><a href="/listartesis">Todos</a></li>            
+             </ul>
+           </li>
             <!-- <li class="col-sm-6">
               <ul>
                 <li class="dropdown-header">Sociales</li>
@@ -134,25 +134,25 @@
                 <li><a href="#">Admon Turistica y Hotelera</a></li>
                 <li><a href="#">Trabajo Social</a></li>                                                      
               </ul>
-          </li> -->
-      </ul>       
-  </li>
-  <li><a href="/boletines_todos" id="padres">Boletines</a></li>
-  @if (Auth::guest())
-  <li class="dropdown mega-dropdown">
-  	<a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Mi Cuenta<span class="caret"></span></a>        
-  	<ul class="dropdown-menu mega-dropdown-menu" id="hijo3">
-  		<li class="col-sm-6">
-  			<ul>
-  				<li><a href="{{url('login')}}">Login</a></li>         
-  			</ul>
-  		</li>
-  		<li class="col-sm-6">
-  			<ul>
-  				<li><a href="{{url('register')}}">Registrarme</a></li>                                                      
-  			</ul>
-  		</li>
-  	</ul>       
+            </li> -->
+          </ul>       
+        </li>
+        <li><a href="/boletines_todos" id="padres">Boletines</a></li>
+        @if (Auth::guest())
+        <li class="dropdown mega-dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="padres">Mi Cuenta<span class="caret"></span></a>        
+         <ul class="dropdown-menu mega-dropdown-menu" id="hijo3">
+          <li class="col-sm-6">
+           <ul>
+            <li><a href="{{url('login')}}">Login</a></li>         
+          </ul>
+        </li>
+        <li class="col-sm-6">
+         <ul>
+          <li><a href="{{url('register')}}">Registrarme</a></li>                                                      
+        </ul>
+      </li>
+    </ul>       
   </li>
   @else
   <li class="dropdown mega-dropdown">
@@ -282,45 +282,45 @@
 						<div class="thumbnail">
              <!--  <div class="date"> <a href="#0">
                 <div class="day"><i class="fa fa-bars" aria-hidden="true"></i></div>
-            </a> </div> -->
-            <img src="imagenes/noticias/{{ $n->foto }}" class="img-responsive" alt=""> </div>
-            <!-- Post Content-->
-            <div class="post-content">
-            	<div class="category">{{$n->tipo}}</div>
-            	<h2 class=" title"><a href="{{ route('noticias.show', $n->id ) }}">{{substr(strip_tags($n->titulo), 0,50)}}...</a></h2>
-            	<p class="description">{{substr(strip_tags($n->resumen), 0,90)}}...</p>
-            	<div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">o</i> {{ $n->fecha }}</span></div>
-            	<!-- <span class="comments"><i class="fa fa-comments"></i><a href="#"> 0 Comentarios</a></span> -->
-            </div>
-        </div>
-    </div>
-</div>
-@endforeach
+              </a> </div> -->
+              <img src="imagenes/noticias/{{ $n->foto }}" class="img-responsive" alt=""> </div>
+              <!-- Post Content-->
+              <div class="post-content">
+               <div class="category">{{$n->tipo}}</div>
+               <h2 class=" title"><a href="{{ route('noticias.show', $n->id ) }}">{{substr(strip_tags($n->titulo), 0,50)}}...</a></h2>
+               <p class="description">{{substr(strip_tags($n->resumen), 0,90)}}...</p>
+               <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">o</i> {{ $n->fecha }}</span></div>
+               <!-- <span class="comments"><i class="fa fa-comments"></i><a href="#"> 0 Comentarios</a></span> -->
+             </div>
+           </div>
+         </div>
+       </div>
+       @endforeach
 
+     </div>
+   </div>
+
+ </div>   
+ <div class="container" id="menu">
+   <div class="section">
+    <div class="row">
+     <div class="col-md-4">
+      <h3 class="widget-title"><span id="noticia">Ubicacion</span></h3>
+      <div class="span8">
+       <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.9844870824563!2d-86.37052568593182!3d13.10016921559033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f718c57866892dd%3A0xb23ca385a77b0c03!2sUNAN-FAREM+Estel%C3%AD+(Recinto+universitario+Leonel+Rugama)!5e0!3m2!1ses!2ses!4v1502825665128" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+     </div>
+   </div>
+   <div class="col-md-8">
+    <!-- hidden-xs -->
+    <h3 class="widget-title"><span id="noticia">Boletin</span></h3>
+    @foreach ($boletines as $b)
+    <iframe id="boletin" style="width:100%; height:360px;" src="{{ $b->url }}" frameborder="0" allowfullscreen></iframe>
+    @endforeach
+    <!-- /tabs-right -->
+  </div>
 </div>
 </div>
-
-</div>   
-<div class="container" id="menu">
-	<div class="section">
-		<div class="row">
-			<div class="col-md-4">
-				<h3 class="widget-title"><span id="noticia">Ubicacion</span></h3>
-				<div class="span8">
-					<iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.9844870824563!2d-86.37052568593182!3d13.10016921559033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f718c57866892dd%3A0xb23ca385a77b0c03!2sUNAN-FAREM+Estel%C3%AD+(Recinto+universitario+Leonel+Rugama)!5e0!3m2!1ses!2ses!4v1502825665128" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-
-				</div>
-			</div>
-			<div class="col-md-8">
-				<!-- hidden-xs -->
-				<h3 class="widget-title"><span id="noticia">Boletin</span></h3>
-				@foreach ($boletines as $b)
-				<iframe id="boletin" style="width:100%; height:360px;" src="{{ $b->url }}" frameborder="0" allowfullscreen></iframe>
-				@endforeach
-				<!-- /tabs-right -->
-			</div>
-		</div>
-	</div>
 </div>
 <!-- cargamos las instituciones -->
 <div class="container" id="menu">
@@ -409,9 +409,9 @@
                 </div>
               </div>
             </div>
-        </div> -->
+          </div> -->
 
-        <!-- ITEM -->
+          <!-- ITEM -->
           <!-- <div class="item">
             <div class="thumbnail">
               <div class="caption">
@@ -424,9 +424,9 @@
                 </div>
               </div>
             </div>
-        </div> -->
+          </div> -->
 
-        <!-- ITEM -->
+          <!-- ITEM -->
           <!-- <div class="item">
             <div class="thumbnail">
               <div class="caption">
@@ -440,56 +440,56 @@
               </div>
             </div>
           </div>
-      </div> -->
+        </div> -->
+      </div>
+    </section>
   </div>
-</section>
-</div>
-<!-- empieza footer -->
-<div class="container" id="menu">
-	<footer>
-		<div class="container">
-			<div class="row text-center">
-				<ul class="list-inline">
-					<li>
-						<a href="https://www.facebook.com/CiiempFaremEsteli/" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>
-					</li>
-					<li>
-						<a href="https://www.youtube.com/channel/UCYqqo6I2mxLsW6PLc5CttKA" target="_blank"><i class="fa fa-youtube-play fa-2x"></i></a>
-					</li>
-					<li>
-						<a href="https://www.instagram.com/ciiempfarem/" target="_blank"><i class="fa fa-instagram fa-2x"></i></a> 
-					</li>
-					<li>
-						<a href="https://twitter.com/ciiempfarem" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
-					</li>               
-				</ul>
-			</div>
-			<div class="row text-center">   
-				<ul class="menu list-inline">
-					<li>
-						<a href="http://www.farem.unan.edu.ni" id="enlaces" target="_blank">Farem-Estelí</a>
-					</li>     
-					<li>
-						<a href="http://www.bcn.gob.ni" id="enlaces" target="_blank">Banco Central de Nicaragua</a>
-					</li>
+  <!-- empieza footer -->
+  <div class="container" id="menu">
+   <footer>
+    <div class="container">
+     <div class="row text-center">
+      <ul class="list-inline">
+       <li>
+        <a href="https://www.facebook.com/CiiempFaremEsteli/" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/channel/UCYqqo6I2mxLsW6PLc5CttKA" target="_blank"><i class="fa fa-youtube-play fa-2x"></i></a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/ciiempfarem/" target="_blank"><i class="fa fa-instagram fa-2x"></i></a> 
+      </li>
+      <li>
+        <a href="https://twitter.com/ciiempfarem" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
+      </li>               
+    </ul>
+  </div>
+  <div class="row text-center">   
+    <ul class="menu list-inline">
+     <li>
+      <a href="http://www.farem.unan.edu.ni" id="enlaces" target="_blank">Farem-Estelí</a>
+    </li>     
+    <li>
+      <a href="http://www.bcn.gob.ni" id="enlaces" target="_blank">Banco Central de Nicaragua</a>
+    </li>
 
             <!-- <li>
               <a href="#" id="enlaces">Gallery</a>
-          </li> -->
-          <li>
-          	<a href="/mail/create" id="enlaces">Contáctenos</a>
-          </li>
-      </ul>
-  </div>   
-</div> 
-</footer>
-<div class="copyright">
-	<div class="container">
-		<div class="row text-center">
-			<p>Copyright © 2017 FAREM-Estelí. Todos los Derechos Reservados.</p>
-		</div>
-	</div>
-</div>
+            </li> -->
+            <li>
+             <a href="/mail/create" id="enlaces">Contáctenos</a>
+           </li>
+         </ul>
+       </div>   
+     </div> 
+   </footer>
+   <div class="copyright">
+     <div class="container">
+      <div class="row text-center">
+       <p>Copyright © 2017 FAREM-Estelí. Todos los Derechos Reservados.</p>
+     </div>
+   </div>
+ </div>
 </div>
 
 <!-- End -->
