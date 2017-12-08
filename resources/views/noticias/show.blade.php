@@ -1,6 +1,6 @@
 @extends('layouts.principal')
 <meta property="og:title"              content="{{$noticia->titulo}}" />
-<meta property="og:description"        content="{{$noticia->descripcion}}" />
+<meta property="og:description"        content="{{$noticia->resumen}}" />
 <meta property="og:image"              content="http://observatorio.ciiemp.com/imagenes/noticias/{{$noticia->foto}}" />
 @section('title','Noticias')
 @section('content')
