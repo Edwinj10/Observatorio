@@ -1,4 +1,5 @@
 @extends ('layouts.principal')
+@section('title','Contacto')
 @section ('content')
   @if(Session::has('message'))
 <div class="alert alert-success alert-dismissible" role="alert">

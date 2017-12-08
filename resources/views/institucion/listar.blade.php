@@ -1,4 +1,5 @@
 @extends ('layouts.principal')
+@section('title','Instituciones')
 <!-- <link rel="stylesheet" href="{{asset('/css/indicadores.css')}}"> -->
 @section ('content')
 <!-- <link rel="stylesheet" href="{{asset('/css/indicadores.css')}}"> -->

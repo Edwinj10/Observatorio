@@ -1,4 +1,5 @@
 @extends('layouts.principal')
+@section('title','Noticias')
 @section('content')
 {!!Html::style('/css/comentario.css')!!}
 <div id="fb-root"></div>

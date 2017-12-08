@@ -1,4 +1,5 @@
 @extends('layouts.principal')
+@section('title','Perfil')
 @section('content')
 <link rel="stylesheet" href="{{asset('/css/perfil.css')}}">
 <div class="row">

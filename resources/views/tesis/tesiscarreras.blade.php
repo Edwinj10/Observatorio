@@ -1,4 +1,5 @@
 @extends ('layouts.principal')
+@section('title','Tesis')
 @section ('content')
 </head>
 <body>

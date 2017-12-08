@@ -1,4 +1,5 @@
 @extends('layouts.principal')
+@section('title','Noticias')
 @section('content')
 <div class="section" id="noticias">
   <h3 class="widget-title"><span id="noticia">Noticias</span></h3>

@@ -1,4 +1,5 @@
 @extends ('layouts.principal')
+@section('title','Instituciones')
 @section ('content')
 <link rel="stylesheet" href="{{asset('/css/listar.css')}}">
 

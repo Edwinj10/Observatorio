@@ -1,4 +1,5 @@
 @extends('layouts.principal')
+@section('title','Busqueda')
 @section('content')
 <!-- <link rel="stylesheet" href="{{asset('/css/indicadores.css')}}"> -->
  

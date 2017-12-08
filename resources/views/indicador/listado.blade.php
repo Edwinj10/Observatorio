@@ -1,4 +1,5 @@
 @extends ('layouts.principal')
+@section('title','Indicadores')
 @section ('content')
 <h3 class="widget-title"><span id="noticia">Indicadores</span></h3>
 <div class="row">

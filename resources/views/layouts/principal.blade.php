@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
- <title>Observatorio SocioEconomico CIIEMP | FAREM-Estelí</title>
+  <title>@yield('title','Default')</title>
   <link rel="icon" href="/img/CIIEMP.png" type="image/x-icon">
 
 
