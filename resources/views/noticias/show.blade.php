@@ -1,7 +1,7 @@
 @extends('layouts.principal')
 <meta property="og:title"              content="{{$noticia->titulo}}" />
 <meta property="og:description"        content="{{$noticia->resumen}}" />
-<meta property="og:image"              content="www.observatorio.ciiemp.com/imagenes/noticias/{{$noticia->foto}}" />
+<meta property="og:image"              content="http://www.observatorio.ciiemp.com/imagenes/noticias/{{$noticia->foto}}" />
 @section('title','Noticias')
 @section('content')
 {!!Html::style('/css/comentario.css')!!}
