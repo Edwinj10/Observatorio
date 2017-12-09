@@ -137,6 +137,8 @@ class NoticiasController extends Controller
         ->select('no.*', 't.tipo')
         ->where('t.tipo', '=', $noticia->tipo)
         ->where('no.id', '!=', $noticia->id)
+        ->where('no.estado', '=','Activo')
+        ->orderBy('no.id', 'desc')
         ->paginate(3);
 
         $comentario=DB::table('comentarios as c')
@@ -148,7 +150,7 @@ class NoticiasController extends Controller
         ->orderBy('c.id', 'desc')
         ->paginate(10);
 
-        $ultimas=Noticia::orderBy('id', 'desc')->where('estado', '=','Activo')->where('id', '!=', $noticia->id)->paginate(3);;;;
+        $ultimas=Noticia::orderBy('id', 'desc')->where('estado', '=','Activo')->where('id', '!=', $noticia->id)->paginate(5);;;;
 
         return view ('noticias.show', ['noticia'=>$noticia, 'users' => $users, 'sugerencias' => $sugerencias, 'ultimas' => $ultimas, 'comentario'=>$comentario]);
     }
