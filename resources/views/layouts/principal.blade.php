@@ -10,7 +10,7 @@
   <meta name="generator" content="Laravel 5.4" />
   <meta name="description" content="Esta aplicación fue programada en PHP utilizando laravel en su version 5.4." />
   <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
-  <title>@yield('title','Default')</title>
+  <title>@yield('title','Observatorio SocioEconomico CIIEMP | FAREM-Estelí')</title>
   <link rel="icon" href="/img/CIIEMP.png" type="image/x-icon">
 
 

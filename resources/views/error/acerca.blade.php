@@ -1,5 +1,6 @@
 @extends('layouts.principal')
 @section('content')
+@section('title','Acerca de Nosotros')
 <style>
 .team-social li {
 	width: 30px;
